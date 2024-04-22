@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idUsuario;
+    Long idUser;
     @Basic
     @Column(nullable = false)
     String email;
@@ -37,7 +37,7 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-      return List.of(new SimpleGrantedAuthority((role.name())));
+        return List.of(new SimpleGrantedAuthority(role.getRole().toString()));
     }
     @Override
     public boolean isAccountNonExpired() {
@@ -65,12 +65,11 @@ public class UserEntity implements UserDetails {
      AdressEntity adress;
      
 
-    @OneToOne(
-        cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-    		name = "role",
-    		referencedColumnName = "idRole")
-     Role role ;
+     @ManyToOne
+     @JoinColumn(
+             name = "idRole",
+             referencedColumnName = "idRole")
+     @JsonIgnore
+     private RoleEntity role;
 
 }
