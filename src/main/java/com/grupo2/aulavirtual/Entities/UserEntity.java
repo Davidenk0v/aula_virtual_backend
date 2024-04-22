@@ -65,6 +65,20 @@ public class UserEntity implements UserDetails {
      AdressEntity adress;
      
 
+     @ManyToMany
+     @JoinTable(
+         name = "user_course",
+         joinColumns = @JoinColumn(
+             name = "id_user",
+             referencedColumnName = "idUser"
+         ),
+         inverseJoinColumns = @JoinColumn(
+             name = "id_course",
+             referencedColumnName = "idCourse"
+         )
+     )
+     private List<CourseEntity> course;
+     
      @ManyToOne
      @JoinColumn(
              name = "idRole",
