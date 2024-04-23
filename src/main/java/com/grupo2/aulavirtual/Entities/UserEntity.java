@@ -29,13 +29,14 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    String lastname;
+    private String lastname;
     @Column(nullable = false)
-    String firstname;
+    private String firstname;
     @Column(nullable = false)
-    String username;
+    private String username;
     @Column(nullable = false)
-    String password;
+    private String password;
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress", referencedColumnName = "idAdress")
     AdressEntity adress;
