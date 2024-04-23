@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
+@Table(name = "userEntity", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

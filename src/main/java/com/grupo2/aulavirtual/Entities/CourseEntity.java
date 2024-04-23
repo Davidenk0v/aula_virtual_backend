@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +47,20 @@ public class CourseEntity {
     @Column(nullable = false)
     private BigDecimal pago;
 
-    @ManyToMany(mappedBy = "course")
+   @ManyToMany
+   @JoinTable(
+    name = "course_category",
+    joinColumns = @JoinColumn(
+        name = "idCourse",
+        referencedColumnName = "idCourse"
+    ),
+    inverseJoinColumns = @JoinColumn(
+        name = "idCategory",
+        referencedColumnName = "idCategory"))
+   private List<CategoryEntity> category;
+
+
+    @ManyToMany(mappedBy = "courses")
     private List<UserEntity> user;
 
 }

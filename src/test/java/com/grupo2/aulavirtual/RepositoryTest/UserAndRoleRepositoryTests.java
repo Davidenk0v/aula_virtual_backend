@@ -12,27 +12,34 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Entities.UserEntity;
+import com.grupo2.aulavirtual.Enum.RoleEnum;
 import com.grupo2.aulavirtual.Repository.UserRepository;
 
 @SpringBootTest
-class UserRepositoryTests {
+class UserAndRoleRepositoryTests {
 
     @MockBean
     private UserRepository userRepository;
 
     private UserEntity userEntity;
 
+    private RoleEntity roleEntity;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-
+        roleEntity = new RoleEntity();
+        roleEntity.setIdRole(1L);
+        roleEntity.setRole(RoleEnum.ADMIN);
         userEntity = new UserEntity();
         userEntity.setIdUser(1L);
         userEntity.setEmail("joao@gmail.com");
         userEntity.setFirstname("Joao");
         userEntity.setLastname("Lima");
         userEntity.setPassword("Lima");
+        userEntity.setRole(roleEntity);
     }
 
     @Test
