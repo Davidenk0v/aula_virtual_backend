@@ -3,7 +3,7 @@ package com.grupo2.aulavirtual.Entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo2.aulavirtual.Enum.Role;
+import com.grupo2.aulavirtual.Enum.ERole;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -28,17 +28,13 @@ import lombok.NoArgsConstructor;
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idRole;
+    private Long idRole;
     @Basic
-    @Enumerated(EnumType.STRING) 
-    Role role;
-    
+    @Enumerated(EnumType.STRING)
+    private ERole role;
 
-    @OneToMany(
-    		cascade = CascadeType.ALL,
-    		fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<UserEntity> user; 
+    private List<UserEntity> user;
 
-    
 }

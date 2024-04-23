@@ -29,7 +29,7 @@ public class CourseEntity {
     private Long idCourse;
     @Basic
     @Column(nullable = false)
-    private String  name;
+    private String name;
 
     @Column(nullable = false)
     private String description;
@@ -42,10 +42,8 @@ public class CourseEntity {
 
     @Column(nullable = false)
     private double pago;
-    
-   @ManyToMany(
-    mappedBy = "course"
-   )
-   private List<UserEntity> user;
-    
+
+    @ManyToMany(mappedBy = "course")
+    private List<UserEntity> user;
+
 }

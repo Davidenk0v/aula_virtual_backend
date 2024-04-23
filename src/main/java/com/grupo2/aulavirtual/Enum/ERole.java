@@ -1,8 +1,6 @@
 package com.grupo2.aulavirtual.Enum;
 
-
-
-public enum Role {
+public enum ERole {
 	ADMIN,
 	TEACHER,
 	STUDENT;
