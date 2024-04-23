@@ -1,20 +1,17 @@
 package com.grupo2.aulavirtual.Entities;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,7 +31,7 @@ public class CourseEntity {
     private Long idCourse;
     @Basic
     @Column(nullable = false)
-    private String  name;
+    private String name;
 
     @Column(nullable = false)
     private String description;
@@ -46,28 +43,9 @@ public class CourseEntity {
     private Date finishDate;
 
     @Column(nullable = false)
-    private double pago;
-    
-   @ManyToMany(
-    mappedBy = "course"
-   )
-   private List<UserEntity> user;
-    
-   @ManyToMany
-   @JoinTable(
-    name = "course_category",
-    joinColumns = @JoinColumn(
-        name = "idCourse",
-        referencedColumnName = "idCourse"),
-    inverseJoinColumns = @JoinColumn(
-        name = "idCategory",
-        referencedColumnName = "idCategory"))
-   private List<CategoryEntity> category;
-   
+    private BigDecimal pago;
 
-   @OneToMany(
-            mappedBy = "course",
-    		cascade = CascadeType.ALL,
-    		fetch = FetchType.EAGER)
-    private List<SubjectsEntity> subjects;
+    @ManyToMany(mappedBy = "course")
+    private List<UserEntity> user;
+
 }

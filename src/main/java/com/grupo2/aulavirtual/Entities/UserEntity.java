@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,61 +29,49 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    private String lastname;
-    private String firstname;
-    private String username;
-    private String password;
-    
+    String lastname;
+    @Column(nullable = false)
+    String firstname;
+    @Column(nullable = false)
+    String username;
+    @Column(nullable = false)
+    String password;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adress", referencedColumnName = "idAdress")
+    AdressEntity address;
+
+    @ManyToMany
+    @JoinTable(name = "user_course", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUser"), inverseJoinColumns = @JoinColumn(name = "id_course", referencedColumnName = "idCourse"))
+    private List<CourseEntity> courses;
+
+    @ManyToOne
+    @JoinColumn(name = "idRole", referencedColumnName = "idRole")
+    @JsonIgnore
+    private RoleEntity role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.getRole().toString()));
     }
+
     @Override
     public boolean isAccountNonExpired() {
-       return true;
+        return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
-       return true;
+        return true;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     @Override
     public boolean isEnabled() {
         return true;
     }
-
-    @OneToOne(
-        cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-    		name = "adress",
-    		referencedColumnName = "idAdress")
-    private AdressEntity adress;
-     
-
-     @ManyToMany
-     @JoinTable(
-         name = "user_course",
-         joinColumns = @JoinColumn(
-             name = "id_user",
-             referencedColumnName = "idUser"
-         ),
-         inverseJoinColumns = @JoinColumn(
-             name = "id_course",
-             referencedColumnName = "idCourse"
-         )
-     )
-     private List<CourseEntity> course;
-     
-     @ManyToOne
-     @JoinColumn(
-             name = "idRole",
-             referencedColumnName = "idRole")
-     @JsonIgnore
-     private RoleEntity role;
 
 }

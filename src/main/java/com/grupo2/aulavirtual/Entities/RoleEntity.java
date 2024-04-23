@@ -30,16 +30,11 @@ public class RoleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRole;
     @Basic
-    @Enumerated(EnumType.STRING) 
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
-    
 
-    @OneToMany(
-            mappedBy = "role",
-    		cascade = CascadeType.ALL,
-    		fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<UserEntity> user; 
+    private List<UserEntity> user;
 
-    
 }

@@ -23,30 +23,28 @@ public class AdressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAdress;
-    @Basic 
+    @Basic
     @Column(nullable = false)
     private String country;
 
-    @Basic 
+    @Basic
     @Column(nullable = false)
     private String number;
 
-    @Basic 
+    @Basic
     @Column(nullable = false)
     private String street;
 
-    @Basic 
+    @Basic
     @Column(nullable = false)
     private String city;
 
-    @Basic 
+    @Basic
     @Column(nullable = false)
     private String postalCode;
 
-    @OneToOne(
-		mappedBy = "adress"
-	)
+    @OneToOne(mappedBy = "adress")
     @JsonIgnore
-	private UserEntity user;
+    private UserEntity user;
 
 }

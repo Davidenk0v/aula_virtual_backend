@@ -36,8 +36,7 @@ public class LessonsEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(
-    		name = "idSubject")
+    @JoinColumn(name = "idSubject")
     @JsonIgnore
     private SubjectsEntity subject;
 }
