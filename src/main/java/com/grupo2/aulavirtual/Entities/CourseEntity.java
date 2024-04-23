@@ -1,5 +1,6 @@
 package com.grupo2.aulavirtual.Entities;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class CourseEntity {
     private Date finishDate;
 
     @Column(nullable = false)
-    private double pago;
+    private BigDecimal pago;
 
     @ManyToMany(mappedBy = "course")
     private List<UserEntity> user;
