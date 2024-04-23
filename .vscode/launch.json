@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AulaVirtualApplication<aula-virtual>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.grupo2.aulavirtual.AulaVirtualApplication",
+            "projectName": "aula-virtual",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
