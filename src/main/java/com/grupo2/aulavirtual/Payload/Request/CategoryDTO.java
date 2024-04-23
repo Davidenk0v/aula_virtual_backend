@@ -2,8 +2,7 @@ package com.grupo2.aulavirtual.Payload.Request;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.Entities.UserEntity;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
+import com.grupo2.aulavirtual.Enum.CategoryEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,11 +13,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleDTO {
+public class CategoryDTO {
 
-    private Long idRole;
+    private Long idCategory;
 
-    private RoleEnum role;
+    private CategoryEnum category;
 
-    private List<UserEntity> user;
+    private List<CourseDTO> course;
 }
