@@ -1,10 +1,8 @@
-package com.grupo2.aulavirtual.Payload.Request;
+package com.grupo2.aulavirtual.Payload.Response;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
-
-import com.grupo2.aulavirtual.Entities.UserEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseDTO {
+public class CourseResponseDto {
 
     private Long idCourse;
 
@@ -29,5 +27,5 @@ public class CourseDTO {
 
     private BigDecimal pago;
 
-    private List<UserEntity> user;
+    private List<UserResponseDto> users;
 }

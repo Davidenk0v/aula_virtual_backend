@@ -6,18 +6,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
+import com.grupo2.aulavirtual.Entities.AdressEntity;
+import com.grupo2.aulavirtual.Entities.CourseEntity;
 import com.grupo2.aulavirtual.Entities.LessonsEntity;
 import com.grupo2.aulavirtual.Entities.SubjectsEntity;
 import com.grupo2.aulavirtual.Payload.Request.LessonsDTO;
+import com.grupo2.aulavirtual.Payload.Response.AddressResponseDto;
 
 public class MappersTest {
 
     private ModelMapper mapper;
 
+    private DtoMapper dtoMapper;
+
     @BeforeEach
     public void setup() {
         this.mapper = new ModelMapper();
+        this.dtoMapper = new DtoMapper();
     }
 
     @Test
@@ -33,21 +41,15 @@ public class MappersTest {
     }
 
     @Test
-    public void whenMapGameWithDeepMapping_thenConvertsToDTO() {
-        // setup
-        TypeMap<LessonsEntity, LessonsDTO> propertyMapper = this.mapper.createTypeMap(LessonsEntity.class,
-                LessonsDTO.class);
-        // add deep mapping to flatten source's Player object into a single field in
-        // destination
-        propertyMapper.addMappings(
-                mapper -> mapper.map(src -> src.getSubject().getName(), LessonsDTO::setSubject));
+    public void createResponseDto() {
+        AdressEntity adressEntity = new AdressEntity().builder().idAdress(1L).country("Argentina").number("123")
+                .street("Street 1").city("City 1")
+                .postalCode("1234").build();
+        // given
+        AddressResponseDto addressResponseDto = dtoMapper.entityToResponse(adressEntity);
 
-        // when map between different hierarchies
-        LessonsEntity lessonsEntity = new LessonsEntity(1L, "Game 1", "Game 1 description", "Game 1 content", null);
-        lessonsEntity.setSubject(new SubjectsEntity(1L, "John", null, null, null));
-        LessonsDTO lessonsDTO = this.mapper.map(lessonsEntity, LessonsDTO.class);
-
-        // then
-        assertEquals(lessonsEntity.getSubject().getName(), lessonsDTO.getSubject());
+        assertEquals(adressEntity.getIdAdress(), addressResponseDto.getIdAdress());
+        assertEquals(adressEntity.getCountry(), addressResponseDto.getCountry());
     }
+
 }

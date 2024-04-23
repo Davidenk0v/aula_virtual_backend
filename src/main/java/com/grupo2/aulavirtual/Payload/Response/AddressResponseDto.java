@@ -1,6 +1,4 @@
-package com.grupo2.aulavirtual.Payload.Request;
-
-import com.grupo2.aulavirtual.Entities.UserEntity;
+package com.grupo2.aulavirtual.Payload.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressDTO {
+public class AddressResponseDto {
 
     private Long idAdress;
 
@@ -25,5 +23,5 @@ public class AddressDTO {
 
     private String postalCode;
 
-    private UserEntity user;
+    private UserResponseDto user;
 }

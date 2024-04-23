@@ -2,6 +2,10 @@ package com.grupo2.aulavirtual.Payload.Request;
 
 import java.util.List;
 
+import com.grupo2.aulavirtual.Entities.AdressEntity;
+import com.grupo2.aulavirtual.Entities.CourseEntity;
+import com.grupo2.aulavirtual.Entities.RoleEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,9 +29,9 @@ public class UserDTO {
 
     private String password;
 
-    private AddressDTO address;
+    private AdressEntity address;
 
-    private List<CourseDTO> courses;
+    private List<CourseEntity> courses;
 
-    private RoleDTO role;
+    private RoleEntity role;
 }
