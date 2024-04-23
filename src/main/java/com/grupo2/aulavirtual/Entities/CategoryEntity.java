@@ -2,19 +2,16 @@ package com.grupo2.aulavirtual.Entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
+import com.grupo2.aulavirtual.Enum.CategoryEnum;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,20 +22,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RoleEntity {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idRole;
+    private Long idCategory;
+
     @Basic
     @Enumerated(EnumType.STRING) 
-    RoleEnum role;
-    
+    CategoryEnum category;
 
-    @OneToMany(
-    		cascade = CascadeType.ALL,
-    		fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<UserEntity> user; 
-
-    
+    @ManyToMany(
+    mappedBy = "category"
+    )
+   private List<CourseEntity> course;
 }
