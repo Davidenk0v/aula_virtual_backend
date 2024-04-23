@@ -24,15 +24,15 @@ import lombok.NoArgsConstructor;
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idUser;
+    private Long idUser;
     @Basic
     @Column(nullable = false)
-    String email;
+    private String email;
     @Column(nullable = false)
-    String lastname;
-    String firstname;
-    String username;
-    String password;
+    private String lastname;
+    private String firstname;
+    private String username;
+    private String password;
     
 
     @Override
@@ -62,7 +62,7 @@ public class UserEntity implements UserDetails {
     @JoinColumn(
     		name = "adress",
     		referencedColumnName = "idAdress")
-     AdressEntity adress;
+    private AdressEntity adress;
      
 
      @ManyToMany

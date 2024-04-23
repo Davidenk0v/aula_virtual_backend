@@ -31,7 +31,7 @@ public class RoleEntity {
     private Long idRole;
     @Basic
     @Enumerated(EnumType.STRING) 
-    RoleEnum role;
+    private RoleEnum role;
     
 
     @OneToMany(
