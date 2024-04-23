@@ -24,10 +24,10 @@ import lombok.NoArgsConstructor;
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idUser;
+    private Long idUser;
     @Basic
     @Column(nullable = false)
-    String email;
+    private String email;
     @Column(nullable = false)
     String lastname;
     @Column(nullable = false)
