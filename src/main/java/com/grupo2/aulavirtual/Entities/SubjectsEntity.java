@@ -3,43 +3,50 @@ package com.grupo2.aulavirtual.Entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RoleEntity {
+public class SubjectsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRole;
+    private Long idSubject;
+
     @Basic
-    @Enumerated(EnumType.STRING) 
-    RoleEnum role;
-    
+    @Column(nullable = false)
+    private String name;
+
+    @Basic
+    @Column(nullable = false)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(
+    		name = "idCourse")
+    @JsonIgnore
+    private CourseEntity course;
+
 
     @OneToMany(
-            mappedBy = "role",
+    		mappedBy = "subject",
     		cascade = CascadeType.ALL,
     		fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<UserEntity> user; 
-
-    
+    private List<LessonsEntity> lessons;
 }
