@@ -1,0 +1,10 @@
+
+<<<<<<< HEAD
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï’Ð¡J$a6f4404f-46ed-4ef2-bf6c-abc93cf50e40
+p
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿ8ÕØÔñ1J$9d909f51-d713-4fd1-98ff-4fd0b134398e
+=======
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï’Ð¡J$57f4b6e4-e7a9-4c23-aa59-40531c8e2175
+i
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿJ$5ff99d0b-f458-485d-a7d5-6ca055fb967d
+>>>>>>> origin/controladores_enrique

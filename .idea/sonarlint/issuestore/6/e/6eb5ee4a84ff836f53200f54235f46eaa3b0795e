@@ -1,0 +1,17 @@
+
+Œ	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÍ™•J$a9139fec-8b64-41a2-bc9a-5d2ae548817b
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°J$2323c606-f77d-4e3b-a266-a151b9b7683d
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÀÈÿşğ1J$65da86cb-f7fe-4b0e-b688-288cca508b05
+v
+java:S6856".Bind path variable "id" to a method parameter.(ªä´«øÿÿÿÿ8ÁÈÿşğ1J$9c45041c-b5d3-40b5-926e-04ad78e78b79
+i
+java:S1452"&Remove usage of generic wildcard type.(ëÙÓğ8í¿Ÿÿğ1J$accc9695-48be-4c58-bac5-5a1016fb7b07
+g
+java:S1168"+Return an empty collection instead of null.(¥¹ïJ$8c83faad-bfc1-482b-b305-4c242aa7f5ce
+n
+java:S1452"&Remove usage of generic wildcard type.(Ëø»Òıÿÿÿÿ8˜ı ÿğ1J$add22aad-796e-44af-a2af-ed74cb81cc5f
+i
+java:S1452"&Remove usage of generic wildcard type.(ÃÍ™•8³º¡ÿğ1J$6783a423-7466-476e-954b-bacb32c02bdc
+h
+java:S1452%"&Remove usage of generic wildcard type.(á‡×)8Ùï¡ÿğ1J$7ef15b91-1b89-4902-9460-10514afe4251

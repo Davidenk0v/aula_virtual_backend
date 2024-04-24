@@ -1,0 +1,44 @@
+
+Ž
+java:S1192/"FDefine a constant instead of duplicating this literal "Error" 5 times.(Ñé™…øÿÿÿÿ8° Õ„ñ1J$0dd03205-6d61-4e30-8e40-7bd1fe061fae
+‘
+java:S1192"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8± Õ„ñ1J$faeb759c-cf5f-406d-9643-267efe261eed
+„
+java:S4973R"<Strings and Boxed types should be compared using "equals()".(„ÎîÀýÿÿÿÿ8³ Õ„ñ1J$237c4b9d-0dcc-42b1-829f-655e491143c5
+„
+java:S4973U"<Strings and Boxed types should be compared using "equals()".(¸Éó˜ýÿÿÿÿ8´ Õ„ñ1J$4895732f-a8ed-4aff-a286-a93ddf17f451
+
+java:S4973X"<Strings and Boxed types should be compared using "equals()".(”üúã8´ Õ„ñ1J$c24841b4-3210-428c-a6c4-bb1bb175d5e7
+
+java:S4973["<Strings and Boxed types should be compared using "equals()".(²¶±Ä8´ Õ„ñ1J$33cc31bc-a3cd-4140-954e-da9885524bd6
+
+java:S4973_"<Strings and Boxed types should be compared using "equals()".(¬ùÆÕ8´ Õ„ñ1J$0582bfff-da01-4252-9b1d-c6c5a495e069
+
+java:S4973b"<Strings and Boxed types should be compared using "equals()".(¼éÁÚ8´ Õ„ñ1J$744605a5-78de-40bd-9150-d63f6b4f22b3
+„
+java:S4973e"<Strings and Boxed types should be compared using "equals()".(½Å½üÿÿÿÿ8´ Õ„ñ1J$fe611287-805a-4581-87d9-259cbd059da5
+„
+java:S4973h"<Strings and Boxed types should be compared using "equals()".(á«Æýþÿÿÿÿ8´ Õ„ñ1J$66fa60cd-50fa-4294-b289-4f26ddb26789
+„
+java:S4973k"<Strings and Boxed types should be compared using "equals()".(›óºùÿÿÿÿÿ8´ Õ„ñ1J$040b0c25-f46e-43a1-89a4-8739881e1a91
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ äáúÿÿÿÿ8¶ Õ„ñ1J$33cb61ce-4907-45f2-9dcc-c87fc8240997
+“
+java:S3655*"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8—¢Õ„ñ1J$b0f42b84-d913-4808-97a2-a78437903eef
+’
+java:S3655P"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98—¢Õ„ñ1J$f82d7953-3e8d-4714-9e5e-65d7a8e625c9
+˜
+java:S3655="PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8—¢Õ„ñ1J$56eee2a6-2e90-4537-875f-0a95cb64a39e
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8™¢Õ„ñ1J$2e92ed26-f220-49f4-9225-a328b0ca1051
+•
+java:S3776L"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(’ò8­¢Õ„ñ1J$431ffae8-d9b8-4a4d-a3e5-29fee29886d5
+‰
+java:S1854Q"ARemove this useless assignment to local variable "userRespuesta".(‚£”òúÿÿÿÿ8¯¢Õ„ñ1J$8cf414e4-f1f4-4bfd-8635-c047da2cc1a7
+i
+java:S1452L"&Remove usage of generic wildcard type.(’ò8±¢Õ„ñ1J$85a29066-4570-44d5-87f7-9601f04cfe95
+n
+java:S1452~"&Remove usage of generic wildcard type.(£ˆ¬Ìùÿÿÿÿ8º¢Õ„ñ1J$86d4a12f-991c-491f-aba7-7c8289872e2d
+µ
+java:S1128	"rRemove this unused import 'org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http'.(›‹ùç8À¢Õ„ñ1J$3e5d5a40-b23d-4e86-910a-291a99b56a30
+r
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ8§ßÕ„ñ1J$9f905756-bc5f-460d-949f-bfb8a7d7a30b

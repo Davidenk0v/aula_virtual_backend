@@ -47,18 +47,9 @@ public class CourseEntity {
     @Column(nullable = false)
     private BigDecimal pago;
 
-   @ManyToMany
-   @JoinTable(
-    name = "course_category",
-    joinColumns = @JoinColumn(
-        name = "idCourse",
-        referencedColumnName = "idCourse"
-    ),
-    inverseJoinColumns = @JoinColumn(
-        name = "idCategory",
-        referencedColumnName = "idCategory"))
-   private List<CategoryEntity> category;
-
+    @ManyToMany
+    @JoinTable(name = "course_category", joinColumns = @JoinColumn(name = "idCourse", referencedColumnName = "idCourse"), inverseJoinColumns = @JoinColumn(name = "idCategory", referencedColumnName = "idCategory"))
+    private List<CategoryEntity> category;
 
     @ManyToMany(mappedBy = "courses")
     private List<UserEntity> user;

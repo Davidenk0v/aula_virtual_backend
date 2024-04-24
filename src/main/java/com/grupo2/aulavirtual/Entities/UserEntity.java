@@ -52,6 +52,9 @@ public class UserEntity implements UserDetails {
     @JsonIgnore
     private RoleEntity role;
 
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.getRole().toString()));
