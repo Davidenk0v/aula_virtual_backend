@@ -16,25 +16,25 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping("/{id}")
-    public List<AddressDTO> getAddressDTO() {
+    public List<?> getAddressDTO() {
 
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AddressDTO> getAddressById(@PathVariable Long id) {
+    public ResponseEntity<?> getAddressById(@PathVariable Long id) {
 
         return null;
     }
 
     @PostMapping
-    public AddressEntity saveAddress(@RequestBody AddressEntity Address) {
+    public ResponseEntity<?> saveAddress(@RequestBody AddressDTO Address) {
 
         return null;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAddressById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAddressById(@PathVariable Long id) {
 
         return null;
     }
