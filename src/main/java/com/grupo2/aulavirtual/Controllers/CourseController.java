@@ -4,16 +4,18 @@ import java.util.List;
 
 import com.grupo2.aulavirtual.Entities.CourseEntity;
 import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1/address")
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public List<CourseDTO> getCoursesDTO() {
 
         return null;
@@ -25,7 +27,7 @@ public class CourseController {
         return null;
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public CourseEntity saveCourse(@RequestBody CourseEntity course) {
 
         return null;

@@ -3,7 +3,6 @@ package com.grupo2.aulavirtual.Controllers;
 import java.util.List;
 
 import com.grupo2.aulavirtual.Entities.RoleEntity;
-import com.grupo2.aulavirtual.Entities.RolleEntity;
 import com.grupo2.aulavirtual.Payload.Request.RoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1/role")
 public class RoleController {
 
     @Autowired
     private RoleService roleService;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public List<RoleDTO> getRoleDTO() {
 
         return null;
@@ -29,8 +28,8 @@ public class RoleController {
         return null;
     }
 
-    @PostMapping
-    public RoleEntity saveRole(@RequestBody RoleEntity Role) {
+    @PostMapping("/{id}")
+    public RoleDTO saveRole(@RequestBody RoleDTO Role) {
 
         return null;
     }

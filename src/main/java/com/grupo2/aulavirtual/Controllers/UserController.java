@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     @Autowired
@@ -24,13 +24,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+    public ResponseDTO<UserDTO> getUserById(@PathVariable Long id) {
 
         return null;
     }
 
     @PostMapping
-    public UserEntity saveUser(@RequestBody UserEntity User) {
+    public UserDTO saveUser(@RequestBody UserEntity User) {
 
         return null;
     }
