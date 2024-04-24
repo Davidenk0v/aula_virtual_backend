@@ -1,0 +1,11 @@
+
+l	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¡÷\8¿Œ’ÿğ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°8ÁŒ’ÿğ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÊŒ’ÿğ1
+P
+java:S6856".Bind path variable "id" to a method parameter.(ªä´«øÿÿÿÿ8ÌŒ’ÿğ1
+P
+java:S6856".Bind path variable "id" to a method parameter.(Éè†Æùÿÿÿÿ8ÍŒ’ÿğ1
+H
+java:S1168"+Return an empty collection instead of null.(¥¹ï8ÓŒ’ÿğ1
