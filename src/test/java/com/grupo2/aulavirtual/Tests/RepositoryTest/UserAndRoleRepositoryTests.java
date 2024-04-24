@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.RepositoryTest;
+package com.grupo2.aulavirtual.Tests.RepositoryTest;
 
 
 
@@ -35,7 +35,7 @@ class UserAndRoleRepositoryTests {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         roleEntity = new RoleEntity(1L, RoleEnum.ADMIN, null);
-        userEntity = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña", null, null, roleEntity);
+        userEntity = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, roleEntity);
     }
 
     @Test
@@ -110,7 +110,7 @@ class UserAndRoleRepositoryTests {
     @Test
     void testDataAnnotation(){
         // Test Equals and HashCode
-        UserEntity userEntity2 = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña", null, null, roleEntity);
+        UserEntity userEntity2 = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, roleEntity);
         assertEquals(userEntity.hashCode(), userEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(userEntity, userEntity2, "Objects must be equal");
         
@@ -121,7 +121,7 @@ class UserAndRoleRepositoryTests {
     @Test
     void testBuilder(){
         // Test Equals and HashCode
-        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").role(roleEntity).adress(null).courses(null).build();
+        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").urlImg("").role(roleEntity).adress(null).courses(null).build();
         assertEquals(userEntity.hashCode(), userEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(userEntity, userEntity2, "Objects must be equal");
         

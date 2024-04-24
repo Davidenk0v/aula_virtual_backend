@@ -1,9 +1,9 @@
-package com.grupo2.aulavirtual.Payload.Request;
+package com.grupo2.aulavirtual.Tests.DTOTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.grupo2.aulavirtual.Payload.Request.LessonsDTO;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 public class LessonsDTOTest {
 

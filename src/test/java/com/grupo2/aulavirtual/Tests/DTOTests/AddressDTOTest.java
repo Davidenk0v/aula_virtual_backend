@@ -1,13 +1,11 @@
-package com.grupo2.aulavirtual.Payload.Request;
+package com.grupo2.aulavirtual.Tests.DTOTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.grupo2.aulavirtual.Payload.Request.AddressDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class AddressDTOTest {
 

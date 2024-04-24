@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.RepositoryTest;
+package com.grupo2.aulavirtual.Tests.RepositoryTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -6,12 +6,14 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Enum.RoleEnum;
 import com.grupo2.aulavirtual.Repository.RoleRepository;
+
 
 class RoleRepositoryTests {
 
@@ -33,7 +35,7 @@ class RoleRepositoryTests {
     @Test
     public void saveRoleTest() {
         // Arrange
-        when(roleRepository.save(role)).thenReturn(role);
+        when(roleRepository.save(role)).thenReturn(role); // Configuración del comportamiento del mock
 
         // Act
         RoleEntity savedRole = roleRepository.save(role);

@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.RepositoryTest;
+package com.grupo2.aulavirtual.Tests.RepositoryTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

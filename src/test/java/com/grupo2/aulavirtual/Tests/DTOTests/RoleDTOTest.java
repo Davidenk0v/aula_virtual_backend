@@ -1,12 +1,10 @@
-package com.grupo2.aulavirtual.Payload.Request;
+package com.grupo2.aulavirtual.Tests.DTOTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Collections;
-
+import com.grupo2.aulavirtual.Payload.Request.RoleDTO;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.grupo2.aulavirtual.Enum.RoleEnum;
 
