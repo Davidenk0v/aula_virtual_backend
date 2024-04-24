@@ -1,21 +1,15 @@
-package com.grupo2.aulavirtual.Payload.Request;
-
-import com.grupo2.aulavirtual.Entities.SubjectsEntity;
+package com.grupo2.aulavirtual.Payload.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class LessonsDTO {
+public class LessonsResponseDto {
 
     private Long idLesson;
 
@@ -25,5 +19,5 @@ public class LessonsDTO {
 
     private String description;
 
-    private SubjectsEntity subject;
+    private SubjectsResponseDto subject;
 }

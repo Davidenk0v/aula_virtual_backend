@@ -1,30 +1,25 @@
-package com.grupo2.aulavirtual.Payload.Request;
+package com.grupo2.aulavirtual.Payload.Response;
 
 import java.util.List;
-
-import com.grupo2.aulavirtual.Entities.LessonsEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class SubjectDTO {
+public class SubjectsResponseDto {
+
     private Long idSubject;
 
     private String name;
 
     private String description;
 
-    private CourseDTO course;
+    private CourseResponseDto course;
 
-    private List<LessonsEntity> lessons;
+    private List<LessonsResponseDto> lessons;
 }
