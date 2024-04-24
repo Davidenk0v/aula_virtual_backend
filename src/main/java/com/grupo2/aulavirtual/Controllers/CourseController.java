@@ -1,8 +1,8 @@
 package com.grupo2.aulavirtual.Controllers;
 
-import java.util.List;
-
 import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
+import com.grupo2.aulavirtual.Services.CoursesService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class CourseController {
 
     @Autowired
-    private CourseService courseService;
+    private CoursesService courseService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllCoursesDTO() {
@@ -26,22 +26,21 @@ public class CourseController {
         return null;
     }
 
+    @PostMapping("/{idTeacher}")
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO category, @PathVariable Long idTeacher) {
 
-    @PostMapping("/")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO Category) {
-
-        return null;
+        return courseService.postCourse(idTeacher, category);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO Course, @PathVariable Long id) {
-        return null;
+    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id) {
+        return courseService.updateCourse(id, course);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCourseById(@PathVariable Long id) {
 
-        return null;
+        return courseService.deleteCourse(id);
     }
 
 }

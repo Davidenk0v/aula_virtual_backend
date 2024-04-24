@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/role")
 public class RoleController {
 
-    @Autowired
-    private RoleService roleService;
+    // @Autowired
+    // private RoleService roleService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllRoleDTO() {

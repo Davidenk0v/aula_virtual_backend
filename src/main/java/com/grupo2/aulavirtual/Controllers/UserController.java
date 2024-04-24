@@ -5,6 +5,8 @@ import java.util.List;
 import com.grupo2.aulavirtual.Entities.UserEntity;
 import com.grupo2.aulavirtual.Payload.Request.AddressDTO;
 import com.grupo2.aulavirtual.Payload.Request.UserDTO;
+import com.grupo2.aulavirtual.Services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +21,23 @@ public class UserController {
     @GetMapping("/")
     public ResponseEntity<?> getAllUserDTO() {
 
-        return null;
+        return userService.userList();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id) {
 
-        return null;
+        return userService.findUserById(id);
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO User) {
-
-        return null;
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+        return userService.addUser(user);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody UserDTO User, @PathVariable Long id) {
-        return null;
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable Long id) {
+        return userService.updateUser(user, null);
     }
 
     @DeleteMapping("/{id}")

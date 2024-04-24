@@ -1,6 +1,5 @@
 package com.grupo2.aulavirtual.Services;
 
-
 import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
 import com.grupo2.aulavirtual.Entities.CourseEntity;
 import com.grupo2.aulavirtual.Entities.UserEntity;
@@ -20,88 +19,91 @@ import java.util.List;
 @Service
 public class CoursesService {
 
-
     @Autowired
     CourseRepository repository;
 
     @Autowired
     UserRepository userRepository;
 
-
     DtoMapper dtoMapper = new DtoMapper();
+
     @Autowired
     private CourseRepository courseRepository;
 
-    public ResponseEntity<HashMap<String , ?>> postCourse (String email,CourseDTO courseDTO) {
+    public ResponseEntity<HashMap<String, ?>> getAllCourse() {
+
+    }
+
+    public ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO) {
         try {
-            HashMap<String , UserResponseDto> response = new HashMap<>();
-            UserEntity  user  =  userRepository.findByEmail(email).get();
+            HashMap<String, UserResponseDto> response = new HashMap<>();
+            UserEntity user = userRepository.findById(idUser).get();
             CourseEntity course = new CourseEntity();
             course = dtoMapper.dtoToEntity(courseDTO);
-            if (user.getCourses()==null){
+            if (user.getCourses() == null) {
                 ArrayList<CourseEntity> lista = new ArrayList<>();
                 lista.add(course);
                 user.setCourses(lista);
-            }else {
+            } else {
                 List<CourseEntity> listaExist = user.getCourses();
                 listaExist.add(course);
                 user.setCourses(listaExist);
             }
-            UserResponseDto objectResponse =  dtoMapper.entityToResponseDto(user);
+            UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
             userRepository.save(user);
-            response.put("Curso subido " , objectResponse);
+            response.put("Curso subido ", objectResponse);
             return ResponseEntity.status(201).body(response);
-        }catch (Exception e){
+        } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error",e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
     }
 
-    public ResponseEntity<HashMap<String , ?>> deleteCourse (Long id) {
+    public ResponseEntity<HashMap<String, ?>> deleteCourse(Long id) {
         try {
-            HashMap<String , CourseResponseDto> response = new HashMap<>();
-            if (courseRepository.existsById(id)){
-                CourseEntity course  = courseRepository.findById(id).get();
+            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            if (courseRepository.existsById(id)) {
+                CourseEntity course = courseRepository.findById(id).get();
                 courseRepository.delete(course);
                 response.put("Se ha borrado el curso ", dtoMapper.entityToResponseDto(course));
                 return ResponseEntity.status(200).body(response);
-            }else {
-                HashMap<String , Long> error = new HashMap<>();
-                error.put("No ha encontrado el usuario con id: " , id);
+            } else {
+                HashMap<String, Long> error = new HashMap<>();
+                error.put("No ha encontrado el usuario con id: ", id);
                 return ResponseEntity.status(500).body(error);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error",e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
     }
 
-    public ResponseEntity<HashMap<String , ?>> updateCourse (Long id,CourseDTO courseDTO) {
+    public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
         try {
-            HashMap<String , CourseResponseDto> response = new HashMap<>();
-            if (courseRepository.existsById(id)){
-                CourseEntity course  = courseRepository.findById(id).get();
-                if (courseDTO.getName()!=""){
+            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            if (courseRepository.existsById(id)) {
+                CourseEntity course = courseRepository.findById(id).get();
+                if (courseDTO.getName() != "") {
                     course.setName(courseDTO.getName());
                 }
-                if (courseDTO.getDescription()!=""){
+                if (courseDTO.getDescription() != "") {
                     course.setDescription(courseDTO.getDescription());
                 }
                 courseRepository.save(course);
                 response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(course));
                 return ResponseEntity.status(200).body(response);
-            }else {
-                HashMap<String , Long> error = new HashMap<>();
-                error.put("No ha encontrado el usuario con id: " , id);
+            } else {
+                HashMap<String, Long> error = new HashMap<>();
+                error.put("No ha encontrado el usuario con id: ", id);
                 return ResponseEntity.status(500).body(error);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error",e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 

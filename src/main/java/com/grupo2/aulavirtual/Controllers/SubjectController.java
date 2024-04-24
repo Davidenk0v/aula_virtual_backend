@@ -11,8 +11,8 @@ import java.util.List;
 @RequestMapping("/api/v1/subject")
 public class SubjectController {
 
-    @Autowired
-    private SubjectService subjectService;
+    // @Autowired
+    // private SubjectService subjectService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllSubjectsDTO() {
