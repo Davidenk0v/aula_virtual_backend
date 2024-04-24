@@ -17,26 +17,30 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<AddressDTO> getAddressDTO() {
+    @GetMapping("/")
+    public ResponseEntity<?> getAllUserDTO() {
 
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseDTO<UserDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
 
         return null;
     }
 
-    @PostMapping
-    public UserDTO saveUser(@RequestBody UserEntity User) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO User) {
 
         return null;
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO User, @PathVariable Long id) {
+        return null;
+    }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteUserById(@PathVariable Long id) {
 
         return null;
     }

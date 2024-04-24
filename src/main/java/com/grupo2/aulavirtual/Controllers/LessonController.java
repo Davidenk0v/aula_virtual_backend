@@ -2,46 +2,46 @@ package com.grupo2.aulavirtual.Controllers;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
+import com.grupo2.aulavirtual.Payload.Request.LessonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
-@RequestMapping("/api/v1/address")
-public class CourseController {
+@RequestMapping("/api/v1/lesson")
+public class LessonController {
 
     @Autowired
-    private CourseService courseService;
+    private LessonService lessonService;
 
     @GetMapping("/")
-    public ResponseEntity<?> getAllCoursesDTO() {
+    public ResponseEntity<?> getAllLessonDTO() {
 
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCourseById(@PathVariable Long id) {
+    ResponseEntity<?> getLessonById(@PathVariable Long id) {
 
         return null;
     }
 
-
     @PostMapping("/")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO Category) {
+    public ResponseEntity<?> saveLesson(@RequestBody LessonDTO Lesson) {
 
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO Course, @PathVariable Long id) {
+    public ResponseEntity<?> updateLesson(@RequestBody LessonDTO Lesson, @PathVariable Long id) {
         return null;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCourseById(@PathVariable Long id) {
+    public ResponseEntity<String> deleteAddressById(@PathVariable Long id) {
 
         return null;
     }
-
 }
+

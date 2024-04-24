@@ -15,8 +15,8 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @GetMapping("/{id}")
-    public List<?> getAddressDTO() {
+    @GetMapping("/")
+    public ResponseEntity<?> getAllddressDTO() {
 
         return null;
     }
@@ -27,9 +27,14 @@ public class AddressController {
         return null;
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> saveAddress(@RequestBody AddressDTO Address) {
 
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateAdress(@RequestBody AddressRoleDTO Address, @PathVariable Long id) {
         return null;
     }
 

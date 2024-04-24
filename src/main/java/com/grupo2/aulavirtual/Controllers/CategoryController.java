@@ -2,7 +2,7 @@ package com.grupo2.aulavirtual.Controllers;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.Entities.CategoryEntity;
+
 import com.grupo2.aulavirtual.Payload.Request.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,26 +16,31 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/{id}")
-    public List<CategoryDTO> getCategoryDTO() {
+    @GetMapping("/")
+    public ResponseEntity<?> getAllCategoryDTO() {
 
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
+    public ResponseEntity<?> getCategoryById(@PathVariable Long id) {
 
         return null;
     }
 
-    @PostMapping("/{id}")
-    public CategoryDTO saveCategory(@RequestBody CategoryDTO Category) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveCategory(@RequestBody CategoryDTO Category) {
 
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCategory(@RequestBody CategoryDTO Category, @PathVariable Long id) {
         return null;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAddressById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAddressById(@PathVariable Long id) {
 
         return null;
     }

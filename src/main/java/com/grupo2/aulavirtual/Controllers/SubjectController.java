@@ -15,26 +15,30 @@ public class SubjectController {
         @Autowired
         private SubjectService subjectService;
 
-        @GetMapping("/{id}")
-        public List<SubjectDTO> getSubjectsDTO() {
+        @GetMapping("/")
+        public ResponseEntity<?> getAllSubjectsDTO() {
 
             return null;
         }
 
         @GetMapping("/{id}")
-        public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable Long id) {
+        public ResponseEntity<?> getSubjectById(@PathVariable Long id) {
 
             return null;
         }
 
-        @PostMapping("/{id}")
-        public SubjectDTO saveSubject(@RequestBody SubjectDTO subject) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveSubject(@RequestBody SubjectDTO Subject) {
 
-            return null;
-        }
+        return null;
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateSubject(@RequestBody SubjectDTO Subject, @PathVariable Long id) {
+        return null;
+    }
         @DeleteMapping("/{id}")
-        public ResponseEntity<String> deleteSubjectById(@PathVariable Long id) {
+        public ResponseEntity<?> deleteSubjectById(@PathVariable Long id) {
 
             return null;
         }

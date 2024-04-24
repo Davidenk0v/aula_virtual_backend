@@ -2,7 +2,6 @@ package com.grupo2.aulavirtual.Controllers;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Payload.Request.RoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,21 +15,26 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/{id}")
-    public List<RoleDTO> getRoleDTO() {
+    @GetMapping("/")
+    public ResponseEntity<?> getAllRoleDTO() {
 
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RoleDTO> getRoleById(@PathVariable Long id) {
+    ResponseEntity<?> getRoleById(@PathVariable Long id) {
 
         return null;
     }
 
-    @PostMapping("/{id}")
-    public RoleDTO saveRole(@RequestBody RoleDTO Role) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveRole(@RequestBody RoleDTO Role) {
 
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateRole(@RequestBody RoleDTO Role, @PathVariable Long id) {
         return null;
     }
 
