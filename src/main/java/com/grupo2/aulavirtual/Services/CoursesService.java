@@ -9,6 +9,7 @@ import com.grupo2.aulavirtual.Payload.Response.UserResponseDto;
 import com.grupo2.aulavirtual.Repository.CourseRepository;
 import com.grupo2.aulavirtual.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +31,13 @@ public class CoursesService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public ResponseEntity<HashMap<String, ?>> getAllCourse() {
-
+    public ResponseEntity<?> courseList() {
+        List<CourseEntity> courseEntities = courseRepository.findAll();
+        if(courseEntities.isEmpty()){
+            return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
+        }
+        List<CourseResponseDto> courseResponseDtos = courseEntities.stream().map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+        return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
     }
 
     public ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO) {

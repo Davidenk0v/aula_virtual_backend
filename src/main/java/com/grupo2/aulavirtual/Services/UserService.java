@@ -124,16 +124,12 @@ public class UserService {
     }
 
     public ResponseEntity<?> userList() {
-        HashMap<String, ?> response = new HashMap<>();
-
-        List<UserEntity> userEntities = userRepository.findAll();
-
-        if (userEntities.isEmpty()) {
-            response.put("Error", null);
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-        }
-
-        List<UserResponseDto> usersDto = userEntities.stream().map(user -> dtoMapper.entityToResponse(user)).toList();
+       List<UserEntity> userEntities = userRepository.findAll();
+       if(userEntities.isEmpty()){
+           return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+       }
+        List<UserResponseDto> userResponseDtos = userEntities.stream().map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
+        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
     }
 
 }

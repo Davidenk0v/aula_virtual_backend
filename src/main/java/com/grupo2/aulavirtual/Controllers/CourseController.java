@@ -17,7 +17,7 @@ public class CourseController {
     @GetMapping("/")
     public ResponseEntity<?> getAllCoursesDTO() {
 
-        return null;
+        return courseService.courseList();
     }
 
     @GetMapping("/{id}")
