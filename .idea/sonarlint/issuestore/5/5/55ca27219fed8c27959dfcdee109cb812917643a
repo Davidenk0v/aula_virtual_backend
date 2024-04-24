@@ -1,14 +1,14 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°J$deb4a82e-6b4c-4b8d-9f51-d9dd266ab33e
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°J$6d0622a8-dd5b-4e2d-b16c-558a928758bb
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$f56ce948-e942-4abb-8410-351c6cc0ddf1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$3477968c-a610-4cdb-91b4-c8aad810173e
 h
-java:S1452"&Remove usage of generic wildcard type.(Òâı8…Œà„ñ1J$41d7cbbe-f7de-494a-a974-0b9db303401b
+java:S1452"&Remove usage of generic wildcard type.(Òâı8…Œà„ñ1J$39420f2b-6163-4bda-875f-b8d8723c0f0a
 n
-java:S1452"&Remove usage of generic wildcard type.(õ¡Çùÿÿÿÿ8ŞÅ¥ÿğ1J$37d75d45-6446-4aeb-8ffa-cd0687aa120d
+java:S1452"&Remove usage of generic wildcard type.(õ¡Çùÿÿÿÿ8ŞÅ¥ÿğ1J$31947aff-6602-4b89-bc02-c3f8338dbb48
 i
-java:S1452"&Remove usage of generic wildcard type.(Ÿé±8‹Œà„ñ1J$5fddf028-b032-4cd1-9acd-95d9f05d6025
+java:S1452"&Remove usage of generic wildcard type.(Ÿé±8‹Œà„ñ1J$d313b6a9-22b9-499a-abf1-3301343fc35a
 i
-java:S1452$"&Remove usage of generic wildcard type.(¸Í—8•Œà„ñ1J$044ecb59-3cfb-4112-a86f-49e0a83baa02
+java:S1452$"&Remove usage of generic wildcard type.(¸Í—8•Œà„ñ1J$f03a4bc4-fcee-4c07-968d-909788c6cf98
 n
-java:S1452)"&Remove usage of generic wildcard type.(®ÉÕùÿÿÿÿ8™Œà„ñ1J$32b67f15-82f2-4144-9234-4344908dc89e
+java:S1452)"&Remove usage of generic wildcard type.(®ÉÕùÿÿÿÿ8™Œà„ñ1J$7f53323a-0444-432a-acf6-ee8333053bcc

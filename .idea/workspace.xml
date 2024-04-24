@@ -5,16 +5,207 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers 2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_4_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_4_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_15_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_9_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_4_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_5_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_commons_1_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_core_1_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_jakarta9_1_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_observation_1_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_smallrye_jandex_3_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_inject_jakarta_inject_api_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_4_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_14_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_14_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_2_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_13_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_21_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_21_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_10_1_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_24_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_awaitility_awaitility_4_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_31_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_angus_angus_activation_2_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_angus_jakarta_mail_2_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_core_4_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_4_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_4_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hdrhistogram_HdrHistogram_2_1_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_6_0_6_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_orm_hibernate_core_6_4_4_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_3_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_latencyutils_LatencyUtils_2_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_5_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_5_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_3_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_6_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_2_0_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_autoconfigure_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_3_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_6_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_6_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_6_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_6_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_6_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_6_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_12_29_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_12_29_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2024_12_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2024_12_31_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55ca27219fed8c27959dfcdee109cb812917643a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55ca27219fed8c27959dfcdee109cb812917643a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/868d5724a7c4eea7919337678401c42262f6c77a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/868d5724a7c4eea7919337678401c42262f6c77a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aula-virtual.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/CoursesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/CoursesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/AulaVirtualApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/AulaVirtualApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity$AdressEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity$AdressEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity$CategoryEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity$CategoryEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity$CourseEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity$CourseEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity$LessonsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity$LessonsEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity$RoleEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity$RoleEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity$SubjectsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity$SubjectsEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Enum/CategoryEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Enum/CategoryEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Enum/RoleEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Enum/RoleEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO$AddressDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO$AddressDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO$CategoryDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO$CategoryDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO$CourseDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO$CourseDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO$LessonsDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO$LessonsDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO$RoleDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO$RoleDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO$SubjectDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO$SubjectDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto$AddressResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto$AddressResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto$CategoryResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto$CategoryResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto$CourseResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto$CourseResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto$LessonsResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto$LessonsResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto$RoleResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto$RoleResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto$SubjectsResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto$SubjectsResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto$UserResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto$UserResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/AddressRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/AddressRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/CourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/CourseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/LessonsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/LessonsRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/RoleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/SubjectsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/SubjectsRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/CoursesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/CoursesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/AddressDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/CategoryDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/CourseDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/LessonsDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/RoleDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/SubjectDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/UserDTOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/AdressRepositoryTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,23 +228,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AulaVirtualApplication.executor": "Run",
+    "JUnit.AdressRepositoryTests.executor": "Run",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "development"
+    "git-widget-placeholder": "keycloack__LuisDavid"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.AdressRepositoryTests">
-    <configuration name="AddressDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.AulaVirtualApplication">
+    <configuration name="AulaVirtualApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.AulaVirtualApplication" />
       <module name="aula-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.Payload.Request.*" />
+          <option name="PATTERN" value="com.grupo2.aulavirtual.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.Payload.Request" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.Payload.Request.AddressDTOTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -113,11 +304,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AulaVirtualApplication" />
+        <item itemvalue="JUnit.AdressRepositoryTests" />
         <item itemvalue="JUnit.CategoryDTOTest" />
         <item itemvalue="JUnit.AulaVirtualApplicationTests" />
         <item itemvalue="JUnit.aulavirtual in aula-virtual" />
-        <item itemvalue="JUnit.AdressRepositoryTests" />
-        <item itemvalue="JUnit.AddressDTOTest" />
       </list>
     </recent_temporary>
   </component>
