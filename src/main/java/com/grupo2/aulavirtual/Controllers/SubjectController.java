@@ -11,21 +11,20 @@ import java.util.List;
 @RequestMapping("/api/v1/subject")
 public class SubjectController {
 
+    @Autowired
+    private SubjectService subjectService;
 
-        @Autowired
-        private SubjectService subjectService;
+    @GetMapping("/")
+    public ResponseEntity<?> getAllSubjectsDTO() {
 
-        @GetMapping("/")
-        public ResponseEntity<?> getAllSubjectsDTO() {
+        return null;
+    }
 
-            return null;
-        }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSubjectById(@PathVariable Long id) {
 
-        @GetMapping("/{id}")
-        public ResponseEntity<?> getSubjectById(@PathVariable Long id) {
-
-            return null;
-        }
+        return null;
+    }
 
     @PostMapping("/")
     public ResponseEntity<?> saveSubject(@RequestBody SubjectDTO Subject) {
@@ -37,11 +36,11 @@ public class SubjectController {
     public ResponseEntity<?> updateSubject(@RequestBody SubjectDTO Subject, @PathVariable Long id) {
         return null;
     }
-        @DeleteMapping("/{id}")
-        public ResponseEntity<?> deleteSubjectById(@PathVariable Long id) {
 
-            return null;
-        }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSubjectById(@PathVariable Long id) {
 
+        return null;
     }
+
 }

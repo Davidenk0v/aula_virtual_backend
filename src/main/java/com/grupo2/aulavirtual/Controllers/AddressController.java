@@ -2,7 +2,6 @@ package com.grupo2.aulavirtual.Controllers;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.Entities.AddressEntity;
 import com.grupo2.aulavirtual.Payload.Request.AddressDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateAdress(@RequestBody AddressRoleDTO Address, @PathVariable Long id) {
+    public ResponseEntity<?> updateAdress(@RequestBody AddressDTO Address, @PathVariable Long id) {
         return null;
     }
 

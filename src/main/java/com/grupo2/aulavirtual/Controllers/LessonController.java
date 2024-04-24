@@ -3,10 +3,11 @@ package com.grupo2.aulavirtual.Controllers;
 import java.util.List;
 
 import com.grupo2.aulavirtual.Payload.Request.LessonDTO;
+import com.grupo2.aulavirtual.Payload.Request.LessonsDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/api/v1/lesson")
@@ -28,13 +29,13 @@ public class LessonController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveLesson(@RequestBody LessonDTO Lesson) {
+    public ResponseEntity<?> saveLesson(@RequestBody LessonsDTO Lesson) {
 
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateLesson(@RequestBody LessonDTO Lesson, @PathVariable Long id) {
+    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO Lesson, @PathVariable Long id) {
         return null;
     }
 
@@ -44,4 +45,3 @@ public class LessonController {
         return null;
     }
 }
-
