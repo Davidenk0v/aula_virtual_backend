@@ -1,0 +1,20 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯çŞğ
+K
+java:S2209="5Change this instance-reference to a static reference.(şèîÍ
+K
+java:S2209G"5Change this instance-reference to a static reference.(şèîÍ
+P
+java:S2209U"5Change this instance-reference to a static reference.(ò¼Èˆøÿÿÿÿ
+P
+java:S2209g"5Change this instance-reference to a static reference.(‚¶ªûÿÿÿÿ
+P
+java:S2209"5Change this instance-reference to a static reference.(ó‹À¶øÿÿÿÿ
+L
+java:S2209"5Change this instance-reference to a static reference.(ÚÔ¥’
+Q
+java:S2209¢"5Change this instance-reference to a static reference.(ôÄâÆıÿÿÿÿ
+L
+java:S2209»"5Change this instance-reference to a static reference.(šûû…
+O
+java:S1128"4Remove this unused import 'org.modelmapper.TypeMap'.(½ÈËùÿÿÿÿ
