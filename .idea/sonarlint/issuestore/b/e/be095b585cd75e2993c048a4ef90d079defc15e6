@@ -1,0 +1,30 @@
+
+‚
+java:S1192@"FDefine a constant instead of duplicating this literal "Error" 3 times.(•×±„J$2ce46991-2a37-4fe3-9051-7accaa19ebdc
+x
+java:S4973`"<Strings and Boxed types should be compared using "equals()".(Ä´À³J$5f591dde-b1ca-4cf7-9529-002ba2a0c696
+x
+java:S4973c"<Strings and Boxed types should be compared using "equals()".(¥©âÿJ$c5237de4-950e-4d81-aa73-d7dd8f64ad00
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ äáúÿÿÿÿJ$85bbdbc7-40b1-47f3-a24b-c9825707095c
+‘
+java:S3655J"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿJ$c10ee5be-f0b3-4100-9f89-8cf4899a7416
+‘
+java:S3655."PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿJ$eb378c3a-4b92-4f73-b699-dea046f3f4ed
+‘
+java:S3655_"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿJ$42ca62d3-9a6e-4874-8645-4723950b983d
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$ef42ff9b-f0f3-43ec-bb6d-c2eeaf27212f
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$d8bbbc14-4cfa-4646-b949-4db184caf431
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$fdc7d72c-f09c-4d1d-8846-3f09c68c637e
+g
+java:S1452""&Remove usage of generic wildcard type.(‡ÈÄäþÿÿÿÿJ$f0cb6e62-06d2-4039-b8a9-8eaef6bd4a49
+v
+java:S1854/":Remove this useless assignment to local variable "course".(ÊÈÓ¿J$bccfee9c-b5b6-4a8e-a679-16717a998007
+a
+java:S1452+"&Remove usage of generic wildcard type.(¾ÕÐDJ$2d17b000-bb6c-4069-a8d8-8a0f4f2c4006
+b
+java:S1452F"&Remove usage of generic wildcard type.(¾¥é¸J$12b581d1-de06-4d72-acc9-6dfaeb50a065
+h
+java:S1452["&Remove usage of generic wildcard type.(ÚØÊ`8ÿ»Ö„ñ1J$2bb3a41c-bae8-43b2-a627-85eb576343e9
