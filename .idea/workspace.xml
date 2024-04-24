@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers 2" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="controladores_enrique" />
+      </map>
+    </option>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.AdressRepositoryTests">
+    <configuration name="AddressDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.Payload.Request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.Payload.Request" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.Payload.Request.AddressDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdressRepositoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.RepositoryTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.RepositoryTest" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.RepositoryTest.AdressRepositoryTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AulaVirtualApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.AulaVirtualApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoryDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.Payload.Request.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.Payload.Request" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.Payload.Request.CategoryDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="aulavirtual in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CategoryDTOTest" />
+        <item itemvalue="JUnit.AulaVirtualApplicationTests" />
+        <item itemvalue="JUnit.aulavirtual in aula-virtual" />
+        <item itemvalue="JUnit.AdressRepositoryTests" />
+        <item itemvalue="JUnit.AddressDTOTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="refactor controllers 2">
+      <option name="closed" value="true" />
+      <created>1713958974687</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713958974687</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor controllers" />
+    <MESSAGE value="refactor controllers 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor controllers 2" />
+  </component>
+</project>

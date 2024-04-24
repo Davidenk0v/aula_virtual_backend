@@ -1,0 +1,16 @@
+
+f	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï–‹ä
+k	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­á¼Åýÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+<
+java:S1452"&Remove usage of generic wildcard type.(šÖêÌ
+<
+java:S1452"&Remove usage of generic wildcard type.(éç²£
+<
+java:S1452!"&Remove usage of generic wildcard type.(Ï–‹ä
+A
+java:S1452'"&Remove usage of generic wildcard type.(­á¼Åýÿÿÿÿ
+A
+java:S1452+"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ
