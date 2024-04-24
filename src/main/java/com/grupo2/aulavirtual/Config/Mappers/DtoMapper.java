@@ -194,8 +194,8 @@ public class DtoMapper {
                 .role(userEntity.getRole().getRole().name())
                 .build();
 
-        if (userEntity.getAddress() != null) {
-            AddressResponseDto addressResponseDto = modelMapper.map(userEntity.getAddress(), AddressResponseDto.class);
+        if (userEntity.getAdress() != null) {
+            AddressResponseDto addressResponseDto = modelMapper.map(userEntity.getAdress(), AddressResponseDto.class);
             userResponseDto.setAddress(addressResponseDto);
         }
 
