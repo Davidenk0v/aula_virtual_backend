@@ -4,15 +4,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.grupo2.aulavirtual.Entities.AdressEntity;
 import com.grupo2.aulavirtual.Repository.AddressRepository;
 
-@SpringBootTest
+
+@DataJpaTest
 class AdressRepositoryTests {
 
     @MockBean
@@ -25,13 +33,13 @@ class AdressRepositoryTests {
         MockitoAnnotations.openMocks(this);
 
         addressEntity = AdressEntity.builder()
-            .idAdress(1L)
-            .country("España")
-            .city("Barcelona")
-            .street("Calle 1")
-            .number("25")
-            .postalCode("08001")
-            .build();
+                .idAdress(1L)
+                .country("España")
+                .city("Barcelona")
+                .street("Calle 1")
+                .number("25")
+                .postalCode("08001")
+                .build();
     }
 
     @Test
@@ -61,10 +69,7 @@ class AdressRepositoryTests {
         verify(addressRepository, times(1)).deleteById(addressEntity.getIdAdress());
     }
 
-
-
-
-    //Test entidades concreta
+    // Test entidades concreta
     @Test
     void testGettersAndSetters() {
         assertEquals(1L, addressEntity.getIdAdress(), "idAdress getter must be equal to 1L");
@@ -92,17 +97,16 @@ class AdressRepositoryTests {
         assertEquals("08002", addressEntity.getPostalCode(), "Postal code setter must be equal to \"08002\"");
     }
 
-
     @Test
     void testDataAnnotation() {
         AdressEntity addressEntity2 = AdressEntity.builder()
-            .idAdress(1L)
-            .country("España")
-            .city("Barcelona")
-            .street("Calle 1")
-            .number("25")
-            .postalCode("08001")
-            .build();
+                .idAdress(1L)
+                .country("España")
+                .city("Barcelona")
+                .street("Calle 1")
+                .number("25")
+                .postalCode("08001")
+                .build();
 
         assertEquals(addressEntity.hashCode(), addressEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(addressEntity, addressEntity2, "Objects must be equal");
@@ -113,13 +117,13 @@ class AdressRepositoryTests {
     @Test
     void testBuilder() {
         AdressEntity addressEntity2 = AdressEntity.builder()
-            .idAdress(1L)
-            .country("España")
-            .city("Barcelona")
-            .street("Calle 1")
-            .number("25")
-            .postalCode("08001")
-            .build();
+                .idAdress(1L)
+                .country("España")
+                .city("Barcelona")
+                .street("Calle 1")
+                .number("25")
+                .postalCode("08001")
+                .build();
 
         assertEquals(addressEntity.hashCode(), addressEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(addressEntity, addressEntity2, "Objects must be equal");

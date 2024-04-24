@@ -7,23 +7,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootTest
 public class AddressDTOTest {
-   
-    AddressDTO  addressEntity;
+
+    AddressDTO addressEntity;
 
     @BeforeEach
     void setUp() {
         addressEntity = AddressDTO.builder()
-            .idAdress(1L)
-            .country("España")
-            .number("25")
-            .city("Barcelona")
-            .postalCode("08001")
-            .user(null)
-            .street("Calle 1").build();
+                .idAdress(1L)
+                .country("España")
+                .number("25")
+                .city("Barcelona")
+                .postalCode("08001")
+                .user(null)
+                .street("Calle 1").build();
     }
+
     @Test
     void testGettersAndSetters() {
         assertEquals(1L, addressEntity.getIdAdress(), "idAdress getter must be equal to 1L");
@@ -50,7 +51,6 @@ public class AddressDTOTest {
         addressEntity.setPostalCode("08002");
         assertEquals("08002", addressEntity.getPostalCode(), "Postal code setter must be equal to \"08002\"");
 
-        
     }
 
     @Test
@@ -58,5 +58,5 @@ public class AddressDTOTest {
         AddressDTO address = new AddressDTO();
         assertNotNull(address);
     }
-    
+
 }

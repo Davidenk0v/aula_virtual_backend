@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.grupo2.aulavirtual.Enum.RoleEnum;
 
-@SpringBootTest
+
 public class RoleDTOTest {
     @Test
     void testGettersAndSetters() {

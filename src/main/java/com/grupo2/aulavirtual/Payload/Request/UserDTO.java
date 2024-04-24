@@ -38,4 +38,6 @@ public class UserDTO {
     private List<CourseEntity> courses;
 
     private RoleEntity role;
+
+    private String urlImg;
 }

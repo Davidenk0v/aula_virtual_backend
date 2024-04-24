@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.grupo2.aulavirtual.Enum.CategoryEnum;
 
-@SpringBootTest
+
 public class CategoryDTOTest {
 
     @Test

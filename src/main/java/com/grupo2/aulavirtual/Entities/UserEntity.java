@@ -36,6 +36,8 @@ public class UserEntity implements UserDetails {
     private String username;
     @Column(nullable = false)
     private String password;
+
+    private String urlImg;
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress", referencedColumnName = "idAdress")

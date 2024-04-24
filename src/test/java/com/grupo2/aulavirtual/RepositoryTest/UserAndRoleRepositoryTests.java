@@ -21,7 +21,7 @@ import com.grupo2.aulavirtual.Enum.RoleEnum;
 import com.grupo2.aulavirtual.Repository.UserRepository;
 
 
-@SpringBootTest
+
 class UserAndRoleRepositoryTests {
 
     @MockBean

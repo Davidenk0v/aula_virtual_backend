@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.grupo2.aulavirtual.Entities.UserEntity;
 import com.grupo2.aulavirtual.Repository.UserRepository;
 
-@SpringBootTest
 class UserRepositoryTests {
 
     @MockBean

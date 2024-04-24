@@ -13,7 +13,6 @@ import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Enum.RoleEnum;
 import com.grupo2.aulavirtual.Repository.RoleRepository;
 
-@SpringBootTest
 class RoleRepositoryTests {
 
     @MockBean

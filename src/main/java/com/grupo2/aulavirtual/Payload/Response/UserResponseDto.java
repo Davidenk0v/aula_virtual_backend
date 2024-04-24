@@ -28,4 +28,6 @@ public class UserResponseDto {
     private List<CourseResponseDto> courses;
 
     private String role;
+
+    private String urlImg;
 }
