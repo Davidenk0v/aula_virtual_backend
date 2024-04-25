@@ -1,0 +1,9 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹±¸óùÿÿÿÿ
+g
+java:S1612"LReplace this lambda with method reference 'AbstractHttpConfigurer::disable'.(­µğşÿÿÿÿ
+‡
+java:S1128
+"qRemove this unused import 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter'.(÷ìïŠ
+n
+java:S1128"XRemove this unused import 'org.springframework.security.config.Customizer.withDefaults'.(ÃÒş†

@@ -4,25 +4,16 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * Course
  */
-@Data
+
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,6 +37,13 @@ public class CourseEntity {
 
     @Column(nullable = false)
     private BigDecimal pago;
+
+
+    @OneToMany(
+            mappedBy = "course",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    private List<SubjectsEntity> subjects;
 
     @ManyToMany
     @JoinTable(name = "course_category", joinColumns = @JoinColumn(name = "idCourse", referencedColumnName = "idCourse"), inverseJoinColumns = @JoinColumn(name = "idCategory", referencedColumnName = "idCategory"))

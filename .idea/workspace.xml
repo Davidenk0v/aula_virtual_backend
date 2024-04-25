@@ -40,16 +40,19 @@
       <module name="aula-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.Payload.Request.*" />
+          <option name="PATTERN" value="com.grupo2.aulavirtual.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.Payload.Request" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.Payload.Request.AddressDTOTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="AulaVirtualApplication | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/AulaVirtualApplication.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="AulaVirtualApplication | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/AulaVirtualApplication.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
     </configuration>
     <configuration name="AdressRepositoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aula-virtual" />
@@ -66,54 +69,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AulaVirtualApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AulaVirtualApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="aula-virtual" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.grupo2.aulavirtual.AulaVirtualApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.grupo2.aulavirtual.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.AulaVirtualApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategoryDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.Payload.Request.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.Payload.Request" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.Payload.Request.CategoryDTOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="aulavirtual in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CategoryDTOTest" />
-        <item itemvalue="JUnit.AulaVirtualApplicationTests" />
-        <item itemvalue="JUnit.aulavirtual in aula-virtual" />
+        <item itemvalue="Application.AulaVirtualApplication" />
         <item itemvalue="JUnit.AdressRepositoryTests" />
-        <item itemvalue="JUnit.AddressDTOTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="refactor controllers 2">
       <option name="closed" value="true" />
@@ -156,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor controllers" />
     <MESSAGE value="refactor controllers 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor controllers 2" />
+    <MESSAGE value="starting keycloack" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting keycloack" />
   </component>
 </project>

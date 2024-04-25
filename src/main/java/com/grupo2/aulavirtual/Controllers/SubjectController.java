@@ -1,6 +1,7 @@
 package com.grupo2.aulavirtual.Controllers;
 
 import com.grupo2.aulavirtual.Payload.Request.SubjectDTO;
+import com.grupo2.aulavirtual.Services.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,39 +9,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/subject")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1/subjects")
 public class SubjectController {
 
-    // @Autowired
-    // private SubjectService subjectService;
+     @Autowired
+     private SubjectsService subjectService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllSubjectsDTO() {
-
-        return null;
+        return subjectService.subjectsList();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getSubjectById(@PathVariable Long id) {
-
-        return null;
+        return subjectService.findSubjectById(id);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> saveSubject(@RequestBody SubjectDTO Subject) {
-
-        return null;
+    @PostMapping("/{idCourse}")
+    public ResponseEntity<?> saveSubject(@PathVariable Long idCourse,@RequestBody SubjectDTO Subject) {
+        return subjectService.postSubject(idCourse, Subject);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateSubject(@RequestBody SubjectDTO Subject, @PathVariable Long id) {
-        return null;
+    public ResponseEntity<?> updateSubject(@RequestBody SubjectDTO subjectDTO, @PathVariable Long id) {
+        return subjectService.updateSubject(id,subjectDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSubjectById(@PathVariable Long id) {
-
-        return null;
+        return subjectService.deleteSubject(id);
     }
 
 }

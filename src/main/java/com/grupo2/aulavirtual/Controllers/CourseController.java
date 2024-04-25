@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/address")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1/courses")
 public class CourseController {
 
     @Autowired
@@ -16,20 +17,17 @@ public class CourseController {
 
     @GetMapping("/")
     public ResponseEntity<?> getAllCoursesDTO() {
-
         return courseService.courseList();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourseById(@PathVariable Long id) {
-
-        return null;
+        return courseService.findCourseById(id);
     }
 
     @PostMapping("/{idTeacher}")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO category, @PathVariable Long idTeacher) {
-
-        return courseService.postCourse(idTeacher, category);
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher) {
+        return courseService.postCourse(idTeacher, courseDTO);
     }
 
     @PutMapping("/{id}")
@@ -39,7 +37,6 @@ public class CourseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCourseById(@PathVariable Long id) {
-
         return courseService.deleteCourse(id);
     }
 

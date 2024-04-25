@@ -2,6 +2,7 @@ package com.grupo2.aulavirtual.Config.Mappers;
 
 import java.util.List;
 
+import com.grupo2.aulavirtual.Payload.Request.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 
@@ -12,12 +13,6 @@ import com.grupo2.aulavirtual.Entities.LessonsEntity;
 import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Entities.SubjectsEntity;
 import com.grupo2.aulavirtual.Entities.UserEntity;
-import com.grupo2.aulavirtual.Payload.Request.AddressDTO;
-import com.grupo2.aulavirtual.Payload.Request.CategoryDTO;
-import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
-import com.grupo2.aulavirtual.Payload.Request.LessonsDTO;
-import com.grupo2.aulavirtual.Payload.Request.RoleDTO;
-import com.grupo2.aulavirtual.Payload.Request.UserDTO;
 import com.grupo2.aulavirtual.Payload.Response.AddressResponseDto;
 import com.grupo2.aulavirtual.Payload.Response.CategoryResponseDto;
 import com.grupo2.aulavirtual.Payload.Response.CourseResponseDto;
@@ -40,6 +35,10 @@ public class DtoMapper {
 
     public CourseEntity dtoToEntity(CourseDTO courseDTO) {
         return modelMapper.map(courseDTO, CourseEntity.class);
+    }
+
+    public SubjectsEntity dtoToEntity(SubjectDTO subjectDTO) {
+        return modelMapper.map(subjectDTO, SubjectsEntity.class);
     }
 
     public LessonsEntity dtoToEntity(LessonsDTO lessonsDTO) {

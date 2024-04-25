@@ -44,6 +44,7 @@ public class SubjectsEntity {
     private CourseEntity course;
 
 
+
     @OneToMany(
     		mappedBy = "subject",
     		cascade = CascadeType.ALL,

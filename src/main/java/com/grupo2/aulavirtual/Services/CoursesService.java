@@ -2,9 +2,11 @@ package com.grupo2.aulavirtual.Services;
 
 import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
 import com.grupo2.aulavirtual.Entities.CourseEntity;
+import com.grupo2.aulavirtual.Entities.LessonsEntity;
 import com.grupo2.aulavirtual.Entities.UserEntity;
 import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
 import com.grupo2.aulavirtual.Payload.Response.CourseResponseDto;
+import com.grupo2.aulavirtual.Payload.Response.LessonsResponseDto;
 import com.grupo2.aulavirtual.Payload.Response.UserResponseDto;
 import com.grupo2.aulavirtual.Repository.CourseRepository;
 import com.grupo2.aulavirtual.Repository.UserRepository;
@@ -77,7 +79,7 @@ public class CoursesService {
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el usuario con id: ", id);
+                error.put("No ha encontrado el curso con id: ", id);
                 return ResponseEntity.status(500).body(error);
             }
         } catch (Exception e) {
@@ -113,5 +115,24 @@ public class CoursesService {
             return ResponseEntity.status(500).body(usuarios);
         }
 
+    }
+
+    public ResponseEntity<HashMap<String, ?>> findCourseById(Long id) {
+        try {
+            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            if (courseRepository.existsById(id)) {
+                CourseEntity course = courseRepository.findById(id).get();
+                response.put("Id encontrado ", dtoMapper.entityToResponseDto(course));
+                return ResponseEntity.status(200).body(response);
+            } else {
+                HashMap<String, Long> error = new HashMap<>();
+                error.put("No ha encontrado la leccion con id: ", id);
+                return ResponseEntity.status(500).body(error);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
     }
 }
