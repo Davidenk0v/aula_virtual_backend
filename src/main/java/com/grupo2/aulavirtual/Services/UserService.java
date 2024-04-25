@@ -1,10 +1,15 @@
 package com.grupo2.aulavirtual.Services;
 
 import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
+import com.grupo2.aulavirtual.Entities.RoleEntity;
 import com.grupo2.aulavirtual.Entities.UserEntity;
+import com.grupo2.aulavirtual.Enum.RoleEnum;
 import com.grupo2.aulavirtual.Payload.Request.UserDTO;
 import com.grupo2.aulavirtual.Payload.Response.UserResponseDto;
+import com.grupo2.aulavirtual.Repository.RoleRepository;
 import com.grupo2.aulavirtual.Repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.http.HttpStatus;
@@ -20,18 +25,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+    @Autowired
+    private RoleRepository roleRepository;
+    
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     DtoMapper dtoMapper = new DtoMapper();
 
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
+            RoleEntity role;
+            if (!roleRepository.existsByRole(userDTO.getRole().getRole())){
+                 role = new RoleEntity();
+                role.setRole(userDTO.getRole().getRole());
+                roleRepository.save(role);
+            }else {
+                 role = roleRepository.findByRole(userDTO.getRole().getRole()).get();
+            }
             HashMap<String, Object> usuarios = new HashMap<>();
-            userRepository.save(dtoMapper.dtoToEntity(userDTO));
+            UserEntity user = dtoMapper.dtoToEntity(userDTO);
+            user.setRole(role);
+            userRepository.save(user);
             usuarios.put("Guardado", userDTO);
+            logger.info("llega");
+            System.out.println(usuarios + "ha sido guardado ");
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(e.getMessage(), userDTO);
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
 
@@ -132,4 +154,21 @@ public class UserService {
         return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
     }
 
+    public ResponseEntity<HashMap<String, ?>> deleteUser(Long id){
+        try {
+            HashMap<String, Long> response = new HashMap<>();
+            if (userRepository.existsById(id)) {
+                userRepository.deleteById(id);
+                response.put("Borrado id", id);
+                return ResponseEntity.status(201).body(response);
+            }else {
+                response.put("No se encuntra este usuario con ese id", id);
+                return ResponseEntity.status(500).body(response);
+            }
+        }catch (Exception e){
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
 }

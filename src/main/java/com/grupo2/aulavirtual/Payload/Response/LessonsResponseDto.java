@@ -1,5 +1,6 @@
 package com.grupo2.aulavirtual.Payload.Response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +20,6 @@ public class LessonsResponseDto {
 
     private String description;
 
+    @JsonIgnore
     private SubjectsResponseDto subject;
 }
