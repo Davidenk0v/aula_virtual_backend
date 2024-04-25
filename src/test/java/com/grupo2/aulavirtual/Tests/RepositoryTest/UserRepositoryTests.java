@@ -3,17 +3,13 @@ package com.grupo2.aulavirtual.Tests.RepositoryTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.grupo2.aulavirtual.Entities.UserEntity;
-import com.grupo2.aulavirtual.Repository.UserRepository;
+import com.grupo2.aulavirtual.entities.UserEntity;
+import com.grupo2.aulavirtual.repositories.UserRepository;
 
 class UserRepositoryTests {
 

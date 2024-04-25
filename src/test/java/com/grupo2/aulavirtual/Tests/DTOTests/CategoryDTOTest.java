@@ -2,10 +2,10 @@ package com.grupo2.aulavirtual.Tests.DTOTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.grupo2.aulavirtual.Payload.Request.CategoryDTO;
+import com.grupo2.aulavirtual.payload.request.CategoryDTO;
 import org.junit.jupiter.api.Test;
 
-import com.grupo2.aulavirtual.Enum.CategoryEnum;
+import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
 
 
 public class CategoryDTOTest {

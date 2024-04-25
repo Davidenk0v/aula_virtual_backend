@@ -6,13 +6,11 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.grupo2.aulavirtual.Entities.RoleEntity;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
-import com.grupo2.aulavirtual.Repository.RoleRepository;
+import com.grupo2.aulavirtual.entities.RoleEntity;
+import com.grupo2.aulavirtual.entities.enums.RoleEnum;
+import com.grupo2.aulavirtual.repositories.RoleRepository;
 
 
 class RoleRepositoryTests {

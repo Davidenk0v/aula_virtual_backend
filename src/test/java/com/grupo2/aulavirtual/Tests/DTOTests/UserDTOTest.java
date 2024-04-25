@@ -2,7 +2,7 @@ package com.grupo2.aulavirtual.Tests.DTOTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.grupo2.aulavirtual.Payload.Request.UserDTO;
+import com.grupo2.aulavirtual.payload.request.UserDTO;
 import org.junit.jupiter.api.Test;
 
 public class UserDTOTest {

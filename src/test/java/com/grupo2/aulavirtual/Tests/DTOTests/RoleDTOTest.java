@@ -3,10 +3,10 @@ package com.grupo2.aulavirtual.Tests.DTOTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.grupo2.aulavirtual.Payload.Request.RoleDTO;
+import com.grupo2.aulavirtual.payload.request.RoleDTO;
 import org.junit.jupiter.api.Test;
 
-import com.grupo2.aulavirtual.Enum.RoleEnum;
+import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 
 
 public class RoleDTOTest {

@@ -5,16 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
-import com.grupo2.aulavirtual.Entities.AdressEntity;
-import com.grupo2.aulavirtual.Entities.CourseEntity;
-import com.grupo2.aulavirtual.Entities.LessonsEntity;
-import com.grupo2.aulavirtual.Entities.SubjectsEntity;
-import com.grupo2.aulavirtual.Payload.Request.LessonsDTO;
-import com.grupo2.aulavirtual.Payload.Response.AddressResponseDto;
+import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.entities.AdressEntity;
+import com.grupo2.aulavirtual.entities.LessonsEntity;
+import com.grupo2.aulavirtual.payload.request.LessonsDTO;
+import com.grupo2.aulavirtual.payload.response.AddressResponseDto;
 
 public class MappersTest {
 

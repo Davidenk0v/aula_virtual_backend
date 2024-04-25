@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
+import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import org.junit.jupiter.api.Test;
 
 
