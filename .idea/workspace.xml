@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers 2">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_12_29_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_12_29_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2024_12_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2024_12_31_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers and get ready for merge">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77c0104e43205409b469a6751d7ed1a5b0f50c8b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77c0104e43205409b469a6751d7ed1a5b0f50c8b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/CoursesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/CoursesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +24,17 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="controladores_enrique" />
+        <entry key="$PROJECT_DIR$" value="Servicio" />
       </map>
     </option>
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "development"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.AdressRepositoryTests">
     <configuration name="AddressDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aula-virtual" />
@@ -130,8 +123,35 @@
       <option name="project" value="LOCAL" />
       <updated>1713958974687</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor controllers and get ready for merge">
+      <option name="closed" value="true" />
+      <created>1714061030492</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714061030492</updated>
+    </task>
+    <task id="LOCAL-00003" summary="refactor controllers and get ready for merge">
+      <option name="closed" value="true" />
+      <created>1714061077185</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714061077185</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor controllers" />
