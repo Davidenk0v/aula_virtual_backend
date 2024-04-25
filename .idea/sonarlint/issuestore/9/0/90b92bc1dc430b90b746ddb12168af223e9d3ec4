@@ -1,0 +1,17 @@
+
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ì¬şÿÿÿÿ8±Æú¯ñ1J$8cc693ff-2de7-4990-bdc3-5ac201b21f63
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°8¶Æú¯ñ1J$12569908-c501-42be-9b1d-85fd106fccf5
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÈÆú¯ñ1J$b7a35f31-e6a9-48a3-96b6-640821ee82c9
+n
+java:S1452"&Remove usage of generic wildcard type.(´çÃ¶ÿÿÿÿÿ8ÏÆú¯ñ1J$4069d3ec-e6f3-4d85-9b67-c43de7056616
+n
+java:S1452"&Remove usage of generic wildcard type.(ş–ª¼ÿÿÿÿÿ8ÑÆú¯ñ1J$67e7cbdc-3bb0-412e-a588-66f975e81af1
+n
+java:S1452"&Remove usage of generic wildcard type.(˜Ì¬şÿÿÿÿ8ÒÆú¯ñ1J$dbb84c78-45c9-4e20-b666-b6608db9b2a9
+n
+java:S1452#"&Remove usage of generic wildcard type.(ıë—³üÿÿÿÿ8ÕÆú¯ñ1J$75f1ad58-a7d9-4539-b9d8-ca4cda95e647
+i
+java:S1452("&Remove usage of generic wildcard type.(ê¤œÔ8ØÆú¯ñ1J$4ef84710-4c73-490f-a4af-e8f44a9d8311
+s
+java:S1128	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÛÆú¯ñ1J$a5979f12-f57d-4920-9817-e454806089ce
