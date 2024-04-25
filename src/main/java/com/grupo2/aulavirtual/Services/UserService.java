@@ -34,20 +34,17 @@ public class UserService {
 
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
-            RoleEntity role;
-            if (!roleRepository.existsByRole(userDTO.getRole().getRole())){
-                 role = new RoleEntity();
-                role.setRole(userDTO.getRole().getRole());
+            if(userDTO.getRole() == null){
+                RoleEntity role = new RoleEntity(1L, RoleEnum.STUDENT, null);
                 roleRepository.save(role);
-            }else {
-                 role = roleRepository.findByRole(userDTO.getRole().getRole()).get();
+                userDTO.setRole(role);
             }
+
+
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
-            user.setRole(role);
             userRepository.save(user);
             usuarios.put("Guardado", userDTO);
-            logger.info("llega");
             System.out.println(usuarios + "ha sido guardado ");
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {

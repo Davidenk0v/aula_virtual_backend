@@ -1,18 +1,8 @@
 
-<<<<<<< HEAD
-”	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤‰ôyJ$53b742a6-4270-485e-a553-cac4e5c5f1f9
-c
-java:S1948,"(Make "adress" transient or serializable.(Ù·ƒJ$d1875bab-13c3-4fac-bdc7-bfaa9f9393db
-d
-java:S19480")Make "courses" transient or serializable.(õ“Æ:J$7e6dfa4b-9e22-4584-997b-2ecdd71b8781
-g
-java:S19485"&Make "role" transient or serializable.(ò³øîýÿÿÿÿJ$77f0404c-1c38-4b96-8be5-37ac8710dbc6
-=======
-”	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤‰ôyJ$69bf2e27-e8c6-4533-afbd-8f823979be21
-c
-java:S1948,"(Make "adress" transient or serializable.(Ù·ƒJ$91f8a534-e5b3-43de-a936-80b8774347c2
-d
-java:S19480")Make "courses" transient or serializable.(õ“Æ:J$7b866acf-d965-4db8-874b-798179c2e956
-g
-java:S19485"&Make "role" transient or serializable.(ò³øîýÿÿÿÿJ$c71edc98-adc3-4b8c-aad5-75914a7f44c8
->>>>>>> origin/controladores_enrique
+›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤‰ôy8›¹Ê¯ñ1J$1ff0dce2-7ee7-4a1a-b496-0f08a75c95a4
+j
+java:S1948*"(Make "adress" transient or serializable.(Ù·ƒ8à¹Ê¯ñ1J$778637bd-5822-4244-8f40-021f903d8d7b
+k
+java:S1948.")Make "courses" transient or serializable.(õ“Æ:8á¹Ê¯ñ1J$9105a6b8-bdbf-45ea-9e9f-bdad294b0c07
+n
+java:S19483"&Make "role" transient or serializable.(ò³øîýÿÿÿÿ8á¹Ê¯ñ1J$28e0a1ba-2303-4baf-bd18-234e950a78ce
