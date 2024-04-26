@@ -4,69 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers and get ready for merge">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/CourseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/LessonsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/SubjectsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/mappers/DtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/springConfig/AplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/AplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/springConfig/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Config/springConfig/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/AddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/LessonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/SubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/AdressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/AdressEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/CategoryEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/CourseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/LessonsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/LessonsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/SubjectsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/SubjectsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Enum/CategoryEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/enums/CategoryEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Enum/RoleEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/enums/RoleEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/AddressDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/AddressDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/CategoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/CourseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/CourseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/LessonsDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/RoleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/RoleDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/SubjectDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Request/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/AddressResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/CategoryResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/CourseResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/LessonsResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/RoleResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/SubjectsResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/response/UserResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/AddressRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/CourseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/LessonsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/LessonsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/SubjectsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/SubjectsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/CoursesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/CoursesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/LessonsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/LessonsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/SubjectsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/SubjectsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/AddressDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/AddressDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/CategoryDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/CategoryDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/CourseDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/CourseDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/LessonsDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/LessonsDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/RoleDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/RoleDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/SubjectDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/SubjectDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/UserDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/DTOTests/UserDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/AdressRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/AdressRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.java" afterDir="false" />
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="services interfaces created and rename folders">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/241371512b99c92b9586da432695edc9b660557f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/241371512b99c92b9586da432695edc9b660557f" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +149,15 @@
       <option name="presentableId" value="Default" />
       <updated>1714061450357</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="services interfaces created and rename folders">
+      <option name="closed" value="true" />
+      <created>1714062239633</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714062239633</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -228,6 +175,7 @@
     <MESSAGE value="refactor controllers" />
     <MESSAGE value="refactor controllers 2" />
     <MESSAGE value="starting keycloack" />
-    <option name="LAST_COMMIT_MESSAGE" value="starting keycloack" />
+    <MESSAGE value="services interfaces created and rename folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="services interfaces created and rename folders" />
   </component>
 </project>
