@@ -1,0 +1,12 @@
+
+–
+java:S1192"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(®ˆƒçşÿÿÿÿ8‰½Š¯ñ1J$06415234-9bda-4e4f-a167-73fd7ff33b94
+
+java:S1192"GDefine a constant instead of duplicating this literal "Origin" 3 times.(®ˆƒçşÿÿÿÿ8Š½Š¯ñ1J$9d8691b0-bf42-4101-b44f-96f0de8e70f9
+
+java:S1192"GDefine a constant instead of duplicating this literal "Accept" 3 times.(®ˆƒçşÿÿÿÿ8‹½Š¯ñ1J$a8162b02-e15d-4a2c-8565-27f8f17386c7
+™
+java:S1192"VDefine a constant instead of duplicating this literal "http://localhost:4200" 3 times.(ÅêÀÑ8Œ½Š¯ñ1J$0df9b981-1554-4b13-8714-3edfa02ea4c8
+•
+java:S1192"MDefine a constant instead of duplicating this literal "Content-Type" 3 times.(®ˆƒçşÿÿÿÿ8Œ½Š¯ñ1J$fbf3ef16-c207-4abb-bdc5-b3859d901a00
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹±¸óùÿÿÿÿ8½Š¯ñ1J$f9f5c8e5-80ae-41cd-a767-09cb83b6ab85

@@ -1,11 +1,19 @@
 
-f	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü¬§
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-I
-java:S6856".Bind path variable "id" to a method parameter.(ªä´«øÿÿÿÿ
-I
-java:S6856".Bind path variable "id" to a method parameter.(Éè†Æùÿÿÿÿ
-A
-java:S1168"+Return an empty collection instead of null.(¥¹ï
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëã”ùÿÿÿÿ8³­ü¯ñ1J$f6552294-f925-4318-a82f-96ef3e546460
+“	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ëˆÁ8µ­ü¯ñ1J$a3507459-fe24-45e4-b7fb-8189dd012565
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°J$f26b71e7-5096-4519-9d03-b9dbd6287099
+h
+java:S1452"&Remove usage of generic wildcard type.(ÜÙğ8Õ­ü¯ñ1J$d75f7fce-0255-4961-8ce5-1ba624ccc907
+~	java:S125"<This block of commented-out lines of code should be removed.(•ñß§8Ö­ü¯ñ1J$1f0a9b10-d1a3-4278-b588-fd99dfbe3949
+i
+java:S1452"&Remove usage of generic wildcard type.(¶üë„8Ù­ü¯ñ1J$15b96895-a22f-4be3-b1e9-51a1bd5af2fd
+n
+java:S1452"&Remove usage of generic wildcard type.(ëã”ùÿÿÿÿ8Ú­ü¯ñ1J$10c4bde1-ab37-4780-b6c8-4fc551e408da
+i
+java:S1452%"&Remove usage of generic wildcard type.(›ëˆÁ8Û­ü¯ñ1J$10b42c50-b2ce-4f1f-aa0d-bed65339f231
+h
+java:S1452*"&Remove usage of generic wildcard type.(á‡×)8Ü­ü¯ñ1J$64b3a32e-1c1f-42aa-b169-81dbe687414f
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8İ­ü¯ñ1J$59b7d3b2-fb37-491c-9a70-6c6c73c73d28
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8Ş­ü¯ñ1J$d003d7aa-8b6c-4080-a5ad-2a82e8159550

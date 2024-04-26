@@ -1,44 +1,51 @@
 
 Ž
-java:S1192/"FDefine a constant instead of duplicating this literal "Error" 5 times.(Ñé™…øÿÿÿÿ8° Õ„ñ1J$0dd03205-6d61-4e30-8e40-7bd1fe061fae
+java:S1192B"FDefine a constant instead of duplicating this literal "Error" 6 times.(Ñé™…øÿÿÿÿ8î€ö¯ñ1J$6ae8d3a4-c7e0-4363-a903-c220d910fd3c
 ‘
-java:S1192"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8± Õ„ñ1J$faeb759c-cf5f-406d-9643-267efe261eed
+java:S1192/"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8ï€ö¯ñ1J$a66a340e-5078-4abf-97ca-83a398f34e0f
 „
-java:S4973R"<Strings and Boxed types should be compared using "equals()".(„ÎîÀýÿÿÿÿ8³ Õ„ñ1J$237c4b9d-0dcc-42b1-829f-655e491143c5
+java:S4973e"<Strings and Boxed types should be compared using "equals()".(„ÎîÀýÿÿÿÿ8ó€ö¯ñ1J$289fcdb8-6298-45d5-8b96-ba4ec40a9d8f
 „
-java:S4973U"<Strings and Boxed types should be compared using "equals()".(¸Éó˜ýÿÿÿÿ8´ Õ„ñ1J$4895732f-a8ed-4aff-a286-a93ddf17f451
+java:S4973h"<Strings and Boxed types should be compared using "equals()".(¸Éó˜ýÿÿÿÿ8ó€ö¯ñ1J$10ed2bda-29ac-4cd7-bf6e-470b6bcc7c79
 
-java:S4973X"<Strings and Boxed types should be compared using "equals()".(”üúã8´ Õ„ñ1J$c24841b4-3210-428c-a6c4-bb1bb175d5e7
+java:S4973k"<Strings and Boxed types should be compared using "equals()".(”üúã8ô€ö¯ñ1J$d0ea1548-f441-490a-9a1e-43f03c4c007b
 
-java:S4973["<Strings and Boxed types should be compared using "equals()".(²¶±Ä8´ Õ„ñ1J$33cc31bc-a3cd-4140-954e-da9885524bd6
+java:S4973n"<Strings and Boxed types should be compared using "equals()".(²¶±Ä8ô€ö¯ñ1J$0da74eff-d5d2-4789-8eac-23bdddbe81b6
 
-java:S4973_"<Strings and Boxed types should be compared using "equals()".(¬ùÆÕ8´ Õ„ñ1J$0582bfff-da01-4252-9b1d-c6c5a495e069
+java:S4973r"<Strings and Boxed types should be compared using "equals()".(¬ùÆÕ8ô€ö¯ñ1J$fbd26fd6-253a-4405-8322-52444d820149
 
-java:S4973b"<Strings and Boxed types should be compared using "equals()".(¼éÁÚ8´ Õ„ñ1J$744605a5-78de-40bd-9150-d63f6b4f22b3
+java:S4973u"<Strings and Boxed types should be compared using "equals()".(¼éÁÚ8ô€ö¯ñ1J$4e6b6ce0-9d55-4672-9f55-e85c0aa4162f
 „
-java:S4973e"<Strings and Boxed types should be compared using "equals()".(½Å½üÿÿÿÿ8´ Õ„ñ1J$fe611287-805a-4581-87d9-259cbd059da5
+java:S4973x"<Strings and Boxed types should be compared using "equals()".(½Å½üÿÿÿÿ8ô€ö¯ñ1J$643f1b89-b743-42e1-bb23-da39d138b233
 „
-java:S4973h"<Strings and Boxed types should be compared using "equals()".(á«Æýþÿÿÿÿ8´ Õ„ñ1J$66fa60cd-50fa-4294-b289-4f26ddb26789
+java:S4973{"<Strings and Boxed types should be compared using "equals()".(á«Æýþÿÿÿÿ8ô€ö¯ñ1J$4e3000dc-4f4f-4785-acd6-a23e146a155e
 „
-java:S4973k"<Strings and Boxed types should be compared using "equals()".(›óºùÿÿÿÿÿ8´ Õ„ñ1J$040b0c25-f46e-43a1-89a4-8739881e1a91
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ äáúÿÿÿÿ8¶ Õ„ñ1J$33cb61ce-4907-45f2-9dcc-c87fc8240997
-“
-java:S3655*"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8—¢Õ„ñ1J$b0f42b84-d913-4808-97a2-a78437903eef
+java:S4973~"<Strings and Boxed types should be compared using "equals()".(›óºùÿÿÿÿÿ8õ€ö¯ñ1J$7c95c4c0-e007-49a8-889b-40602cef64fa
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ äáúÿÿÿÿ8÷€ö¯ñ1J$6022ab14-d9d0-4a44-872a-c21bc0d536f0
 ’
-java:S3655P"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98—¢Õ„ñ1J$f82d7953-3e8d-4714-9e5e-65d7a8e625c9
+java:S3655c"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98àƒö¯ñ1J$65ba00e4-a83e-415f-ac1c-2d243b32cbe9
+“
+java:S3655="PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8àƒö¯ñ1J$4ad47807-de67-4d1b-8e33-d7ec9b01649f
 ˜
-java:S3655="PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8—¢Õ„ñ1J$56eee2a6-2e90-4537-875f-0a95cb64a39e
+java:S3655P"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8ßƒö¯ñ1J$3542a789-b6e4-4075-8ce3-b2e84ed29116
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8™¢Õ„ñ1J$2e92ed26-f220-49f4-9225-a328b0ca1051
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8âƒö¯ñ1J$3733d5a3-d955-495c-825e-6e7c8d0fadaa
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8âƒö¯ñ1J$fdf1c1ea-f436-4e48-88df-5a2251a14f32
+m	java:S1060"+Replace this use of System.out by a logger.(þŒ¹Ø8ƒ„ö¯ñ1J$3628617c-5262-46f6-bd93-c2a148a60e8e
 •
-java:S3776L"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(’ò8­¢Õ„ñ1J$431ffae8-d9b8-4a4d-a3e5-29fee29886d5
+java:S3776_"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(’ò8§„ö¯ñ1J$e86bab69-9111-4746-b420-2d6f116b12a3
 ‰
-java:S1854Q"ARemove this useless assignment to local variable "userRespuesta".(‚£”òúÿÿÿÿ8¯¢Õ„ñ1J$8cf414e4-f1f4-4bfd-8635-c047da2cc1a7
+java:S1854d"ARemove this useless assignment to local variable "userRespuesta".(‚£”òúÿÿÿÿ8ª„ö¯ñ1J$a25355bb-14fb-40ca-80ec-9691b41c4a80
 i
-java:S1452L"&Remove usage of generic wildcard type.(’ò8±¢Õ„ñ1J$85a29066-4570-44d5-87f7-9601f04cfe95
-n
-java:S1452~"&Remove usage of generic wildcard type.(£ˆ¬Ìùÿÿÿÿ8º¢Õ„ñ1J$86d4a12f-991c-491f-aba7-7c8289872e2d
+java:S1452_"&Remove usage of generic wildcard type.(’ò8«„ö¯ñ1J$7adf7271-18ee-4453-864a-ff9f88f6bf05
+o
+java:S1452‘"&Remove usage of generic wildcard type.(£ˆ¬Ìùÿÿÿÿ8¼„ö¯ñ1J$451fa2dc-2c8f-45ec-9750-8f966bc8f28d
+o
+java:S1452š"&Remove usage of generic wildcard type.(½­¸°þÿÿÿÿ8Ã„ö¯ñ1J$a8068473-a494-4db1-ba0b-7f661c0af112
 µ
-java:S1128	"rRemove this unused import 'org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http'.(›‹ùç8À¢Õ„ñ1J$3e5d5a40-b23d-4e86-910a-291a99b56a30
+java:S1128"rRemove this unused import 'org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http'.(›‹ùç8É„ö¯ñ1J$4d3417ed-7aa2-48aa-b06e-cd4fc544e55d
 r
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ8§ßÕ„ñ1J$9f905756-bc5f-460d-949f-bfb8a7d7a30b
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ8É„ö¯ñ1J$d9aa5047-6118-4caf-bb62-921cb4c5b027
+r
+java:S1068 "*Remove this unused "logger" private field.(ÝøÒÈøÿÿÿÿ8Ê„ö¯ñ1J$23c243ef-469c-486f-9d04-13b716726713

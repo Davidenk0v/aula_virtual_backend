@@ -11,8 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
-
-
+@ToString
 @Builder
 @Getter
 @Setter

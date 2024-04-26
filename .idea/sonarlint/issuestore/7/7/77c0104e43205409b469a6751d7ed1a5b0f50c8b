@@ -1,20 +1,20 @@
 
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-<
-java:S1452"&Remove usage of generic wildcard type.(šÖêÌ
-<
-java:S1452"&Remove usage of generic wildcard type.(éç²£
-C
-java:S1452""&Remove usage of generic wildcard type.(ÿÒ”¸8±îß„ñ1
-A
-java:S1452'"&Remove usage of generic wildcard type.(´®Ðæúÿÿÿÿ
-A
-java:S1452,"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8´îß„ñ1
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°8Ÿ¿¼®ñ1J$2179c8de-f448-4d39-94fc-a6a73dfacf25
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8½¿¼®ñ1J$113a9ff5-28fb-4f7e-a921-403c4b899a50
 i
-java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.Entities.UserEntity'.(òá¼Îùÿÿÿÿ8´îß„ñ1
-k
-java:S1128"NRemove this unused import 'com.grupo2.aulavirtual.Payload.Request.AddressDTO'.(š…†í8µîß„ñ1
+java:S1452"&Remove usage of generic wildcard type.(šÖêÌ8Ê¿¼®ñ1J$877fa777-4ec2-4927-8c7f-0bba6f48f86c
+i
+java:S1452"&Remove usage of generic wildcard type.(éç²£8Í¿¼®ñ1J$238aa56b-2d04-4a77-9150-04686d50b817
+i
+java:S1452""&Remove usage of generic wildcard type.(ÿÒ”¸8Ñ¿¼®ñ1J$0d8e8d55-a1b1-4765-8537-a85954f734dc
+n
+java:S1452'"&Remove usage of generic wildcard type.(´®Ðæúÿÿÿÿ8Ô¿¼®ñ1J$c191ce59-9a71-46fc-9b48-0cc5c3555ea0
+n
+java:S1452,"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8Ø¿¼®ñ1J$6f041f39-d572-475b-bf36-fefd82cd95c9
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Û¿¼®ñ1J$fa00c1a7-aacf-4785-b26c-8908dc08fc01
+
+java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.Entities.UserEntity'.(òá¼Îùÿÿÿÿ8Ü¿¼®ñ1J$b459ca44-e0c3-4042-8d22-c9f4a23c30f8
+‘
+java:S1128"NRemove this unused import 'com.grupo2.aulavirtual.Payload.Request.AddressDTO'.(š…†í8Ü¿¼®ñ1J$d7ea4b89-f3ca-4dcd-97f7-7893c0e60256
