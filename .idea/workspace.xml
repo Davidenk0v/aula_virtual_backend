@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers and get ready for merge">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/CourseService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/LessonsService.java" afterDir="false" />
@@ -67,6 +68,21 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.java" afterDir="false" />
+=======
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/Controllers/LessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +116,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -108,8 +125,30 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "development",
     "kotlin-language-version-configured": "true"
+=======
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.All in AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.AulaVirtualApplication | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.AulaVirtualApplication | #2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdressRepositoryTests.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Servicio&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/a925609/OneDrive - Eviden/Documents/GitHub/Aula-Grupo-2-Back/src/main/java/com/grupo2/aulavirtual/Config/springConfig&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+>>>>>>> Stashed changes
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.grupo2.aulavirtual.services" />

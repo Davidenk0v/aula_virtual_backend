@@ -38,7 +38,7 @@ public class LessonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HashMap<String,?>> deleteAddressById(@PathVariable Long id) {
+    public ResponseEntity<HashMap<String,?>> deleteLessonById(@PathVariable Long id) {
         return lessonService.deleteLesson(id);
     }
 }
