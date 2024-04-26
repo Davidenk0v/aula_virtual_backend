@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/subjects")
 public class SubjectController {
 
-     @Autowired
-     private SubjectsServiceImpl subjectService;
+    @Autowired
+    private SubjectsServiceImpl subjectService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllSubjectsDTO() {
@@ -25,13 +25,13 @@ public class SubjectController {
     }
 
     @PostMapping("/{idCourse}")
-    public ResponseEntity<?> saveSubject(@PathVariable Long idCourse,@RequestBody SubjectDTO Subject) {
-        return subjectService.postSubject(idCourse, Subject);
+    public ResponseEntity<?> saveSubject(@PathVariable Long idCourse, @RequestBody SubjectDTO subjectDTO) {
+        return subjectService.postSubject(idCourse, subjectDTO);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateSubject(@RequestBody SubjectDTO subjectDTO, @PathVariable Long id) {
-        return subjectService.updateSubject(id,subjectDTO);
+        return subjectService.updateSubject(id, subjectDTO);
     }
 
     @DeleteMapping("/{id}")

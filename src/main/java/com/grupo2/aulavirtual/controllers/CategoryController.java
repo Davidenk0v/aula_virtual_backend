@@ -25,13 +25,13 @@ public class CategoryController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveCategory(@RequestBody CategoryDTO Category) {
+    public ResponseEntity<?> saveCategory(@RequestBody CategoryDTO categoryDto) {
 
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@RequestBody CategoryDTO Category, @PathVariable Long id) {
+    public ResponseEntity<?> updateCategory(@RequestBody CategoryDTO categoryDto, @PathVariable Long id) {
         return null;
     }
 
