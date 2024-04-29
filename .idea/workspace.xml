@@ -42,20 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AulaVirtualApplication.executor": "Run",
-    "JUnit.Tests in aula-virtual.executor": "Coverage",
-    "JUnit.aulavirtual in aula-virtual.executor": "Coverage",
-    "JUnit.com.grupo2.aulavirtual in aula-virtual.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "development",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Tests in aula-virtual.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.aulavirtual in aula-virtual.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.com.grupo2.aulavirtual in aula-virtual.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.grupo2.aulavirtual.services" />
@@ -122,11 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AulaVirtualApplication" />
-        <item itemvalue="JUnit.aulavirtual in aula-virtual" />
         <item itemvalue="JUnit.Tests in aula-virtual" />
         <item itemvalue="JUnit.com.grupo2.aulavirtual in aula-virtual" />
+        <item itemvalue="JUnit.aulavirtual in aula-virtual" />
         <item itemvalue="JUnit.AdressRepositoryTests" />
+        <item itemvalue="Application.AulaVirtualApplication" />
       </list>
     </recent_temporary>
   </component>
