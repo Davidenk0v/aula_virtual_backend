@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-
     @Autowired
     private RoleRepository roleRepository;
 
@@ -31,12 +30,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
-            if(userDTO.getRole() == null){
+            if (userDTO.getRole() == null) {
                 RoleEntity role = new RoleEntity(1L, RoleEnum.STUDENT, null);
                 roleRepository.save(role);
                 userDTO.setRole(role);
             }
-
 
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
@@ -144,27 +142,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<?> userList() {
-       List<UserEntity> userEntities = userRepository.findAll();
-       if(userEntities.isEmpty()){
-           return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
-       }
-        List<UserResponseDto> userResponseDtos = userEntities.stream().map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
+        List<UserEntity> userEntities = userRepository.findAll();
+        if (userEntities.isEmpty()) {
+            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+        }
+        List<UserResponseDto> userResponseDtos = userEntities.stream()
+                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
         return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> deleteUser(Long id){
+    public ResponseEntity<HashMap<String, ?>> deleteUser(Long id) {
         try {
             HashMap<String, Long> response = new HashMap<>();
             if (userRepository.existsById(id)) {
                 userRepository.deleteById(id);
                 response.put("Borrado id", id);
                 return ResponseEntity.status(201).body(response);
-            }else {
+            } else {
                 response.put("No se encuntra este usuario con ese id", id);
                 return ResponseEntity.status(500).body(response);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);

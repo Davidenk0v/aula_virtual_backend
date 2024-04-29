@@ -25,7 +25,6 @@ public class UserController {
         return userServiceImpl.findUserById(id);
     }
 
-
     @PostMapping("/")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
         return userServiceImpl.addUser(user);
