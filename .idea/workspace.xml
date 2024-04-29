@@ -5,99 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="services interfaces created and rename folders">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/JwtAuthenticationConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/KeyCloackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/keycloack/UserDtoKeycloack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/KeycloackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/util/KeycloackProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/AulaVirtualApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/AulaVirtualApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/mappers/DtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/mappers/DtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/AplicationConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/CorsConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/config/springConfig/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/SubjectsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/SubjectsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/AulaVirtualApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/springConfig/AplicationConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/springConfig/CorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/springConfig/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity$AdressEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity$CategoryEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity$CourseEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity$LessonsEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity$RoleEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity$SubjectsEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO$AddressDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO$CategoryDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO$CourseDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO$LessonsDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO$RoleDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO$SubjectDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO$UserDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto$AddressResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto$CategoryResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto$CourseResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto$LessonsResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto$RoleResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto$SubjectsResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto$UserResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/LessonsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/SubjectsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/AddressDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/CategoryDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/CourseDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/LessonsDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/RoleDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/SubjectDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/DTOTests/UserDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/AdressRepositoryTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/RoleRepositoryTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/UserAndRoleRepositoryTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Config/Mappers/DtoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/AddressController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/CourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/LessonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/RoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/SubjectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity$AdressEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity$AdressEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/AdressEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity$CategoryEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity$CategoryEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CategoryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity$CourseEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity$CourseEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/CourseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity$LessonsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity$LessonsEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/LessonsEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity$RoleEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity$RoleEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/RoleEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity$SubjectsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity$SubjectsEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/SubjectsEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity$UserEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Entities/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO$AddressDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO$AddressDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/AddressDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO$CategoryDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO$CategoryDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CategoryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO$CourseDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO$CourseDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/CourseDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO$LessonsDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO$LessonsDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/LessonsDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO$RoleDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO$RoleDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/RoleDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO$SubjectDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO$SubjectDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/SubjectDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Request/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto$AddressResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto$AddressResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/AddressResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto$CategoryResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto$CategoryResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CategoryResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto$CourseResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto$CourseResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/CourseResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto$LessonsResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto$LessonsResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/LessonsResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto$RoleResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto$RoleResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/RoleResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto$SubjectsResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto$SubjectsResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/SubjectsResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto$UserResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto$UserResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Payload/Response/UserResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/CoursesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/CoursesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/Services/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +97,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "keycloack__LuisDavid",
+    "git-widget-placeholder": "Merging keycloack__LuisDavid",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -283,6 +242,7 @@
     <MESSAGE value="refactor controllers" />
     <MESSAGE value="refactor controllers 2" />
     <MESSAGE value="starting keycloack" />
+    <MESSAGE value="Trying keycloack" />
     <MESSAGE value="services interfaces created and rename folders" />
     <option name="LAST_COMMIT_MESSAGE" value="services interfaces created and rename folders" />
   </component>
