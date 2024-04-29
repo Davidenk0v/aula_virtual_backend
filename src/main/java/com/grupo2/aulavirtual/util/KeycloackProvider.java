@@ -36,7 +36,7 @@ public class KeycloackProvider {
     }
 
 
-    public static UsersResource getUserResource(String userId) {
+    public static UsersResource getUserResource() {
         RealmResource realmResource = getRealmResource();
         return realmResource.users();
     }
