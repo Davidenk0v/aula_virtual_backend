@@ -1,7 +1,7 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.Entities.AdressEntity;
-import com.grupo2.aulavirtual.Payload.Response.AddressResponseDto;
+import com.grupo2.aulavirtual.entities.AdressEntity;
+import com.grupo2.aulavirtual.payload.response.AddressResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

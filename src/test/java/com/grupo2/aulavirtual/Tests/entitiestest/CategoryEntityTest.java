@@ -1,7 +1,7 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.Entities.CategoryEntity;
-import com.grupo2.aulavirtual.Enum.CategoryEnum;
+import com.grupo2.aulavirtual.entities.CategoryEntity;
+import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

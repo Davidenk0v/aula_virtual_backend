@@ -1,12 +1,12 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.Entities.CourseEntity;
-import com.grupo2.aulavirtual.Entities.SubjectsEntity;
-import com.grupo2.aulavirtual.Payload.Request.SubjectDTO;
-import com.grupo2.aulavirtual.Payload.Response.SubjectsResponseDto;
-import com.grupo2.aulavirtual.Repository.CourseRepository;
-import com.grupo2.aulavirtual.Repository.SubjectsRepository;
-import com.grupo2.aulavirtual.Services.SubjectsService;
+import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.SubjectsEntity;
+import com.grupo2.aulavirtual.payload.request.SubjectDTO;
+import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
+import com.grupo2.aulavirtual.repositories.CourseRepository;
+import com.grupo2.aulavirtual.repositories.SubjectsRepository;
+import com.grupo2.aulavirtual.services.SubjectsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

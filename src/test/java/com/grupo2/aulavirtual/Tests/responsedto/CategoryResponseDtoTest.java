@@ -1,8 +1,8 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.Entities.CategoryEntity;
-import com.grupo2.aulavirtual.Enum.CategoryEnum;
-import com.grupo2.aulavirtual.Payload.Response.CategoryResponseDto;
+import com.grupo2.aulavirtual.entities.CategoryEntity;
+import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
+import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

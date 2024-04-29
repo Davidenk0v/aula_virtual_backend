@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.Entities.LessonsEntity;
+import com.grupo2.aulavirtual.entities.LessonsEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

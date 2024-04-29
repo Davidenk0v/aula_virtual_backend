@@ -1,16 +1,16 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.Config.Mappers.DtoMapper;
-import com.grupo2.aulavirtual.Entities.CourseEntity;
-import com.grupo2.aulavirtual.Entities.RoleEntity;
-import com.grupo2.aulavirtual.Entities.UserEntity;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
-import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
-import com.grupo2.aulavirtual.Payload.Request.UserDTO;
-import com.grupo2.aulavirtual.Payload.Response.UserResponseDto;
-import com.grupo2.aulavirtual.Repository.CourseRepository;
-import com.grupo2.aulavirtual.Repository.UserRepository;
-import com.grupo2.aulavirtual.Services.CoursesService;
+import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.RoleEntity;
+import com.grupo2.aulavirtual.entities.UserEntity;
+import com.grupo2.aulavirtual.entities.enums.RoleEnum;
+import com.grupo2.aulavirtual.payload.request.CourseDTO;
+import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.payload.response.UserResponseDto;
+import com.grupo2.aulavirtual.repositories.CourseRepository;
+import com.grupo2.aulavirtual.repositories.UserRepository;
+import com.grupo2.aulavirtual.services.CourseService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -39,7 +39,7 @@ class CoursesServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private CoursesService coursesService;
+    private CourseService coursesService;
 
     private CourseDTO courseDTO;
     private CourseEntity courseEntity;

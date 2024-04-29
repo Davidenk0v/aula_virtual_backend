@@ -1,7 +1,7 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.Entities.CourseEntity;
-import com.grupo2.aulavirtual.Payload.Request.CourseDTO;
+import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

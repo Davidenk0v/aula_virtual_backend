@@ -1,8 +1,8 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.Entities.RoleEntity;
-import com.grupo2.aulavirtual.Enum.RoleEnum;
-import com.grupo2.aulavirtual.Payload.Response.RoleResponseDto;
+import com.grupo2.aulavirtual.entities.RoleEntity;
+import com.grupo2.aulavirtual.entities.enums.RoleEnum;
+import com.grupo2.aulavirtual.payload.response.RoleResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

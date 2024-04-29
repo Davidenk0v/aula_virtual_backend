@@ -1,7 +1,7 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.Entities.SubjectsEntity;
-import com.grupo2.aulavirtual.Payload.Response.SubjectsResponseDto;
+import com.grupo2.aulavirtual.entities.SubjectsEntity;
+import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
