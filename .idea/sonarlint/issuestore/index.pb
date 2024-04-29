@@ -148,3 +148,9 @@ F
 src/docker-compose.yml,b\6\b6d47bf403e6132308330a3022bdaabcbc5e32b8
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
+q
+Asrc/main/java/com/grupo2/aulavirtual/security/SecurityConfig.java,d\9\d9cb56b5e2ff03413cb79a3cb14cbb4ddfe6b8de
+t
+Dsrc/main/java/com/grupo2/aulavirtual/security/JwtUserSyncFilter.java,4\e\4e49b608addd33be6fd859aff6ab8101728bc120
+s
+Csrc/main/java/com/grupo2/aulavirtual/controllers/WebController.java,6\f\6f254f27dccb4df196931abd579f8a05195072d9
