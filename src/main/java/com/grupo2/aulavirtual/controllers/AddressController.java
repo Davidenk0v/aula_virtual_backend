@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/address")
 public class AddressController {
 
-
     @GetMapping("/")
     public ResponseEntity<?> getAllddressDTO() {
 
@@ -23,13 +22,13 @@ public class AddressController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveAddress(@RequestBody AddressDTO Address) {
+    public ResponseEntity<?> saveAddress(@RequestBody AddressDTO addressDTO) {
 
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateAdress(@RequestBody AddressDTO Address, @PathVariable Long id) {
+    public ResponseEntity<?> updateAdress(@RequestBody AddressDTO addressDTO, @PathVariable Long id) {
         return null;
     }
 

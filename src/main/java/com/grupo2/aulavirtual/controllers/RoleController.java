@@ -25,13 +25,13 @@ public class RoleController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveRole(@RequestBody RoleDTO Role) {
+    public ResponseEntity<?> saveRole(@RequestBody RoleDTO roleDTO) {
 
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateRole(@RequestBody RoleDTO Role, @PathVariable Long id) {
+    public ResponseEntity<?> updateRole(@RequestBody RoleDTO roleDTO, @PathVariable Long id) {
         return null;
     }
 
