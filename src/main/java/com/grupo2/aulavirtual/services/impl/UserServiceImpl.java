@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
