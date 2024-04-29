@@ -2,14 +2,14 @@ package com.grupo2.aulavirtual.Payload.Response;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+
 @Builder
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 public class UserResponseDto {
 

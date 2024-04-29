@@ -29,7 +29,7 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
     
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     DtoMapper dtoMapper = new DtoMapper();
 
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
@@ -39,56 +39,55 @@ public class UserService {
                 roleRepository.save(role);
                 userDTO.setRole(role);
             }
-
-
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
             userRepository.save(user);
             usuarios.put("Guardado", userDTO);
-            System.out.println(usuarios + "ha sido guardado ");
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(e.getMessage(), userDTO);
-            return ResponseEntity.status(500).body(usuarios);
+            HashMap<String, Object> error = new HashMap<>();
+            error.put("Error", userDTO);
+            return ResponseEntity.status(500).body(error);
         }
     }
 
-    public ResponseEntity<HashMap<String, Object>> findUserByEmail(String email) {
+    public ResponseEntity<HashMap<String, ?>> findUserByEmail(String email) {
         try {
-            HashMap<String, Object> usuarios = new HashMap<>();
+            HashMap<String, UserResponseDto> repuesta = new HashMap<>();
             if (userRepository.findByEmail(email).isPresent()) {
                 UserEntity user = userRepository.findByEmail(email).get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put("Guardado", userRespuesta);
-                return ResponseEntity.status(201).body(usuarios);
+                repuesta.put("Guardado", userRespuesta);
+                return ResponseEntity.status(201).body(repuesta);
             } else {
-                usuarios.put("Error", "No se encuntra este usuario con ese email");
-                return ResponseEntity.status(404).body(usuarios);
+                HashMap<String, String> error = new HashMap<>();
+                error.put("Error", "No se encuentra este usuario con ese id");
+                return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
 
-    public ResponseEntity<HashMap<String, Object>> findUserById(Long idUser) {
+    public ResponseEntity<HashMap<String, ?>> findUserById(Long idUser) {
         try {
-            HashMap<String, Object> usuarios = new HashMap<>();
+            HashMap<String, UserResponseDto> usuarios = new HashMap<>();
             if (userRepository.findById(idUser).isPresent()) {
                 UserEntity user = userRepository.findById(idUser).get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put("Guardado", userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
-                usuarios.put("Error", "No se encuntra este usuario con ese id");
-                return ResponseEntity.status(404).body(usuarios);
+                HashMap<String, String> error = new HashMap<>();
+                error.put("Error", "No se encuentra este usuario con ese id");
+                return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
 
@@ -138,7 +137,7 @@ public class UserService {
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
 
@@ -157,7 +156,7 @@ public class UserService {
             if (userRepository.existsById(id)) {
                 userRepository.deleteById(id);
                 response.put("Borrado id", id);
-                return ResponseEntity.status(201).body(response);
+                return ResponseEntity.status(200).body(response);
             }else {
                 response.put("No se encuntra este usuario con ese id", id);
                 return ResponseEntity.status(500).body(response);

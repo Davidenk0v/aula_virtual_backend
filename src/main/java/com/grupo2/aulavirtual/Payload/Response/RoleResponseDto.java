@@ -4,15 +4,14 @@ import java.util.List;
 
 import com.grupo2.aulavirtual.Enum.RoleEnum;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class RoleResponseDto {
 
     private Long idRole;

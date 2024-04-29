@@ -72,7 +72,7 @@ public class LessonsService {
             } else {
                 HashMap<String, Long> error = new HashMap<>();
                 error.put("No ha encontrado el curso con id: ", id);
-                return ResponseEntity.status(500).body(error);
+                return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -99,7 +99,7 @@ public class LessonsService {
             } else {
                 HashMap<String, Long> error = new HashMap<>();
                 error.put("No ha encontrado la leccion con id: ", id);
-                return ResponseEntity.status(500).body(error);
+                return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -119,7 +119,7 @@ public class LessonsService {
             } else {
                 HashMap<String, Long> error = new HashMap<>();
                 error.put("No ha encontrado la leccion con id: ", id);
-                return ResponseEntity.status(500).body(error);
+                return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();

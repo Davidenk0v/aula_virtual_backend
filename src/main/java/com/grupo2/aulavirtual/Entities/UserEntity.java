@@ -11,11 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
-@ToString
+
 @Builder
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "userEntity", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
