@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="keycloack providers method">
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="crud with docker done">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/KeyCloackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/KeyCloackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/keycloack/UserDtoKeycloack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/keycloack/UserDtoKeycloack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/util/KeycloackProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/util/KeycloackProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +62,7 @@
       <recent name="com.grupo2.aulavirtual.services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back" />
       <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back\src\target" />
       <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back\src" />
     </key>
@@ -201,7 +201,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714394075573</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="crud with docker done">
+      <option name="closed" value="true" />
+      <created>1714399624255</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714399624255</updated>
+    </task>
+    <task id="LOCAL-00009" summary="crud with docker done">
+      <option name="closed" value="true" />
+      <created>1714399665935</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714399665935</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,7 +239,8 @@
     <MESSAGE value="services interfaces created and rename folders" />
     <MESSAGE value="fixed merge errors" />
     <MESSAGE value="keycloack providers method" />
-    <option name="LAST_COMMIT_MESSAGE" value="keycloack providers method" />
+    <MESSAGE value="crud with docker done" />
+    <option name="LAST_COMMIT_MESSAGE" value="crud with docker done" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aula_Grupo_2_Back$Tests_in_aula_virtual.ic" NAME="Tests in aula-virtual Coverage Results" MODIFIED="1714381791188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

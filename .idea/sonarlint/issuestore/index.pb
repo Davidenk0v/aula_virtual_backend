@@ -144,3 +144,7 @@ Lsrc/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java,d
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+F
+src/docker-compose.yml,b\6\b6d47bf403e6132308330a3022bdaabcbc5e32b8
+B
+docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
