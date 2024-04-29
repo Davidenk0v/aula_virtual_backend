@@ -132,5 +132,6 @@ public class KeycloackServiceImpl implements KeycloackService {
         userRepresentation.setCredentials(Collections.singletonList(credentialRepresentation));
 
         UserResource userResource = KeycloackProvider.getUserResource().get(userId);
+        userResource.update(userRepresentation);
     }
 }
