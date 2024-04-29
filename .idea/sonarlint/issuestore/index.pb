@@ -162,3 +162,6 @@ u
 Esrc/test/java/com/grupo2/aulavirtual/AulaVirtualApplicationTests.java,9\8\988620a193c9a78553202aafded1d81815e33408
 x
 Hsrc/test/java/com/grupo2/aulavirtual/Tests/services/UserServiceTest.java,7\9\794f1ee89d59493e0478bca93bf2fa323549a0d2
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
