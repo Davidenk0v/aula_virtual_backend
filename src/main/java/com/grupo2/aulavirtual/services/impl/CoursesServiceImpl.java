@@ -140,4 +140,26 @@ public class CoursesServiceImpl implements CourseService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
+
+
+
+    @Override
+    public ResponseEntity<HashMap<String, ?>> findAllByContains(String name) {
+        try {
+            HashMap<String, List<CourseResponseDto>> response = new HashMap<>();
+            List<CourseEntity> courseEntities = courseRepository.findAllByNameContains(name).get();
+            if(courseEntities.isEmpty()){
+                HashMap<String, String> errorNotFound = new HashMap<>();
+                errorNotFound.put("Ningun curso con:", name);
+                return ResponseEntity.status(500).body(errorNotFound);
+            }
+            List<CourseResponseDto> courseResponseDtos = courseEntities.stream().map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+            response.put("Cursos", courseResponseDtos);
+            return ResponseEntity.status(201).body(response);
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
 }
