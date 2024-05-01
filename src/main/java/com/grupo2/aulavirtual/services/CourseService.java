@@ -14,7 +14,7 @@ public interface CourseService {
 
     ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO);
 
-    ResponseEntity<HashMap<String, ?>> deleteCourse(Long id);
+    ResponseEntity<?> deleteCourse(Long id);
 
     ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO);
 

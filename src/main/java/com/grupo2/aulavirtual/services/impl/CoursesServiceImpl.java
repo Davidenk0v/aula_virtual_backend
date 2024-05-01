@@ -87,13 +87,13 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> deleteCourse(Long id) {
+    public ResponseEntity<?> deleteCourse(Long id) {
         try {
-            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            HashMap<String, String> response = new HashMap<>();
             if (courseRepository.existsById(id)) {
                 CourseEntity course = courseRepository.findById(id).get();
                 courseRepository.delete(course);
-                response.put("Se ha borrado el curso ", dtoMapper.entityToResponseDto(course));
+                response.put("Ok","Se ha eliminado correctamente");
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
