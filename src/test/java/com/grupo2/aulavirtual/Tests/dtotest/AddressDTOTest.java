@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.Tests.DTOTests;
+package com.grupo2.aulavirtual.tests.dtotest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

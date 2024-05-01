@@ -1,25 +1,25 @@
-package com.grupo2.aulavirtual.Tests.DTOTests;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.entities.UserEntity;
 import org.junit.jupiter.api.Test;
 
-public class UserDTOTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class UserEntityTest {
 
     @Test
     void testGettersAndSetters() {
-        UserDTO userDTO = UserDTO.builder()
-            .idUser(1L)
-            .email("test@example.com")
-            .lastname("Doe")
-            .firstname("John")
-            .username("johndoe")
-            .password("password")
-            .address(null)
-            .courses(null)
-            .role(null)
-            .build();
+        UserEntity userDTO = UserEntity.builder()
+                .idUser(1L)
+                .email("test@example.com")
+                .lastname("Doe")
+                .firstname("John")
+                .username("johndoe")
+                .password("password")
+                .adress(null)
+                .courses(null)
+                .role(null)
+                .build();
 
         assertEquals(1L, userDTO.getIdUser(), "idUser getter must be equal to 1L");
         userDTO.setIdUser(2L);
@@ -48,8 +48,7 @@ public class UserDTOTest {
 
     @Test
     void testNotNull() {
-        UserDTO userDTO = new UserDTO();
+        UserEntity userDTO = new UserEntity();
         assertNotNull(userDTO);
     }
-
 }

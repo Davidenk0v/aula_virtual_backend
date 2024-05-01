@@ -6,15 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table( uniqueConstraints = { @UniqueConstraint(columnNames = { "role" }) })
 public class RoleEntity {
