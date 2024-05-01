@@ -121,8 +121,6 @@ y
 Isrc/main/java/com/grupo2/aulavirtual/controllers/KeyCloackController.java,f\d\fdcd77bd1d5cd3d186a32552f501d82697adaff5
 k
 ;src/main/java/com/grupo2/aulavirtual/mappers/DtoMapper.java,3\e\3eaeaedef1d136946ad1071055f9ff74e6b95983
-o
-?src/main/java/com/grupo2/aulavirtual/config/SecurityConfig.java,1\4\14cccfc62d546824d90a31da5f79a664feed815d
 p
 @src/main/java/com/grupo2/aulavirtual/AulaVirtualApplication.java,b\3\b308225c72d3bfe52277d86615f846b3d4b3e1c7
 7
@@ -144,8 +142,6 @@ Lsrc/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java,d
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-F
-src/docker-compose.yml,b\6\b6d47bf403e6132308330a3022bdaabcbc5e32b8
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 q

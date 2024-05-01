@@ -32,8 +32,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SecurityConfig {
 
-    @Autowired
-    private JwtAuthenticationConverter jwtAuthenticationConverter;
 
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverterForKeycloak() {
@@ -67,10 +65,10 @@ public class SecurityConfig {
     {
         return httpSecurity
             .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(http -> http.anyRequest().hasRole("user"))
-                .oauth2ResourceServer(oauth-> oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterAfter(jwtAuthUserFilterBean(),SwitchUserFilter.class)
+                .authorizeHttpRequests(http -> http.anyRequest().permitAll())
+//                .oauth2ResourceServer(oauth-> oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverterForKeycloak())))
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterAfter(jwtAuthUserFilterBean(),SwitchUserFilter.class)
             .build();
     }
 

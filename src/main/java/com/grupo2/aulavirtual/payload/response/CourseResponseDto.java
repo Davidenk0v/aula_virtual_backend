@@ -26,7 +26,7 @@ public class CourseResponseDto {
 
     private Date finishDate;
 
-    private BigDecimal pago;
+    private BigDecimal price;
 
     @JsonIgnore
     private List<UserResponseDto> users;

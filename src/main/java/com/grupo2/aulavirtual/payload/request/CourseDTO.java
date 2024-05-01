@@ -32,5 +32,7 @@ public class CourseDTO {
 
     private BigDecimal pago;
 
+    private Long idTeacher;
+
     private List<UserEntity> user;
 }
