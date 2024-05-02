@@ -1,0 +1,21 @@
+
+‚
+java:S11929"FDefine a constant instead of duplicating this literal "Error" 4 times.(•×±„J$54a13fe3-af0f-44cf-9876-20c393afbde3
+Y
+java:S4973["<Strings and Boxed types should be compared using "equals()".(’âõ–8é³³Çò1
+^
+java:S4973^"<Strings and Boxed types should be compared using "equals()".(ãõ•ùÿÿÿÿ8é³³Çò1
+m
+java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(‘·Ž·8À´³Çò1
+m
+java:S3655D"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
+m
+java:S3655v"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
+m
+java:S3655/"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ž¾¦³8Á´³Çò1
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$bb613f85-a756-4b92-aaf6-bf7799592b06
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$0a172b4b-cabf-44d5-8400-cca63fb5c0e9
+|
+java:S18540";Remove this useless assignment to local variable "lessons".(é»‹øÿÿÿÿJ$c578a531-b7bd-4073-8785-527bc9db4bd0
