@@ -13,5 +13,5 @@ import java.util.Optional;
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, Long>{
 
-    Optional<List<CourseEntity>> findAllByNameContains(String name);
+    Optional<List<CourseEntity>> findByNameContaining(String name);
 }

@@ -161,11 +161,11 @@ public class CoursesServiceImpl implements CourseService {
     public ResponseEntity<HashMap<String, ?>> findAllByContains(String name) {
         try {
             HashMap<String, List<CourseResponseDto>> response = new HashMap<>();
-            List<CourseEntity> courseEntities = courseRepository.findAllByNameContains(name).get();
+            List<CourseEntity> courseEntities = courseRepository.findByNameContaining(name).get();
             if(courseEntities.isEmpty()){
                 HashMap<String, String> errorNotFound = new HashMap<>();
                 errorNotFound.put("Ningun curso con:", name);
-                return ResponseEntity.status(500).body(errorNotFound);
+                return ResponseEntity.status(404).body(errorNotFound);
             }
             List<CourseResponseDto> courseResponseDtos = courseEntities.stream().map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
             response.put("Cursos", courseResponseDtos);
