@@ -165,3 +165,11 @@ Hsrc/test/java/com/grupo2/aulavirtual/Tests/services/UserServiceTest.java,7\9\7
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+Å
+Q.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2024_12_31_PM__Changes_.xml,b\3\b35f40da3446b83cff67f61980b5c46077ddad50
+É
+S.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_12_29_PM__Changes_.xml,5\3\535d8dc1cd32018eedf726c6af76e4fc563efd22
+É
+S.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_1.xml,e\3\e33357d3f961310139567e23e4e529e5d1105f17
+Ç
+R.idea/shelf/Uncommitted_changes_before_Checkout_at_4_24_2024_2_04_PM__Changes_.xml,4\3\439ad2666bc970dbf17f537bc3f4a08c4fdd440b
