@@ -49,4 +49,7 @@ public class CourseController {
         return courseService.deleteCourse(id);
     }
 
+
+    @GetMapping("/lista/{name}")
+    public ResponseEntity<?> getCoursesByName(@PathVariable String name) {return  courseService.findAllByContains(name);}
 }
