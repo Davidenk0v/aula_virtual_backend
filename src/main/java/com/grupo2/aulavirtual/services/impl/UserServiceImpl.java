@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
@@ -9,14 +9,20 @@ import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.RoleRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.UserService;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -26,6 +32,34 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
+
+    @Override
+    public UserEntity getLoggedUser() {
+        JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+
+        String email = String.valueOf(token.getTokenAttributes().get("email"));
+        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
+
+        return user;
+    }
+
+    @Override
+    public void syncUser(UserEntity user) {
+        if (user == null) {
+            throw new EntityNotFoundException("Error while user sync");
+        }
+
+        UserEntity saveUser = user;
+        Optional<UserEntity> optionalUser = userRepository.findByEmail(user.getEmail());
+
+        if (optionalUser.isPresent()) {
+            saveUser = optionalUser.get();
+            saveUser.setFirstname(user.getFirstname());
+            saveUser.setLastname(user.getLastname());
+        }
+
+        userRepository.save(saveUser);
+    }
 
     @Override
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {

@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
@@ -50,7 +50,7 @@ public class LessonsServiceImpl implements LessonsService {
             lessons.setSubject(subjects);
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
-            response.put("Tema subido ", objectResponse);
+            response.put("Leccion subido", objectResponse);
             return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();

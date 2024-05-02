@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.config.mappers;
+package com.grupo2.aulavirtual.mappers;
 
 import java.util.List;
 
@@ -105,7 +105,7 @@ public class DtoMapper {
                 .description(courseEntity.getDescription())
                 .startDate(courseEntity.getStartDate())
                 .finishDate(courseEntity.getFinishDate())
-                .pago(courseEntity.getPago())
+                .price(courseEntity.getPago())
                 .build();
 
         if (courseEntity.getUser() != null) {
