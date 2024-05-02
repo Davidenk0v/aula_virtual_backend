@@ -1,0 +1,17 @@
+
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øô¯¦üÿÿÿÿ8ø û¯ñ1J$4c524f40-9fdd-487d-af56-ebbe9acf377c
+˜	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÄÙŸûÿÿÿÿ8ú û¯ñ1J$94b96149-fc25-4324-a320-57e4732f6854
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëì…°8ÁŒ’ÿð1J$41e2a4df-783d-4ba0-80cc-39a9d712ad28
+i
+java:S1452"&Remove usage of generic wildcard type.(ò¢ˆ™8‘¡û¯ñ1J$bfdb1997-2498-4cf2-8d21-b640ae1d14f6
+~	java:S125"<This block of commented-out lines of code should be removed.(“ßßª8™¡û¯ñ1J$96d4ebe3-0778-432e-a720-d967cb460c5a
+i
+java:S1452"&Remove usage of generic wildcard type.(»õÙ×8›¡û¯ñ1J$59717fba-71d2-431e-938d-29e54ca80577
+n
+java:S1452"&Remove usage of generic wildcard type.(Øô¯¦üÿÿÿÿ8œ¡û¯ñ1J$6e9b9cc6-dde5-41be-a3df-3a0666b0b814
+n
+java:S1452%"&Remove usage of generic wildcard type.(³ÄÙŸûÿÿÿÿ8ž¡û¯ñ1J$9feee31a-e041-4fdc-8a5f-ba3065878abe
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¡¡û¯ñ1J$9f146772-220a-4299-a9d8-352c722c919c
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8¢¡û¯ñ1J$a7398ae4-8c76-4bdd-8439-3e8c57c9f191

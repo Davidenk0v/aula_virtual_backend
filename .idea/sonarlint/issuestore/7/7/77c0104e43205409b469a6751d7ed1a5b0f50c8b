@@ -1,0 +1,20 @@
+
+�	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(�셰8�����1J$70394e6a-a73e-4282-a221-d726e991578c
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(����8�Ⴐ�1
+C
+java:S1452"&Remove usage of generic wildcard type.(����8�Ⴐ�1
+C
+java:S1452"&Remove usage of generic wildcard type.(�粣8�Ⴐ�1
+C
+java:S1452""&Remove usage of generic wildcard type.(�Ҕ�8�Ⴐ�1
+H
+java:S1452'"&Remove usage of generic wildcard type.(���������8�₰�1
+H
+java:S1452,"&Remove usage of generic wildcard type.(���������8�₰�1
+s
+java:S1128"+Remove this unused import 'java.util.List'.(��������8ۿ���1J$fa0db30c-5fa1-496a-8ca8-163b34d8a035
+�
+java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.Entities.UserEntity'.(��������8ܿ���1J$7a39ce7d-5c72-4aa1-99e2-59a36c582a3a
+�
+java:S1128"NRemove this unused import 'com.grupo2.aulavirtual.Payload.Request.AddressDTO'.(����8ܿ���1J$bd18f4ef-fdc4-4782-8918-7437fb089bc4

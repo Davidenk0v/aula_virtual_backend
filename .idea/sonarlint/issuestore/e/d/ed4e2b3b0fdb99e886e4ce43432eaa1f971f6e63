@@ -1,0 +1,42 @@
+
+<<<<<<< HEAD
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯çÞðJ$2b143d38-db40-45e5-8e92-61bf76840bc9
+q
+java:S2209="5Change this instance-reference to a static reference.(þèîÍJ$63c42394-95b1-43b4-9819-74cc257756e5
+q
+java:S2209G"5Change this instance-reference to a static reference.(þèîÍJ$0d28d389-de14-4c22-83a5-f243c7697972
+v
+java:S2209U"5Change this instance-reference to a static reference.(ò¼ÈˆøÿÿÿÿJ$4bdc9d84-99d0-41c9-9d21-67963f4da85d
+v
+java:S2209g"5Change this instance-reference to a static reference.(‚¶ªûÿÿÿÿJ$e84ec636-3e79-481b-b4a8-d1829d83a951
+v
+java:S2209"5Change this instance-reference to a static reference.(ó‹À¶øÿÿÿÿJ$e9ff550d-fecc-44a4-9ec0-cb7df978fd20
+r
+java:S2209"5Change this instance-reference to a static reference.(ÚÔ¥’J$927e8dba-1839-487b-8e59-a1b48ce3013d
+w
+java:S2209¢"5Change this instance-reference to a static reference.(ôÄâÆýÿÿÿÿJ$eddf5fb1-7ffa-4812-afb1-9e03ab891072
+r
+java:S2209»"5Change this instance-reference to a static reference.(šûû…J$9dca406c-90af-4ccc-9a9c-6d3dc7aed560
+V
+java:S1128"4Remove this unused import 'org.modelmapper.TypeMap'.(½ŽÈËùÿÿÿÿ8–ÝÕñ1
+=======
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯çÞð
+K
+java:S2209="5Change this instance-reference to a static reference.(þèîÍ
+K
+java:S2209G"5Change this instance-reference to a static reference.(þèîÍ
+P
+java:S2209U"5Change this instance-reference to a static reference.(ò¼Èˆøÿÿÿÿ
+P
+java:S2209g"5Change this instance-reference to a static reference.(‚¶ªûÿÿÿÿ
+P
+java:S2209"5Change this instance-reference to a static reference.(ó‹À¶øÿÿÿÿ
+L
+java:S2209"5Change this instance-reference to a static reference.(ÚÔ¥’
+Q
+java:S2209¢"5Change this instance-reference to a static reference.(ôÄâÆýÿÿÿÿ
+L
+java:S2209»"5Change this instance-reference to a static reference.(šûû…
+O
+java:S1128"4Remove this unused import 'org.modelmapper.TypeMap'.(½ŽÈËùÿÿÿÿ
+>>>>>>> origin/controladores_enrique
