@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.Tests.RepositoryTest;
+package com.grupo2.aulavirtual.tests.RepositoryTest;
 
 
 
