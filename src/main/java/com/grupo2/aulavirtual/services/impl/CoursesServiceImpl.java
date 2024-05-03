@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CoursesServiceImpl implements CourseService {
@@ -114,10 +115,10 @@ public class CoursesServiceImpl implements CourseService {
             HashMap<String, CourseResponseDto> response = new HashMap<>();
             if (courseRepository.existsById(id)) {
                 CourseEntity course = courseRepository.findById(id).get();
-                if (courseDTO.getName() != "") {
+                if (!Objects.equals(courseDTO.getName(), "")) {
                     course.setName(courseDTO.getName());
                 }
-                if (courseDTO.getDescription() != "") {
+                if (!Objects.equals(courseDTO.getDescription(), "")) {
                     course.setDescription(courseDTO.getDescription());
                 }
                 courseRepository.save(course);
