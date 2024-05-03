@@ -1,6 +1,21 @@
 # Aula-Grupo-2-Back
 
-Crear un aula virtual donde se puedan realizar cursos y llevar a cabo una gestión adecuada de los mismos.​
+# Guía de instalación:
+EL proyecto usa Angular 17 para el frontend y Spring Boot 3.2.5 para el backend. Para la base de datos usa PosgrestSQL y Keycloak para la autenticación
+## Copia de repositorios:
+git clone https://github.gsissc.myatos.net/ES-TEF-CEDEI-FORMACIONES/Aula-Grupo-2-Back.git <br>
+git clone https://github.gsissc.myatos.net/ES-TEF-CEDEI-FORMACIONES/Aula-Grupo-2-Front.git
+## Instalación de paquetes:
+### En la carpeta del frontend (Angular) ejecutaremos el comando:
+npm i
+
+### En la carpeta del backend (Spring Boot) ejecutaremos el comando para iniciar el docker con la base de datos y el keycloak:
+docker compose up -d
+
+### Arranque de proyectos:
+Arrancamos el proyecto backend en el IDE y luego para el frontend usaremos el comando ng serve -o en el direcctorio del proyecto frontend.
+
+# Crear un aula virtual donde se puedan realizar cursos y llevar a cabo una gestión adecuada de los mismos.​
 
 Esta plataforma estará destinada tanto a profesores como a alumnos, brindando a los profesores la capacidad de crear, editar y eliminar cursos según sea necesario.​
 
