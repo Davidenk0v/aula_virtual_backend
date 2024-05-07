@@ -4,56 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="login and register with keycloak done">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/2/023d81c9fbbf41e9c88dfc0ca058814bec7bd066" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/2/023d81c9fbbf41e9c88dfc0ca058814bec7bd066" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/241371512b99c92b9586da432695edc9b660557f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/241371512b99c92b9586da432695edc9b660557f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3eaeaedef1d136946ad1071055f9ff74e6b95983" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3eaeaedef1d136946ad1071055f9ff74e6b95983" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/401c750d2c4d32d4531984fb58f136ac204ef2c0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/401c750d2c4d32d4531984fb58f136ac204ef2c0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66dc087832e04c61236f6c968f201b7713f70bf6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66dc087832e04c61236f6c968f201b7713f70bf6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/744807fca331a0dc3c8a3398c9957a08d6fa3caa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/744807fca331a0dc3c8a3398c9957a08d6fa3caa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/7839111161f8f43f20f28819dba99ee787812873" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/7839111161f8f43f20f28819dba99ee787812873" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88402fdb61ee5509c64280f4f60ed777184d5a56" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88402fdb61ee5509c64280f4f60ed777184d5a56" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/entities/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/payload/request/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloakServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloakServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/MappersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/AdressRepositoryTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/UserAndRoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/UserAndRoleRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/dtotest/AddressDTOTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/entitiestest/AdressEntityTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/responsedto/AddressResponseDtoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/responsedto/CourseResponseDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/responsedto/CourseResponseDtoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/CoursesServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/CoursesServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/LessonsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/LessonsServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/SubjectsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/SubjectsServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests/services/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/RoleEntity$RoleEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/RoleEntity$RoleEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/RoleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/RoleEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO$UserDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/RoleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/AdressRepositoryTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/RoleRepositoryTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/RoleRepositoryTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/UserAndRoleRepositoryTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/UserAndRoleRepositoryTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/UserRepositoryTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/RepositoryTest/UserRepositoryTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/dtotest/AddressDTOTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/dtotest/UserDTOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/dtotest/UserDTOTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/entitiestest/AdressEntityTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/entitiestest/UserEntityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/entitiestest/UserEntityTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/responsedto/AddressResponseDtoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/responsedto/CourseResponseDtoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/responsedto/CourseResponseDtoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/responsedto/UserResponseDtoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/responsedto/UserResponseDtoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/CoursesServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/CoursesServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/LessonsServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/LessonsServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/services/UserServiceTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="login and register with keycloak done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -338,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715082466186</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="login and register with keycloak done">
+      <option name="closed" value="true" />
+      <created>1715085385718</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715085385719</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
