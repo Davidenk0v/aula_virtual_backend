@@ -1,9 +1,8 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.entities.RoleEntity;
+import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
@@ -34,6 +33,9 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
+
+    private static final String ERROR = "Error";
+    private static final String SAVE = "Guardado";
 
     @Override
     public UserEntity getLoggedUser() {
@@ -70,8 +72,7 @@ public class UserServiceImpl implements UserService {
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
             userRepository.save(user);
-            usuarios.put("Guardado", userDTO);
-            System.out.println(usuarios + "ha sido guardado ");
+            usuarios.put(SAVE, userDTO);
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -87,15 +88,15 @@ public class UserServiceImpl implements UserService {
             if (userRepository.findByEmail(email).isPresent()) {
                 UserEntity user = userRepository.findByEmail(email).get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put("Guardado", userRespuesta);
+                usuarios.put(SAVE, userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
-                usuarios.put("Error", "No se encuntra este usuario con ese email");
+                usuarios.put(ERROR, "No se encuntra este usuario con ese email");
                 return ResponseEntity.status(404).body(usuarios);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(201).body(usuarios);
         }
     }
@@ -107,15 +108,15 @@ public class UserServiceImpl implements UserService {
             if (userRepository.findById(idUser).isPresent()) {
                 UserEntity user = userRepository.findById(idUser).get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put("Guardado", userRespuesta);
+                usuarios.put(SAVE, userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
-                usuarios.put("Error", "No se encuntra este usuario con ese id");
+                usuarios.put(ERROR, "No se encuntra este usuario con ese id");
                 return ResponseEntity.status(404).body(usuarios);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(201).body(usuarios);
         }
     }
@@ -123,7 +124,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
         try {
-            System.out.println(userDTO.getFirstname());
             HashMap<String, Object> usuarios = new HashMap<>();
             if (userRepository.findById(id).isPresent()) {
                 UserEntity user = userRepository.findById(id).get();
@@ -146,7 +146,7 @@ public class UserServiceImpl implements UserService {
                 }
                 userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put("Guardado", userRespuesta);
+                usuarios.put(SAVE, userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
                 usuarios.put("No se encuentra este usuario", userDTO);
@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -196,7 +196,7 @@ public class UserServiceImpl implements UserService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
