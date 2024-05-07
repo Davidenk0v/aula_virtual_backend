@@ -2,7 +2,6 @@ package com.grupo2.aulavirtual.payload.request;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.entities.AdressEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 
@@ -28,11 +27,11 @@ public class UserDTO {
 
     private String password;
 
-    private AdressEntity address;
+    private String address;
 
     private List<CourseEntity> courses;
 
-    private RoleEntity role;
+    private List<String> role;
 
     private String urlImg;
 }

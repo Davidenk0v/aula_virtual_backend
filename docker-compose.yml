@@ -1,7 +1,10 @@
-version: "3.8"
+networks:
+  classroom_network:
 services:
 
   postgresql:
+    networks:
+      - classroom_network
     container_name: postgres
     image: postgres:14.4
     restart: always
@@ -12,7 +15,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: db_classrom
 
+
   pgadmin:
+    networks:
+      - classroom_network
     container_name: pgadmin
     image: dpage/pgadmin4:latest
     restart: always
@@ -35,6 +41,8 @@ services:
       #JDBC_PARAMS: "ssl=true"
     ports:
       - "9090:9090"
+    networks:
+        - classroom_network
     command: [ "start-dev", "--http-port=9090" ]
     depends_on:
       - postgresql

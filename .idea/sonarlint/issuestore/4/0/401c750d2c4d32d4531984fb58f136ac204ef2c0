@@ -1,40 +1,20 @@
 
-‡
-java:S1192b"FDefine a constant instead of duplicating this literal "Error" 6 times.(Ñé™…øÿÿÿÿJ$04ac910e-5039-49b5-85af-df492b755aab
-Š
-java:S1192N"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿJ$76e8d8ef-176d-4f76-beed-fafe89586a8d
-¤
-java:S1488*"\Immediately return this expression instead of assigning it to the temporary variable "user".(áñÁ¤úÿÿÿÿ8ƒ®¤Ôò1J$1c5aba62-273a-4c18-b766-bb1a09717731
-…
-java:S4973‡"<Strings and Boxed types should be compared using "equals()".(„ÎîÀýÿÿÿÿ8¾¸³Çò1J$92dfe93b-8703-4532-9144-7b96119059a4
-…
-java:S4973Š"<Strings and Boxed types should be compared using "equals()".(¸Éó˜ýÿÿÿÿ8¿¸³Çò1J$17688ca4-0e0f-41dc-b520-fd598ae3e441
-€
-java:S4973"<Strings and Boxed types should be compared using "equals()".(”üúã8¿¸³Çò1J$b8643650-c968-441c-b1e2-7518168decf8
-€
-java:S4973"<Strings and Boxed types should be compared using "equals()".(²¶±Ä8¿¸³Çò1J$7618e14a-fe8f-4007-a72e-a0b189901ac8
-€
-java:S4973”"<Strings and Boxed types should be compared using "equals()".(¬ùÆÕ8¿¸³Çò1J$3ec0f251-3f11-4cca-af4c-f263decf2d9d
-€
-java:S4973—"<Strings and Boxed types should be compared using "equals()".(¼éÁÚ8¿¸³Çò1J$18190887-6ebb-45f1-ab12-638aef7e56ca
-…
-java:S4973š"<Strings and Boxed types should be compared using "equals()".(½Å½üÿÿÿÿ8À¸³Çò1J$fdf76123-c3a0-4eaf-ae6d-3699bc8ed3be
-…
-java:S4973"<Strings and Boxed types should be compared using "equals()".(á«Æýþÿÿÿÿ8À¸³Çò1J$1f959ab4-fea9-4d54-bd98-a8e4fb46f545
-…
-java:S4973 "<Strings and Boxed types should be compared using "equals()".(›óºùÿÿÿÿÿ8À¸³Çò1J$5ab4a531-93f2-4fd0-a0be-4407ac9ca6f1
+Ž
+java:S1192["FDefine a constant instead of duplicating this literal "Error" 6 times.(Ñé™…øÿÿÿÿ8ü‚ºðó1J$9f671805-84aa-4a0a-91f4-787c6ec3e2fb
+‘
+java:S1192G"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8Žƒºðó1J$729dd330-5d00-4488-9cf6-6fcb92505caf
 “
-java:S3655…"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98Àð®Ôò1J$9c549792-4558-4a4c-abcb-b66d50f21bac
-“
-java:S3655]"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8Áð®Ôò1J$b8e81af7-bc4a-4609-b94e-4e773bef1b56
+java:S3655V"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8§œºðó1J$234f4f3c-dd07-4362-9019-24f16ec79011
 ˜
-java:S3655q"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8Ãð®Ôò1J$ee0887f0-9000-4160-a1a1-2a046568b9fc
+java:S3655j"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8§œºðó1J$0c7c4a5b-e46c-4edd-9668-6d009c46ad13
+’
+java:S3655~"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98£¡èçô1J$20eac2d3-bc02-4577-adb3-e81c03b5bda9
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Èð®Ôò1J$14ea4c31-6b97-4a38-a3ee-ad167c34f992
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$ba0e0277-13c4-4bc4-9f2f-b4b5fddf7980
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄÞ8Èð®Ôò1J$8e0501a0-db6e-4af8-887a-a1790fe494f6
-m	java:S106O"+Replace this use of System.out by a logger.(þŒ¹Ø8äð®Ôò1J$ea027999-d87e-493f-9be0-d47f19c14833
-–
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(’ò8óð®Ôò1J$12eb369f-ae12-401c-b9a0-47db446d4b71
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$e2329eea-bc50-465a-96ab-710f8e9940f8
+m	java:S106H"+Replace this use of System.out by a logger.(þŒ¹Ø8Ãœºðó1J$db6b3300-e656-4815-9d28-b845ba782fe5
 Š
-java:S1854†"ARemove this useless assignment to local variable "userRespuesta".(‚£”òúÿÿÿÿ8÷ð®Ôò1J$27340bb5-c110-4014-86ec-835d3fb2902f
+java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.entities.RoleEntity'.(Ãõí®8·îÁ—õ1J$249403b1-a04f-4152-9c9f-a6504bc9986b
+“
+java:S1128"KRemove this unused import 'com.grupo2.aulavirtual.entities.enums.RoleEnum'.(ö¨ù–øÿÿÿÿ8·îÁ—õ1J$2759c33a-316f-4ff4-9577-26e9975baa93

@@ -3,30 +3,28 @@ package com.grupo2.aulavirtual.mappers;
 import java.util.List;
 
 import com.grupo2.aulavirtual.payload.request.*;
+import jakarta.persistence.Column;
 import org.modelmapper.ModelMapper;
 
-import com.grupo2.aulavirtual.entities.AdressEntity;
 import com.grupo2.aulavirtual.entities.CategoryEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.payload.response.AddressResponseDto;
 import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.LessonsResponseDto;
 import com.grupo2.aulavirtual.payload.response.RoleResponseDto;
 import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DtoMapper {
 
     ModelMapper modelMapper = new ModelMapper();
 
-    public AdressEntity dtoToEntity(AddressDTO addressDTO) {
-        return modelMapper.map(addressDTO, AdressEntity.class);
-    }
 
     public CategoryEntity dtoToEntity(CategoryDTO categoryDTO) {
         return modelMapper.map(categoryDTO, CategoryEntity.class);
@@ -52,31 +50,6 @@ public class DtoMapper {
         return modelMapper.map(userDTO, UserEntity.class);
     }
 
-    public AddressResponseDto entityToResponse(AdressEntity adressEntity) {
-
-        if (adressEntity.getUser() != null) {
-            UserResponseDto userResponseDto = modelMapper.map(adressEntity.getUser(), UserResponseDto.class);
-            return new AddressResponseDto().builder()
-                    .idAdress(adressEntity.getIdAdress())
-                    .country(adressEntity.getCountry())
-                    .number(adressEntity.getNumber())
-                    .street(adressEntity.getStreet())
-                    .city(adressEntity.getCity())
-                    .postalCode(adressEntity.getPostalCode())
-                    .user(userResponseDto)
-                    .build();
-        } else {
-            return new AddressResponseDto().builder()
-                    .idAdress(adressEntity.getIdAdress())
-                    .country(adressEntity.getCountry())
-                    .number(adressEntity.getNumber())
-                    .street(adressEntity.getStreet())
-                    .city(adressEntity.getCity())
-                    .postalCode(adressEntity.getPostalCode())
-                    .build();
-        }
-
-    }
 
     public CategoryResponseDto entityToResponse(CategoryEntity categoryEntity) {
 
@@ -189,13 +162,9 @@ public class DtoMapper {
                 .lastname(userEntity.getLastname())
                 .firstname(userEntity.getFirstname())
                 .username(userEntity.getUsername())
-                .role(userEntity.getRole().getRole().name())
+                .address(userEntity.getAddress())
+                .role(userEntity.getRole().stream().map(role->role.getRole().name()).toList())
                 .build();
-
-        if (userEntity.getAdress() != null) {
-            AddressResponseDto addressResponseDto = modelMapper.map(userEntity.getAdress(), AddressResponseDto.class);
-            userResponseDto.setAddress(addressResponseDto);
-        }
 
         if (userEntity.getCourses() != null) {
             List<CourseResponseDto> courseResponseDto = userEntity.getCourses().stream()

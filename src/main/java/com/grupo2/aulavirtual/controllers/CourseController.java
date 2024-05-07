@@ -1,12 +1,10 @@
 package com.grupo2.aulavirtual.controllers;
 
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
-import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.services.impl.CoursesServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +47,8 @@ public class CourseController {
         return courseService.deleteCourse(id);
     }
 
-
     @GetMapping("/lista/{name}")
-    public ResponseEntity<?> getCoursesByName(@PathVariable String name) {return  courseService.findAllByContains(name);}
+    public ResponseEntity<?> getCoursesByName(@PathVariable String name) {
+        return courseService.findAllByContains(name);
+    }
 }

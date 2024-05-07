@@ -39,4 +39,9 @@ public class SubjectController {
         return subjectService.deleteSubject(id);
     }
 
+    @GetMapping("/lista/{idCourse}")
+    public ResponseEntity<?> listByCourseId(@PathVariable Long idCourse) {
+        return subjectService.subjectsListByIdCourse(idCourse);
+    }
+
 }

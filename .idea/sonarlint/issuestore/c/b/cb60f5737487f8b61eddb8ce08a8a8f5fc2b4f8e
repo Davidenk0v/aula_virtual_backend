@@ -1,7 +1,3 @@
 
-
-java:S2259#"FA "NullPointerException" could be thrown; "convert()" can return null.(…¦Äşÿÿÿÿ8è¹£Óñ1J$f1ba4085-7d55-4a3b-ad1b-ec3f12563b30
-
-java:S1128"ERemove this unused import 'org.springframework.stereotype.Component'.(Ş÷Ñ¸ÿÿÿÿÿ8ÚóéÓò1J$2ed1fbda-e59b-4a05-86fb-f489bdbe7c10
-€
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8ëí¦Óñ1J$8c29525c-0c0f-40c4-8b0d-1d6958409d87
+ˆ
+java:S2259%"FA "NullPointerException" could be thrown; "convert()" can return null.(Œé‘I8•¾îóô1J$1aba4791-b71e-4b68-8736-0d98438b472e

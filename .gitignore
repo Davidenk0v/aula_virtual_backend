@@ -6,6 +6,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea
 
 target/
 !.mvn/wrapper/maven-wrapper.jar

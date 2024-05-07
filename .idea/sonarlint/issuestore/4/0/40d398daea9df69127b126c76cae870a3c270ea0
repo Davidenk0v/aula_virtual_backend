@@ -1,7 +1,0 @@
-
-}
-java:S1118":Add a private constructor to hide the implicit public one.(Æýé™8è€÷Ôñ1J$15659a65-4b96-4ef2-82d6-da885cb9b28b
-š
-java:S1128"RRemove this unused import 'org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder'.(ƒ×”·þÿÿÿÿ8¨®³Çò1J$2314c094-378a-48f8-943f-1b4d98136249
-”
-java:S1128"LRemove this unused import 'org.keycloak.admin.client.resource.UserResource'.(‘¼—ªÿÿÿÿÿ8¨®³Çò1J$bc5185b5-2b18-4d63-a100-643bbd700334
