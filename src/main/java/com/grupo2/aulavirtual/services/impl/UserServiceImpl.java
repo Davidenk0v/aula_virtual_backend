@@ -1,14 +1,19 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.RoleRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.UserService;
+import io.micrometer.common.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -24,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+
+
 
     DtoMapper dtoMapper = new DtoMapper();
 
@@ -89,41 +98,28 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
+
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
         try {
+            System.out.println(userDTO.getFirstname());
             HashMap<String, Object> usuarios = new HashMap<>();
             if (userRepository.findById(id).isPresent()) {
                 UserEntity user = userRepository.findById(id).get();
                 UserResponseDto userRespuesta = new UserResponseDto();
-                if (userDTO.getUsername() != "") {
+
+                if (!StringUtils.isBlank(userDTO.getUsername())) {
                     user.setUsername(userDTO.getUsername());
                 }
-                if (userDTO.getLastname() != "") {
+                if (!StringUtils.isBlank(userDTO.getLastname())) {
                     user.setLastname(userDTO.getLastname());
                 }
-                if (userDTO.getFirstname() != "") {
+                if (!StringUtils.isBlank(userDTO.getFirstname())) {
                     user.setFirstname(userDTO.getFirstname());
                 }
-                if (userDTO.getUrlImg() != "") {
+                if (!StringUtils.isBlank(userDTO.getUrlImg())) {
                     user.setUrlImg(userDTO.getUrlImg());
-                }
-                if (userDTO.getAddress() != null) {
-                    if (userDTO.getAddress().getCity() != "") {
-                        user.getAdress().setCity(userDTO.getAddress().getCity());
-                    }
-                    if (userDTO.getAddress().getCountry() != "") {
-                        user.getAdress().setCountry(userDTO.getAddress().getCountry());
-                    }
-                    if (userDTO.getAddress().getPostalCode() != "") {
-                        user.getAdress().setPostalCode(userDTO.getAddress().getPostalCode());
-                    }
-                    if (userDTO.getAddress().getStreet() != "") {
-                        user.getAdress().setStreet(userDTO.getAddress().getStreet());
-                    }
-                    if (userDTO.getAddress().getNumber() != "") {
-                        user.getAdress().setNumber(userDTO.getAddress().getNumber());
-                    }
                 }
                 userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);
@@ -136,9 +132,24 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
+
+    @Override
+    public ResponseEntity<?> userCoursesList(Long id) {
+        UserEntity  user = userRepository.findById(id).get();
+        List<CourseEntity> coursesList = user.getCourses();
+        if (coursesList.isEmpty()) {
+            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+        }
+        List<CourseResponseDto> userResponseDtos = coursesList.stream()
+                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
+        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
+    }
+
+
+
 
     @Override
     public ResponseEntity<?> userList() {
@@ -150,6 +161,9 @@ public class UserServiceImpl implements UserService {
                 .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
         return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
     }
+
+
+
 
     @Override
     public ResponseEntity<HashMap<String, ?>> deleteUser(Long id) {

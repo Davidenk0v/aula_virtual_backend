@@ -14,6 +14,8 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id);
 
+    ResponseEntity<?> userCoursesList(Long id);
+
     ResponseEntity<?> userList();
 
     ResponseEntity<HashMap<String, ?>> deleteUser(Long id);

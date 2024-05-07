@@ -15,4 +15,6 @@ public interface CourseService {
     ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO);
 
     ResponseEntity<HashMap<String, ?>> findCourseById(Long id);
+
+    ResponseEntity<HashMap<String, ?>> findAllByContains(String name);
 }

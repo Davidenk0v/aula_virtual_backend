@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +47,9 @@ public class CoursesServiceImpl implements CourseService {
     @Override
     public ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO) {
         try {
+            System.out.println(courseDTO.getDescription());
+            System.out.println(courseDTO.getPago());
+            System.out.println(courseDTO.getFinishDate());
             HashMap<String, UserResponseDto> response = new HashMap<>();
             UserEntity user = userRepository.findById(idUser).get();
             CourseEntity course = new CourseEntity();
@@ -74,24 +78,39 @@ public class CoursesServiceImpl implements CourseService {
     @Override
     public ResponseEntity<HashMap<String, ?>> deleteCourse(Long id) {
         try {
-            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            HashMap<String, Object> response = new HashMap<>();
             if (courseRepository.existsById(id)) {
-                CourseEntity course = courseRepository.findById(id).get();
-                courseRepository.delete(course);
-                response.put("Se ha borrado el curso ", dtoMapper.entityToResponseDto(course));
-                return ResponseEntity.status(200).body(response);
+                CourseEntity course = courseRepository.findById(id).orElse(null);
+                if (course != null) {
+                    // Eliminar las relaciones del curso con los usuarios
+                    List<UserEntity> users = course.getUser();
+                    if (users != null && !users.isEmpty()) {
+                        for (UserEntity user : users) {
+                            user.getCourses().remove(course);
+                            userRepository.save(user);
+                        }
+                    }
+
+                    // Eliminar el curso
+                    courseRepository.delete(course);
+
+                    response.put("message", "El curso y sus relaciones han sido eliminados exitosamente.");
+                    return ResponseEntity.status(200).body(response);
+                } else {
+                    response.put("error", "No se encontró el curso con ID: " + id);
+                    return ResponseEntity.status(404).body(response);
+                }
             } else {
-                HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", id);
-                return ResponseEntity.status(404).body(error);
+                response.put("error", "No se encontró el curso con ID: " + id);
+                return ResponseEntity.status(404).body(response);
             }
         } catch (Exception e) {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(500).body(usuarios);
+            HashMap<String, Object> error = new HashMap<>();
+            error.put("error", "Error al intentar eliminar el curso y sus relaciones: " + e.getMessage());
+            return ResponseEntity.status(500).body(error);
         }
-
     }
+
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
@@ -134,6 +153,26 @@ public class CoursesServiceImpl implements CourseService {
                 error.put("No ha encontrado el curso con id: ", id);
                 return ResponseEntity.status(404).body(error);
             }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    @Override
+    public ResponseEntity<HashMap<String, ?>> findAllByContains(String name) {
+        try {
+            HashMap<String, List<CourseResponseDto>> response = new HashMap<>();
+            List<CourseEntity> courseEntities = courseRepository.findByKeyword(name).get();
+            if(courseEntities.isEmpty()){
+                HashMap<String, String> errorNotFound = new HashMap<>();
+                errorNotFound.put("Ningun curso con:", name);
+                return ResponseEntity.status(500).body(errorNotFound);
+            }
+            List<CourseResponseDto> courseResponseDtos = courseEntities.stream().map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+            response.put("Cursos", courseResponseDtos);
+            return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());

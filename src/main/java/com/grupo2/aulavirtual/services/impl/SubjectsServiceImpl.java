@@ -77,6 +77,19 @@ public class SubjectsServiceImpl implements SubjectsService {
 
     }
 
+
+
+    @Override
+    public ResponseEntity<?> subjectsListByIdCourse(Long idCourse) {
+        List<SubjectsEntity> subjectsEntities = repositorySubjects.findByCourseIdCourse(idCourse).get();
+        if(subjectsEntities.isEmpty()){
+            return new ResponseEntity<>("No se encontraron temas", HttpStatus.NOT_FOUND);
+        }
+        List<SubjectsResponseDto> courseResponseDtos = subjectsEntities.stream().map(subjectEntity -> dtoMapper.entityToResponseDto(subjectEntity)).toList();
+        return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
+    }
+
+
     @Override
     public ResponseEntity<HashMap<String, ?>> updateSubject(Long id, SubjectDTO subjectDTO) {
         try {
@@ -104,6 +117,8 @@ public class SubjectsServiceImpl implements SubjectsService {
         }
 
     }
+
+
 
 
     @Override
