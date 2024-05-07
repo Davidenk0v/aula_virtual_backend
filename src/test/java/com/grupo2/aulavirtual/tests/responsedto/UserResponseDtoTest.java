@@ -1,6 +1,5 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +23,11 @@ class UserResponseDtoTest {
         userResponseDto.setIdUser(2L);
         assertEquals(2L, userResponseDto.getIdUser(), "idUser setter must be equal to 2L");
 
-        assertEquals("test@example.com", userResponseDto.getEmail(), "Email getter must be equal to \"test@example.com\"");
+        assertEquals("test@example.com", userResponseDto.getEmail(),
+                "Email getter must be equal to \"test@example.com\"");
         userResponseDto.setEmail("newemail@example.com");
-        assertEquals("newemail@example.com", userResponseDto.getEmail(), "Email setter must be equal to \"newemail@example.com\"");
+        assertEquals("newemail@example.com", userResponseDto.getEmail(),
+                "Email setter must be equal to \"newemail@example.com\"");
 
         assertEquals("Doe", userResponseDto.getLastname(), "Lastname getter must be equal to \"Doe\"");
         userResponseDto.setLastname("Smith");

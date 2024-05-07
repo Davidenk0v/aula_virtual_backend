@@ -1,6 +1,5 @@
 package com.grupo2.aulavirtual.tests.responsedto;
 
-import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import org.junit.jupiter.api.Test;
 
@@ -26,9 +25,11 @@ class SubjectsResponseDtoTest {
         subjectsResponseDto.setName("Science");
         assertEquals("Science", subjectsResponseDto.getName(), "Name setter must be equal to 'Science'");
 
-        assertEquals("Mathematics subject", subjectsResponseDto.getDescription(), "Description getter must be equal to 'Mathematics subject'");
+        assertEquals("Mathematics subject", subjectsResponseDto.getDescription(),
+                "Description getter must be equal to 'Mathematics subject'");
         subjectsResponseDto.setDescription("Science subject");
-        assertEquals("Science subject", subjectsResponseDto.getDescription(), "Description setter must be equal to 'Science subject'");
+        assertEquals("Science subject", subjectsResponseDto.getDescription(),
+                "Description setter must be equal to 'Science subject'");
 
         assertNull(subjectsResponseDto.getCourse(), "Course getter must be null");
         assertNull(subjectsResponseDto.getLessons(), "Lessons getter must be null");

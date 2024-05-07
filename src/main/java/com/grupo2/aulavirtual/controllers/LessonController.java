@@ -1,7 +1,5 @@
 package com.grupo2.aulavirtual.controllers;
 
-import java.util.HashMap;
-
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
 

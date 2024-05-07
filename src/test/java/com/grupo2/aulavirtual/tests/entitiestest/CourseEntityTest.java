@@ -1,7 +1,6 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -31,17 +30,23 @@ class CourseEntityTest {
         courseEntity.setName("Python Programming");
         assertEquals("Python Programming", courseEntity.getName(), "Name setter must be equal to 'Python Programming'");
 
-        assertEquals("Learn Java programming language", courseEntity.getDescription(), "Description getter must be equal to 'Learn Java programming language'");
+        assertEquals("Learn Java programming language", courseEntity.getDescription(),
+                "Description getter must be equal to 'Learn Java programming language'");
         courseEntity.setDescription("Learn Python programming language");
-        assertEquals("Learn Python programming language", courseEntity.getDescription(), "Description setter must be equal to 'Learn Python programming language'");
+        assertEquals("Learn Python programming language", courseEntity.getDescription(),
+                "Description setter must be equal to 'Learn Python programming language'");
 
-        assertEquals(Date.valueOf("2024-09-01"), courseEntity.getStartDate(), "StartDate getter must be equal to '2024-09-01'");
+        assertEquals(Date.valueOf("2024-09-01"), courseEntity.getStartDate(),
+                "StartDate getter must be equal to '2024-09-01'");
         courseEntity.setStartDate(Date.valueOf("2025-01-01"));
-        assertEquals(Date.valueOf("2025-01-01"), courseEntity.getStartDate(), "StartDate setter must be equal to '2025-01-01'");
+        assertEquals(Date.valueOf("2025-01-01"), courseEntity.getStartDate(),
+                "StartDate setter must be equal to '2025-01-01'");
 
-        assertEquals(Date.valueOf("2024-12-31"), courseEntity.getFinishDate(), "FinishDate getter must be equal to '2024-12-31'");
+        assertEquals(Date.valueOf("2024-12-31"), courseEntity.getFinishDate(),
+                "FinishDate getter must be equal to '2024-12-31'");
         courseEntity.setFinishDate(Date.valueOf("2025-12-31"));
-        assertEquals(Date.valueOf("2025-12-31"), courseEntity.getFinishDate(), "FinishDate setter must be equal to '2025-12-31'");
+        assertEquals(Date.valueOf("2025-12-31"), courseEntity.getFinishDate(),
+                "FinishDate setter must be equal to '2025-12-31'");
 
         assertEquals(BigDecimal.valueOf(100), courseEntity.getPago(), "Pago getter must be equal to 100");
         courseEntity.setPago(BigDecimal.valueOf(200));

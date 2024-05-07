@@ -48,11 +48,12 @@ class CoursesServiceTest {
     private UserResponseDto userResponseDto;
     private DtoMapper dtoMapper = new DtoMapper();
     private RoleEntity role;
+
     @BeforeEach
     void setUp() {
-         MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.openMocks(this);
 
-         courseDTO = CourseDTO.builder()
+        courseDTO = CourseDTO.builder()
                 .idCourse(1L) // Este campo puede variar dependiendo de cómo se use el DTO
                 .name("Curso de ejemplo")
                 .description("Descripción del curso")
@@ -61,7 +62,7 @@ class CoursesServiceTest {
                 .pago(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
                 // Añadir otras configuraciones según sea necesario
                 .build();
-         courseEntity = dtoMapper.dtoToEntity(courseDTO);
+        courseEntity = dtoMapper.dtoToEntity(courseDTO);
 
         role = RoleEntity.builder()
                 .role(RoleEnum.ADMIN)
@@ -78,8 +79,9 @@ class CoursesServiceTest {
                 .build();
         user = dtoMapper.dtoToEntity(userDTO);
 
-        userResponseDto =  dtoMapper.entityToResponseDto(user);
+        userResponseDto = dtoMapper.entityToResponseDto(user);
     }
+
     @Test
     void courseListEmpty() {
         // Configurar el comportamiento del repositorio de cursos
@@ -88,7 +90,8 @@ class CoursesServiceTest {
         // Ejecutar el método bajo prueba
         ResponseEntity<?> response = coursesService.courseList();
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.NOT_FOUND
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("No se encontraron cursos", response.getBody());
     }
@@ -110,15 +113,13 @@ class CoursesServiceTest {
         // Ejecutar el método bajo prueba
         ResponseEntity<HashMap<String, ?>> response = coursesService.postCourse(userId, courseDTO);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.CREATED
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
         assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Curso subido "));
     }
-
-
-
 
     @Test
     void updateCourse() {
@@ -160,13 +161,12 @@ class CoursesServiceTest {
 
     }
 
-
     @Test
     void idNotFound() {
         Long courseId = 2L;
         when(courseRepository.existsById(courseId)).thenReturn(false);
 
-        ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId,courseDTO);
+        ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId, courseDTO);
         ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
         ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 
@@ -181,7 +181,7 @@ class CoursesServiceTest {
         Long courseId = 1L;
         when(courseRepository.save(any())).thenThrow(new RuntimeException("Error simulado"));
         when(courseRepository.existsById(any())).thenThrow(new RuntimeException("Error simulado"));
-        ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId,courseDTO);
+        ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId, courseDTO);
         ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
         ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 

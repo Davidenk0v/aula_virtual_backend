@@ -1,8 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.entities.enums.RoleEnum;
-import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.LoginRequestDto;
 import com.grupo2.aulavirtual.payload.request.RegisterRequestDto;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
@@ -37,10 +35,8 @@ public class KeycloakServiceImpl implements KeycloakService {
     Logger logger = LoggerFactory.getLogger(KeycloakServiceImpl.class);
 
     @Autowired
-    private DtoMapper mapper;
-
-    @Autowired
     private UserRepository userRepository;
+
     /**
      * Metodo para listar todos los usuarios de Keycloak
      *
@@ -66,7 +62,6 @@ public class KeycloakServiceImpl implements KeycloakService {
         }
     }
 
-
     /**
      * Metodo para buscar un usuario por su username
      *
@@ -78,7 +73,6 @@ public class KeycloakServiceImpl implements KeycloakService {
                 .users()
                 .searchByUsername(username, true);
     }
-
 
     /**
      * Metodo para crear un usuario en keycloak
@@ -132,7 +126,6 @@ public class KeycloakServiceImpl implements KeycloakService {
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
 
-
             userRepository.save(
                     new UserEntity().builder()
                             .email(userDTO.getEmail())
@@ -140,9 +133,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                             .lastname(userDTO.getLastname())
                             .username(userDTO.getUsername())
                             .password(userDTO.getPassword())
-                            .build()
-            );
-
+                            .build());
 
             return ResponseEntity.status(201).body("User created successfully");
 
@@ -154,7 +145,6 @@ public class KeycloakServiceImpl implements KeycloakService {
             return ResponseEntity.status(500).body("Error creating user, please contact with the administrator.");
         }
     }
-
 
     /**
      * Metodo para borrar un usuario en keycloak
@@ -171,7 +161,6 @@ public class KeycloakServiceImpl implements KeycloakService {
             logger.error("Error deleting user: " + e.getMessage());
         }
     }
-
 
     /**
      * Metodo para actualizar un usuario en keycloak

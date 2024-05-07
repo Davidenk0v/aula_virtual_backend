@@ -3,7 +3,6 @@ package com.grupo2.aulavirtual.mappers;
 import java.util.List;
 
 import com.grupo2.aulavirtual.payload.request.*;
-import jakarta.persistence.Column;
 import org.modelmapper.ModelMapper;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
@@ -24,7 +23,6 @@ import org.springframework.stereotype.Component;
 public class DtoMapper {
 
     ModelMapper modelMapper = new ModelMapper();
-
 
     public CategoryEntity dtoToEntity(CategoryDTO categoryDTO) {
         return modelMapper.map(categoryDTO, CategoryEntity.class);
@@ -49,7 +47,6 @@ public class DtoMapper {
     public UserEntity dtoToEntity(UserDTO userDTO) {
         return modelMapper.map(userDTO, UserEntity.class);
     }
-
 
     public CategoryResponseDto entityToResponse(CategoryEntity categoryEntity) {
 
@@ -163,7 +160,7 @@ public class DtoMapper {
                 .firstname(userEntity.getFirstname())
                 .username(userEntity.getUsername())
                 .address(userEntity.getAddress())
-                .role(userEntity.getRole().stream().map(role->role.getRole().name()).toList())
+                .role(userEntity.getRole().stream().map(role -> role.getRole().name()).toList())
                 .build();
 
         if (userEntity.getCourses() != null) {

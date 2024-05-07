@@ -3,7 +3,6 @@ package com.grupo2.aulavirtual.tests.services;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.SubjectDTO;
-import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.SubjectsRepository;
 import com.grupo2.aulavirtual.services.SubjectsService;
@@ -63,7 +62,8 @@ class SubjectsServiceTest {
         // Ejecutar el método bajo prueba
         ResponseEntity<?> response = subjectsService.subjectsList();
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.NOT_FOUND
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("No se encontraron temas", response.getBody());
     }
@@ -79,7 +79,8 @@ class SubjectsServiceTest {
         // Ejecutar el método bajo prueba
         ResponseEntity<HashMap<String, ?>> response = subjectsService.postSubject(1L, subjectDTO);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.CREATED
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
@@ -144,7 +145,8 @@ class SubjectsServiceTest {
         ResponseEntity<HashMap<String, ?>> responseFind = subjectsService.findSubjectById(2L);
         ResponseEntity<HashMap<String, ?>> responseDelete = subjectsService.deleteSubject(2L);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.NOT_FOUND
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, responseUpdate.getStatusCode());
         assertEquals(HttpStatus.NOT_FOUND, responseFind.getStatusCode());
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
@@ -166,7 +168,8 @@ class SubjectsServiceTest {
         ResponseEntity<HashMap<String, ?>> responseFind = subjectsService.findSubjectById(1L);
         ResponseEntity<HashMap<String, ?>> responseDelete = subjectsService.deleteSubject(1L);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.INTERNAL_SERVER_ERROR
+        // Verificar que se recibe una respuesta con el código de estado
+        // HttpStatus.INTERNAL_SERVER_ERROR
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseUpdate.getStatusCode());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseFind.getStatusCode());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseDelete.getStatusCode());

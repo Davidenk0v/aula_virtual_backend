@@ -6,7 +6,6 @@ import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
-import com.grupo2.aulavirtual.repositories.RoleRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.UserService;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,9 +27,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
 
@@ -161,11 +157,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<?> userCoursesList(Long id) {
-        UserEntity user = userRepository.findById(id).get();
-        List<CourseEntity> coursesList = user.getCourses();
-        if (coursesList.isEmpty()) {
+        Optional<UserEntity> userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
         }
+        UserEntity user = userOptional.get();
+        List<CourseEntity> coursesList = user.getCourses();
         List<CourseResponseDto> userResponseDtos = coursesList.stream()
                 .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
         return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);

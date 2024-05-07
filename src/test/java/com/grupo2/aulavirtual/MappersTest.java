@@ -10,7 +10,7 @@ import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
 
-public class MappersTest {
+class MappersTest {
 
     private ModelMapper mapper;
 
@@ -23,7 +23,7 @@ public class MappersTest {
     }
 
     @Test
-    public void whenMapGameWithExactMatch_thenConvertsToDTO() {
+    void whenMapGameWithExactMatch_thenConvertsToDTO() {
         // when similar source object is provided
         LessonsEntity lesson = new LessonsEntity(1L, "Game 1", "Game 1 description", "Game 1 content", null);
         LessonsDTO lessonsDTO = this.mapper.map(lesson, LessonsDTO.class);
@@ -33,6 +33,5 @@ public class MappersTest {
         assertEquals(lesson.getName(), lessonsDTO.getName());
         System.out.println(lessonsDTO.toString());
     }
-    
 
 }

@@ -3,14 +3,12 @@ package com.grupo2.aulavirtual.services.impl;
 import com.grupo2.aulavirtual.payload.request.LoginRequestDto;
 import com.grupo2.aulavirtual.services.LoginService;
 import com.grupo2.aulavirtual.util.KeycloakProvider;
-import lombok.extern.slf4j.Slf4j;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.representations.AccessTokenResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 public class LoginServiceImpl implements LoginService {
     @Override
     public ResponseEntity<?> loginUser(LoginRequestDto loginRequest) {

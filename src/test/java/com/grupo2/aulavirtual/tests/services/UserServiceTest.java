@@ -14,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -34,12 +33,11 @@ class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
-
-
     private RoleEntity role;
     private UserEntity user;
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -48,8 +46,6 @@ class UserServiceTest {
         role = RoleEntity.builder()
                 .role(RoleEnum.ADMIN)
                 .build();
-
-
 
         userDTO = UserDTO.builder()
                 .idUser(1L)
@@ -62,7 +58,7 @@ class UserServiceTest {
                 .build();
         user = dtoMapper.dtoToEntity(userDTO);
 
-        userResponseDto =  dtoMapper.entityToResponseDto(user);
+        userResponseDto = dtoMapper.entityToResponseDto(user);
     }
 
     @Test
@@ -81,13 +77,15 @@ class UserServiceTest {
         // Configurar un ID que no exista en el repositorio
         Long id = 2L;
 
-        // Configurar el comportamiento del repositorio para que no exista ningún usuario con el ID dado
+        // Configurar el comportamiento del repositorio para que no exista ningún
+        // usuario con el ID dado
         when(userRepository.existsById(id)).thenReturn(false);
 
         // Ejecutar el método bajo prueba
         ResponseEntity<HashMap<String, ?>> response = userService.deleteUser(id);
 
-        // Verificar que se devuelva el mensaje de error apropiado y el código de estado HTTP 500
+        // Verificar que se devuelva el mensaje de error apropiado y el código de estado
+        // HTTP 500
         assertTrue(Objects.requireNonNull(response.getBody()).containsKey("No se encuntra este usuario con ese id"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
@@ -97,17 +95,18 @@ class UserServiceTest {
         // Configurar un ID válido
         Long id = 1L;
 
-        // Configurar el comportamiento del repositorio para lanzar una excepción simulada
+        // Configurar el comportamiento del repositorio para lanzar una excepción
+        // simulada
         when(userRepository.existsById(id)).thenThrow(new RuntimeException("Error simulado"));
 
         // Ejecutar el método bajo prueba
         ResponseEntity<HashMap<String, ?>> response = userService.deleteUser(id);
 
-        // Verificar que se devuelva el mensaje de error apropiado y el código de estado HTTP 500
+        // Verificar que se devuelva el mensaje de error apropiado y el código de estado
+        // HTTP 500
         assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
-
 
     @Test
     void addUserError() {
@@ -178,7 +177,8 @@ class UserServiceTest {
     void userTestError() {
         Long userId = 1L;
         String userEmail = "juan@gmail.com";
-        // Configura el comportamiento del repositorio para lanzar una excepción simulada
+        // Configura el comportamiento del repositorio para lanzar una excepción
+        // simulada
         when(userRepository.findById(userId)).thenThrow(new RuntimeException("Error simulado"));
         when(userRepository.findByEmail(userEmail)).thenThrow(new RuntimeException("Error simulado"));
         // Ejecuta el método bajo prueba
@@ -191,8 +191,6 @@ class UserServiceTest {
         assertEquals("Error simulado", response.getBody().get("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
-
-
 
     @Test
     void updateUser() {
@@ -211,7 +209,7 @@ class UserServiceTest {
     @Test
     void userList() {
         when(userRepository.findAll()).thenReturn(Arrays.asList(user));
-        assertNotNull(userService.userList().getBody(),"No es nulo");
+        assertNotNull(userService.userList().getBody(), "No es nulo");
     }
 
     @Test
