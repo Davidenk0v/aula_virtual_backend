@@ -5,6 +5,7 @@ import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.RoleRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
@@ -39,7 +40,8 @@ public class UserServiceImpl implements UserService {
         JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
 
         String email = String.valueOf(token.getTokenAttributes().get("email"));
-        return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
 
     }
 
@@ -121,6 +123,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
         try {
+            System.out.println(userDTO.getFirstname());
             HashMap<String, Object> usuarios = new HashMap<>();
             if (userRepository.findById(id).isPresent()) {
                 UserEntity user = userRepository.findById(id).get();
@@ -152,8 +155,20 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put("Error", e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
+    }
+
+    @Override
+    public ResponseEntity<?> userCoursesList(Long id) {
+        UserEntity user = userRepository.findById(id).get();
+        List<CourseEntity> coursesList = user.getCourses();
+        if (coursesList.isEmpty()) {
+            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+        }
+        List<CourseResponseDto> userResponseDtos = coursesList.stream()
+                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
+        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
     }
 
     @Override

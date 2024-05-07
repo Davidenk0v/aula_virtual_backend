@@ -41,4 +41,9 @@ public class UserController {
     public ResponseEntity<?> deleteUserById(@PathVariable Long id) {
         return userServiceImpl.deleteUser(id);
     }
+
+
+
+    @GetMapping("/listaTeacher/{id}")
+    public ResponseEntity<?> getListaTeacherByID(@PathVariable Long id) {return  userServiceImpl.userCoursesList(id);}
 }

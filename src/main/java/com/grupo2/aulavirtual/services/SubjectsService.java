@@ -12,6 +12,8 @@ public interface SubjectsService {
 
     ResponseEntity<HashMap<String, ?>> deleteSubject(Long id);
 
+    ResponseEntity<?> subjectsListByIdCourse(Long idCourse);
+
     ResponseEntity<HashMap<String, ?>> updateSubject(Long id, SubjectDTO subjectDTO);
 
     ResponseEntity<HashMap<String, ?>> findSubjectById(Long id);
