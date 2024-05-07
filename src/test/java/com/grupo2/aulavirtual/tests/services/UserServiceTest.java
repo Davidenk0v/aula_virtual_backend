@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,7 +59,6 @@ class UserServiceTest {
                 .username("johndoe")
                 .address(null)
                 .courses(null)
-                .role(role)
                 .build();
         user = dtoMapper.dtoToEntity(userDTO);
 
@@ -73,7 +73,7 @@ class UserServiceTest {
         // Ejecuta el método y verifica el resultado
         ResponseEntity<HashMap<String, Object>> response = userService.addUser(userDTO);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(userDTO, response.getBody().get("Guardado"));
+        assertEquals(userDTO, Objects.requireNonNull(response.getBody()).get("Guardado"));
     }
 
     @Test
@@ -88,7 +88,7 @@ class UserServiceTest {
         ResponseEntity<HashMap<String, ?>> response = userService.deleteUser(id);
 
         // Verificar que se devuelva el mensaje de error apropiado y el código de estado HTTP 500
-        assertTrue(response.getBody().containsKey("No se encuntra este usuario con ese id"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("No se encuntra este usuario con ese id"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -104,7 +104,7 @@ class UserServiceTest {
         ResponseEntity<HashMap<String, ?>> response = userService.deleteUser(id);
 
         // Verificar que se devuelva el mensaje de error apropiado y el código de estado HTTP 500
-        assertTrue(response.getBody().containsKey("Error"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -115,7 +115,7 @@ class UserServiceTest {
 
         ResponseEntity<HashMap<String, Object>> response = userService.addUser(userDTO);
 
-        assertTrue(response.getBody().containsKey("Error"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
         assertEquals(userDTO, response.getBody().get("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
@@ -128,7 +128,7 @@ class UserServiceTest {
 
         ResponseEntity<HashMap<String, Object>> response = userService.findUserByEmail(email);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(userResponseDto.toString(), response.getBody().get("Guardado").toString());
+        assertEquals(userResponseDto.toString(), Objects.requireNonNull(response.getBody()).get("Guardado").toString());
     }
 
     @Test
@@ -142,7 +142,7 @@ class UserServiceTest {
         ResponseEntity<HashMap<String, Object>> response = userService.findUserByEmail(email);
 
         // Verifica que se devuelva el mensaje de error apropiado
-        assertTrue(response.getBody().containsKey("Error"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
         assertEquals("No se encuentra este usuario con ese id", response.getBody().get("Error"));
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }

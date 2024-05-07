@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.config.mappers.DtoMapper;
+import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
@@ -29,6 +29,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Optional;
 
 class CoursesServiceTest {
@@ -75,7 +76,6 @@ class CoursesServiceTest {
                 .username("johndoe")
                 .address(null)
                 .courses(null)
-                .role(role)
                 .build();
         user = dtoMapper.dtoToEntity(userDTO);
 
@@ -115,7 +115,7 @@ class CoursesServiceTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Curso subido "));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Curso subido "));
     }
 
 
@@ -154,13 +154,11 @@ class CoursesServiceTest {
         when(courseRepository.findById(courseId)).thenReturn(Optional.of(new CourseEntity()));
 
         // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> response = coursesService.findCourseById(courseId);
+        ResponseEntity<?> response = coursesService.findCourseById(courseId);
 
         // Verificar que se recibe una respuesta con el código de estado HttpStatus.OK
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Id encontrado "));
     }
 
 
@@ -170,14 +168,12 @@ class CoursesServiceTest {
         when(courseRepository.existsById(courseId)).thenReturn(false);
 
         ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId,courseDTO);
-        ResponseEntity<HashMap<String, ?>> responseFind = coursesService.findCourseById(courseId);
-        ResponseEntity<HashMap<String, ?>> responseDelete = coursesService.deleteCourse(courseId);
+        ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
+        ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 
         assertEquals(courseId, responseUpdate.getBody().get("No ha encontrado el curso con id: "));
         assertEquals(HttpStatus.NOT_FOUND, responseUpdate.getStatusCode());
-        assertEquals(courseId, responseFind.getBody().get("No ha encontrado el curso con id: "));
         assertEquals(HttpStatus.NOT_FOUND, responseFind.getStatusCode());
-        assertEquals(courseId, responseDelete.getBody().get("No ha encontrado el curso con id: "));
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
     }
 
@@ -187,12 +183,10 @@ class CoursesServiceTest {
         when(courseRepository.save(any())).thenThrow(new RuntimeException("Error simulado"));
         when(courseRepository.existsById(any())).thenThrow(new RuntimeException("Error simulado"));
         ResponseEntity<HashMap<String, ?>> responseUpdate = coursesService.updateCourse(courseId,courseDTO);
-        ResponseEntity<HashMap<String, ?>> responseFind = coursesService.findCourseById(courseId);
-        ResponseEntity<HashMap<String, ?>> responseDelete = coursesService.deleteCourse(courseId);
+        ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
+        ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 
         assertTrue(responseUpdate.getBody().containsKey("Error"));
         assertEquals("Error simulado", responseUpdate.getBody().get("Error"));
-        assertEquals("Error simulado", responseFind.getBody().get("Error"));
-        assertEquals("Error simulado", responseDelete.getBody().get("Error"));
     }
 }

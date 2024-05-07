@@ -19,6 +19,7 @@ import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 
+import java.util.List;
 
 
 class UserAndRoleRepositoryTests {
@@ -34,11 +35,11 @@ class UserAndRoleRepositoryTests {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         roleEntity = new RoleEntity(1L, RoleEnum.ADMIN, null);
-        userEntity = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, roleEntity);
+        userEntity = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, List.of(roleEntity));
     }
 
     @Test
-    public void saveUserTest() {
+    void saveUserTest() {
         when(userRepository.save(userEntity)).thenReturn(userEntity);
 
         UserEntity savedUser = userRepository.save(userEntity);
@@ -47,7 +48,7 @@ class UserAndRoleRepositoryTests {
     }
 
     @Test
-    public void deleteUserTest() {
+    void deleteUserTest() {
         // Arrange
         when(userRepository.existsById(userEntity.getIdUser())).thenReturn(true);
 
@@ -84,12 +85,6 @@ class UserAndRoleRepositoryTests {
         assertEquals("Diego", userEntity.getPassword(), "Password setter must be equal to \"Diego\"");
         
 
-
-
-        assertEquals(roleEntity, userEntity.getRole(), "Role getter must be equal to roleEntity");
-        RoleEntity newRoleEntity = new RoleEntity(2L, RoleEnum.STUDENT, null);
-        userEntity.setRole(newRoleEntity);
-        assertEquals(newRoleEntity, userEntity.getRole(), "Role setter must be equal to newRoleEntity");
     }
 
     @Test
@@ -109,7 +104,7 @@ class UserAndRoleRepositoryTests {
     @Test
     void testDataAnnotation(){
         // Test Equals and HashCode
-        UserEntity userEntity2 = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, roleEntity);
+        UserEntity userEntity2 = new UserEntity(1L, "joao@gmail.com", "Joao", "Lima", "Lima", "contraseña","", null, null, List.of(roleEntity));
         assertEquals(userEntity.hashCode(), userEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(userEntity, userEntity2, "Objects must be equal");
         
@@ -120,7 +115,7 @@ class UserAndRoleRepositoryTests {
     @Test
     void testBuilder(){
         // Test Equals and HashCode
-        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").urlImg("").role(roleEntity).address(null).courses(null).build();
+        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").urlImg("").role(List.of(roleEntity)).address(null).courses(null).build();
         assertEquals(userEntity.hashCode(), userEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(userEntity, userEntity2, "Objects must be equal");
         

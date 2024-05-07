@@ -132,17 +132,16 @@ public class KeycloakServiceImpl implements KeycloakService {
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
 
-            UserEntity userEntity = new UserEntity();
 
-                    userEntity.builder()
-                    .email(userDTO.getEmail())
-                    .firstname(userDTO.getFirstname())
-                    .lastname(userDTO.getLastname())
-                    .username(userDTO.getUsername())
-                    .password(userDTO.getPassword())
-                    .build();
-
-            userRepository.save(userEntity);
+            userRepository.save(
+                    new UserEntity().builder()
+                            .email(userDTO.getEmail())
+                            .firstname(userDTO.getFirstname())
+                            .lastname(userDTO.getLastname())
+                            .username(userDTO.getUsername())
+                            .password(userDTO.getPassword())
+                            .build()
+            );
 
 
             return ResponseEntity.status(201).body("User created successfully");

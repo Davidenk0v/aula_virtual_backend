@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -114,7 +115,7 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha borrado el tema "));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Se ha borrado el tema "));
     }
 
     @Test

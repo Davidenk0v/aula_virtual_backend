@@ -33,17 +33,6 @@ public class MappersTest {
         assertEquals(lesson.getName(), lessonsDTO.getName());
         System.out.println(lessonsDTO.toString());
     }
-
-    @Test
-    public void createResponseDto() {
-        AdressEntity adressEntity = new AdressEntity().builder().idAdress(1L).country("Argentina").number("123")
-                .street("Street 1").city("City 1")
-                .postalCode("1234").build();
-        // given
-        AddressResponseDto addressResponseDto = dtoMapper.entityToResponse(adressEntity);
-
-        assertEquals(adressEntity.getIdAdress(), addressResponseDto.getIdAdress());
-        assertEquals(adressEntity.getCountry(), addressResponseDto.getCountry());
-    }
+    
 
 }

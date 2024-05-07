@@ -31,7 +31,7 @@ public class UserDTO {
 
     private List<CourseEntity> courses;
 
-    private List<RoleEntity> role;
+    private List<String> role;
 
     private String urlImg;
 }

@@ -1,16 +1,20 @@
 
 Ž
-java:S1192`"FDefine a constant instead of duplicating this literal "Error" 6 times.(Ñé™…øÿÿÿÿ8ü‚ºðó1J$db6addc7-79c5-4874-a2dc-82bcc37f11b1
+java:S1192["FDefine a constant instead of duplicating this literal "Error" 6 times.(Ñé™…øÿÿÿÿ8ü‚ºðó1J$9f671805-84aa-4a0a-91f4-787c6ec3e2fb
 ‘
-java:S1192L"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8Žƒºðó1J$64885b3a-9b6a-40ad-ab06-381407f61ba0
+java:S1192G"IDefine a constant instead of duplicating this literal "Guardado" 4 times.(­Õ¹ðýÿÿÿÿ8Žƒºðó1J$729dd330-5d00-4488-9cf6-6fcb92505caf
 “
-java:S3655ƒ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98£¡èçô1J$adbb20d4-18d9-4867-88e3-fc90f83d353a
-“
-java:S3655["PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8§œºðó1J$32a19448-0101-4634-8a23-b543dc7a0e9a
+java:S3655V"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(©ä‘ß8§œºðó1J$234f4f3c-dd07-4362-9019-24f16ec79011
 ˜
-java:S3655o"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8§œºðó1J$3d0b9758-1900-43a7-b069-e5315af3f908
+java:S3655j"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8§œºðó1J$0c7c4a5b-e46c-4edd-9668-6d009c46ad13
+’
+java:S3655~"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÃ¹98£¡èçô1J$20eac2d3-bc02-4577-adb3-e81c03b5bda9
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$bb1d1ee2-716d-4894-a91d-484fc0f8a451
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$ba0e0277-13c4-4bc4-9f2f-b4b5fddf7980
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$5ad67d96-2155-4bd4-93e2-7b170f91d74b
-m	java:S106M"+Replace this use of System.out by a logger.(þŒ¹Ø8Ãœºðó1J$cb7be753-b7a6-44bf-a465-34f7f80e3f6c
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄÞ8˜‹ºðó1J$e2329eea-bc50-465a-96ab-710f8e9940f8
+m	java:S106H"+Replace this use of System.out by a logger.(þŒ¹Ø8Ãœºðó1J$db6b3300-e656-4815-9d28-b845ba782fe5
+Š
+java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.entities.RoleEntity'.(Ãõí®8·îÁ—õ1J$249403b1-a04f-4152-9c9f-a6504bc9986b
+“
+java:S1128"KRemove this unused import 'com.grupo2.aulavirtual.entities.enums.RoleEnum'.(ö¨ù–øÿÿÿÿ8·îÁ—õ1J$2759c33a-316f-4ff4-9577-26e9975baa93

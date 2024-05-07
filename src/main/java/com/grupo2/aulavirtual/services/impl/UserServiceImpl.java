@@ -64,11 +64,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
-            if (userDTO.getRole() == null) {
-                RoleEntity role = new RoleEntity(1L, RoleEnum.STUDENT, null);
-                roleRepository.save(role);
-                userDTO.getRole().add(role);
-            }
 
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
