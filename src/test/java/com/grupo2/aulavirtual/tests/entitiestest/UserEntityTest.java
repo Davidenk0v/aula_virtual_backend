@@ -16,7 +16,7 @@ class UserEntityTest {
                 .firstname("John")
                 .username("johndoe")
                 .password("password")
-                .adress(null)
+                .address(null)
                 .courses(null)
                 .role(null)
                 .build();

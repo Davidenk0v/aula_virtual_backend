@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.entities.AdressEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
-import com.grupo2.aulavirtual.payload.response.AddressResponseDto;
 
 public class MappersTest {
 

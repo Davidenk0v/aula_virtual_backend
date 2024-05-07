@@ -9,9 +9,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.grupo2.aulavirtual.entities.AdressEntity;
-import com.grupo2.aulavirtual.repositories.AddressRepository;
-
 
 @DataJpaTest
 class AdressRepositoryTests {

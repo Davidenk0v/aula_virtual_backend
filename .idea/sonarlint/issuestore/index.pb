@@ -1,10 +1,6 @@
 
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-w
-Gsrc/main/java/com/grupo2/aulavirtual/Controllers/AddressController.java,6\e\6eb5ee4a84ff836f53200f54235f46eaa3b0795e
-w
-Gsrc/main/java/com/grupo2/aulavirtual/controllers/AddressController.java,d\1\d10e26ad8741e0b049cfb42aa5fe538e0c3c704c
 t
 Dsrc/main/java/com/grupo2/aulavirtual/controllers/UserController.java,1\b\1baacdccbc63d1a6c330169ccde907e83b068d8f
 n
@@ -23,8 +19,6 @@ w
 Gsrc/main/java/com/grupo2/aulavirtual/repositories/CourseRepository.java,d\2\d25bea00e4fbb90b1fc0a18438b8090ab8d676d8
 y
 Isrc/main/java/com/grupo2/aulavirtual/repositories/CategoryRepository.java,8\7\8793a2f3d98ac4eeaac321a6e38c24b5ee3997a7
-x
-Hsrc/main/java/com/grupo2/aulavirtual/repositories/AddressRepository.java,1\e\1e0b555823509b2f29e2de8418fd173790b0131c
 u
 Esrc/main/java/com/grupo2/aulavirtual/repositories/UserRepository.java,3\a\3af83d1058126ed08d95a8d615c4f6fa6db308e7
 y
@@ -33,8 +27,6 @@ u
 Esrc/main/java/com/grupo2/aulavirtual/repositories/RoleRepository.java,8\8\88402fdb61ee5509c64280f4f60ed777184d5a56
 ~
 Nsrc/main/java/com/grupo2/aulavirtual/payload/response/CategoryResponseDto.java,f\e\fe8c59bbd5877d64acb5b71062293618a33fa58e
-}
-Msrc/main/java/com/grupo2/aulavirtual/payload/response/AddressResponseDto.java,f\f\ff51060392b6186a628276415353712dba05419a
 ~
 Nsrc/main/java/com/grupo2/aulavirtual/payload/response/SubjectsResponseDto.java,d\4\d45d27613bdde425c1a8517be595210217dc7ee3
 z
@@ -65,8 +57,6 @@ t
 Dsrc/main/java/com/grupo2/aulavirtual/payload/request/LessonsDTO.java,b\4\b4a6d274fe5a1118b93a51ebf0735869f66bf7ef
 q
 Asrc/main/java/com/grupo2/aulavirtual/payload/request/RoleDTO.java,e\0\e00abe739197dddc96d89d167775b788177d8e51
-t
-Dsrc/main/java/com/grupo2/aulavirtual/payload/request/AddressDTO.java,f\e\fe839731f14f09d8f550fc0852fd3697dde09065
 q
 Asrc/main/java/com/grupo2/aulavirtual/payload/request/UserDTO.java,7\4\744807fca331a0dc3c8a3398c9957a08d6fa3caa
 s
@@ -91,8 +81,6 @@ o
 ?src/main/java/com/grupo2/aulavirtual/entities/CourseEntity.java,3\c\3cae346a69dfcf29a74aa63f563afb32b6235f8c
 w
 Gsrc/main/java/com/grupo2/aulavirtual/controllers/SubjectController.java,a\0\a01aa166d50e98e56f9a968f69a58a8859626efe
-o
-?src/main/java/com/grupo2/aulavirtual/entities/AdressEntity.java,5\7\578f5748a28c4ad3d903abcf31b98d4b2ead329d
 t
 Dsrc/main/java/com/grupo2/aulavirtual/controllers/RoleController.java,c\7\c7cbadfbc58dfd92bfebc4f2d2e82531cf63dec1
 v
@@ -103,8 +91,6 @@ v
 Fsrc/main/java/com/grupo2/aulavirtual/controllers/CourseController.java,3\3\33bd2b2117520c56134d639b64cd1ace9dc0b994
 m
 =src/main/java/com/grupo2/aulavirtual/entities/RoleEntity.java,0\2\023d81c9fbbf41e9c88dfc0ca058814bec7bd066
-y
-Isrc/main/java/com/grupo2/aulavirtual/controllers/KeyCloackController.java,f\d\fdcd77bd1d5cd3d186a32552f501d82697adaff5
 k
 ;src/main/java/com/grupo2/aulavirtual/mappers/DtoMapper.java,3\e\3eaeaedef1d136946ad1071055f9ff74e6b95983
 p
@@ -113,14 +99,6 @@ p
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 {
 Ksrc/main/java/com/grupo2/aulavirtual/config/JwtAuthenticationConverter.java,c\b\cb60f5737487f8b61eddb8ce08a8a8f5fc2b4f8e
-p
-@src/main/java/com/grupo2/aulavirtual/util/KeycloackProvider.java,4\0\40d398daea9df69127b126c76cae870a3c270ea0
-s
-Csrc/main/java/com/grupo2/aulavirtual/services/KeycloackService.java,0\4\04cdd5b1b4e4e32d136470d95a16c750ed91af42
-|
-Lsrc/main/java/com/grupo2/aulavirtual/payload/keycloack/UserDtoKeycloack.java,d\1\d17f1205ed22d715cec963c0f93f2094e49765f9
-|
-Lsrc/main/java/com/grupo2/aulavirtual/services/impl/KeycloackServiceImpl.java,d\4\d404c81d4435e0fcba1810d4045106f98c42e47f
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -130,12 +108,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
-q
-Asrc/main/java/com/grupo2/aulavirtual/security/SecurityConfig.java,d\9\d9cb56b5e2ff03413cb79a3cb14cbb4ddfe6b8de
-t
-Dsrc/main/java/com/grupo2/aulavirtual/security/JwtUserSyncFilter.java,4\e\4e49b608addd33be6fd859aff6ab8101728bc120
-s
-Csrc/main/java/com/grupo2/aulavirtual/controllers/WebController.java,6\f\6f254f27dccb4df196931abd579f8a05195072d9
 }
 Msrc/test/java/com/grupo2/aulavirtual/tests/entitiestest/AdressEntityTest.java,f\5\f547eb1936dfe3534d1599144567272e97581642
 {
@@ -194,3 +166,33 @@ Qsrc/test/java/com/grupo2/aulavirtual/tests/responsedto/CourseResponseDtoTest.ja
 Rsrc/test/java/com/grupo2/aulavirtual/tests/responsedto/LessonsResponseDtoTest.java,7\3\7378bc8484bcb5cc8de73a070ec45aa4961f30aa
 
 Osrc/test/java/com/grupo2/aulavirtual/tests/responsedto/RoleResponseDtoTest.java,5\3\539209441f64726c0d8428d45dd4935b881065bc
+o
+?src/main/java/com/grupo2/aulavirtual/config/SecurityConfig.java,1\4\14cccfc62d546824d90a31da5f79a664feed815d
+r
+Bsrc/main/java/com/grupo2/aulavirtual/jwt/KeycloakJwtConverter.java,4\6\46dc07f57ea22b66692e7ee56b6e6d262e3fb563
+i
+9src/main/java/com/grupo2/aulavirtual/jwt/KeycloakJwt.java,4\6\464374cb8cf7fd833aab201ab94294706f237c62
+t
+Dsrc/main/java/com/grupo2/aulavirtual/controllers/TestController.java,0\4\043e8fadee836f7eabd288c00bd87dc606bef8b8
+o
+?src/main/java/com/grupo2/aulavirtual/util/KeycloakProvider.java,4\8\48aeb59ccb9086fe75aba723590daa0b6fcfbd90
+r
+Bsrc/main/java/com/grupo2/aulavirtual/services/KeycloakService.java,d\7\d7796e5954c8e074bc9d5f1556a6c2aecb06dad0
+{
+Ksrc/main/java/com/grupo2/aulavirtual/services/impl/KeycloakServiceImpl.java,b\4\b4fab5c1c8649d3ff6fa9d0942df1d8be0920537
+x
+Hsrc/main/java/com/grupo2/aulavirtual/controllers/KeycloakController.java,4\f\4f27b75977e1f598962160f1c01e9a63463297c4
+y
+Isrc/main/java/com/grupo2/aulavirtual/payload/request/LoginRequestDto.java,2\b\2b79ef0ceccb65c96ab5bed640d03e4be52d868d
+t
+Dsrc/main/java/com/grupo2/aulavirtual/services/impl/LoginService.java,0\6\069be223e7d0992fda1feaf11a328fda92945e89
+p
+@src/main/java/com/grupo2/aulavirtual/services/ILoginService.java,1\8\189abe63c9f6a8758be8ff25595bd768fd3668c6
+t
+Dsrc/main/java/com/grupo2/aulavirtual/controllers/AuthController.java,e\6\e619a00529be3b7c90240c15dabaf426655c24fc
+x
+Hsrc/main/java/com/grupo2/aulavirtual/services/impl/LoginServiceImpl.java,1\8\18e87c432c12c0a17804df56ce3b8131f9197956
+o
+?src/main/java/com/grupo2/aulavirtual/services/LoginService.java,2\5\256bb7589e34763b86106f2251ca67204db7797e
+|
+Lsrc/main/java/com/grupo2/aulavirtual/payload/request/RegisterRequestDto.java,0\0\009e48e730cfc01280e8370562eed3b1d684a164

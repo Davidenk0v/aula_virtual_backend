@@ -120,7 +120,7 @@ class UserAndRoleRepositoryTests {
     @Test
     void testBuilder(){
         // Test Equals and HashCode
-        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").urlImg("").role(roleEntity).adress(null).courses(null).build();
+        UserEntity userEntity2 = UserEntity.builder().idUser(1L).email("joao@gmail.com").firstname("Lima").lastname("Joao").username("Lima").password("contraseña").urlImg("").role(roleEntity).address(null).courses(null).build();
         assertEquals(userEntity.hashCode(), userEntity2.hashCode(), "Hashcode must be equal");
         assertEquals(userEntity, userEntity2, "Objects must be equal");
         

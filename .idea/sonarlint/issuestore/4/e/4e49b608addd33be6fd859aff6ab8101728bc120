@@ -1,27 +1,0 @@
-
-…
-java:S2094"BRemove this empty class, write its code or make it an "interface".(“ø½8íæò¡ó1J$70f69b6b-c8ab-4a43-a209-01ef601650b1
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(­Âîøùÿÿÿÿ8Ö¡ò¡ó1J$f4ab7d17-bcca-47e6-88c2-7fdbf5cd6f78
-
-java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.entities.UserEntity'.(°øÿÿÿÿ8õæò¡ó1J$db0bef74-c731-48ec-b2ff-870a65653c38
-‹
-java:S1128"HRemove this unused import 'com.grupo2.aulavirtual.services.UserService'.(ÛËŒŠ8õæò¡ó1J$350b07b7-64af-405d-94f5-11b970154c2a
-€
-java:S1128"8Remove this unused import 'jakarta.servlet.FilterChain'.(·’èÈøÿÿÿÿ8õæò¡ó1J$e030189c-882d-4c6d-a7ce-96286f82179b
-€
-java:S1128"=Remove this unused import 'jakarta.servlet.ServletException'.(®Â­Ç8öæò¡ó1J$a3402334-9f9d-48cb-b901-78eb356077df
-†
-java:S1128"DRemove this unused import 'jakarta.servlet.http.HttpServletRequest'.(õ38öæò¡ó1J$efc5503f-c3aa-4c27-bcd5-93f1558c5bc0
-
-java:S1128	"ERemove this unused import 'jakarta.servlet.http.HttpServletResponse'.(ÂÓÕÇÿÿÿÿÿ8÷æò¡ó1J$40903612-5e12-46af-a428-bb9fb1d97753
-›
-java:S1128
-"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8÷æò¡ó1J$8848a59f-7ca9-43bc-a14e-344266884894
-Ÿ
-java:S1128"\Remove this unused import 'org.springframework.security.core.context.SecurityContextHolder'.(ŒÄæë8÷æò¡ó1J$e9fcf839-554d-4797-8538-4e15192f2625
-¹
-java:S1128"vRemove this unused import 'org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken'.(˜Ùò¹8øæò¡ó1J$c90295fe-5400-4c48-a1af-344b5b559ba8
-˜
-java:S1128"PRemove this unused import 'org.springframework.web.filter.OncePerRequestFilter'.(£®–Øÿÿÿÿÿ8øæò¡ó1J$fc68541d-b979-4d56-8af2-ec0ae51bf8f8
-x
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8øæò¡ó1J$bd5f3730-6dc1-494c-929a-dd3ed51c21a1

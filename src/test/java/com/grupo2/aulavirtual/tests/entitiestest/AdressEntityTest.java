@@ -1,7 +1,5 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.entities.AdressEntity;
-import com.grupo2.aulavirtual.payload.request.AddressDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,9 @@
 package com.grupo2.aulavirtual.entities;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,26 +38,22 @@ public class UserEntity implements UserDetails {
     private String password;
 
     private String urlImg;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress", referencedColumnName = "idAdress")
-    AdressEntity adress;
+
+    private String address;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_course", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUser"), inverseJoinColumns = @JoinColumn(name = "id_course", referencedColumnName = "idCourse"))
     private List<CourseEntity> courses;
 
-    @ManyToOne
-    @JoinColumn(name = "idRole", referencedColumnName = "idRole")
-    @JsonIgnore
-    private RoleEntity role;
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUser"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
+    private List<RoleEntity> role;
 
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.getRole().toString()));
+        return List.of(new SimpleGrantedAuthority(getRole().toString()));
     }
 
     @Override

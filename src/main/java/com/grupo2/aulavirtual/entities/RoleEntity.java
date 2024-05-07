@@ -24,8 +24,7 @@ public class RoleEntity {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToMany(mappedBy = "role")
     private List<UserEntity> user;
 
 }

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -38,9 +39,8 @@ public class UserServiceImpl implements UserService {
         JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
 
         String email = String.valueOf(token.getTokenAttributes().get("email"));
-        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
+        return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
 
-        return user;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
             if (userDTO.getRole() == null) {
                 RoleEntity role = new RoleEntity(1L, RoleEnum.STUDENT, null);
                 roleRepository.save(role);
-                userDTO.setRole(role);
+                userDTO.getRole().add(role);
             }
 
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -129,35 +129,22 @@ public class UserServiceImpl implements UserService {
             HashMap<String, Object> usuarios = new HashMap<>();
             if (userRepository.findById(id).isPresent()) {
                 UserEntity user = userRepository.findById(id).get();
-                UserResponseDto userRespuesta = new UserResponseDto();
-                if (userDTO.getUsername() != "") {
+                new UserResponseDto();
+                UserResponseDto userRespuesta;
+                if (!Objects.equals(userDTO.getUsername(), "")) {
                     user.setUsername(userDTO.getUsername());
                 }
-                if (userDTO.getLastname() != "") {
+                if (!Objects.equals(userDTO.getLastname(), "")) {
                     user.setLastname(userDTO.getLastname());
                 }
-                if (userDTO.getFirstname() != "") {
+                if (!Objects.equals(userDTO.getFirstname(), "")) {
                     user.setFirstname(userDTO.getFirstname());
                 }
-                if (userDTO.getUrlImg() != "") {
+                if (!Objects.equals(userDTO.getUrlImg(), "")) {
                     user.setUrlImg(userDTO.getUrlImg());
                 }
                 if (userDTO.getAddress() != null) {
-                    if (userDTO.getAddress().getCity() != "") {
-                        user.getAdress().setCity(userDTO.getAddress().getCity());
-                    }
-                    if (userDTO.getAddress().getCountry() != "") {
-                        user.getAdress().setCountry(userDTO.getAddress().getCountry());
-                    }
-                    if (userDTO.getAddress().getPostalCode() != "") {
-                        user.getAdress().setPostalCode(userDTO.getAddress().getPostalCode());
-                    }
-                    if (userDTO.getAddress().getStreet() != "") {
-                        user.getAdress().setStreet(userDTO.getAddress().getStreet());
-                    }
-                    if (userDTO.getAddress().getNumber() != "") {
-                        user.getAdress().setNumber(userDTO.getAddress().getNumber());
-                    }
+                    user.setAddress(userDTO.getAddress());
                 }
                 userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);

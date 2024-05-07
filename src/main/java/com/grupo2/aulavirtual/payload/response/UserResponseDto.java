@@ -23,11 +23,11 @@ public class UserResponseDto {
 
     private String username;
 
-    private AddressResponseDto address;
+    private String address;
 
     private List<CourseResponseDto> courses;
 
-    private String role;
+    private List<String> role;
 
     private String urlImg;
 }
