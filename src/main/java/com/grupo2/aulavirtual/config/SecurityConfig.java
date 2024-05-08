@@ -2,8 +2,6 @@ package com.grupo2.aulavirtual.config;
 
 import lombok.RequiredArgsConstructor;
 
-import org.jetbrains.annotations.NotNull;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 
 import org.springframework.security.web.SecurityFilterChain;
+
+import jakarta.validation.constraints.NotNull;
 
 @Configuration
 @EnableWebSecurity
