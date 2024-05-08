@@ -16,7 +16,7 @@ public interface KeycloakService {
 
     List<UserRepresentation> searchUserByUsername(String username);
 
-    ResponseEntity<String> createUser(@NonNull RegisterRequestDto userDTO);
+    ResponseEntity<?> createUser(@NonNull RegisterRequestDto userDTO);
 
     void deleteUser(String userId);
 

@@ -25,9 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -81,7 +79,7 @@ public class KeycloakServiceImpl implements KeycloakService {
      * @return String
      */
     @Override
-    public ResponseEntity<String> createUser(@NonNull RegisterRequestDto userDTO) {
+    public ResponseEntity<?> createUser(@NonNull RegisterRequestDto userDTO) {
 
         int status = 0;
         UsersResource usersResource = KeycloakProvider.getUserResource();
@@ -136,7 +134,10 @@ public class KeycloakServiceImpl implements KeycloakService {
                             .idKeycloak(userId)
                             .build());
 
-            return ResponseEntity.status(201).body("User created successfully");
+            logger.info("User created successfully");
+            Map<String, String> userCreated = new HashMap<>();
+            userCreated.put("OK", "User created succesfully");
+            return ResponseEntity.status(201).body(userCreated);
 
         } else if (status == 409) {
             log.error("User exist already!");

@@ -176,3 +176,5 @@ o
 ?src/main/java/com/grupo2/aulavirtual/services/LoginService.java,2\5\256bb7589e34763b86106f2251ca67204db7797e
 |
 Lsrc/main/java/com/grupo2/aulavirtual/payload/request/RegisterRequestDto.java,0\0\009e48e730cfc01280e8370562eed3b1d684a164
+H
+sonar-project.properties,2\5\2538046035efb77ecc44e1fd2eec1e2641594d4c
