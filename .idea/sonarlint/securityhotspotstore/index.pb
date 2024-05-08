@@ -45,8 +45,6 @@ q
 Asrc/main/java/com/grupo2/aulavirtual/entities/enums/RoleEnum.java,b\a\ba4ce2d6190143431346fb60bbb90e09e369cb44
 z
 Jsrc/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java,8\1\815ba7529879929f1c8b45aecdb43e1cbc413234
-„
-Tsrc/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/AdressRepositoryTests.java,a\3\a3d53e8d3644064ba9975c4339b85ca22c0d79a6
 ‚
 Rsrc/test/java/com/grupo2/aulavirtual/Tests/RepositoryTest/UserRepositoryTests.java,0\0\001cb127c8824d9858f21b98431a88456e0c7ae5
 ‰
@@ -108,12 +106,8 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
-}
-Msrc/test/java/com/grupo2/aulavirtual/tests/entitiestest/AdressEntityTest.java,f\5\f547eb1936dfe3534d1599144567272e97581642
 {
 Ksrc/test/java/com/grupo2/aulavirtual/tests/entitiestest/UserEntityTest.java,7\c\7c57184930aef260adc09abe2464469f02bf8810
-„
-Tsrc/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/AdressRepositoryTests.java,8\d\8dfff0d07898f3619c0a18973bc7e85567d791db
 ‚
 Rsrc/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/RoleRepositoryTests.java,6\7\674304c0ea20687efae312ba9ccf1a464187436c
 ‰
@@ -128,8 +122,6 @@ Ksrc/test/java/com/grupo2/aulavirtual/tests/entitiestest/RoleEntityTest.java,d\
 Osrc/test/java/com/grupo2/aulavirtual/tests/entitiestest/SubjectsEntityTest.java,f\c\fc3e3a89837f7e691981cef3ae9e4f782ba6845d
 ‚
 Rsrc/test/java/com/grupo2/aulavirtual/tests/RepositoryTest/UserRepositoryTests.java,7\e\7ec3ed941e39863db9b015a5eacc00de1dc0438a
-v
-Fsrc/test/java/com/grupo2/aulavirtual/tests/dtotest/AddressDTOTest.java,f\b\fb2ab487020fb285cd153190f3d526396b0c3bcc
 w
 Gsrc/test/java/com/grupo2/aulavirtual/tests/dtotest/CategoryDTOTest.java,c\d\cd6487e8feb4e563c047c84a207a973cbd3d86eb
 u
@@ -142,8 +134,6 @@ Ksrc/test/java/com/grupo2/aulavirtual/tests/services/LessonsServiceTest.java,b\
 Lsrc/test/java/com/grupo2/aulavirtual/tests/services/SubjectsServiceTest.java,1\0\1091a6411c0a9174f238ac0ccdb1af42edc946c1
 x
 Hsrc/test/java/com/grupo2/aulavirtual/tests/services/UserServiceTest.java,1\5\154cf06602d118ce9cf5018afe8b996de32ef1a3
-‚
-Rsrc/test/java/com/grupo2/aulavirtual/tests/responsedto/AddressResponseDtoTest.java,2\3\23a80a2fa3f5e735584f5997fa1e7b3658b03d09
 s
 Csrc/test/java/com/grupo2/aulavirtual/tests/dtotest/RoleDTOTest.java,d\f\df8674bad3ef052c20c63c517e1734ef057c9155
 v
@@ -168,12 +158,6 @@ Rsrc/test/java/com/grupo2/aulavirtual/tests/responsedto/LessonsResponseDtoTest.j
 Osrc/test/java/com/grupo2/aulavirtual/tests/responsedto/RoleResponseDtoTest.java,5\3\539209441f64726c0d8428d45dd4935b881065bc
 o
 ?src/main/java/com/grupo2/aulavirtual/config/SecurityConfig.java,1\4\14cccfc62d546824d90a31da5f79a664feed815d
-r
-Bsrc/main/java/com/grupo2/aulavirtual/jwt/KeycloakJwtConverter.java,4\6\46dc07f57ea22b66692e7ee56b6e6d262e3fb563
-i
-9src/main/java/com/grupo2/aulavirtual/jwt/KeycloakJwt.java,4\6\464374cb8cf7fd833aab201ab94294706f237c62
-t
-Dsrc/main/java/com/grupo2/aulavirtual/controllers/TestController.java,0\4\043e8fadee836f7eabd288c00bd87dc606bef8b8
 o
 ?src/main/java/com/grupo2/aulavirtual/util/KeycloakProvider.java,4\8\48aeb59ccb9086fe75aba723590daa0b6fcfbd90
 r
@@ -184,10 +168,6 @@ x
 Hsrc/main/java/com/grupo2/aulavirtual/controllers/KeycloakController.java,4\f\4f27b75977e1f598962160f1c01e9a63463297c4
 y
 Isrc/main/java/com/grupo2/aulavirtual/payload/request/LoginRequestDto.java,2\b\2b79ef0ceccb65c96ab5bed640d03e4be52d868d
-t
-Dsrc/main/java/com/grupo2/aulavirtual/services/impl/LoginService.java,0\6\069be223e7d0992fda1feaf11a328fda92945e89
-p
-@src/main/java/com/grupo2/aulavirtual/services/ILoginService.java,1\8\189abe63c9f6a8758be8ff25595bd768fd3668c6
 t
 Dsrc/main/java/com/grupo2/aulavirtual/controllers/AuthController.java,e\6\e619a00529be3b7c90240c15dabaf426655c24fc
 x

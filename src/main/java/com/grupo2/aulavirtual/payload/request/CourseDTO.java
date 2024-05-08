@@ -35,4 +35,6 @@ public class CourseDTO {
     private Long idTeacher;
 
     private List<UserEntity> user;
+
+    private String urlImg;
 }

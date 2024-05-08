@@ -7,8 +7,12 @@ import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.UserRepository;
+import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.UserService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +28,23 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private KeycloakService keycloakService;
+
     DtoMapper dtoMapper = new DtoMapper();
+
+    Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
 
     private static final String ERROR = "Error";
     private static final String SAVE = "Guardado";
+
+    private static final String USER_NOT_FOUND = "No se encontró usuario con ese ID";
 
     @Override
     public UserEntity getLoggedUser() {
@@ -81,13 +94,14 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<HashMap<String, Object>> findUserByEmail(String email) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            if (userRepository.findByEmail(email).isPresent()) {
-                UserEntity user = userRepository.findByEmail(email).get();
+            Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
+            if (optionalUser.isPresent()) {
+                UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put(SAVE, userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
-                usuarios.put(ERROR, "No se encuntra este usuario con ese email");
+                usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
             }
         } catch (Exception e) {
@@ -101,13 +115,14 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<HashMap<String, Object>> findUserById(Long idUser) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            if (userRepository.findById(idUser).isPresent()) {
-                UserEntity user = userRepository.findById(idUser).get();
+            Optional<UserEntity> optionalUser = userRepository.findById(idUser);
+            if (optionalUser.isPresent()) {
+                UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put(SAVE, userRespuesta);
                 return ResponseEntity.status(201).body(usuarios);
             } else {
-                usuarios.put(ERROR, "No se encuntra este usuario con ese id");
+                usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
             }
         } catch (Exception e) {
@@ -121,10 +136,13 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            if (userRepository.findById(id).isPresent()) {
-                UserEntity user = userRepository.findById(id).get();
+            Optional<UserEntity> optionalUser = userRepository.findById(id);
+            if (optionalUser.isPresent()) {
+                UserEntity user = optionalUser.get();
+
                 new UserResponseDto();
                 UserResponseDto userRespuesta;
+
                 if (!Objects.equals(userDTO.getUsername(), "")) {
                     user.setUsername(userDTO.getUsername());
                 }
@@ -140,12 +158,13 @@ public class UserServiceImpl implements UserService {
                 if (userDTO.getAddress() != null) {
                     user.setAddress(userDTO.getAddress());
                 }
+                keycloakService.updateUser(user.getIdKeycloak(), userDTO); //Actualiza el usuario de la base de keycloak
                 userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(201).body(usuarios);
+                return ResponseEntity.status(200).body(usuarios);
             } else {
-                usuarios.put("No se encuentra este usuario", userDTO);
+                usuarios.put(USER_NOT_FOUND, userDTO);
                 return ResponseEntity.status(404).body(usuarios);
             }
         } catch (Exception e) {
@@ -183,17 +202,24 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<HashMap<String, ?>> deleteUser(Long id) {
         try {
             HashMap<String, Long> response = new HashMap<>();
-            if (userRepository.existsById(id)) {
+            Optional<UserEntity> optionalUser = userRepository.findById(id);
+            if (optionalUser.isPresent()) {
                 userRepository.deleteById(id);
+                keycloakService.deleteUser(optionalUser.get().getIdKeycloak()); //Elimina al usuario de la base de datos de keycloak
+
+                logger.info("Borrado de la base de datos del keycloak y de la tabla user");
                 response.put("Borrado id", id);
+
                 return ResponseEntity.status(201).body(response);
             } else {
-                response.put("No se encuntra este usuario con ese id", id);
-                return ResponseEntity.status(500).body(response);
+                logger.info(USER_NOT_FOUND);
+                response.put(USER_NOT_FOUND, id);
+                return ResponseEntity.status(404).body(response);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
+            logger.error(e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }

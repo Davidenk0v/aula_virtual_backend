@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -132,7 +133,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                             .firstname(userDTO.getFirstname())
                             .lastname(userDTO.getLastname())
                             .username(userDTO.getUsername())
-                            .password(userDTO.getPassword())
+                            .idKeycloak(userId)
                             .build());
 
             return ResponseEntity.status(201).body("User created successfully");
@@ -158,7 +159,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                     .get(userId)
                     .remove();
         } catch (Exception e) {
-            logger.error("Error deleting user: " + e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
@@ -170,24 +171,31 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Override
     public void updateUser(String userId, @NonNull UserDTO userDTO) {
         try {
+            UserRepresentation user = new UserRepresentation();
+            if (!Objects.equals(userDTO.getUsername(), "")) {
+                user.setUsername(userDTO.getUsername());
+            }
+            if (!Objects.equals(userDTO.getLastname(), "")) {
+                user.setLastName(userDTO.getLastname());
+            }
+            if (!Objects.equals(userDTO.getFirstname(), "")) {
+                user.setFirstName(userDTO.getFirstname());
+            }
+            if(!Objects.equals(userDTO.getPassword(), "")){
             CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
             credentialRepresentation.setTemporary(false);
             credentialRepresentation.setType(OAuth2Constants.PASSWORD);
             credentialRepresentation.setValue(userDTO.getPassword());
+            user.setCredentials(Collections.singletonList(credentialRepresentation));
+            }
 
-            UserRepresentation user = new UserRepresentation();
-            user.setUsername(userDTO.getUsername());
-            user.setFirstName(userDTO.getFirstname());
-            user.setLastName(userDTO.getLastname());
-            user.setEmail(userDTO.getEmail());
             user.setEnabled(true);
             user.setEmailVerified(true);
-            user.setCredentials(Collections.singletonList(credentialRepresentation));
 
             UserResource usersResource = KeycloakProvider.getUserResource().get(userId);
             usersResource.update(user);
         } catch (Exception e) {
-            logger.error("Error updating user: " + e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

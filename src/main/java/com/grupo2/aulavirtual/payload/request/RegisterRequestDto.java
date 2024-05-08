@@ -19,5 +19,6 @@ public class RegisterRequestDto{
         private String email;
         private List<String> role;
         private String password;
+        private String idKeycloak;
         }
 

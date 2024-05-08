@@ -41,6 +41,8 @@ public class CourseEntity {
     @Column(nullable = false)
     private BigDecimal pago;
 
+    private String urlImg;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;

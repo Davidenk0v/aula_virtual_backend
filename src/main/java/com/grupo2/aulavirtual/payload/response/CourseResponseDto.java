@@ -27,6 +27,8 @@ public class CourseResponseDto {
 
     private BigDecimal price;
 
+    private String urlImg;
+
     @JsonIgnore
     private List<UserResponseDto> users;
 }

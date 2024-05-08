@@ -1,15 +1,15 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8”èÉ•õ1J$96dbc1c6-c843-4eab-a798-c85b03a5eb9b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8”èÉ•õ1J$96dbc1c6-c843-4eab-a798-c85b03a5eb9b
 i
-java:S1452"&Remove usage of generic wildcard type.(šÖêÌ8™èÉ•õ1J$a5e124a7-ca4a-4877-8800-7d727d006461
+java:S1452"&Remove usage of generic wildcard type.(šÖêÌ8™èÉ•õ1J$a5e124a7-ca4a-4877-8800-7d727d006461
 i
-java:S1452"&Remove usage of generic wildcard type.(éç²£8›èÉ•õ1J$379b3023-ffb8-47bb-b299-60a982ae177f
+java:S1452"&Remove usage of generic wildcard type.(éç²£8›èÉ•õ1J$379b3023-ffb8-47bb-b299-60a982ae177f
 i
-java:S1452"&Remove usage of generic wildcard type.(ÿÒ”¸8èÉ•õ1J$07c017c8-7bbc-4361-ae07-39c8238a97ff
+java:S1452"&Remove usage of generic wildcard type.(ÿÒ”¸8èÉ•õ1J$07c017c8-7bbc-4361-ae07-39c8238a97ff
 n
-java:S1452$"&Remove usage of generic wildcard type.(´®Ğæúÿÿÿÿ8èÉ•õ1J$38f990b3-4e3d-4087-86da-346334b804c9
+java:S1452""&Remove usage of generic wildcard type.(´®Ğæúÿÿÿÿ8èÉ•õ1J$38f990b3-4e3d-4087-86da-346334b804c9
 n
-java:S1452)"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8ŸèÉ•õ1J$1cc92709-e35c-415f-b430-2dca6586d888
-
-java:S1128"URemove this unused import 'org.springframework.security.access.prepost.PreAuthorize'.(ˆ†×ùÿÿÿÿ8œÇÿ–õ1J$677b9487-def8-4d36-b3bf-6a4a77818c13
+java:S1452'"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8ŸèÉ•õ1J$1cc92709-e35c-415f-b430-2dca6586d888
+H
+java:S1452,"&Remove usage of generic wildcard type.(‘ı§–üÿÿÿÿ8¦³¡¹õ1

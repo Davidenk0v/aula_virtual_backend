@@ -17,7 +17,7 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "userEntity", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
-public class UserEntity implements UserDetails {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
@@ -30,8 +30,8 @@ public class UserEntity implements UserDetails {
     private String firstname;
     @Column(nullable = false)
     private String username;
-    @Column(nullable = false)
-    private String password;
+
+    private String idKeycloak;
 
     private String urlImg;
 
@@ -45,29 +45,9 @@ public class UserEntity implements UserDetails {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUser"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
     private List<RoleEntity> role;
 
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(getRole().toString()));
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 
 }
