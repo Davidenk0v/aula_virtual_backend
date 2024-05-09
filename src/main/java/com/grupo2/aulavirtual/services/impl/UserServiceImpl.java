@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService {
             saveUser.setFirstname(user.getFirstname());
             saveUser.setLastname(user.getLastname());
         }
-
         userRepository.save(saveUser);
     }
 
@@ -99,7 +98,28 @@ public class UserServiceImpl implements UserService {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(201).body(usuarios);
+                return ResponseEntity.status(200).body(usuarios);
+            } else {
+                usuarios.put(ERROR, USER_NOT_FOUND);
+                return ResponseEntity.status(404).body(usuarios);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put(ERROR, e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    @Override
+    public ResponseEntity<HashMap<String, Object>> findUserByUsername(String username) {
+        try {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            Optional<UserEntity> optionalUser = userRepository.findByUsername(username);
+            if (optionalUser.isPresent()) {
+                UserEntity user = optionalUser.get();
+                UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
+                usuarios.put(SAVE, userRespuesta);
+                return ResponseEntity.status(200).body(usuarios);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);

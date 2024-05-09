@@ -1,10 +1,12 @@
 package com.grupo2.aulavirtual.controllers;
 
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.services.UserService;
 import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,16 +15,21 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userServiceImpl;
 
     @GetMapping("/")
     public ResponseEntity<?> getAllUserDTO() {
         return userServiceImpl.userList();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable Long id) {
-        return userServiceImpl.findUserById(id);
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+//        return userServiceImpl.findUserById(id);
+//    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
+        return userServiceImpl.findUserByUsername(username);
     }
 
     @PostMapping("/")
