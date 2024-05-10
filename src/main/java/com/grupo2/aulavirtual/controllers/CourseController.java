@@ -32,9 +32,9 @@ public class CourseController {
         return courseService.findCourseById(id);
     }
 
-    @PostMapping("/{idTeacher}")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher) {
-        return courseService.postCourse(idTeacher, courseDTO);
+    @PostMapping("/{emailTeacher}")
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable String emailTeacher) {
+        return courseService.postCourse(emailTeacher, courseDTO);
     }
 
     @PutMapping("/{id}")

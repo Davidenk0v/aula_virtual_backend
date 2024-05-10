@@ -13,15 +13,17 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO);
 
-    ResponseEntity<HashMap<String, Object>> findUserByEmail(String email);
+    ResponseEntity<?> findUserByEmail(String email);
 
-    ResponseEntity<HashMap<String, Object>> findUserByUsername(String username);
+    ResponseEntity<?> findUserByUsername(String username);
 
     ResponseEntity<HashMap<String, Object>> findUserById(Long idUser);
 
     ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id);
 
-    ResponseEntity<?> userCoursesList(Long id);
+    ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email);
+
+    ResponseEntity<?> userCoursesList(String email);
 
     ResponseEntity<?> userList();
 

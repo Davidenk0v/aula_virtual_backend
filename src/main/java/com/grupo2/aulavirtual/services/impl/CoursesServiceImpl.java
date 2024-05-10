@@ -9,6 +9,8 @@ import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +39,8 @@ public class CoursesServiceImpl implements CourseService {
 
     DtoMapper dtoMapper = new DtoMapper();
 
+    Logger logger = LoggerFactory.getLogger(CoursesServiceImpl.class);
+
     @Autowired
     private CourseRepository courseRepository;
 
@@ -64,32 +68,40 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO) {
+    public ResponseEntity<HashMap<String, ?>> postCourse(String emailUser, CourseDTO courseDTO) {
         try {
             HashMap<String, UserResponseDto> response = new HashMap<>();
-            Optional<UserEntity> userOptional = userRepository.findById(idUser);
+            Optional<UserEntity> userOptional = userRepository.findByEmail(emailUser);
             if (userOptional.isPresent()) {
+                logger.info("Usuario encontrado");
                 UserEntity user = userOptional.get();
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
+                logger.info("Curso mapeado");
                 if (user.getCourses() == null) {
                     ArrayList<CourseEntity> lista = new ArrayList<>();
                     lista.add(course);
                     user.setCourses(lista);
+                    logger.info("Lista de cursos creada");
                 } else {
                     List<CourseEntity> listaExist = user.getCourses();
                     listaExist.add(course);
                     user.setCourses(listaExist);
+                    logger.info("Añadido a la lista");
                 }
-                UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
                 userRepository.save(user);
-                response.put("Curso subido ", objectResponse);
+                logger.info("Usuario guardado");
+                UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
+                logger.info("Usuario respuesta mapeado");
+                courseRepository.save(course);
+                response.put("Curso subido", objectResponse);
                 return ResponseEntity.status(201).body(response);
             } else {
-                HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el usuario con id: ", idUser);
+                HashMap<String, String> error = new HashMap<>();
+                error.put("No ha encontrado el usuario: ", emailUser);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
+            logger.error(e.getMessage());
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
@@ -135,6 +147,7 @@ public class CoursesServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
+        logger.info(courseDTO.toString());
         try {
             HashMap<String, CourseResponseDto> response = new HashMap<>();
             if (courseRepository.existsById(id)) {

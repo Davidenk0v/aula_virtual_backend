@@ -90,15 +90,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, Object>> findUserByEmail(String email) {
+    public ResponseEntity<?> findUserByEmail(String email) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
             Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(200).body(usuarios);
+                return ResponseEntity.status(200).body(userRespuesta);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
@@ -111,15 +110,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, Object>> findUserByUsername(String username) {
+    public ResponseEntity<?> findUserByUsername(String username) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
             Optional<UserEntity> optionalUser = userRepository.findByUsername(username);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(200).body(usuarios);
+                return ResponseEntity.status(200).body(userRespuesta);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
@@ -195,8 +193,50 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<?> userCoursesList(Long id) {
-        Optional<UserEntity> userOptional = userRepository.findById(id);
+    public ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email) {
+        try {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
+            if (optionalUser.isPresent()) {
+                UserEntity user = optionalUser.get();
+
+                new UserResponseDto();
+                UserResponseDto userRespuesta;
+
+                if (!Objects.equals(userDTO.getUsername(), "")) {
+                    user.setUsername(userDTO.getUsername());
+                }
+                if (!Objects.equals(userDTO.getLastname(), "")) {
+                    user.setLastname(userDTO.getLastname());
+                }
+                if (!Objects.equals(userDTO.getFirstname(), "")) {
+                    user.setFirstname(userDTO.getFirstname());
+                }
+                if (!Objects.equals(userDTO.getUrlImg(), "")) {
+                    user.setUrlImg(userDTO.getUrlImg());
+                }
+                if (userDTO.getAddress() != null) {
+                    user.setAddress(userDTO.getAddress());
+                }
+                keycloakService.updateUser(user.getIdKeycloak(), userDTO); //Actualiza el usuario de la base de keycloak
+                userRepository.save(user);
+                userRespuesta = dtoMapper.entityToResponseDto(user);
+                usuarios.put(SAVE, userRespuesta);
+                return ResponseEntity.status(200).body(usuarios);
+            } else {
+                usuarios.put(USER_NOT_FOUND, userDTO);
+                return ResponseEntity.status(404).body(usuarios);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put(ERROR, e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> userCoursesList(String email) {
+        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
         }

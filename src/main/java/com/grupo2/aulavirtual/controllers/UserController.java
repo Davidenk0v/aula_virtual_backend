@@ -27,9 +27,9 @@ public class UserController {
 //        return userServiceImpl.findUserById(id);
 //    }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
-        return userServiceImpl.findUserByUsername(username);
+    @GetMapping("/{email}")
+    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+        return userServiceImpl.findUserByEmail(email);
     }
 
     @PostMapping("/")
@@ -37,9 +37,9 @@ public class UserController {
         return userServiceImpl.addUser(user);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable Long id) {
-        return userServiceImpl.updateUser(user, id);
+    @PutMapping("/{email}")
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable String email) {
+        return userServiceImpl.updateUserByEmail(user, email);
     }
 
     @DeleteMapping("/{id}")
@@ -47,8 +47,8 @@ public class UserController {
         return userServiceImpl.deleteUser(id);
     }
 
-    @GetMapping("/listaTeacher/{id}")
-    public ResponseEntity<?> getListaTeacherByID(@PathVariable Long id) {
-        return userServiceImpl.userCoursesList(id);
+    @GetMapping("/listaTeacher/{email}")
+    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String email) {
+        return userServiceImpl.userCoursesList(email);
     }
 }

@@ -12,7 +12,7 @@ public interface CourseService {
 
     ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable);
 
-    ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO);
+    ResponseEntity<HashMap<String, ?>> postCourse(String email, CourseDTO courseDTO);
 
     ResponseEntity<?> deleteCourse(Long id);
 

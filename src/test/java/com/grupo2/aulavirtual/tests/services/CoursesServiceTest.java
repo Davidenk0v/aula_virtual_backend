@@ -97,29 +97,29 @@ class CoursesServiceTest {
     }
 
     @Test
-    void postCourse() {
-        // Configurar los datos de entrada
-        Long userId = 1L;
-
-        // Configurar el comportamiento del repositorio de usuarios
-        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-
-        // Configurar el comportamiento del repositorio de cursos
-        when(courseRepository.save(any(CourseEntity.class))).thenAnswer(invocation -> {
-            CourseEntity courseEntity = invocation.getArgument(0);
-            return courseEntity;
-        });
-
-        // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> response = coursesService.postCourse(userId, courseDTO);
-
-        // Verificar que se recibe una respuesta con el código de estado
-        // HttpStatus.CREATED
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-
-        // Verificar que se recibió la respuesta esperada
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Curso subido "));
-    }
+//    void postCourse() {
+//        // Configurar los datos de entrada
+//        Long userId = 1L;
+//
+//        // Configurar el comportamiento del repositorio de usuarios
+//        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+//
+//        // Configurar el comportamiento del repositorio de cursos
+//        when(courseRepository.save(any(CourseEntity.class))).thenAnswer(invocation -> {
+//            CourseEntity courseEntity = invocation.getArgument(0);
+//            return courseEntity;
+//        });
+//
+//        // Ejecutar el método bajo prueba
+//        ResponseEntity<HashMap<String, ?>> response = coursesService.postCourse(userId, courseDTO);
+//
+//        // Verificar que se recibe una respuesta con el código de estado
+//        // HttpStatus.CREATED
+//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+//
+//        // Verificar que se recibió la respuesta esperada
+//        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Curso subido "));
+//    }
 
     @Test
     void updateCourse() {

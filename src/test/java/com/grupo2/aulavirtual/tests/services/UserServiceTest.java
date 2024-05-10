@@ -125,7 +125,7 @@ class UserServiceTest {
 
         when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
 
-        ResponseEntity<HashMap<String, Object>> response = userService.findUserByEmail(email);
+        ResponseEntity<?> response = userService.findUserByEmail(email);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(userResponseDto.toString(), Objects.requireNonNull(response.getBody()).get("Guardado").toString());
     }

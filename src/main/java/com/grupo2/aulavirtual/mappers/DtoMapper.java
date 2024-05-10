@@ -75,7 +75,7 @@ public class DtoMapper {
                 .description(courseEntity.getDescription())
                 .startDate(courseEntity.getStartDate())
                 .finishDate(courseEntity.getFinishDate())
-                .price(courseEntity.getPago())
+                .price(courseEntity.getPrice())
                 .build();
 
         if (courseEntity.getUser() != null) {

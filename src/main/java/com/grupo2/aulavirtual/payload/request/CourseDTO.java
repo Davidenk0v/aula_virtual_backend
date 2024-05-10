@@ -6,13 +6,9 @@ import java.util.List;
 
 import com.grupo2.aulavirtual.entities.UserEntity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +26,7 @@ public class CourseDTO {
 
     private Date finishDate;
 
-    private BigDecimal pago;
+    private BigDecimal price;
 
     private Long idTeacher;
 

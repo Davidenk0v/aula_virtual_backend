@@ -1,27 +1,15 @@
 
-¦
-java:S1192e"cDefine a constant instead of duplicating this literal "No ha encontrado el curso con id: " 3 times.(÷€²¥8»É€«ó1J$e406046d-ea27-441b-b424-6d108308ae42
-‰
-java:S1192T"FDefine a constant instead of duplicating this literal "Error" 5 times.(•×±„8»É€«ó1J$2ecabd68-9063-4daf-aa99-e34d1fcdee62
-˜
-java:S3655_"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8üÊ€«ó1J$d88fdb12-2e32-4fd0-a7cf-b63674f324c7
-˜
-java:S3655u"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8ƒ–†«ó1J$7b6f4a52-52e0-4110-8fc1-8cfb74cc35c2
-˜
-java:S3655B"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(·ªÅÀûÿÿÿÿ8üÊ€«ó1J$2fbcf070-509b-4778-8dab-257523bf75dc
+h
+java:S2629–"$Invoke method(s) only conditionally.(äÄà8­êŸ”ö1J$64c9ec36-191a-417d-a8aa-e6c0cc012102
 ™
-java:S3655¥"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¶÷ÿµûÿÿÿÿ8»·şÁó1J$c1f5287d-6241-46f7-8075-10c36be5859d
+java:S3655É"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8Éëğ’ö1J$93739e0f-58dc-45a2-ab72-7d15f238511a
 ™
-java:S3655‘"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8üÊ€«ó1J$26eb4007-2773-40eb-b898-00aa7b68d404
+java:S3655š"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8Éëğ’ö1J$8b1ee4a6-7876-421f-968f-0533ce2e6ab8
+™
+java:S3655µ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8Èëğ’ö1J$2361e770-daf5-4102-81c0-c45cef9681ad
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿÊ€«ó1J$2abc2277-5ee9-4e6e-89ea-4d593b9319fb
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8Ëëğ’ö1J$f8d9098d-1ec5-49b0-87a8-4585712666b0
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8€Ë€«ó1J$7070a35b-4b55-4a20-a09a-1999df448274
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ìëğ’ö1J$752174fe-079b-4a18-90ff-4c5ce329ea55
 …
-java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8€Ë€«ó1J$2831904b-e859-46c6-851f-cc00c1228315
-}
-java:S1854C":Remove this useless assignment to local variable "course".(ÊÈÓ¿8˜Ë€«ó1J$6c7f6780-53f5-40ef-aab9-1c599c96b89b
-…
-java:S1854"<Remove this useless assignment to local variable "response".(Ü—¨™ÿÿÿÿÿ8®Ë€«ó1J$d503428d-1fa3-4eae-b098-b15452dc7127
-v
-java:S1481"-Remove this unused "response" local variable.(Ü—¨™ÿÿÿÿÿ8¯Ë€«ó1J$4141d141-c19f-402e-9f74-2449bbb54b98
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ìëğ’ö1J$0b228832-cefb-4aef-9003-5fcd8ff79abf
