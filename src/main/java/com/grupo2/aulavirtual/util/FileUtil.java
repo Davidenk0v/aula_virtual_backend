@@ -2,12 +2,15 @@ package com.grupo2.aulavirtual.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,13 +43,13 @@ public class FileUtil {
         if (!newPath.exists()) {
             newPath.mkdirs();
         }
-        String extension = getExtensionByName(file.getOriginalFilename());
-        String newName = stringGenerator(25) + "." + extension;
-        File newFile = new File(root + path + newName);
         try {
+            String extension = getExtensionByName(file.getOriginalFilename());
+            String newName = generateHash(file.getBytes()) + "." + extension;
+            File newFile = new File(root + path + newName);
             file.transferTo(newFile);
             return newFile.getAbsolutePath();
-        } catch (IllegalStateException | IOException e) {
+        } catch (IllegalStateException | IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
         }
@@ -62,16 +65,18 @@ public class FileUtil {
      *         null.
      */
     public String updateFile(MultipartFile file, String path) {
-        File newPath = new File(root + path);
-        File folder = new File(newPath.getParent());
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        File newFile = new File(path);
         try {
-            file.transferTo(newFile);
+            File oldFile = new File(path);
+            String extension = getExtensionByName(file.getOriginalFilename());
+            String newName = generateHash(file.getBytes()) + "." + extension;
+            String newPath = path.substring(0, path.lastIndexOf("\\")) + "\\" + newName;
+            File newFile = new File(newPath);
+            if (!Objects.equals(oldFile.getName(), newFile.getName())) {
+                file.transferTo(newFile);
+                oldFile.delete();
+            }
             return newFile.getAbsolutePath();
-        } catch (IllegalStateException | IOException e) {
+        } catch (IllegalStateException | IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
         }
@@ -232,7 +237,7 @@ public class FileUtil {
      * @param size int con el tamaño del String generado.
      * @return String aleatorio.
      */
-    public static String stringGenerator(int size) {
+    public String stringGenerator(int size) {
         String menu = "menuABCDFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         char[] alfabeto = menu.toCharArray();
         SecureRandom objetoRandom;
@@ -247,6 +252,17 @@ public class FileUtil {
             e.printStackTrace();
             return "";
         }
+    }
+
+    /**
+     * Metodo para conseguir el Hash de un archivo.
+     * @param data byte[] del archivo.
+     * @return String con el Hash SHA-256
+     * @throws NoSuchAlgorithmException
+     */
+    public String generateHash(byte[] data) throws NoSuchAlgorithmException {
+        byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
+        return new BigInteger(1, hash).toString(16);
     }
 
 }

@@ -41,10 +41,7 @@ public class SecurityConfig {
                         "/swagger-ui/**",
                         "/webjars/**",
                         "/swagger-ui.html",
-                        "/api/v1/users/image",
-                        "/api/v1/users/images",
-                        "/api/v1/users/image/**",
-                        "/api/v1/users/images/**")
+                        "/api/v1/**")
                         .permitAll()
                         .anyRequest().anonymous())
                 .oauth2ResourceServer(oauth -> {

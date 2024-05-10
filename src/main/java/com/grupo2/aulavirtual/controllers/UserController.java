@@ -6,6 +6,7 @@ import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,9 +26,19 @@ public class UserController {
         return userServiceImpl.findUserById(id);
     }
 
+    @GetMapping("/file/{id}")
+    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+        return userServiceImpl.sendFile(id);
+    }
+
     @PostMapping("/")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
         return userServiceImpl.addUser(user);
+    }
+
+    @PostMapping("/file/{id}")
+    public ResponseEntity<?> saveFile(@PathVariable Long id,@RequestParam("file") MultipartFile file) {
+        return userServiceImpl.downloadFile(id, file);
     }
 
     @PutMapping("/{id}")

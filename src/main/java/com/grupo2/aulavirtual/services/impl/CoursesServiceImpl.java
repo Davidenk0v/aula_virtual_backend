@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,6 +72,8 @@ public class CoursesServiceImpl implements CourseService {
             if (userOptional.isPresent()) {
                 UserEntity user = userOptional.get();
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
+                // linea añadida para evitar "Error": "not-null property references a null or transient value : com.grupo2.aulavirtual.entities.CourseEntity.createdDate" 
+                course.setCreatedDate(LocalDateTime.now());
                 if (user.getCourses() == null) {
                     ArrayList<CourseEntity> lista = new ArrayList<>();
                     lista.add(course);

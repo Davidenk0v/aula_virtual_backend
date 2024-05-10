@@ -2,20 +2,25 @@ package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.UserService;
+import com.grupo2.aulavirtual.util.FileUtil;
+
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +34,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
+    FileUtil fileUtil = new FileUtil();
 
     private static final String ERROR = "Error";
     private static final String SAVE = "Guardado";
@@ -77,6 +83,74 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Metodo para distinguir entre nuevo archivo o actualizar archivo.
+     * @param id Long con la id de Lessons.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
+        if (!file.isEmpty()) {
+            UserEntity user = userRepository.findById(id).get();
+            if (user.getUrlImg() == null || user.getUrlImg().isEmpty()) {
+                return saveFile(user, file);
+            } else {
+                return updateFile(user, file);
+            }
+        } else {
+            return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    /**
+     * Metodo para guardar un archivo.
+     * @param user UserEntity a la que se le hacen los cambios.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> saveFile(UserEntity user, MultipartFile file) {
+            try {
+                String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\files\\");
+                user.setUrlImg(path);
+                userRepository.save(user);
+                if (path != null) {
+                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(
+                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } catch (Exception e) {
+                HashMap<String, Object> usuarios = new HashMap<>();
+                usuarios.put("Error", e.getMessage());
+                return ResponseEntity.status(500).body(usuarios);
+            }
+        
+    }
+
+    /**
+     * Metodo para sobreescribir un archivo.
+     * @param user UserEntity a la que se le hacen los cambios.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> updateFile(UserEntity user, MultipartFile file) {
+            try {
+                String path = fileUtil.updateFile(file, user.getUrlImg());
+                user.setUrlImg(path);
+                userRepository.save(user);
+                if (path != null) {
+                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(
+                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } catch (Exception e) {
+                HashMap<String, Object> usuarios = new HashMap<>();
+                usuarios.put("Error", e.getMessage());
+                return ResponseEntity.status(500).body(usuarios);
+            }
+    }
+
     @Override
     public ResponseEntity<HashMap<String, Object>> findUserByEmail(String email) {
         try {
@@ -114,6 +188,25 @@ public class UserServiceImpl implements UserService {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(201).body(usuarios);
+        }
+    }
+
+    public ResponseEntity<?> sendFile(Long id) {
+        UserEntity user = userRepository.findById(id).get();
+        if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
+            String fileRoute = user.getUrlImg();
+            String extension = fileUtil.getExtensionByPath(fileRoute);
+            String medoaType = fileUtil.getMediaType(extension);
+            byte[] file = fileUtil.sendFile(fileRoute);
+            if (file.length != 0) {
+                return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
+            } else {
+                return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>("No se encuentra el archivo.",
+                    HttpStatus.NOT_FOUND);
         }
     }
 

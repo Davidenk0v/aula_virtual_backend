@@ -4,7 +4,6 @@ import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
 
 import com.grupo2.aulavirtual.services.impl.LessonsServiceImpl;
-import com.grupo2.aulavirtual.util.FileUtil;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,7 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,13 +57,13 @@ public class LessonController {
             @ApiResponse(responseCode = "400", description = "Solicitud incorrecta", content = @Content)
     })
     @PostMapping("/{idSubject}")
-    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson, @RequestParam(name = "file", required = false) MultipartFile file) {
         return lessonService.postLessons(idSubject, lesson, file);
     }
 
     @PostMapping("/file/{id}")
     public ResponseEntity<?> saveFile(@PathVariable Long id,@RequestParam("file") MultipartFile file) {
-        return lessonService.saveFile(id, file);
+        return lessonService.downloadFile(id, file);
     }
 
     @Operation(summary = "Actualizar una lección por ID", tags = "Lessons API")
@@ -74,7 +72,7 @@ public class LessonController {
             @ApiResponse(responseCode = "404", description = "Leccion no encontrada", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id, @RequestParam(name = "file", required = false)MultipartFile file) {
         return lessonService.updateLesson(id, lessonsDTO, file);
     }
 

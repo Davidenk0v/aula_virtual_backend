@@ -45,28 +45,22 @@ public class LessonsServiceImpl implements LessonsService {
     }
 
     public ResponseEntity<?> sendFile(Long id) {
-        // Encontrar usuario por id
         LessonsEntity lessons = lessonsRepository.findById(id).get();
-        // verificar si ya tiene un archivo asociado
-        if (lessons.getContenido().isEmpty()) {
-            // recoger achivo
+        if (lessons.getContenido() != null || !lessons.getContenido().isEmpty()) {
             String fileRoute = lessons.getContenido();
             String extension = fileUtil.getExtensionByPath(fileRoute);
             String medoaType = fileUtil.getMediaType(extension);
             byte[] file = fileUtil.sendFile(fileRoute);
-            // enviar archivo.
             if (file.length != 0) {
                 return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
             } else {
                 return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
                         HttpStatus.INTERNAL_SERVER_ERROR);
             }
-            // error en caso negativo
         } else {
             return new ResponseEntity<>("No se encuentra el archivo.",
-                        HttpStatus.NOT_FOUND);
+                    HttpStatus.NOT_FOUND);
         }
-
     }
 
     @Override
@@ -77,10 +71,11 @@ public class LessonsServiceImpl implements LessonsService {
             LessonsEntity lessons = new LessonsEntity();
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
-            if (!file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Lessons\\" + lessonsDTO.getName() + "\\files");
+            if (file != null && !file.isEmpty()) {
+                String path = fileUtil.saveFile(file, "\\Lessons\\" + lessonsDTO.getName() + "\\files\\");
                 lessons.setContenido(path);
             }
+
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
             response.put("Leccion subido", objectResponse);
@@ -93,39 +88,72 @@ public class LessonsServiceImpl implements LessonsService {
 
     }
 
-    public ResponseEntity<?> saveFile(Long id, MultipartFile file) {
+    /**
+     * Metodo para distinguir entre nuevo archivo o actualizar archivo.
+     * @param id Long con la id de Lessons.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
         if (!file.isEmpty()) {
-            // Encontrar usuario por id
             LessonsEntity lessons = lessonsRepository.findById(id).get();
-            // verificar si ya tiene un archivo asociado.
-            if (lessons.getContenido().isEmpty()) {
-                // Guardar achivo
-                String path = fileUtil.saveFile(file, "\\Lessons\\" + lessons.getName() + "\\files");
-                // Recoger ruta.
-                lessons.setContenido(path);
-                // guardar en BBDD
-                lessonsRepository.save(lessons);
-                // enviar respuesta
-                if (path != null) {
-                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
-                } else {
-                    return new ResponseEntity<>(
-                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
-                }
+            if (lessons.getContenido() == null || lessons.getContenido().isEmpty()) {
+                return saveFile(lessons, file);
             } else {
-                // Sobreescribir achivo
-                String path = fileUtil.updateFile(file, lessons.getContenido());
-                // enviar respuesta
-                if (path != null) {
-                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
-                } else {
-                    return new ResponseEntity<>(
-                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
-                }
+                return updateFile(lessons, file);
             }
         } else {
             return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
         }
+    }
+
+    /**
+     * Metodo para guardar un archivo.
+     * @param lessons LessonsEntity a la que se le hacen los cambios.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
+            try {
+                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\" + lessons.getName() + "\\files\\");
+                lessons.setContenido(path);
+                lessonsRepository.save(lessons);
+                if (path != null) {
+                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(
+                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } catch (Exception e) {
+                HashMap<String, Object> usuarios = new HashMap<>();
+                usuarios.put("Error", e.getMessage());
+                return ResponseEntity.status(500).body(usuarios);
+            }
+        
+    }
+
+    /**
+     * Metodo para sobreescribir un archivo.
+     * @param lessons LessonsEntity a la que se le hacen los cambios.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
+            try {
+                String path = fileUtil.updateFile(file, lessons.getContenido());
+                lessons.setContenido(path);
+                lessonsRepository.save(lessons);
+                if (path != null) {
+                    return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(
+                            "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } catch (Exception e) {
+                HashMap<String, Object> usuarios = new HashMap<>();
+                usuarios.put("Error", e.getMessage());
+                return ResponseEntity.status(500).body(usuarios);
+            }
     }
 
     @Override
@@ -162,7 +190,7 @@ public class LessonsServiceImpl implements LessonsService {
                 if (lessonsDTO.getDescription() != "") {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
-                if (!file.isEmpty()) {
+                if (file != null && !file.isEmpty()) {
                     String path = fileUtil.updateFile(file, subject.getContenido());
                     subject.setContenido(path);
                 }
