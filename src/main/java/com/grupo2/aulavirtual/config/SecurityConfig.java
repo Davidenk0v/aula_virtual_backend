@@ -40,9 +40,13 @@ public class SecurityConfig {
                         "/configuration/security",
                         "/swagger-ui/**",
                         "/webjars/**",
-                        "/swagger-ui.html")
+                        "/swagger-ui.html",
+                        "/api/v1/users/image",
+                        "/api/v1/users/images",
+                        "/api/v1/users/image/**",
+                        "/api/v1/users/images/**")
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().anonymous())
                 .oauth2ResourceServer(oauth -> {
                     oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));
                 })

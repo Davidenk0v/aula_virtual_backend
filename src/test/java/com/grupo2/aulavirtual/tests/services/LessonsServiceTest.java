@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockMultipartFile;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ class LessonsServiceTest {
     private LessonsDTO lessonsDTO;
     private SubjectsEntity subjectsEntity;
     private LessonsEntity lessonsEntity;
+    MockMultipartFile mockFile;
 
     @BeforeEach
     void setUp() {
@@ -52,6 +54,7 @@ class LessonsServiceTest {
         subjectsEntity.setIdSubject(1L);
 
         lessonsEntity = mapper.dtoToEntity(lessonsDTO);
+        mockFile = new MockMultipartFile("data", "filename.kml", "text/plain", "some kml".getBytes());
     }
 
     @Test
@@ -76,7 +79,8 @@ class LessonsServiceTest {
         when(lessonsRepository.save(any(LessonsEntity.class))).thenReturn(lessonsEntity);
 
         // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> response = lessonsService.postLessons(1L, lessonsDTO);
+        
+        ResponseEntity<HashMap<String, ?>> response = lessonsService.postLessons(1L, lessonsDTO, mockFile);
 
         // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
@@ -162,7 +166,7 @@ class LessonsServiceTest {
         when(lessonsRepository.existsById(any())).thenThrow(new RuntimeException("Error simulado"));
 
         // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> responseUpdate = lessonsService.updateLesson(1L, lessonsDTO);
+        ResponseEntity<HashMap<String, ?>> responseUpdate = lessonsService.updateLesson(1L, lessonsDTO, mockFile);
         ResponseEntity<HashMap<String, ?>> responseFind = lessonsService.findLessonsById(1L);
         ResponseEntity<HashMap<String, ?>> responseDelete = lessonsService.deleteLesson(1L);
 
