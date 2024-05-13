@@ -22,6 +22,11 @@ public class CourseController {
         return courseService.courseList();
     }
 
+    @GetMapping("/category/{category}")
+    public ResponseEntity<?> getCategoriesByCategory(@PathVariable String category) {
+        return courseService.coursesByCategory(category);
+    }
+
     @GetMapping("/pages")
     public ResponseEntity<?> getAllPageable(Pageable pageable) {
         return courseService.pageableCourseList(pageable);

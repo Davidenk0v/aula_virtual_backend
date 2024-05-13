@@ -25,9 +25,7 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategory;
 
-    @Basic
-    @Enumerated(EnumType.STRING) 
-    CategoryEnum category;
+    String category;
 
     @ManyToMany(
     mappedBy = "category"

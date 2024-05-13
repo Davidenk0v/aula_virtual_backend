@@ -6,6 +6,7 @@ import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
+import com.grupo2.aulavirtual.repositories.CourseCategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
@@ -44,9 +45,28 @@ public class CoursesServiceImpl implements CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private CourseCategoryRepository courseCategoryRepository;
+
     @Override
     public ResponseEntity<?> courseList() {
         List<CourseEntity> courseEntities = courseRepository.findAll();
+        if (courseEntities.isEmpty()) {
+            return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
+        }
+        List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
+                .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+        return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> coursesByCategory(String category) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> coursesByCategory(List<String> categories) {
+        List<CourseEntity> courseEntities = courseCategoryRepository.filterCoursesByCategories(categories);
         if (courseEntities.isEmpty()) {
             return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
         }

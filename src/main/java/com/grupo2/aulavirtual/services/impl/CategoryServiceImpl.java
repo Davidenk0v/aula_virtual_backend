@@ -1,10 +1,12 @@
 package com.grupo2.aulavirtual.services.impl;
 
+import com.grupo2.aulavirtual.entities.CategoryEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.CategoryDTO;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
+import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
@@ -32,17 +34,17 @@ public class CategoryServiceImpl implements CategoryService {
     Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
-    private CourseRepository courseRepository;
+    private CategoryRepository categoryRepository;
 
     @Override
     public ResponseEntity<?> categoriesList() {
-        List<CourseEntity> categoriesList = courseRepository.findAll();
+        List<CategoryEntity> categoriesList = categoryRepository.findAll();
         if (categoriesList.isEmpty()) {
             return new ResponseEntity<>("No se encontraron categorias", HttpStatus.NOT_FOUND);
         }
-        List<CourseResponseDto> categoiesResponseDtos = categoriesList.stream()
-                .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
-        return new ResponseEntity<>(categoiesResponseDtos, HttpStatus.OK);
+        List<CategoryResponseDto> categoriesResponseDtos = categoriesList.stream()
+                .map(categoryEntity -> dtoMapper.entityToResponse(categoryEntity)).toList();
+        return new ResponseEntity<>(categoriesResponseDtos, HttpStatus.OK);
     }
 
 }

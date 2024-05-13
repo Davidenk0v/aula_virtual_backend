@@ -15,4 +15,6 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
     @Query("SELECT c FROM CourseEntity c WHERE LOWER(c.name) LIKE %:keyword%")
     Optional<List<CourseEntity>> findByKeyword(@Param("keyword") String keyword);
+
+
 }

@@ -174,3 +174,11 @@ Dsrc/main/java/com/grupo2/aulavirtual/controllers/AuthController.java,e\6\e619a
 Lsrc/main/java/com/grupo2/aulavirtual/payload/request/RegisterRequestDto.java,0\0\009e48e730cfc01280e8370562eed3b1d684a164
 H
 sonar-project.properties,2\5\2538046035efb77ecc44e1fd2eec1e2641594d4c
+{
+Ksrc/main/java/com/grupo2/aulavirtual/services/impl/CategoryServiceImpl.java,b\3\b32a1c220d925ba8ba31053fe53a3fbf33d40a25
+r
+Bsrc/main/java/com/grupo2/aulavirtual/services/CategoryService.java,1\6\16b411fa99955ee685c4260eb5344a5e13f39112
+€
+Psrc/main/java/com/grupo2/aulavirtual/repositories/impl/CourseRepositoryImpl.java,8\6\8660296f50904b30396f07dc92d847ef1c0cc090
+
+Osrc/main/java/com/grupo2/aulavirtual/repositories/CourseCategoryRepository.java,1\c\1c0ff0bd77bb80f21a38e66e31d8a009f25ad3ca

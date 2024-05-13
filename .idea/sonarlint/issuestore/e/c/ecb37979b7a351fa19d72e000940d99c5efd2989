@@ -1,12 +1,13 @@
 
-a
-java:S1452"&Remove usage of generic wildcard type.(ÜÙğJ$4ce31bb7-9778-467f-b1fe-ae4da64cd21c
-X	java:S125"<This block of commented-out lines of code should be removed.(•ñß§8³“ŸÉò1
-b
-java:S1452"&Remove usage of generic wildcard type.(¶üë„J$612ecd17-a1c2-464c-a9ab-ca040028ffa5
-g
-java:S1452"&Remove usage of generic wildcard type.( ¥ä¯üÿÿÿÿJ$6ba6f81e-a088-43ab-8b6d-1a3b3eb046d5
-g
-java:S1452""&Remove usage of generic wildcard type.(™ ÷åÿÿÿÿÿJ$c4fdbadd-20b3-4ebd-8e37-86a228c0a503
-a
-java:S1452'"&Remove usage of generic wildcard type.(á‡×)J$31328c8b-7e69-444f-bd58-addf498bbb63
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Å¥¡“÷1
+B
+java:S1452"&Remove usage of generic wildcard type.(ÜÙğ8Ë¥¡“÷1
+C
+java:S1452"&Remove usage of generic wildcard type.(¶üë„8Ì¥¡“÷1
+H
+java:S1452"&Remove usage of generic wildcard type.( ¥ä¯üÿÿÿÿ8Î¥¡“÷1
+H
+java:S1452$"&Remove usage of generic wildcard type.(™ ÷åÿÿÿÿÿ8Î¥¡“÷1
+B
+java:S1452)"&Remove usage of generic wildcard type.(á‡×)8Ï¥¡“÷1

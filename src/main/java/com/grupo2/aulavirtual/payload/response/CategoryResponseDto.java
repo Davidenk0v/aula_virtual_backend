@@ -16,7 +16,7 @@ public class CategoryResponseDto {
 
     private Long idCategory;
 
-    private CategoryEnum category;
+    private String category;
 
     private List<CourseResponseDto> course;
 }

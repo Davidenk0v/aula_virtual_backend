@@ -21,7 +21,7 @@ public class CategoryDTO {
 
     private Long idCategory;
 
-    private CategoryEnum category;
+    private String category;
 
     private List<CourseEntity> course;
 }

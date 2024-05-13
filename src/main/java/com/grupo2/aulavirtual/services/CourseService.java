@@ -6,9 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface CourseService {
     ResponseEntity<?> courseList();
+
+    ResponseEntity<?> coursesByCategory(String category);
+
+    ResponseEntity<?> coursesByCategory(List<String> categories);
 
     ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable);
 
