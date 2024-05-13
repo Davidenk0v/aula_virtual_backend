@@ -1,5 +1,8 @@
 package com.grupo2.aulavirtual.config;
 
+import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
@@ -21,6 +24,7 @@ import java.util.stream.Stream;
 @Component
 public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
+    Logger logger = LoggerFactory.getLogger(JwtAuthenticationConverter.class);
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter =
             new JwtGrantedAuthoritiesConverter();
 

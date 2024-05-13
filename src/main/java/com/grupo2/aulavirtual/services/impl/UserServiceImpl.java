@@ -130,15 +130,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, Object>> findUserById(Long idUser) {
+    public ResponseEntity<?> findUserById(String idUser) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            Optional<UserEntity> optionalUser = userRepository.findById(idUser);
+            Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(idUser);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(201).body(usuarios);
+                return ResponseEntity.status(200).body(userRespuesta);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
@@ -235,8 +234,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<?> userCoursesList(String email) {
-        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
+    public ResponseEntity<?> userCoursesList(String idUser) {
+        Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(idUser);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
         }

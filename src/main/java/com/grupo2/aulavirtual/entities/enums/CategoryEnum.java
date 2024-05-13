@@ -11,6 +11,5 @@ public enum CategoryEnum {
     MARKETING,
     LANGUAGES,
     MUSIC,
-    COOKING,
     HEALTH_AND_FITNESS;
 }

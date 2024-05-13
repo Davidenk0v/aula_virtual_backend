@@ -7,10 +7,12 @@ import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@EnableMethodSecurity
 @RequestMapping("/api/v1/users")
 public class UserController {
 
@@ -22,15 +24,15 @@ public class UserController {
         return userServiceImpl.userList();
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<?> getUserById(@PathVariable Long id) {
-//        return userServiceImpl.findUserById(id);
-//    }
-
-    @GetMapping("/{email}")
-    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
-        return userServiceImpl.findUserByEmail(email);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable String id) {
+        return userServiceImpl.findUserById(id);
     }
+
+//    @GetMapping("/{email}")
+//    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+//        return userServiceImpl.findUserByEmail(email);
+//    }
 
     @PostMapping("/")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
@@ -47,8 +49,8 @@ public class UserController {
         return userServiceImpl.deleteUser(id);
     }
 
-    @GetMapping("/listaTeacher/{email}")
-    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String email) {
-        return userServiceImpl.userCoursesList(email);
+    @GetMapping("/listaTeacher/{idUser}")
+    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String idUser) {
+        return userServiceImpl.userCoursesList(idUser);
     }
 }

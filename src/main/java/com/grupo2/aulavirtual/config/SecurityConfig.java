@@ -41,9 +41,12 @@ public class SecurityConfig {
                         "/swagger-ui/**",
                         "/webjars/**",
                         "/swagger-ui.html",
-                                "/api/v1/**")
+                                "/assets/img/**")
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/v1/courses/**").permitAll()
+                        .requestMatchers("/api/v1/categories/").permitAll()
+                        .requestMatchers("/api/v1/users/**").authenticated()
+                        .anyRequest().denyAll())
                 .oauth2ResourceServer(oauth -> {
                     oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));
                 })

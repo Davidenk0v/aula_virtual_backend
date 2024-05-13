@@ -17,7 +17,7 @@ public interface UserService {
 
     ResponseEntity<?> findUserByUsername(String username);
 
-    ResponseEntity<HashMap<String, Object>> findUserById(Long idUser);
+    ResponseEntity<?> findUserById(String idUser);
 
     ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id);
 
