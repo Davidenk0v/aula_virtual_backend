@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
