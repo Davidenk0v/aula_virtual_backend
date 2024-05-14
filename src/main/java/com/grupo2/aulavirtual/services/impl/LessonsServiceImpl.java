@@ -79,7 +79,7 @@ public class LessonsServiceImpl implements LessonsService {
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
             if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\" + lessonsDTO.getName() + "\\files\\");
+                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
                 lessons.setContenido(path);
             }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
@@ -128,7 +128,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\files\\");
+            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -154,7 +154,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\files\\",
+            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
                     lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
@@ -206,7 +206,7 @@ public class LessonsServiceImpl implements LessonsService {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
                 if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.updateFile(file, "\\Media\\Lessons\\" + lessonsDTO.getName() + "\\files\\",
+                    String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
                             subject.getContenido());
                     subject.setContenido(path);
                 }
