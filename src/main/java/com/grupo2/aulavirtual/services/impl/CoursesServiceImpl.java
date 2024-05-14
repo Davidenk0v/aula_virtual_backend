@@ -1,11 +1,13 @@
 package com.grupo2.aulavirtual.services.impl;
 
+import com.grupo2.aulavirtual.entities.CategoryEntity;
 import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
+import com.grupo2.aulavirtual.repositories.CategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseCategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
@@ -21,17 +23,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CoursesServiceImpl implements CourseService {
 
     @Autowired
     CourseRepository repository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -88,36 +89,30 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postCourse(String emailUser, CourseDTO courseDTO) {
+    public ResponseEntity<?> postCourse(String idKeycloak, CourseDTO courseDTO) {
         try {
             HashMap<String, UserResponseDto> response = new HashMap<>();
-            Optional<UserEntity> userOptional = userRepository.findByEmail(emailUser);
+            Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(idKeycloak);
             if (userOptional.isPresent()) {
-                logger.info("Usuario encontrado");
                 UserEntity user = userOptional.get();
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
-                logger.info("Curso mapeado");
                 if (user.getCourses() == null) {
                     ArrayList<CourseEntity> lista = new ArrayList<>();
                     lista.add(course);
                     user.setCourses(lista);
-                    logger.info("Lista de cursos creada");
                 } else {
                     List<CourseEntity> listaExist = user.getCourses();
                     listaExist.add(course);
                     user.setCourses(listaExist);
-                    logger.info("Añadido a la lista");
                 }
                 userRepository.save(user);
-                logger.info("Usuario guardado");
                 UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
-                logger.info("Usuario respuesta mapeado");
                 courseRepository.save(course);
                 response.put("Curso subido", objectResponse);
-                return ResponseEntity.status(201).body(response);
+                return ResponseEntity.status(201).body(course);
             } else {
                 HashMap<String, String> error = new HashMap<>();
-                error.put("No ha encontrado el usuario: ", emailUser);
+                error.put("No ha encontrado el usuario: ", idKeycloak);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -205,6 +200,27 @@ public class CoursesServiceImpl implements CourseService {
             } else {
                 HashMap<String, Long> error = new HashMap<>();
                 error.put("No ha encontrado el curso con id: ", id);
+                return ResponseEntity.status(404).body(error);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put(ERROR, e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> findCoursesByCategory(String category) {
+        try {
+            if (categoryRepository.findByCategoryContaining(category).isPresent()) {
+                CategoryEntity categoryEntity = categoryRepository.findByCategoryContaining(category).get();
+                Set<CourseEntity> courseEntities = courseRepository.findCoursesByCategory(categoryEntity);
+                List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
+                        .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+                return ResponseEntity.status(200).body(courseResponseDtos);
+            } else {
+                HashMap<String, String> error = new HashMap<>();
+                error.put("No ha encontrado el curso con id: ", category);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {

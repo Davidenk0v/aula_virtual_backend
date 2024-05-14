@@ -10,10 +10,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@EnableMethodSecurity
 @RequestMapping("/api/v1/users")
+@CrossOrigin(
+        origins = "http://localhost:4200",
+        allowedHeaders = "*"
+)
 public class UserController {
 
     @Autowired

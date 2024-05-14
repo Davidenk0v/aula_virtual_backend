@@ -17,13 +17,15 @@ public interface CourseService {
 
     ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable);
 
-    ResponseEntity<HashMap<String, ?>> postCourse(String email, CourseDTO courseDTO);
+    ResponseEntity<?> postCourse(String email, CourseDTO courseDTO);
 
     ResponseEntity<?> deleteCourse(Long id);
 
     ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO);
 
     ResponseEntity<?> findCourseById(Long id);
+
+    ResponseEntity<?> findCoursesByCategory(String category);
 
     ResponseEntity<HashMap<String, ?>> findAllByContains(String name);
 }

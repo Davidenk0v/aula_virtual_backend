@@ -1,23 +1,27 @@
 
+§
+java:S1192µ"cDefine a constant instead of duplicating this literal "No ha encontrado el curso con id: " 3 times.(÷€²¥8òúÉ¾÷1J$7e12fbf3-483f-4d65-a3cb-00feec118ed0
 ¡
-java:S11927"YDefine a constant instead of duplicating this literal "No se encontraron cursos" 3 times.(¥ûé£ùÿÿÿÿ8››“÷1J$36866084-bffd-4b14-9aec-c8f14d459c55
+java:S11928"YDefine a constant instead of duplicating this literal "No se encontraron cursos" 3 times.(¥ûé£ùÿÿÿÿ8òúÉ¾÷1J$a0ddb05f-5742-47ab-98f1-d3928d3c490a
 h
-java:S2629ª"$Invoke method(s) only conditionally.(äÄà8ƒ÷àˆ÷1J$d509034d-e7b1-4265-9019-6700771a8117
+java:S2629¥"$Invoke method(s) only conditionally.(äÄà8ûúÉ¾÷1J$616e349f-bf61-4899-b190-88b7a1be994c
 g
-java:S2629Ê"$Invoke method(s) only conditionally.(ß¦·8†÷àˆ÷1J$c3142d22-3f04-4735-b3d2-09e7e0ac4d09
+java:S2629Å"$Invoke method(s) only conditionally.(ß¦·8ıúÉ¾÷1J$77e206a8-c3d1-4679-adbd-393b4aba8391
 m
-java:S2629Ë"$Invoke method(s) only conditionally.(ïËÂêûÿÿÿÿ8•áˆ÷1J$72d384ad-cf56-4c77-a820-d3548f0d62da
+java:S2629Æ"$Invoke method(s) only conditionally.(ïËÂêûÿÿÿÿ8ÿúÉ¾÷1J$f0ce1787-c8b6-49f1-9510-3c22612fa9cc
 ™
-java:S3655É"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8‡øàˆ÷1J$3d39feb9-5a90-4c88-885b-b9d5c32f4dd9
+java:S3655Ä"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8íûÉ¾÷1J$8bbade79-cf4a-4da4-8ef0-ff97e877cfd8
 ™
-java:S3655ß"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8‡øàˆ÷1J$d474ece1-942e-4b9f-8799-7d117daae1e1
+java:S3655ï"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8íûÉ¾÷1J$3b38a513-e776-4936-a8ba-d96a98be702f
 ™
-java:S3655®"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8ˆøàˆ÷1J$c4f0dbe7-c606-4eb5-9b79-239c4b3fc993
+java:S3655©"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8íûÉ¾÷1J$986c8842-3fc9-4a91-9944-34c157976390
 …
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œøàˆ÷1J$4276701b-eae2-47ec-8c0d-6f85d809da3b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ğûÉ¾÷1J$2f9e2c6c-4583-4f85-89c8-3fecfa109673
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œøàˆ÷1J$7b13a013-e798-4212-8e12-ede2d799d27c
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8ğûÉ¾÷1J$b094d1a0-ba0a-43db-8a09-e9a8a39292ec
 …
-java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œøàˆ÷1J$2b179e07-2571-4935-b5e2-cfba887d4d77
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8ğûÉ¾÷1J$771a1e9b-083c-4c4a-9f17-c749e8193c48
 …
-java:S68130"BRemove this field injection and use constructor injection instead.(êæÄŞ8ª·œ•÷1J$3bd451b3-b22b-4fad-93ca-f00cbd6691e6
+java:S6813."BRemove this field injection and use constructor injection instead.(êæÄŞ8ñûÉ¾÷1J$685bac8d-ebda-4a26-92d0-0a2a59c52e7c
+…
+java:S68131"BRemove this field injection and use constructor injection instead.(êæÄŞ8ñûÉ¾÷1J$362a1691-4343-4ce5-8a3a-245cf4c1acc3

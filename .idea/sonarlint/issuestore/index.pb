@@ -178,7 +178,7 @@ H
 Ksrc/main/java/com/grupo2/aulavirtual/services/impl/CategoryServiceImpl.java,b\3\b32a1c220d925ba8ba31053fe53a3fbf33d40a25
 r
 Bsrc/main/java/com/grupo2/aulavirtual/services/CategoryService.java,1\6\16b411fa99955ee685c4260eb5344a5e13f39112
-€
-Psrc/main/java/com/grupo2/aulavirtual/repositories/impl/CourseRepositoryImpl.java,8\6\8660296f50904b30396f07dc92d847ef1c0cc090
 
 Osrc/main/java/com/grupo2/aulavirtual/repositories/CourseCategoryRepository.java,1\c\1c0ff0bd77bb80f21a38e66e31d8a009f25ad3ca
+k
+;src/main/java/com/grupo2/aulavirtual/config/CorsConfig.java,9\f\9f4c7e883267c43e1ce2a744eea04da3ce7497b6

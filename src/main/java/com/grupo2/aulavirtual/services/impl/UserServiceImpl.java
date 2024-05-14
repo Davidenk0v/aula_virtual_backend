@@ -145,7 +145,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
-            return ResponseEntity.status(201).body(usuarios);
+            return ResponseEntity.status(500).body(usuarios);
         }
     }
 

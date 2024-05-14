@@ -1,20 +1,23 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Äöñ‹÷1J$47b59363-9f1b-42ea-a0e2-7eb7720607f4
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ˆœ÷±÷1J$fcb773b3-564a-4af2-9de2-d3c756c8d7b6
 i
-java:S1452"&Remove usage of generic wildcard type.(šÖêÌ8Ëöñ‹÷1J$6492ede0-fd88-46b6-9ad8-ce16ea26626d
+java:S1452"&Remove usage of generic wildcard type.(šÖêÌ8œ÷±÷1J$840adc0e-ac67-4480-8d83-dc07a20907ea
 n
-java:S1452"&Remove usage of generic wildcard type.(ë×–åúÿÿÿÿ8Ìöñ‹÷1J$f157904b-3301-4a5c-9f0b-87dc34f4726f
+java:S1452"&Remove usage of generic wildcard type.(ë×–åúÿÿÿÿ8’œ÷±÷1J$b3f2e890-6598-4bf3-9020-8551e30e934f
 i
-java:S1452&"&Remove usage of generic wildcard type.(ÿÒ”¸8Ïöñ‹÷1J$ec0c740b-f8c8-4a5a-9819-53ce1b7ff0dd
-ƒ	java:S125!"<This block of commented-out lines of code should be removed.(ôœ²ûıÿÿÿÿ8ûÕõ÷1J$55c515d2-0f99-4a02-a17b-6216833ec64f
+java:S1452)"&Remove usage of generic wildcard type.(ÿÒ”¸8“œ÷±÷1J$9ac87a9b-ba28-4c28-b40b-0f7a98d17989
+ƒ	java:S125$"<This block of commented-out lines of code should be removed.(ôœ²ûıÿÿÿÿ8•œ÷±÷1J$985ba0a0-06fd-46b8-a2e8-5a94e4635366
 n
-java:S1452+"&Remove usage of generic wildcard type.(¼üÀûÿÿÿÿ8Ñöñ‹÷1J$7f71328d-8e7a-4d1d-b455-7af2937f6926
+java:S1452."&Remove usage of generic wildcard type.(¼üÀûÿÿÿÿ8—œ÷±÷1J$043b9578-8927-424e-8fa5-67716a7b257c
 n
-java:S14520"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8Òöñ‹÷1J$5441ba40-5b8c-4fcc-bafa-47c77bc6fd7a
+java:S14523"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8™œ÷±÷1J$43bc75e1-5ee1-44f0-974b-bb35a3576c1a
 n
-java:S14525"&Remove usage of generic wildcard type.(ÊÂ†Äşÿÿÿÿ8‚ƒõ÷1J$dba50b42-911b-4351-9293-ac97501228bf
+java:S14528"&Remove usage of generic wildcard type.(ÊÂ†Äşÿÿÿÿ8›œ÷±÷1J$42d07f14-32fe-41d1-bdcd-cdd432612fd4
 ™
-java:S1128"QRemove this unused import 'com.grupo2.aulavirtual.services.impl.UserServiceImpl'.(£ºÙ›şÿÿÿÿ8ç¸‚÷1J$1236140b-8d64-40b6-a731-3e4719692673
+java:S1128"QRemove this unused import 'com.grupo2.aulavirtual.services.impl.UserServiceImpl'.(£ºÙ›şÿÿÿÿ8™­ã±÷1J$0031e925-e2ad-4805-b2d5-ce31dc492e38
 
-java:S1128	"URemove this unused import 'org.springframework.security.access.prepost.PreAuthorize'.(ˆ†×ùÿÿÿÿ8ç¸‚÷1J$58381eca-1609-4715-be4e-48f34d810722
+java:S1128	"URemove this unused import 'org.springframework.security.access.prepost.PreAuthorize'.(ˆ†×ùÿÿÿÿ8‹æ–³÷1J$a1f75283-b425-4e74-9473-7d59d889f8a6
+¸
+java:S1128
+"uRemove this unused import 'org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity'.(©œ…Ì8ƒÀ’µ÷1J$350e1450-5a59-460d-b7dc-21d440fe8515

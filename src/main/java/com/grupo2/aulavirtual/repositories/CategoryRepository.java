@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
 
+import java.util.Optional;
+import java.util.Set;
+
 @Repository
-public interface CategoryRepository extends JpaRepository<CategoryEntity, Long>{
-    
+public interface CategoryRepository extends JpaRepository<CategoryEntity, String>{
+
+    Optional<CategoryEntity> findByCategoryContaining(String categoryName);
 }
