@@ -32,8 +32,8 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
-        return userServiceImpl.addUser(user);
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
+        return userServiceImpl.addUser(user, file);
     }
 
     @PostMapping("/file/{id}")
@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable Long id) {
-        return userServiceImpl.updateUser(user, id);
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable Long id, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
+        return userServiceImpl.updateUser(user, id, file);
     }
 
     @DeleteMapping("/{id}")
@@ -53,14 +53,11 @@ public class UserController {
 
     @DeleteMapping("/file/{id}")
     public ResponseEntity<?> setDefaultImage(@PathVariable Long id) {
-        System.out.println();
-        System.out.println("LLAMADA IMAGEN POR DEFECTO");
-        System.out.println();
         return userServiceImpl.setDefaultImage(id);
     }
 
-    @GetMapping("/listaTeacher/{id}")
-    public ResponseEntity<?> getListaTeacherByID(@PathVariable Long id) {
-        return userServiceImpl.userCoursesList(id);
+    @GetMapping("/listaTeacher/{email}")
+    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String email) {
+        return userServiceImpl.userCoursesList(email);
     }
 }

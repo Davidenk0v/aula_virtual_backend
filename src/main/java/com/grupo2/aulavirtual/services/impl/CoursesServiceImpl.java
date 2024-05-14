@@ -9,14 +9,21 @@ import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
+import com.grupo2.aulavirtual.util.FileUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -37,6 +44,12 @@ public class CoursesServiceImpl implements CourseService {
     private static final String ERROR = "Error";
 
     DtoMapper dtoMapper = new DtoMapper();
+    FileUtil fileUtil = new FileUtil();
+
+    Logger logger = LoggerFactory.getLogger(CoursesServiceImpl.class);
+
+    @Value("${default.img.course}")
+    private String defaultImg;
 
     @Autowired
     private CourseRepository courseRepository;
@@ -65,39 +78,128 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO) {
+    public ResponseEntity<HashMap<String, ?>> postCourse(Long id, CourseDTO courseDTO, MultipartFile file) {
         try {
             HashMap<String, UserResponseDto> response = new HashMap<>();
-            Optional<UserEntity> userOptional = userRepository.findById(idUser);
+            Optional<UserEntity> userOptional = userRepository.findById(id);
             if (userOptional.isPresent()) {
+                logger.info("Usuario encontrado");
                 UserEntity user = userOptional.get();
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
-                // linea añadida para evitar "Error": "not-null property references a null or transient value : com.grupo2.aulavirtual.entities.CourseEntity.createdDate" 
-                course.setCreatedDate(LocalDateTime.now());
+                logger.info("Curso mapeado");
+                if (file != null && !file.isEmpty()) {
+                    String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
+                    course.setUrlImg(path);
+                } else {
+                    String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+                    course.setUrlImg(defaultUrlImage);
+                }
                 if (user.getCourses() == null) {
                     ArrayList<CourseEntity> lista = new ArrayList<>();
                     lista.add(course);
                     user.setCourses(lista);
+                    logger.info("Lista de cursos creada");
                 } else {
                     List<CourseEntity> listaExist = user.getCourses();
                     listaExist.add(course);
                     user.setCourses(listaExist);
+                    logger.info("Añadido a la lista");
                 }
-                UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
                 userRepository.save(user);
-                response.put("Curso subido ", objectResponse);
+                logger.info("Usuario guardado");
+                UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
+                logger.info("Usuario respuesta mapeado");
+                courseRepository.save(course);
+                response.put("Curso subido", objectResponse);
                 return ResponseEntity.status(201).body(response);
             } else {
-                HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el usuario con id: ", idUser);
+                HashMap<String, String> error = new HashMap<>();
+                error.put("No ha encontrado el usuario: ", id + "");
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
+            logger.error(e.getMessage());
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
+    }
+
+    /**
+     * Metodo para distinguir entre nuevo archivo o actualizar archivo.
+     * 
+     * @param id   Long con la id de Lessons.
+     * @param file MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
+        if (!file.isEmpty()) {
+            Optional<CourseEntity> optionalCourse = repository.findById(id);
+            if (optionalCourse.isPresent()) {
+                CourseEntity course = optionalCourse.get();
+                if (course.getUrlImg() == null || course.getUrlImg().isEmpty()) {
+                    return saveFile(course, file);
+                } else {
+                    return updateFile(course, file);
+                }
+            } else {
+                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    /**
+     * Metodo para guardar un archivo.
+     * 
+     * @param course UserEntity a la que se le hacen los cambios.
+     * @param file   MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> saveFile(CourseEntity course, MultipartFile file) {
+        try {
+            String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
+            course.setUrlImg(path);
+            repository.save(course);
+            if (path != null) {
+                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(
+                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    /**
+     * Metodo para sobreescribir un archivo.
+     * 
+     * @param course UserEntity a la que se le hacen los cambios.
+     * @param file   MultiparFile con los datos del archivo.
+     * @return ResponseEntity<?> con el estado de la operacion.
+     */
+    public ResponseEntity<?> updateFile(CourseEntity course, MultipartFile file) {
+        try {
+            String path = fileUtil.updateFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\",
+                    course.getUrlImg());
+            course.setUrlImg(path);
+            repository.save(course);
+            if (path != null) {
+                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(
+                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
     }
 
     @Override
@@ -136,12 +238,36 @@ public class CoursesServiceImpl implements CourseService {
         }
     }
 
+    public ResponseEntity<?> setDefaultImage(Long id) {
+        Optional<CourseEntity> optionalCourse = repository.findById(id);
+        if (optionalCourse.isPresent()) {
+            CourseEntity course = optionalCourse.get();
+            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
+                fileUtil.deleteFile(course.getUrlImg());
+                course.setUrlImg(defaultUrlImage);
+                repository.save(course);
+            } else {
+                course.setUrlImg(defaultUrlImage);
+                repository.save(course);
+            }
+            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
+    public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO, MultipartFile file) {
+        logger.info(courseDTO.toString());
         try {
             HashMap<String, CourseResponseDto> response = new HashMap<>();
             if (courseRepository.existsById(id)) {
                 CourseEntity course = courseRepository.findById(id).get();
+                if (file != null && !file.isEmpty()) {
+                    String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
+                    course.setUrlImg(path);
+                }
                 if (!Objects.equals(courseDTO.getName(), "")) {
                     course.setName(courseDTO.getName());
                 }
@@ -169,6 +295,8 @@ public class CoursesServiceImpl implements CourseService {
         try {
             if (courseRepository.findById(id).isPresent()) {
                 CourseEntity course = courseRepository.findById(id).get();
+                logger.info(course.toString());
+                logger.info(dtoMapper.entityToResponseDto(course).toString());
                 return ResponseEntity.status(200).body(dtoMapper.entityToResponseDto(course));
             } else {
                 HashMap<String, Long> error = new HashMap<>();
@@ -179,6 +307,36 @@ public class CoursesServiceImpl implements CourseService {
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    /**
+     * Metodo para enviar un archivo al frontend.
+     * 
+     * @param id Long con la id del curso.
+     * @return ResponseEntity<?> con la imagen, con string en caso de error.
+     */
+    public ResponseEntity<?> sendFile(Long id) {
+        Optional<CourseEntity> optionalCourse = repository.findById(id);
+        if (optionalCourse.isPresent()) {
+            CourseEntity course = optionalCourse.get();
+            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
+                String fileRoute = course.getUrlImg();
+                String extension = fileUtil.getExtensionByPath(fileRoute);
+                String mediaType = fileUtil.getMediaType(extension);
+                byte[] file = fileUtil.sendFile(fileRoute);
+                if (file.length != 0) {
+                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
+                } else {
+                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
+                            HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } else {
+                return new ResponseEntity<>("No se encontro el curso.", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>("No se encuentra el archivo.",
+                    HttpStatus.NOT_FOUND);
         }
     }
 

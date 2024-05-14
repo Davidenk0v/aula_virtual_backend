@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -21,18 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public class FileUtil {
 
-    String root;
-    String defaultImage;
-    String fileSeparator = "\\";
+    private String root;
+    @Value("${default.path}")
+    private String defaultPath;
 
     public FileUtil() {
         root = new File("").getAbsolutePath();
-        defaultImage = "Media/Default/default.png";
+        defaultPath = "Media/Default/";
     }
 
     public FileUtil(String root) {
         this.root = root;
-        defaultImage = "Media/Default/default.png";
+        defaultPath = "Media/Default/";
     }
 
     /**
@@ -99,9 +100,13 @@ public class FileUtil {
     public void deleteFile(String path) {
         try {
             File pathFile = new File(path);
-            File defaultImg = new File(defaultImage);
-            File defaultImgPath = new File(defaultImg.getParent());
-            if (!Objects.equals(defaultImgPath.getAbsolutePath(), pathFile.getAbsolutePath())) {
+            File defaultImg = new File(defaultPath);
+            System.out.println();
+            System.out.println(pathFile.getParent());
+            System.out.println();
+            System.out.println(defaultImg.getAbsolutePath());
+            System.out.println();
+            if (!Objects.equals(defaultImg.getAbsolutePath(), pathFile.getParent())) {
                 Path oldFilePath = Paths.get(path);
                 Files.delete(oldFilePath);
             }
@@ -116,9 +121,9 @@ public class FileUtil {
      * @return String con la ruta absoluta del archivo, si ocurre un error, envia un
      *         null.
      */
-    public String setDefaultImage() {
+    public String setDefaultImage(String name) {
         try {
-            File defaultImg = new File(defaultImage);
+            File defaultImg = new File(defaultPath + name);
             File defaultImgPath = new File(defaultImg.getParent());
             if (!defaultImgPath.exists()) {
                 defaultImgPath.mkdirs();

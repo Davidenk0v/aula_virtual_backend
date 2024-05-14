@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -32,19 +33,34 @@ public class CourseController {
         return courseService.findCourseById(id);
     }
 
+    @GetMapping("/file/{id}")
+    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+        return courseService.sendFile(id);
+    }
+
     @PostMapping("/{idTeacher}")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher) {
-        return courseService.postCourse(idTeacher, courseDTO);
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
+        return courseService.postCourse(idTeacher, courseDTO, file);
+    }
+
+    @PostMapping("/file/{id}")
+    public ResponseEntity<?> saveFile(@PathVariable Long id,@RequestParam("file") MultipartFile file) {
+        return courseService.downloadFile(id, file);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id) {
-        return courseService.updateCourse(id, course);
+    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
+        return courseService.updateCourse(id, course, file);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCourseById(@PathVariable Long id) {
         return courseService.deleteCourse(id);
+    }
+
+    @DeleteMapping("/file/{id}")
+    public ResponseEntity<?> setDefaultImage(@PathVariable Long id) {
+        return courseService.setDefaultImage(id);
     }
 
     @GetMapping("/lista/{name}")

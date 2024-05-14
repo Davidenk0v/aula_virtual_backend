@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +27,8 @@ public class CourseResponseDto {
     private Date finishDate;
 
     private BigDecimal price;
+
+    private String urlImg;
 
     @JsonIgnore
     private List<UserResponseDto> users;

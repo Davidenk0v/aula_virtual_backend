@@ -14,7 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 /**
  * Course
  */
-
+@ToString
 @Getter
 @Setter
 @Builder
@@ -38,11 +38,12 @@ public class CourseEntity {
     @Column(nullable = false)
     private Date finishDate;
 
-    @Column(nullable = false)
-    private BigDecimal pago;
+    private BigDecimal price;
+
+    private String urlImg;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(insertable = false)
     private LocalDateTime createdDate;
 
     @LastModifiedDate

@@ -2,7 +2,6 @@ package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
@@ -15,6 +14,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +38,9 @@ public class UserServiceImpl implements UserService {
 
     private static final String ERROR = "Error";
     private static final String SAVE = "Guardado";
+
+    @Value("${default.img.user}")
+    private String defaultImg;
 
     @Override
     public UserEntity getLoggedUser() {
@@ -68,11 +71,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
+    public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO, MultipartFile file) {
         try {
 
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
+            if (file != null && !file.isEmpty()) {
+                String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
+                user.setUrlImg(path);
+            } else {
+                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+                user.setUrlImg(defaultUrlImage);
+            }
             userRepository.save(user);
             usuarios.put(SAVE, userDTO);
             return ResponseEntity.status(201).body(usuarios);
@@ -117,7 +127,7 @@ public class UserServiceImpl implements UserService {
      */
     public ResponseEntity<?> saveFile(UserEntity user, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\files\\");
+            String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
@@ -143,7 +153,7 @@ public class UserServiceImpl implements UserService {
      */
     public ResponseEntity<?> updateFile(UserEntity user, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\User\\" + user.getUsername() + "\\files\\", user.getUrlImg());
+            String path = fileUtil.updateFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\", user.getUrlImg());
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
@@ -230,13 +240,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
+    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id, MultipartFile file) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
             if (userRepository.findById(id).isPresent()) {
                 UserEntity user = userRepository.findById(id).get();
                 new UserResponseDto();
                 UserResponseDto userRespuesta;
+                if (file != null && !file.isEmpty()) {
+                    String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
+                    user.setUrlImg(path);
+                }
                 if (!Objects.equals(userDTO.getUsername(), "")) {
                     user.setUsername(userDTO.getUsername());
                 }
@@ -270,6 +284,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<?> userCoursesList(Long id) {
         Optional<UserEntity> userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) {
+            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+        }
+        UserEntity user = userOptional.get();
+        List<CourseEntity> coursesList = user.getCourses();
+        List<CourseResponseDto> userResponseDtos = coursesList.stream()
+                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
+        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
+    }
+    
+    public ResponseEntity<?> userCoursesList(String email) {
+        System.out.println();
+        System.out.println(email);
+        System.out.println();
+        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
         }
@@ -314,7 +343,7 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
-            String defaultUrlImage = fileUtil.setDefaultImage();
+            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
             if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
                 fileUtil.deleteFile(user.getUrlImg());
                 user.setUrlImg(defaultUrlImage);
@@ -323,7 +352,7 @@ public class UserServiceImpl implements UserService {
                 user.setUrlImg(defaultUrlImage);
                 userRepository.save(user);
             }
-            return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
         }

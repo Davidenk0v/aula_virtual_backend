@@ -2,6 +2,8 @@ HELP.md
 target/
 log/**
 Media/User/**
+Media/Course/**
+Media/Lessons/**
 
 ### IntelliJ IDEA ###
 .idea/
