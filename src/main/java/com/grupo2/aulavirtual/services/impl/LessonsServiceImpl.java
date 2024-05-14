@@ -128,7 +128,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\" + lessons.getName() + "\\files\\");
+            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\files\\");
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -154,7 +154,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\" + lessons.getName() + "\\files\\",
+            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\files\\",
                     lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
