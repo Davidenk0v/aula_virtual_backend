@@ -1,7 +1,7 @@
 HELP.md
 target/
 log/**
-Media/**
+Media/User/**
 
 ### IntelliJ IDEA ###
 .idea/

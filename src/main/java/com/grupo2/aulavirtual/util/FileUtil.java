@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -20,13 +22,17 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUtil {
 
     String root;
+    String defaultImage;
+    String fileSeparator = "\\";
 
     public FileUtil() {
         root = new File("").getAbsolutePath();
+        defaultImage = "Media/Default/default.png";
     }
 
     public FileUtil(String root) {
         this.root = root;
+        defaultImage = "Media/Default/default.png";
     }
 
     /**
@@ -39,11 +45,11 @@ public class FileUtil {
      *         null.
      */
     public String saveFile(MultipartFile file, String path) {
-        File newPath = new File(root + path);
-        if (!newPath.exists()) {
-            newPath.mkdirs();
-        }
         try {
+            File newPath = new File(root + path);
+            if (!newPath.exists()) {
+                newPath.mkdirs();
+            }
             String extension = getExtensionByName(file.getOriginalFilename());
             String newName = generateHash(file.getBytes()) + "." + extension;
             File newFile = new File(root + path + newName);
@@ -61,22 +67,64 @@ public class FileUtil {
      * @param file MultipartFile que contiene la informacion del archivo.
      * @param path String con la ruta donde se va a almacenar el archivo (Debe
      *             terminar en / o \)
+     * @param oldPth String con la ruta del anterior archivo.
      * @return String con la ruta absoluta del archivo, si ocurre un error, envia un
      *         null.
      */
-    public String updateFile(MultipartFile file, String path) {
+    public String updateFile(MultipartFile file, String path, String oldPth) {
         try {
-            File oldFile = new File(path);
+            File oldFile = new File(oldPth);
+            File newPath = new File(root + path);
+            if (!newPath.exists()) {
+                newPath.mkdirs();
+            }
             String extension = getExtensionByName(file.getOriginalFilename());
             String newName = generateHash(file.getBytes()) + "." + extension;
-            String newPath = path.substring(0, path.lastIndexOf("\\")) + "\\" + newName;
-            File newFile = new File(newPath);
+            File newFile = new File(root + path + newName);
             if (!Objects.equals(oldFile.getName(), newFile.getName())) {
                 file.transferTo(newFile);
-                oldFile.delete();
+                deleteFile(oldFile.getAbsolutePath());
             }
             return newFile.getAbsolutePath();
         } catch (IllegalStateException | IOException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Borra el archivo indicado.
+     * @param path String con la ruta al archivo.
+     */
+    public void deleteFile(String path) {
+        try {
+            File pathFile = new File(path);
+            File defaultImg = new File(defaultImage);
+            File defaultImgPath = new File(defaultImg.getParent());
+            if (!Objects.equals(defaultImgPath.getAbsolutePath(), pathFile.getAbsolutePath())) {
+                Path oldFilePath = Paths.get(path);
+                Files.delete(oldFilePath);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo para asignar la imagen por defecto.
+     * 
+     * @return String con la ruta absoluta del archivo, si ocurre un error, envia un
+     *         null.
+     */
+    public String setDefaultImage() {
+        try {
+            File defaultImg = new File(defaultImage);
+            File defaultImgPath = new File(defaultImg.getParent());
+            if (!defaultImgPath.exists()) {
+                defaultImgPath.mkdirs();
+            }
+            return defaultImg.getAbsolutePath();
+        } catch (IllegalStateException e) {
             e.printStackTrace();
             return null;
         }
@@ -92,24 +140,25 @@ public class FileUtil {
      *         error, envia un la lista vacia.
      */
     public List<String> saveListFile(List<MultipartFile> files, String path) {
-        List<String> pathList = new ArrayList<>();
-        File newPath = new File(root + path);
-        if (!newPath.exists()) {
-            newPath.mkdirs();
-        }
-        for (MultipartFile file : files) {
-            String extension = getExtensionByName(file.getOriginalFilename());
-            String newName = stringGenerator(25) + "." + extension;
-            File newFile = new File(root + path + newName);
-            try {
+        try {
+            List<String> pathList = new ArrayList<>();
+            File newPath = new File(root + path);
+            if (!newPath.exists()) {
+                newPath.mkdirs();
+            }
+            for (MultipartFile file : files) {
+                String extension = getExtensionByName(file.getOriginalFilename());
+                String newName = stringGenerator(25) + "." + extension;
+                File newFile = new File(root + path + newName);
+
                 file.transferTo(newFile);
                 pathList.add(newFile.getAbsolutePath());
-            } catch (IllegalStateException | IOException e) {
-                e.printStackTrace();
-                return pathList;
             }
+            return pathList;
+        } catch (IllegalStateException | IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
-        return pathList;
     }
 
     /**
@@ -120,15 +169,15 @@ public class FileUtil {
      *         existe u ocurre un error.
      */
     public byte[] sendFile(String path) {
-        File file = new File(path);
-        if (file.exists()) {
-            try {
+        try {
+            File file = new File(path);
+            if (file.exists()) {
                 return Files.readAllBytes(file.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
+            } else {
                 return new byte[0];
             }
-        } else {
+        } catch (IOException e) {
+            e.printStackTrace();
             return new byte[0];
         }
     }
@@ -141,19 +190,19 @@ public class FileUtil {
      *         vacia, si el archivo no existe u ocurre un error.
      */
     public List<byte[]> sendArrayFile(List<String> paths) {
-        List<byte[]> files = new ArrayList<>();
-        for (String path : paths) {
-            File file = new File(path);
-            if (file.exists()) {
-                try {
+        try {
+            List<byte[]> files = new ArrayList<>();
+            for (String path : paths) {
+                File file = new File(path);
+                if (file.exists()) {
                     files.add(Files.readAllBytes(file.toPath()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return files;
                 }
             }
+            return files;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
-        return files;
     }
 
     /**
@@ -238,10 +287,10 @@ public class FileUtil {
      * @return String aleatorio.
      */
     public String stringGenerator(int size) {
-        String menu = "menuABCDFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-        char[] alfabeto = menu.toCharArray();
-        SecureRandom objetoRandom;
         try {
+            String menu = "menuABCDFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+            char[] alfabeto = menu.toCharArray();
+            SecureRandom objetoRandom;
             objetoRandom = SecureRandom.getInstance("SHA1PRNG", "SUN");
             char[] caracteres = new char[size];
             for (int i = 0; i < size; i++) {
@@ -256,6 +305,7 @@ public class FileUtil {
 
     /**
      * Metodo para conseguir el Hash de un archivo.
+     * 
      * @param data byte[] del archivo.
      * @return String con el Hash SHA-256
      * @throws NoSuchAlgorithmException

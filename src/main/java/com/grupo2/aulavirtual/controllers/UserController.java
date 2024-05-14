@@ -51,6 +51,14 @@ public class UserController {
         return userServiceImpl.deleteUser(id);
     }
 
+    @DeleteMapping("/file/{id}")
+    public ResponseEntity<?> setDefaultImage(@PathVariable Long id) {
+        System.out.println();
+        System.out.println("LLAMADA IMAGEN POR DEFECTO");
+        System.out.println();
+        return userServiceImpl.setDefaultImage(id);
+    }
+
     @GetMapping("/listaTeacher/{id}")
     public ResponseEntity<?> getListaTeacherByID(@PathVariable Long id) {
         return userServiceImpl.userCoursesList(id);
