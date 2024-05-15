@@ -43,11 +43,11 @@ public class CourseEntity {
     private String urlImg;
 
     @CreatedDate
-    @Column(insertable = false)
+    @Column(insertable = false, nullable = true)
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @Column(insertable = false)
+    @Column(insertable = false, nullable = true)
     private LocalDateTime lastModifiedDate;
 
 

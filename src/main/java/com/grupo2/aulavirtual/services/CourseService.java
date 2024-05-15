@@ -4,7 +4,6 @@ import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 
@@ -13,11 +12,11 @@ public interface CourseService {
 
     ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable);
 
-    ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO, MultipartFile file);
+    ResponseEntity<HashMap<String, ?>> postCourse(Long idUser, CourseDTO courseDTO);
 
     ResponseEntity<?> deleteCourse(Long id);
 
-    ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO, MultipartFile file);
+    ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO);
 
     ResponseEntity<?> findCourseById(Long id);
 

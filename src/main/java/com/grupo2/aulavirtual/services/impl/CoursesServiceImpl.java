@@ -78,7 +78,7 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postCourse(Long id, CourseDTO courseDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> postCourse(Long id, CourseDTO courseDTO) {
         try {
             HashMap<String, UserResponseDto> response = new HashMap<>();
             Optional<UserEntity> userOptional = userRepository.findById(id);
@@ -87,13 +87,10 @@ public class CoursesServiceImpl implements CourseService {
                 UserEntity user = userOptional.get();
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
                 logger.info("Curso mapeado");
-                if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
-                    course.setUrlImg(path);
-                } else {
-                    String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-                    course.setUrlImg(defaultUrlImage);
-                }
+                course.setCreatedDate(LocalDateTime.now());
+                course.setLastModifiedDate(LocalDateTime.now());
+                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+                course.setUrlImg(defaultUrlImage);
                 if (user.getCourses() == null) {
                     ArrayList<CourseEntity> lista = new ArrayList<>();
                     lista.add(course);
@@ -243,6 +240,7 @@ public class CoursesServiceImpl implements CourseService {
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
             String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+            course.setLastModifiedDate(LocalDateTime.now());
             if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
                 fileUtil.deleteFile(course.getUrlImg());
                 course.setUrlImg(defaultUrlImage);
@@ -258,16 +256,12 @@ public class CoursesServiceImpl implements CourseService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
         logger.info(courseDTO.toString());
         try {
             HashMap<String, CourseResponseDto> response = new HashMap<>();
             if (courseRepository.existsById(id)) {
                 CourseEntity course = courseRepository.findById(id).get();
-                if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
-                    course.setUrlImg(path);
-                }
                 if (!Objects.equals(courseDTO.getName(), "")) {
                     course.setName(courseDTO.getName());
                 }

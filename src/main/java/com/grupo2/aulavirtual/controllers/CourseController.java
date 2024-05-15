@@ -39,8 +39,8 @@ public class CourseController {
     }
 
     @PostMapping("/{idTeacher}")
-    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
-        return courseService.postCourse(idTeacher, courseDTO, file);
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDTO courseDTO, @PathVariable Long idTeacher) {
+        return courseService.postCourse(idTeacher, courseDTO);
     }
 
     @PostMapping("/file/{id}")
@@ -49,8 +49,8 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id, @PathVariable Long idTeacher,@RequestParam(name = "file", required = false) MultipartFile file) {
-        return courseService.updateCourse(id, course, file);
+    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id, @PathVariable Long idTeacher) {
+        return courseService.updateCourse(id, course);
     }
 
     @DeleteMapping("/{id}")
