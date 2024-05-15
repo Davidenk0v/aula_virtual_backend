@@ -16,7 +16,7 @@ public interface CommentService {
      * @param commentDTO DTO con los datos del comentario.
      * @return ResponseEntity
      */
-    ResponseEntity<?> postComment(Long idUser, Long idCourse, CommentDTO commentDTO);
+    ResponseEntity<?> postComment(String idUser, Long idCourse, CommentDTO commentDTO);
 
     /**
      * Regresa una lista con todos los comentarios.

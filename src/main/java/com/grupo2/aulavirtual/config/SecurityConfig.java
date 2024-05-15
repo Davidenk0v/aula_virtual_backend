@@ -55,6 +55,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/courses/**").permitAll()
                         // CATEGORIES
                         .requestMatchers("/api/v1/categories/**").permitAll()
+                        // COMMENTS
+                        .requestMatchers("/api/v1/comment/**").permitAll()
+                        // TEMAS
+                        .requestMatchers("/api/v1/subjects/**").permitAll()
 
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> {
@@ -67,7 +71,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Content-Type", "Authorization", "Content-Length",
                 "X-Requested-With",

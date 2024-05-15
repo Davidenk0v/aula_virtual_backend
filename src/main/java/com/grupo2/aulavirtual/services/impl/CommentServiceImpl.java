@@ -45,43 +45,21 @@ public class CommentServiceImpl implements CommentService {
      * @return ResponseEntity con el estado de la operacion.
      */
     @Override
-    public ResponseEntity<?> postComment(Long idUser, Long idCourse, CommentDTO commentDTO) {
+    public ResponseEntity<?> postComment(String idUser, Long idCourse, CommentDTO commentDTO) {
         try {
             HashMap<String, CommentResponseDto> response = new HashMap<>();
-            UserEntity user = userRepository.findById(idUser).get();
+            UserEntity user = userRepository.findByIdKeycloak(idUser).get();
             CourseEntity course = courseRepository.findById(idCourse).get();
  
 
             CommentEntity comment = new CommentEntity();
             comment = dtoMapper.dtoToEntity(commentDTO);
  
-            /*if (user.getComments() == null) {
-                ArrayList<CommentEntity> lista = new ArrayList<>();
-                lista.add(comment);
-                user.setComments(lista);
-            } else {
-                List<CommentEntity> listaExist = user.getComments();
-                listaExist.add(comment);
-                user.setComments(listaExist);
-            }
-            if (course.getComments() == null) {
-                ArrayList<CommentEntity> lista = new ArrayList<>();
-                lista.add(comment);
-                course.setComments(lista);
-            } else {
-                List<CommentEntity> listaExist = course.getComments();
-                listaExist.add(comment);
-                course.setComments(listaExist);
-            }*/
- 
 
 
             comment.setCourse(course);
             comment.setUser(user);
             CommentResponseDto objectResponse = dtoMapper.entityToResponseDto(comment);
- 
-            /*courseRepository.save(course);
-            userRepository.save(user);*/
          
 
             commentRepository.save(comment);

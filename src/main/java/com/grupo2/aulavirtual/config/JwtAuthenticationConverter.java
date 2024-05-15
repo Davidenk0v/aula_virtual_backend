@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
     Logger logger = LoggerFactory.getLogger(JwtAuthenticationConverter.class);
+
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter =
             new JwtGrantedAuthoritiesConverter();
 

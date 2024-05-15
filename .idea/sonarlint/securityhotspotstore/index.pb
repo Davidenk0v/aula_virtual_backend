@@ -192,3 +192,9 @@ t
 Dsrc/main/java/com/grupo2/aulavirtual/util/email/JavaEmailSender.java,9\3\9372272ebe9a4afa95c9a1926efd0ab22cf30be2
 u
 Esrc/main/java/com/grupo2/aulavirtual/controllers/EmailController.java,1\8\18209e0a8f498667e6b2a8c6f1abd83679858829
+z
+Jsrc/main/java/com/grupo2/aulavirtual/services/impl/CommentServiceImpl.java,5\9\59d9580ac089db7e5562bd3c55e18e0092175274
+q
+Asrc/main/java/com/grupo2/aulavirtual/services/CommentService.java,5\3\534c30f170c74ccc7adb72b6f670c38dd5237c62
+w
+Gsrc/main/java/com/grupo2/aulavirtual/controllers/CommentController.java,5\d\5d54024311236a20cbbb1f70cfe9d889caefd341

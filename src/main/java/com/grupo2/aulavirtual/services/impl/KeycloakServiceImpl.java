@@ -57,6 +57,7 @@ public class KeycloakServiceImpl implements KeycloakService {
             return ResponseEntity.status(200).body(token);
 
         } catch (Exception e) {
+            logger.error(e.getMessage());
             return ResponseEntity.status(401).body("Invalid credentials. Please try again.");
         }
     }

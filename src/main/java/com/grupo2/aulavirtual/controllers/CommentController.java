@@ -42,10 +42,9 @@ public class CommentController {
     }
     @PostMapping("/{idUser}/{idCourse}")
     public ResponseEntity<?>saveComment(
-            @PathVariable Long idUser,
+            @PathVariable String idUser,
             @PathVariable Long idCourse,
             @RequestBody CommentDTO commentDTO){
-                System.out.println(idUser + "" + idCourse);
         return commentService.postComment(idUser, idCourse,commentDTO);
     }
     @PutMapping("/{id}")
