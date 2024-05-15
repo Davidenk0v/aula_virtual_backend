@@ -11,10 +11,6 @@ import java.util.List;
 public interface CourseService {
     ResponseEntity<?> courseList();
 
-    ResponseEntity<?> coursesByCategory(String category);
-
-    ResponseEntity<?> coursesByCategory(List<String> categories);
-
     ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable);
 
     ResponseEntity<?> postCourse(String email, CourseDTO courseDTO);

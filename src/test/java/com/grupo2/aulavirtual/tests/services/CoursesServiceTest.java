@@ -95,8 +95,7 @@ class CoursesServiceTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("No se encontraron cursos", response.getBody());
     }
-
-    @Test
+    
 //    void postCourse() {
 //        // Configurar los datos de entrada
 //        Long userId = 1L;

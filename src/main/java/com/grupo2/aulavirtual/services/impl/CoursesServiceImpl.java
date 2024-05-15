@@ -46,8 +46,6 @@ public class CoursesServiceImpl implements CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    @Autowired
-    private CourseCategoryRepository courseCategoryRepository;
 
     @Override
     public ResponseEntity<?> courseList() {
@@ -60,21 +58,7 @@ public class CoursesServiceImpl implements CourseService {
         return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
     }
 
-    @Override
-    public ResponseEntity<?> coursesByCategory(String category) {
-        return null;
-    }
 
-    @Override
-    public ResponseEntity<?> coursesByCategory(List<String> categories) {
-        List<CourseEntity> courseEntities = courseCategoryRepository.filterCoursesByCategories(categories);
-        if (courseEntities.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
-        }
-        List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
-                .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
-        return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
-    }
 
     @Override
     public ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable) {

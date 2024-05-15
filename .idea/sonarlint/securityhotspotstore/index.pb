@@ -182,3 +182,17 @@ Bsrc/main/java/com/grupo2/aulavirtual/services/CategoryService.java,1\6\16b411f
 Osrc/main/java/com/grupo2/aulavirtual/repositories/CourseCategoryRepository.java,1\c\1c0ff0bd77bb80f21a38e66e31d8a009f25ad3ca
 k
 ;src/main/java/com/grupo2/aulavirtual/config/CorsConfig.java,9\f\9f4c7e883267c43e1ce2a744eea04da3ce7497b6
+q
+Asrc/main/java/com/grupo2/aulavirtual/util/email/EmailService.java,e\0\e03bba929f8ec229b8684e08d2e6e0a4faef32a4
+u
+Esrc/main/java/com/grupo2/aulavirtual/util/email/EmailServiceImpl.java,0\4\0495dd32e779fc200aaab991592a5603cb242d6e
+s
+Csrc/main/java/com/grupo2/aulavirtual/util/email/JavaMailSender.java,1\3\13d26d271f5b4390d0e465723d7856e8d2e9f9ff
+x
+Hsrc/main/java/com/grupo2/aulavirtual/util/email/JavaEmailSenderImpl.java,a\a\aa040bc4496de6619be088ec4e1afe8a7cfc34c2
+w
+Gsrc/main/java/com/grupo2/aulavirtual/util/email/JavaMailSenderImpl.java,1\0\100f4f392cb745224e0380bfcdb3f4435ed03e7b
+t
+Dsrc/main/java/com/grupo2/aulavirtual/util/email/JavaEmailSender.java,9\3\9372272ebe9a4afa95c9a1926efd0ab22cf30be2
+u
+Esrc/main/java/com/grupo2/aulavirtual/controllers/EmailController.java,1\8\18209e0a8f498667e6b2a8c6f1abd83679858829

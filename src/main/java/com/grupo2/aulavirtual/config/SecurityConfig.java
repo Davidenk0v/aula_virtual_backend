@@ -29,11 +29,11 @@ public class SecurityConfig {
     @Autowired
     private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(http ->
                         //SWAGGER
                         http.requestMatchers("/v2/api-docs").permitAll()
@@ -50,7 +50,7 @@ public class SecurityConfig {
                         //AUTH
                         .requestMatchers("/auth/**").permitAll()
                         //USERS
-                        .requestMatchers("/api/v1/users/**").permitAll()
+                        .requestMatchers("/api/v1/users/**").authenticated()
                         //COURSES
                         .requestMatchers("/api/v1/courses/**").permitAll()
                         //CATEGORIES

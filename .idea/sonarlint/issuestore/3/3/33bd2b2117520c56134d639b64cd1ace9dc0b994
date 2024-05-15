@@ -1,21 +1,19 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÂŞÃó1J$c84df67c-5e01-464e-bbbd-4bf44dd4fa1c
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ê†…Û÷1J$99335270-65c4-49f5-b719-1e79bf97cc7b
 h
-java:S1452"&Remove usage of generic wildcard type.(Òâı8¡ÂŞÃó1J$bfb01937-70e4-4ee0-88a6-d6f5a431f95d
+java:S1452"&Remove usage of generic wildcard type.(Òâı8ó†…Û÷1J$2330adbb-35d3-47dc-9695-12aebaa51913
 n
-java:S1452"&Remove usage of generic wildcard type.(‡ØÊÀıÿÿÿÿ8§ÂŞÃó1J$bd4a9ed3-10dd-4b64-a734-3df45ced6dc4
+java:S1452"&Remove usage of generic wildcard type.(‡ØÊÀıÿÿÿÿ8÷†…Û÷1J$0f222194-e4cf-4d5d-947a-9bd8943502d2
 i
-java:S1452"&Remove usage of generic wildcard type.(ñğúÈ8¬ÂŞÃó1J$98d2e8cf-176f-486d-be5f-42072759ed9f
+java:S1452"&Remove usage of generic wildcard type.(ñğúÈ8ú†…Û÷1J$4cce90c3-3a2c-4eb0-b2ed-e07a0f46e9a5
 n
-java:S1452$"&Remove usage of generic wildcard type.(õ¡Çùÿÿÿÿ8°ÂŞÃó1J$9f4d103e-1986-4f51-a645-d902f80bd4e7
+java:S1452$"&Remove usage of generic wildcard type.(õ¡Çùÿÿÿÿ8ı†…Û÷1J$c3c1dacd-ff06-4b36-928a-b515d7a1345a
 n
-java:S1452)"&Remove usage of generic wildcard type.(á‡™¡üÿÿÿÿ8´ÂŞÃó1J$1244a5b7-bc98-40a4-aece-0ce16ec2a115
+java:S1452)"&Remove usage of generic wildcard type.(á‡™¡üÿÿÿÿ8ÿ†…Û÷1J$e13a421f-d928-4366-aa94-11e8fa5dae6d
 i
-java:S1452."&Remove usage of generic wildcard type.(¸Í—8»ÂŞÃó1J$44c2fca3-95bc-487c-8b98-c06a9aff5f65
+java:S1452."&Remove usage of generic wildcard type.(¸Í—8‚‡…Û÷1J$8aeefcfb-6589-48ce-9924-1eb53d8452b3
 n
-java:S14523"&Remove usage of generic wildcard type.(®ÉÕùÿÿÿÿ8ÑÃğõ1J$825cfb53-ae39-4461-8b6a-611b013abecc
+java:S14523"&Remove usage of generic wildcard type.(®ÉÕùÿÿÿÿ8„‡…Û÷1J$19daa10b-9dde-4e5c-aacd-e6eeb01697c9
 n
-java:S14528"&Remove usage of generic wildcard type.(ãŞşùÿÿÿÿ8ÜØ¦“÷1J$a9fe02ab-4cea-4587-9fab-3ed43d955bf1
-n
-java:S1452="&Remove usage of generic wildcard type.(À¢Şûÿÿÿÿ8ì–Ò¾÷1J$2dcec2b9-0036-4ef9-b719-94b2412fd9fb
+java:S14528"&Remove usage of generic wildcard type.(ãŞşùÿÿÿÿ8†‡…Û÷1J$6eab3db1-8e4d-4c05-88fe-80b63c454219

@@ -194,10 +194,10 @@ class UserServiceTest {
 
     @Test
     void updateUser() {
-        Long userId = 1L;
+        String userId = "1L";
         String newUsername = "updatedUsername";
         userDTO.setUsername(newUsername);
-        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userRepository.findByIdKeycloak(userId)).thenReturn(Optional.of(user));
         when(userRepository.save(user)).thenReturn(user);
 
         ResponseEntity<HashMap<String, ?>> response = userService.updateUser(userDTO, userId);

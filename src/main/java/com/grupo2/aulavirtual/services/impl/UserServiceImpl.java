@@ -150,10 +150,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id) {
+    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String id) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            Optional<UserEntity> optionalUser = userRepository.findById(id);
+            Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(id);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
 

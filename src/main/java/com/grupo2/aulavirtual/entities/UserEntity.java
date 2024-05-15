@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 
+@Data
 @Builder
 @NoArgsConstructor
 @Getter
@@ -49,5 +50,5 @@ public class UserEntity {
         return List.of(new SimpleGrantedAuthority(getRole().toString()));
     }
 
-
+    
 }

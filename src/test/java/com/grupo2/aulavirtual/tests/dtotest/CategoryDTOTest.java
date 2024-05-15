@@ -14,7 +14,7 @@ public class CategoryDTOTest {
     void testGettersAndSetters() {
         CategoryDTO categoryDTO = CategoryDTO.builder()
             .idCategory(1L)
-            .category(CategoryEnum.DESIGN)
+            .category(CategoryEnum.DESIGN.name())
             .course(null)
             .build();
 
@@ -22,9 +22,9 @@ public class CategoryDTOTest {
         categoryDTO.setIdCategory(2L);
         assertEquals(2L, categoryDTO.getIdCategory(), "idCategory setter must be equal to 2L");
 
-        assertEquals(CategoryEnum.DESIGN, categoryDTO.getCategory(), "Category getter must be equal to CategoryEnum.MATH");
-        categoryDTO.setCategory(CategoryEnum.COOKING);
-        assertEquals(CategoryEnum.COOKING, categoryDTO.getCategory(), "Category setter must be equal to CategoryEnum.SCIENCE");
+        assertEquals(CategoryEnum.DESIGN.name(), categoryDTO.getCategory(), "Category getter must be equal to CategoryEnum.MATH");
+        categoryDTO.setCategory("Cooking");
+        assertEquals("Cooking", categoryDTO.getCategory(), "Category setter must be equal to CategoryEnum.SCIENCE");
 
         assertEquals(null, categoryDTO.getCourse(), "Course getter must be null");
     }

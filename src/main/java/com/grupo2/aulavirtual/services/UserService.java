@@ -19,7 +19,7 @@ public interface UserService {
 
     ResponseEntity<?> findUserById(String idUser);
 
-    ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, Long id);
+    ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String id);
 
     ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email);
 

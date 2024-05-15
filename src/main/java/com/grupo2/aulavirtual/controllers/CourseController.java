@@ -24,7 +24,7 @@ public class CourseController {
 
     @GetMapping("/category/{category}")
     public ResponseEntity<?> getCategoriesByCategory(@PathVariable String category) {
-        return courseService.coursesByCategory(category);
+        return courseService.findCoursesByCategory(category);
     }
 
     @GetMapping("/pages")
@@ -57,8 +57,4 @@ public class CourseController {
         return courseService.findAllByContains(name);
     }
 
-    @GetMapping("/category/{category}")
-    public ResponseEntity<?> getCoursesByCategory(@PathVariable String category) {
-        return courseService.findCoursesByCategory(category);
-    }
 }
