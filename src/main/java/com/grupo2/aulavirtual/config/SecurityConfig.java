@@ -34,6 +34,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(http ->
                         //SWAGGER
                         http.requestMatchers("/v2/api-docs").permitAll()

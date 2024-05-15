@@ -23,7 +23,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .maxAge(3600);
 
         registry.addMapping("/auth/**")
-                .allowedOrigins("http://localhost:4200")
+                .allowedOrigins("*")
                 .allowedMethods("GET", "POST")
                 .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
                 .allowCredentials(false)

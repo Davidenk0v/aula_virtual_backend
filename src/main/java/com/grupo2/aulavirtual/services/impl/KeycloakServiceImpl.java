@@ -90,7 +90,7 @@ public class KeycloakServiceImpl implements KeycloakService {
         userRepresentation.setEmail(userDTO.getEmail());
         userRepresentation.setUsername(userDTO.getUsername());
         userRepresentation.setEnabled(true);
-        userRepresentation.setEmailVerified(true);
+        userRepresentation.setEmailVerified(false);
 
         Response response = usersResource.create(userRepresentation);
 
@@ -182,9 +182,10 @@ public class KeycloakServiceImpl implements KeycloakService {
             if (!Objects.equals(userDTO.getFirstname(), "")) {
                 user.setFirstName(userDTO.getFirstname());
             }
-            if(!Objects.equals(userDTO.getPassword(), "")){
+            if(userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()){
             CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
             credentialRepresentation.setTemporary(false);
+            user.setEmailVerified(true);
             credentialRepresentation.setType(OAuth2Constants.PASSWORD);
             credentialRepresentation.setValue(userDTO.getPassword());
             user.setCredentials(Collections.singletonList(credentialRepresentation));
@@ -199,4 +200,5 @@ public class KeycloakServiceImpl implements KeycloakService {
             logger.error(e.getMessage());
         }
     }
+
 }
