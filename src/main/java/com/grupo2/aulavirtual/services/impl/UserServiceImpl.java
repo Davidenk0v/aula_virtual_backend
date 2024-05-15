@@ -295,9 +295,6 @@ public class UserServiceImpl implements UserService {
     }
     
     public ResponseEntity<?> userCoursesList(String email) {
-        System.out.println();
-        System.out.println(email);
-        System.out.println();
         Optional<UserEntity> userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);

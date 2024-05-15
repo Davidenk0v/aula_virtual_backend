@@ -1,7 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
@@ -44,6 +43,26 @@ public class LessonsServiceImpl implements LessonsService {
         List<LessonsResponseDto> lessonsResponseDtos = lessonsEntities.stream()
                 .map(lessonsEntity -> dtoMapper.entityToResponseDto(lessonsEntity)).toList();
         return new ResponseEntity<>(lessonsResponseDtos, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getLessonBySubjebtId(Long subjectId) {
+        try {
+            Optional<SubjectsEntity> subject = repository.findById(subjectId);
+            if (!subject.isEmpty()) {
+                SubjectsEntity subjectsEntity = subject.get();
+                List<LessonsEntity> lista = subjectsEntity.getLessons();
+                int size = lista.size();
+                LessonsEntity lastAdded = lista.get(size - 1);
+                LessonsResponseDto lessonsResponseDto = dtoMapper.entityToResponseDto(lastAdded);
+                return ResponseEntity.status(201).body(lessonsResponseDto);
+            } else {
+                return ResponseEntity.status(404).body("No hay subjects");
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put("Error", e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
     }
 
     public ResponseEntity<?> sendFile(Long id) {

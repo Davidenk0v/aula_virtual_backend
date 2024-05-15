@@ -46,6 +46,11 @@ public class LessonController {
         return lessonService.findLessonsById(id);
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<?> getLessonBySubjebtId(@PathVariable Long id) {
+        return lessonService.getLessonBySubjebtId(id);
+    }
+
     @GetMapping("/file/{id}")
     public ResponseEntity<?> uploadFile(@PathVariable Long id) {
         return lessonService.sendFile(id);
