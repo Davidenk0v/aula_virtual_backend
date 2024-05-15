@@ -29,15 +29,14 @@ public class SecurityConfig {
     @Autowired
     private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(http ->
-                        //SWAGGER
-                        http.requestMatchers("/v2/api-docs").permitAll()
+                // SWAGGER
+                http.requestMatchers("/v2/api-docs").permitAll()
                         .requestMatchers("/v3/api-docs").permitAll()
                         .requestMatchers("/swagger-resources").permitAll()
                         .requestMatchers("/swagger-resources/**").permitAll()
@@ -46,15 +45,15 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/swagger-ui.html").permitAll()
-                         //IMAGES
+                        // IMAGES
                         .requestMatchers("/assets/img/**").permitAll()
-                        //AUTH
+                        // AUTH
                         .requestMatchers("/auth/**").permitAll()
-                        //USERS
+                        // USERS
                         .requestMatchers("/api/v1/users/**").authenticated()
-                        //COURSES
+                        // COURSES
                         .requestMatchers("/api/v1/courses/**").permitAll()
-                        //CATEGORIES
+                        // CATEGORIES
                         .requestMatchers("/api/v1/categories/**").permitAll()
 
                         .anyRequest().authenticated())

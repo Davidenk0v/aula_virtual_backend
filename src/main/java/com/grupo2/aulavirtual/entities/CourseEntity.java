@@ -50,11 +50,7 @@ public class CourseEntity {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-
-    @OneToMany(
-            mappedBy = "course",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<SubjectsEntity> subjects;
 
     @ManyToMany
@@ -63,5 +59,8 @@ public class CourseEntity {
 
     @ManyToMany(mappedBy = "courses")
     private List<UserEntity> user;
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    private List<CommentEntity> comments;
 
 }

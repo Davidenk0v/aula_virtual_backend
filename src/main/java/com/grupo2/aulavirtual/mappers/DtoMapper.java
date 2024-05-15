@@ -6,12 +6,14 @@ import com.grupo2.aulavirtual.payload.request.*;
 import org.modelmapper.ModelMapper;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
+import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
+import com.grupo2.aulavirtual.payload.response.CommentResponseDto;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.LessonsResponseDto;
 import com.grupo2.aulavirtual.payload.response.RoleResponseDto;
@@ -42,6 +44,10 @@ public class DtoMapper {
 
     public RoleEntity dtoToEntity(RoleDTO roleDTO) {
         return modelMapper.map(roleDTO, RoleEntity.class);
+    }
+
+        public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
+        return modelMapper.map(CommentDTO, CommentEntity.class);
     }
 
     public UserEntity dtoToEntity(UserDTO userDTO) {
@@ -170,6 +176,28 @@ public class DtoMapper {
             userResponseDto.setCourses(courseResponseDto);
         }
         return userResponseDto;
+
+    }
+
+    public CommentResponseDto entityToResponseDto(CommentEntity commentEntity) {
+
+        CommentResponseDto commentResponseDto = new CommentResponseDto()
+                .builder()
+                .idComment(commentEntity.getIdComment())
+                .text(commentEntity.getText())
+                .date(commentEntity.getDate())
+                .build();
+
+        if (commentEntity.getUser() != null) {
+            UserResponseDto userResponseDto = modelMapper.map(commentEntity.getUser(), UserResponseDto.class);
+            commentResponseDto.setUser(userResponseDto);
+        }
+
+        if (commentEntity.getCourse() != null) {
+            CourseResponseDto courseResponseDto = modelMapper.map(commentEntity.getCourse(), CourseResponseDto.class);
+            commentResponseDto.setCourse(courseResponseDto);
+        }
+        return commentResponseDto;
 
     }
 
