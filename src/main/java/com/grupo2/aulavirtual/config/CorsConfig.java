@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
-                .allowCredentials(true)
+                .allowCredentials(false)
                 .maxAge(3600);
 
         registry.addMapping("/swagger-ui/**")

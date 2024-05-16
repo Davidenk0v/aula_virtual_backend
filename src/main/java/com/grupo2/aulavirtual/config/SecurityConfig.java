@@ -50,7 +50,7 @@ public class SecurityConfig {
                         // AUTH
                         .requestMatchers("/auth/**").permitAll()
                         // USERS
-                        .requestMatchers("/api/v1/users/**").authenticated()
+                        .requestMatchers("/api/v1/users/**").permitAll()
                         // COURSES
                         .requestMatchers("/api/v1/courses/**").permitAll()
                         // CATEGORIES
