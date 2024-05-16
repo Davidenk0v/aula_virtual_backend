@@ -28,7 +28,7 @@ public class LessonsEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String contenido;
 
     @Column(nullable = false)

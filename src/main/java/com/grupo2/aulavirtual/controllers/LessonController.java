@@ -4,6 +4,7 @@ import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
 
 import com.grupo2.aulavirtual.services.impl.LessonsServiceImpl;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -44,14 +46,29 @@ public class LessonController {
         return lessonService.findLessonsById(id);
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<?> getLessonBySubjebtId(@PathVariable Long id) {
+        return lessonService.getLessonBySubjebtId(id);
+    }
+
+    @GetMapping("/file/{id}")
+    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+        return lessonService.sendFile(id);
+    }
+
     @Operation(summary = "Crear una nueva lección", tags = "Lessons API")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Leccion creada", content = @Content(mediaType = "application/json", schema = @Schema(implementation = LessonsEntity.class))),
             @ApiResponse(responseCode = "400", description = "Solicitud incorrecta", content = @Content)
     })
     @PostMapping("/{idSubject}")
-    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson) {
-        return lessonService.postLessons(idSubject, lesson);
+    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson, @RequestParam(name = "file", required = false) MultipartFile file) {
+        return lessonService.postLessons(idSubject, lesson, file);
+    }
+
+    @PostMapping("/file/{id}")
+    public ResponseEntity<?> saveFile(@PathVariable Long id,@RequestParam("file") MultipartFile file) {
+        return lessonService.downloadFile(id, file);
     }
 
     @Operation(summary = "Actualizar una lección por ID", tags = "Lessons API")
@@ -60,8 +77,8 @@ public class LessonController {
             @ApiResponse(responseCode = "404", description = "Leccion no encontrada", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id) {
-        return lessonService.updateLesson(id, lessonsDTO);
+    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id, @RequestParam(name = "file", required = false)MultipartFile file) {
+        return lessonService.updateLesson(id, lessonsDTO, file);
     }
 
     @Operation(summary = "Eliminar una lección por ID", tags = "Lessons API")

@@ -2,8 +2,6 @@ package com.grupo2.aulavirtual.config;
 
 import lombok.RequiredArgsConstructor;
 
-import org.jetbrains.annotations.NotNull;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +17,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
+
+import jakarta.validation.constraints.NotNull;
 
 @Configuration
 @EnableWebSecurity

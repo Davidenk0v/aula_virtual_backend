@@ -15,6 +15,7 @@ import org.springframework.data.annotation.LastModifiedDate;
  * Course
  */
 @ToString
+@ToString
 @Getter
 @Setter
 @Builder
@@ -47,7 +48,7 @@ public class CourseEntity {
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @Column(insertable = false)
+    @Column(insertable = false, nullable = true)
     private LocalDateTime lastModifiedDate;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

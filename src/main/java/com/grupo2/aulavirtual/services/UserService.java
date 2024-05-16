@@ -3,6 +3,7 @@ package com.grupo2.aulavirtual.services;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ public interface UserService {
 
     void syncUser(UserEntity user);
 
-    ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO);
+    ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO, MultipartFile file);
 
     ResponseEntity<?> findUserByEmail(String email);
 
@@ -19,7 +20,7 @@ public interface UserService {
 
     ResponseEntity<?> findUserById(String idUser);
 
-    ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String id);
+    ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String id, MultipartFile file);
 
     ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email);
 

@@ -6,6 +6,7 @@ import com.grupo2.aulavirtual.payload.request.RegisterRequestDto;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.KeycloakService;
+import com.grupo2.aulavirtual.util.FileUtil;
 import com.grupo2.aulavirtual.util.KeycloakProvider;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,10 @@ public class KeycloakServiceImpl implements KeycloakService {
 
     @Autowired
     private UserRepository userRepository;
+
+    FileUtil fileUtil = new FileUtil();
+    @Value("${default.img.user}")
+    private String defaultImg;
 
     /**
      * Metodo para listar todos los usuarios de Keycloak
@@ -125,7 +131,7 @@ public class KeycloakServiceImpl implements KeycloakService {
             }
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
-
+            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
             userRepository.save(
                     new UserEntity().builder()
                             .email(userDTO.getEmail())
@@ -133,6 +139,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                             .lastname(userDTO.getLastname())
                             .username(userDTO.getUsername())
                             .idKeycloak(userId)
+                            .urlImg(defaultUrlImage)
                             .build());
 
             logger.info("User created successfully");
@@ -183,13 +190,13 @@ public class KeycloakServiceImpl implements KeycloakService {
             if (!Objects.equals(userDTO.getFirstname(), "")) {
                 user.setFirstName(userDTO.getFirstname());
             }
-            if(userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()){
-            CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
-            credentialRepresentation.setTemporary(false);
-            user.setEmailVerified(true);
-            credentialRepresentation.setType(OAuth2Constants.PASSWORD);
-            credentialRepresentation.setValue(userDTO.getPassword());
-            user.setCredentials(Collections.singletonList(credentialRepresentation));
+            if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
+                CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
+                credentialRepresentation.setTemporary(false);
+                user.setEmailVerified(true);
+                credentialRepresentation.setType(OAuth2Constants.PASSWORD);
+                credentialRepresentation.setValue(userDTO.getPassword());
+                user.setCredentials(Collections.singletonList(credentialRepresentation));
             }
 
             user.setEnabled(true);
