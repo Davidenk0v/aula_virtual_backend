@@ -55,8 +55,6 @@ public class CoursesServiceImpl implements CourseService {
     @Value("${default.img.course}")
     private String defaultImg;
 
-    Logger logger = LoggerFactory.getLogger(CoursesServiceImpl.class);
-
     @Autowired
     private CourseRepository courseRepository;
 

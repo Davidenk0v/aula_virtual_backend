@@ -15,7 +15,6 @@ import org.springframework.data.annotation.LastModifiedDate;
  * Course
  */
 @ToString
-@ToString
 @Getter
 @Setter
 @Builder

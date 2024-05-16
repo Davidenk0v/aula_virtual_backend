@@ -318,36 +318,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    /**
-     * Metodo para enviar un archivo al frontend.
-     * 
-     * @param id Long con la id del usuario.
-     * @return ResponseEntity<?> con la imagen, con string en caso de error.
-     */
-    public ResponseEntity<?> sendFile(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                String fileRoute = user.getUrlImg();
-                String extension = fileUtil.getExtensionByPath(fileRoute);
-                String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
-                if (file.length != 0) {
-                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
-                } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
-        }
-    }
-
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email, MultipartFile file) {
         try {
@@ -398,30 +368,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<?> userCoursesList(String idUser) {
         Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(idUser);
-        if (userOptional.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
-        }
-        UserEntity user = userOptional.get();
-        List<CourseEntity> coursesList = user.getCourses();
-        List<CourseResponseDto> userResponseDtos = coursesList.stream()
-                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
-        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
-    }
-
-    public ResponseEntity<?> userCoursesList(String email) {
-        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
-        if (userOptional.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
-        }
-        UserEntity user = userOptional.get();
-        List<CourseEntity> coursesList = user.getCourses();
-        List<CourseResponseDto> userResponseDtos = coursesList.stream()
-                .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
-        return new ResponseEntity<>(userResponseDtos, HttpStatus.OK);
-    }
-
-    public ResponseEntity<?> userCoursesList(String email) {
-        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
         }
