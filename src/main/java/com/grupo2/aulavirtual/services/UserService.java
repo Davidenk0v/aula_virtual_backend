@@ -37,5 +37,5 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, ?>> deleteUser(Long id);
 
-    ResponseEntity<?> setDefaultImage(Long id);
+    ResponseEntity<?> setDefaultImage(String id);
 }

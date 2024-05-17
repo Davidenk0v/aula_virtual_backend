@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @DeleteMapping("/file/{id}")
-    public ResponseEntity<?> setDefaultImage(@PathVariable Long id) {
+    public ResponseEntity<?> setDefaultImage(@PathVariable String id) {
         return userServiceImpl.setDefaultImage(id);
     }
 

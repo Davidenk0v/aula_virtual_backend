@@ -378,8 +378,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 @Override
-    public ResponseEntity<?> setDefaultImage(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
+    public ResponseEntity<?> setDefaultImage(String id) {
+        Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(id);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
             if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
