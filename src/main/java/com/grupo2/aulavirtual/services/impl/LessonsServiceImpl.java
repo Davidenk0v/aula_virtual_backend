@@ -12,6 +12,7 @@ import com.grupo2.aulavirtual.services.LessonsService;
 import com.grupo2.aulavirtual.util.FileUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,9 @@ public class LessonsServiceImpl implements LessonsService {
 
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
+
+    @Value("${fileutil.lessons.folder.path}")
+    private String lessonsFolder;
 
     @Override
     public ResponseEntity<?> lessonsList() {
@@ -73,7 +77,7 @@ public class LessonsServiceImpl implements LessonsService {
                 String fileRoute = lessons.getContenido();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String medoaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(lessonsFolder + fileRoute);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
                 } else {
@@ -98,7 +102,7 @@ public class LessonsServiceImpl implements LessonsService {
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
             if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+                String path = fileUtil.saveFile(file, lessonsFolder);
                 lessons.setContenido(path);
             }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
@@ -147,7 +151,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+            String path = fileUtil.saveFile(file, lessonsFolder);
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -173,8 +177,8 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
-                    lessons.getContenido());
+            String path = fileUtil.updateFile(file, lessonsFolder,
+                lessonsFolder + lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -225,7 +229,7 @@ public class LessonsServiceImpl implements LessonsService {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
                 if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
+                    String path = fileUtil.updateFile(file, lessonsFolder,
                             subject.getContenido());
                     subject.setContenido(path);
                 }

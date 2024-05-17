@@ -52,8 +52,10 @@ public class UserServiceImpl implements UserService {
 
     private static final String USER_NOT_FOUND = "No se encontró usuario con ese ID";
 
-    @Value("${default.img.user}")
+    @Value("${fileutil.default.img.user}")
     private String defaultImg;
+    @Value("${fileutil.user.folder.path}")
+    private String userFolder;
 
     @Override
     public UserEntity getLoggedUser() {
@@ -88,12 +90,11 @@ public class UserServiceImpl implements UserService {
 
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
-            if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
+            if (file != null && !file.isEmpty() && user.getUrlImg() != null) {
+                String path = fileUtil.saveFile(file, getCustomPath(user.getUsername()));
                 user.setUrlImg(path);
             } else {
-                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-                user.setUrlImg(defaultUrlImage);
+                user.setUrlImg(defaultImg);
             }
             userRepository.save(user);
             usuarios.put(SAVE, userDTO);
@@ -118,7 +119,7 @@ public class UserServiceImpl implements UserService {
             Optional<UserEntity> optionalUser = userRepository.findById(id);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
-                if (user.getUrlImg() == null || user.getUrlImg().isEmpty()) {
+                if (user.getUrlImg() == null && user.getUrlImg().isEmpty()) {
                     return saveFile(user, file);
                 } else {
                     return updateFile(user, file);
@@ -141,7 +142,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<?> saveFile(UserEntity user, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
+            String path = fileUtil.saveFile(file, getCustomPath(user.getUsername()));
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
@@ -168,8 +169,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<?> updateFile(UserEntity user, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\",
-                    user.getUrlImg());
+            String path = fileUtil.updateFile(file, getCustomPath(user.getUsername()),
+            getCustomPath(user.getUsername()) + user.getUrlImg(), defaultImg);
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
@@ -258,11 +259,11 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                String fileRoute = user.getUrlImg();
+            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
+                String fileRoute = getCustomPath(user.getUsername()) + user.getUrlImg();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(fileRoute, defaultImg);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
@@ -381,18 +382,21 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(user.getUrlImg());
-                user.setUrlImg(defaultUrlImage);
+            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
+                fileUtil.deleteFile(getCustomPath(user.getUsername()) + user.getUrlImg(), defaultImg);
+                user.setUrlImg(defaultImg);
                 userRepository.save(user);
             } else {
-                user.setUrlImg(defaultUrlImage);
+                user.setUrlImg(defaultImg);
                 userRepository.save(user);
             }
             return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
         }
+    }
+
+    private String getCustomPath(String courseNane) {
+        return userFolder + courseNane + "\\Image\\";
     }
 }

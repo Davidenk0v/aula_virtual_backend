@@ -39,7 +39,7 @@ public class KeycloakServiceImpl implements KeycloakService {
     private UserRepository userRepository;
 
     FileUtil fileUtil = new FileUtil();
-    @Value("${default.img.user}")
+    @Value("${fileutil.default.img.course}")
     private String defaultImg;
 
     /**
@@ -131,7 +131,6 @@ public class KeycloakServiceImpl implements KeycloakService {
             }
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
             userRepository.save(
                     new UserEntity().builder()
                             .email(userDTO.getEmail())
@@ -139,7 +138,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                             .lastname(userDTO.getLastname())
                             .username(userDTO.getUsername())
                             .idKeycloak(userId)
-                            .urlImg(defaultUrlImage)
+                            .urlImg(defaultImg)
                             .build());
 
             logger.info("User created successfully");

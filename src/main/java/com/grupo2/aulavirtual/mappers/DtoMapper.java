@@ -82,6 +82,7 @@ public class DtoMapper {
                 .startDate(courseEntity.getStartDate())
                 .finishDate(courseEntity.getFinishDate())
                 .price(courseEntity.getPrice())
+                .urlImg(courseEntity.getUrlImg())
                 .build();
 
         if (courseEntity.getUser() != null) {
@@ -167,6 +168,7 @@ public class DtoMapper {
                 .username(userEntity.getUsername())
                 .address(userEntity.getAddress())
                 .role(userEntity.getRole().stream().map(role -> role.getRole().name()).toList())
+                .urlImg(userEntity.getUrlImg())
                 .build();
 
         if (userEntity.getCourses() != null) {

@@ -8,7 +8,6 @@ import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
-import com.grupo2.aulavirtual.repositories.CourseCategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
@@ -16,8 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.grupo2.aulavirtual.util.FileUtil;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -52,8 +49,10 @@ public class CoursesServiceImpl implements CourseService {
 
     Logger logger = LoggerFactory.getLogger(CoursesServiceImpl.class);
 
-    @Value("${default.img.course}")
+    @Value("${fileutil.default.img.course}")
     private String defaultImg;
+    @Value("${fileutil.course.folder.path}")
+    private String courseFolder;
 
     @Autowired
     private CourseRepository courseRepository;
@@ -138,7 +137,7 @@ public class CoursesServiceImpl implements CourseService {
             Optional<CourseEntity> optionalCourse = repository.findById(id);
             if (optionalCourse.isPresent()) {
                 CourseEntity course = optionalCourse.get();
-                if (course.getUrlImg() == null || course.getUrlImg().isEmpty()) {
+                if (course.getUrlImg() == null && course.getUrlImg().isEmpty()) {
                     return saveFile(course, file);
                 } else {
                     return updateFile(course, file);
@@ -160,7 +159,7 @@ public class CoursesServiceImpl implements CourseService {
      */
     public ResponseEntity<?> saveFile(CourseEntity course, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
+            String path = fileUtil.saveFile(file, getCustomPath(course.getName()));
             course.setUrlImg(path);
             repository.save(course);
             if (path != null) {
@@ -185,8 +184,8 @@ public class CoursesServiceImpl implements CourseService {
      */
     public ResponseEntity<?> updateFile(CourseEntity course, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\",
-                    course.getUrlImg());
+            String path = fileUtil.updateFile(file, getCustomPath(course.getName()),
+            getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
             course.setUrlImg(path);
             repository.save(course);
             if (path != null) {
@@ -242,14 +241,13 @@ public class CoursesServiceImpl implements CourseService {
         Optional<CourseEntity> optionalCourse = repository.findById(id);
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
             course.setLastModifiedDate(LocalDateTime.now());
-            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(course.getUrlImg());
-                course.setUrlImg(defaultUrlImage);
+            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
+                course.setUrlImg(defaultImg);
                 repository.save(course);
             } else {
-                course.setUrlImg(defaultUrlImage);
+                course.setUrlImg(defaultImg);
                 repository.save(course);
             }
             return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
@@ -339,11 +337,11 @@ public class CoursesServiceImpl implements CourseService {
         Optional<CourseEntity> optionalCourse = repository.findById(id);
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
-            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
-                String fileRoute = course.getUrlImg();
+            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                String fileRoute = getCustomPath(course.getName()) + course.getUrlImg();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(fileRoute, defaultImg);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
@@ -381,4 +379,9 @@ public class CoursesServiceImpl implements CourseService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
+
+    private String getCustomPath(String courseNane) {
+        return courseFolder + courseNane + "\\Image\\";
+    }
+
 }

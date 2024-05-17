@@ -49,15 +49,15 @@ public class DataInizializer implements CommandLineRunner {
 
         if (courseRepository.count() == 0) {
             // Insertar cursos
-            CourseEntity course1 = new CourseEntity(1L, "Java Programming", "Introduction to Java programming", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/java.jpg", category1);
-            CourseEntity course2 = new CourseEntity(2L,"Web Development Basics", "Fundamentals of web development", new Date(), new Date(), new BigDecimal("149.99"), "https://example.com/webdev.jpg", category1);
-            CourseEntity course3 = new CourseEntity(3L,"Data Analysis with Python", "Using Python for data analysis", new Date(), new Date(), new BigDecimal("249.99"), "https://example.com/python.jpg", category2);
-            CourseEntity course4 = new CourseEntity(4L,"Machine Learning Fundamentals", "Introduction to machine learning", new Date(), new Date(), new BigDecimal("299.99"), "https://example.com/ml.jpg", category3);
-            CourseEntity course5 = new CourseEntity(5L, "JavaScript for Beginners", "Learn JavaScript from scratch", new Date(), new Date(), new BigDecimal("99.99"), "https://example.com/js.jpg", category4);
-            CourseEntity course6 = new CourseEntity(6L, "Database Fundamentals", "Understanding databases concepts", new Date(), new Date(), new BigDecimal("149.99"), "https://example.com/db.jpg", category5);
-            CourseEntity course7 = new CourseEntity(7L,"UI/UX Design Principles", "Basics of user interface and user experience design", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/uiux.jpg", category6);
-            CourseEntity course8 = new CourseEntity(8L, "Cybersecurity Essentials", "Introduction to cybersecurity", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/cybersecurity.jpg", category7);
-            CourseEntity course9 = new CourseEntity(9L, "Cloud Computing Fundamentals", "Basic concepts of cloud computing", new Date(), new Date(), new BigDecimal("249.99"), "https://example.com/cloud.jpg", category9);
+            CourseEntity course1 = new CourseEntity(1L, "Java Programming", "Introduction to Java programming", new Date(), new Date(), new BigDecimal("199.99"), "def-course.jpg", category1);
+            CourseEntity course2 = new CourseEntity(2L,"Web Development Basics", "Fundamentals of web development", new Date(), new Date(), new BigDecimal("149.99"), "def-course.jpg", category1);
+            CourseEntity course3 = new CourseEntity(3L,"Data Analysis with Python", "Using Python for data analysis", new Date(), new Date(), new BigDecimal("249.99"), "def-course.jpg", category2);
+            CourseEntity course4 = new CourseEntity(4L,"Machine Learning Fundamentals", "Introduction to machine learning", new Date(), new Date(), new BigDecimal("299.99"), "def-course.jpg", category3);
+            CourseEntity course5 = new CourseEntity(5L, "JavaScript for Beginners", "Learn JavaScript from scratch", new Date(), new Date(), new BigDecimal("99.99"), "def-course.jpg", category4);
+            CourseEntity course6 = new CourseEntity(6L, "Database Fundamentals", "Understanding databases concepts", new Date(), new Date(), new BigDecimal("149.99"), "def-course.jpg", category5);
+            CourseEntity course7 = new CourseEntity(7L,"UI/UX Design Principles", "Basics of user interface and user experience design", new Date(), new Date(), new BigDecimal("199.99"), "def-course.jpg", category6);
+            CourseEntity course8 = new CourseEntity(8L, "Cybersecurity Essentials", "Introduction to cybersecurity", new Date(), new Date(), new BigDecimal("199.99"), "def-course.jpg", category7);
+            CourseEntity course9 = new CourseEntity(9L, "Cloud Computing Fundamentals", "Basic concepts of cloud computing", new Date(), new Date(), new BigDecimal("249.99"), "def-course.jpg", category9);
 
             courseRepository.saveAll(List.of(course1, course2, course3, course4, course5, course6, course7, course8, course9));
 
