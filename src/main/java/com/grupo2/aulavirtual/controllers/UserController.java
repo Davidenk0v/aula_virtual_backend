@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/file/{id}")
-    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+    public ResponseEntity<?> uploadFile(@PathVariable String id) {
         return userServiceImpl.sendFile(id);
     }
 
@@ -59,7 +59,7 @@ public class UserController {
     }
 
     @PostMapping("/file/{id}")
-    public ResponseEntity<?> saveFile(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> saveFile(@PathVariable String id, @RequestParam("file") MultipartFile file) {
         return userServiceImpl.downloadFile(id, file);
     }
 

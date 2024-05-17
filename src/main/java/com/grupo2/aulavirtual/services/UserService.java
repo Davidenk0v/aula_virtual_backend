@@ -14,7 +14,7 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO, MultipartFile file);
 
-    ResponseEntity<?> downloadFile(Long id, MultipartFile file);
+    ResponseEntity<?> downloadFile(String id, MultipartFile file);
 
     ResponseEntity<?> saveFile(UserEntity user, MultipartFile file);
 
@@ -28,7 +28,7 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file);
 
-    ResponseEntity<?> sendFile(Long id);
+    ResponseEntity<?> sendFile(String id);
 
 
     ResponseEntity<?> userCoursesList(String email);

@@ -114,9 +114,9 @@ public class UserServiceImpl implements UserService {
      * @return ResponseEntity<?> con el estado de la operacion.
      */
     @Override
-    public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
+    public ResponseEntity<?> downloadFile(String id, MultipartFile file) {
         if (!file.isEmpty()) {
-            Optional<UserEntity> optionalUser = userRepository.findById(id);
+            Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(id);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 if (user.getUrlImg() == null && user.getUrlImg().isEmpty()) {
@@ -255,8 +255,8 @@ public class UserServiceImpl implements UserService {
      * @return ResponseEntity<?> con la imagen, con string en caso de error.
      */
     @Override
-    public ResponseEntity<?> sendFile(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
+    public ResponseEntity<?> sendFile(String id) {
+        Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(id);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
             if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
