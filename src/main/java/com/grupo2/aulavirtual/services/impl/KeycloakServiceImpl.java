@@ -39,7 +39,7 @@ public class KeycloakServiceImpl implements KeycloakService {
     private UserRepository userRepository;
 
     FileUtil fileUtil = new FileUtil();
-    @Value("${fileutil.default.img.course}")
+    @Value("${fileutil.default.img.user}")
     private String defaultImg;
 
     /**
