@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
      * @param file MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
-
+    @Override
     public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
         if (!file.isEmpty()) {
             Optional<UserEntity> optionalUser = userRepository.findById(id);
@@ -138,6 +138,7 @@ public class UserServiceImpl implements UserService {
      * @param file MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
+    @Override
     public ResponseEntity<?> saveFile(UserEntity user, MultipartFile file) {
         try {
             String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
@@ -164,6 +165,7 @@ public class UserServiceImpl implements UserService {
      * @param file MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
+    @Override
     public ResponseEntity<?> updateFile(UserEntity user, MultipartFile file) {
         try {
             String path = fileUtil.updateFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\",
@@ -244,48 +246,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String id) {
-        try {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(id);
-            if (optionalUser.isPresent()) {
-                UserEntity user = optionalUser.get();
-
-                new UserResponseDto();
-                UserResponseDto userRespuesta;
-
-                if (!Objects.equals(userDTO.getUsername(), "")) {
-                    user.setUsername(userDTO.getUsername());
-                }
-                if (!Objects.equals(userDTO.getLastname(), "")) {
-                    user.setLastname(userDTO.getLastname());
-                }
-                if (!Objects.equals(userDTO.getFirstname(), "")) {
-                    user.setFirstname(userDTO.getFirstname());
-                }
-                if (!Objects.equals(userDTO.getUrlImg(), "")) {
-                    user.setUrlImg(userDTO.getUrlImg());
-                }
-                if (userDTO.getAddress() != null) {
-                    user.setAddress(userDTO.getAddress());
-                }
-                keycloakService.updateUser(user.getIdKeycloak(), userDTO); // Actualiza el usuario de la base de
-                                                                           // keycloak
-                userRepository.save(user);
-                userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE, userRespuesta);
-                return ResponseEntity.status(200).body(usuarios);
-            } else {
-                usuarios.put(USER_NOT_FOUND, userDTO);
-                return ResponseEntity.status(404).body(usuarios);
-            }
-        } catch (Exception e) {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
-            return ResponseEntity.status(500).body(usuarios);
-        }
-    }
 
     /**
      * Metodo para enviar un archivo al frontend.
@@ -293,7 +253,7 @@ public class UserServiceImpl implements UserService {
      * @param id Long con la id del usuario.
      * @return ResponseEntity<?> con la imagen, con string en caso de error.
      */
-
+    @Override
     public ResponseEntity<?> sendFile(Long id) {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
@@ -318,11 +278,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateUserByEmail(UserDTO userDTO, String email, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file) {
         try {
             HashMap<String, Object> usuarios = new HashMap<>();
-            Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
+            Optional<UserEntity> optionalUser = userRepository.findByIdKeycloak(idUser);
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
 
@@ -415,7 +376,7 @@ public class UserServiceImpl implements UserService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
-
+@Override
     public ResponseEntity<?> setDefaultImage(Long id) {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
