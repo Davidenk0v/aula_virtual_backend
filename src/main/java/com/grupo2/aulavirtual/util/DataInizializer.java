@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -49,46 +49,18 @@ public class DataInizializer implements CommandLineRunner {
 
         if (courseRepository.count() == 0) {
             // Insertar cursos
-            courseRepository.save(new CourseEntity(
-                    1L, "Web Development Fundamentals", "This is an introductory course to web development.", LocalDate.parse("2024-09-30"), LocalDate.parse("2024-06-01"),
-                    199.99, "https://www.example.com/web_dev_fundamentals.jpg", LocalDateTime.now(), LocalDateTime.now(), category2, null
-            ));
-            courseRepository.save(new CourseEntity(
-                    2L, "Python Programming for Beginners", "Learn the basics of programming with Python.", LocalDate.parse("2024-08-31"), LocalDate.parse("2024-07-05"),
-                    149.99, "https://www.example.com/python_beginners.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(1L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    3L, "Data Analysis with Excel", "Master the art of data analysis with Excel.", LocalDate.parse("2024-10-31"), LocalDate.parse("2024-08-10"),
-                    129.99, "https://www.example.com/excel_data_analysis.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(3L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    4L, "Adobe Photoshop for Beginners", "Create stunning graphics and designs with Adobe Photoshop.", LocalDate.parse("2024-11-30"), LocalDate.parse("2024-09-15"),
-                    199.99, "https://www.example.com/photoshop_beginners.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(4L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    5L, "Front-End Web Development", "Learn how to build responsive websites with HTML, CSS, and JavaScript.", LocalDate.parse("2024-12-31"), LocalDate.parse("2024-10-01"),
-                    249.99, "https://www.example.com/front_end_web_dev.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(2L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    6L, "Machine Learning Fundamentals", "Delve into the world of machine learning and artificial intelligence.", LocalDate.parse("2024-11-30"), LocalDate.parse("2024-11-15"),
-                    299.99, "https://www.example.com/machine_learning_fundamentals.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(3L).orElse(null), null, null, null
-            ));
-            courseRepository.save(new CourseEntity(
-                    7L, "Data Visualization with Tableau", "Learn how to create interactive data visualizations with Tableau.", LocalDate.parse("2024-12-31"), LocalDate.parse("2024-12-01"),
-                    199.99, "https://www.example.com/tableau_data_visualization.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(3L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    8L, "Data Storytelling", "Master the art of storytelling with data.", LocalDate.parse("2025-01-31"), LocalDate.parse("2025-01-10"),
-                    149.99, "https://www.example.com/data_storytelling.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(3L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    9L, "Cybersecurity Fundamentals", "Learn how to build and manage secure networks.", LocalDate.parse("2025-02-28"), LocalDate.parse("2025-02-15"),
-                    249.99, "https://www.example.com/cybersecurity_fundamentals.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(1L).orElse(null)
-            ));
-            courseRepository.save(new CourseEntity(
-                    10L, "Agile Project Management", "Master the art of project management with Agile methodologies.", LocalDate.parse("2025-03-31"), LocalDate.parse("2025-03-01"),
-                    199.99, "https://www.example.com/agile_project_management.jpg", LocalDateTime.now(), LocalDateTime.now(), categoryRepository.findById(5L).orElse(null)
-            ));
+            CourseEntity course1 = new CourseEntity(1L, "Java Programming", "Introduction to Java programming", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/java.jpg", category1);
+            CourseEntity course2 = new CourseEntity(2L,"Web Development Basics", "Fundamentals of web development", new Date(), new Date(), new BigDecimal("149.99"), "https://example.com/webdev.jpg", category1);
+            CourseEntity course3 = new CourseEntity(3L,"Data Analysis with Python", "Using Python for data analysis", new Date(), new Date(), new BigDecimal("249.99"), "https://example.com/python.jpg", category2);
+            CourseEntity course4 = new CourseEntity(4L,"Machine Learning Fundamentals", "Introduction to machine learning", new Date(), new Date(), new BigDecimal("299.99"), "https://example.com/ml.jpg", category3);
+            CourseEntity course5 = new CourseEntity(5L, "JavaScript for Beginners", "Learn JavaScript from scratch", new Date(), new Date(), new BigDecimal("99.99"), "https://example.com/js.jpg", category4);
+            CourseEntity course6 = new CourseEntity(6L, "Database Fundamentals", "Understanding databases concepts", new Date(), new Date(), new BigDecimal("149.99"), "https://example.com/db.jpg", category5);
+            CourseEntity course7 = new CourseEntity(7L,"UI/UX Design Principles", "Basics of user interface and user experience design", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/uiux.jpg", category6);
+            CourseEntity course8 = new CourseEntity(8L, "Cybersecurity Essentials", "Introduction to cybersecurity", new Date(), new Date(), new BigDecimal("199.99"), "https://example.com/cybersecurity.jpg", category7);
+            CourseEntity course9 = new CourseEntity(9L, "Cloud Computing Fundamentals", "Basic concepts of cloud computing", new Date(), new Date(), new BigDecimal("249.99"), "https://example.com/cloud.jpg", category9);
+
+            courseRepository.saveAll(List.of(course1, course2, course3, course4, course5, course6, course7, course8, course9));
+
             System.out.println("Base de datos inicializada con cursos.");
         } else {
             System.out.println("La base de datos ya está inicializada.");
