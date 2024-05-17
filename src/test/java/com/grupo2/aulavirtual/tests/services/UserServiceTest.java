@@ -200,7 +200,7 @@ class UserServiceTest {
         when(userRepository.findByIdKeycloak(userId)).thenReturn(Optional.of(user));
         when(userRepository.save(user)).thenReturn(user);
 
-        ResponseEntity<HashMap<String, ?>> response = userService.updateUser(userDTO, userId);
+        ResponseEntity<HashMap<String, ?>> response = userService.updateUser(userDTO, userId, null);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(newUsername, user.getUsername());

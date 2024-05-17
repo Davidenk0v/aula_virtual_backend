@@ -46,3 +46,17 @@ services:
     command: [ "start-dev", "--http-port=9090" ]
     depends_on:
       - postgresql
+
+  spring-boot:
+    build: ./spring-boot
+    ports:
+      - "8085:8085"
+    depends_on:
+      - keycloak
+
+  Aula-Grupo-2-Back:
+    build: ./angular
+    ports:
+      - "4200:4200"
+    depends_on:
+      - spring-boot

@@ -2,6 +2,7 @@ package com.grupo2.aulavirtual.entities;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

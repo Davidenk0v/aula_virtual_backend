@@ -198,3 +198,12 @@ q
 Asrc/main/java/com/grupo2/aulavirtual/services/CommentService.java,5\3\534c30f170c74ccc7adb72b6f670c38dd5237c62
 w
 Gsrc/main/java/com/grupo2/aulavirtual/controllers/CommentController.java,5\d\5d54024311236a20cbbb1f70cfe9d889caefd341
+>
+src/Dockerfile,b\1\b1ac484b20625f94ee8fee74dce04369ea1760f1
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+n
+>src/main/java/com/grupo2/aulavirtual/util/DataInizializer.java,b\5\b5a10738ba9d1071eeb9b6b0d327c609a5393cfd
+C
+log/application.log,5\5\557bf5dd386a3868ae12430b3ea7363ae788f1ce
