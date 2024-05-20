@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.util;
+package com.grupo2.aulavirtual.util.keycloak;
 
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
 import org.keycloak.admin.client.Keycloak;

@@ -1,4 +1,4 @@
-package com.grupo2.aulavirtual.util;
+package com.grupo2.aulavirtual.util.files;
 
 import java.io.File;
 import java.io.IOException;
