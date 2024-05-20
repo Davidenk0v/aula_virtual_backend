@@ -1,5 +1,6 @@
 HELP.md
 target/
+log
 log/**
 Media/User/**
 Media/Course/**

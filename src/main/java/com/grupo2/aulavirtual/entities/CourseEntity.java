@@ -64,4 +64,15 @@ public class CourseEntity {
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<CommentEntity> comments;
 
+    public CourseEntity(long l, String name, String description, java.util.Date date, java.util.Date date1, BigDecimal price, String url, CategoryEntity category) {
+        this.idCourse = l;
+        this.name = name;
+        this.description = description;
+        this.startDate = new Date(date.getTime());
+        this.finishDate = new Date(date1.getTime());
+        this.price = price;
+        this.urlImg = url;
+        this.category = List.of(category);
+
+    }
 }

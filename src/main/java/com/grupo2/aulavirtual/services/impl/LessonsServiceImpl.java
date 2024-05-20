@@ -9,7 +9,7 @@ import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import com.grupo2.aulavirtual.repositories.LessonsRepository;
 import com.grupo2.aulavirtual.repositories.SubjectsRepository;
 import com.grupo2.aulavirtual.services.LessonsService;
-import com.grupo2.aulavirtual.util.FileUtil;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

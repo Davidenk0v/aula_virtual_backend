@@ -22,13 +22,7 @@ public class CommentController {
     public ResponseEntity<?> getAllComments(){
         return commentService.commentList();
     }
-    
-/* 
-    @GetMapping("/pages")
-    public ResponseEntity<?> getAllPageable(Pageable pageable){
-        return commentService.pageableCommentList(pageable);
-    }
-*/
+
 
     @GetMapping("/{idCourse}/course") 
     public ResponseEntity<?> getCommentsByIdCourse(@PathVariable long idCourse){
@@ -53,6 +47,7 @@ public class CommentController {
             @RequestBody CommentDTO commentDTO){
         return commentService.updateComment(id,commentDTO);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?>deleteComment(
             @PathVariable int id){

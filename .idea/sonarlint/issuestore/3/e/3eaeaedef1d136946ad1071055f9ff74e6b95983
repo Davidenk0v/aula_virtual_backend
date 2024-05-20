@@ -1,13 +1,16 @@
 
+’	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ŒıI8¶°¶®ø1J$d5b207c3-1533-45f0-9c81-989037032ad7
 }
-java:S22095"5Change this instance-reference to a static reference.(ò¼Èˆøÿÿÿÿ8ŠıÓ‘õ1J$20c13ac7-17a2-4c48-8727-1c2e31b533f2
+java:S2209;"5Change this instance-reference to a static reference.(ò¼Èˆøÿÿÿÿ8ŠıÓ‘õ1J$878384f5-f856-4a77-b647-476e62eaeaae
 }
-java:S2209G"5Change this instance-reference to a static reference.(‚¶ªûÿÿÿÿ8ıÓ‘õ1J$7782b39d-84a4-4a51-9307-022ed1584e1c
+java:S2209M"5Change this instance-reference to a static reference.(‚¶ªûÿÿÿÿ8ıÓ‘õ1J$b96d111a-7e4d-486a-9eae-24326a908f24
 }
-java:S2209_"5Change this instance-reference to a static reference.(ó‹À¶øÿÿÿÿ8’ıÓ‘õ1J$ee550bd0-852d-4c4b-bd13-937ca29117f8
+java:S2209e"5Change this instance-reference to a static reference.(ó‹À¶øÿÿÿÿ8’ıÓ‘õ1J$8356e4a8-9008-472b-964a-83d268a97a96
 x
-java:S2209p"5Change this instance-reference to a static reference.(ÚÔ¥’8•ıÓ‘õ1J$473ed66a-e6a2-4337-91ca-aa878b9ab07f
+java:S2209v"5Change this instance-reference to a static reference.(ÚÔ¥’8•ıÓ‘õ1J$5f91f144-3ebe-4871-bfb2-441b35c7f025
 ~
-java:S2209‚"5Change this instance-reference to a static reference.(ôÄâÆıÿÿÿÿ8˜ıÓ‘õ1J$40ea8d7e-9be8-416e-955a-47e86f4354ce
+java:S2209ˆ"5Change this instance-reference to a static reference.(ôÄâÆıÿÿÿÿ8˜ıÓ‘õ1J$58ebb6a6-3923-494f-9326-9a743ad356e0
 y
-java:S2209›"5Change this instance-reference to a static reference.(šûû…8œıÓ‘õ1J$b3d5bd41-1a59-40b5-9469-9df9d10ea17b
+java:S2209¡"5Change this instance-reference to a static reference.(šûû…8œıÓ‘õ1J$15d697ee-9033-4d00-872b-25b10a4118ea
+~
+java:S2209·"5Change this instance-reference to a static reference.(¢¹‹Íşÿÿÿÿ8²±¶®ø1J$1ac7cbc0-b665-4790-80cc-5b504d4e33c8

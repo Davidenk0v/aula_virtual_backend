@@ -166,7 +166,6 @@ public class DtoMapper {
                 .firstname(userEntity.getFirstname())
                 .username(userEntity.getUsername())
                 .address(userEntity.getAddress())
-                .role(userEntity.getRole().stream().map(role -> role.getRole().name()).toList())
                 .build();
 
         if (userEntity.getCourses() != null) {

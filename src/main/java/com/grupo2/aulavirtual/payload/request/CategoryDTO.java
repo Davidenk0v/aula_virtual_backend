@@ -3,7 +3,6 @@ package com.grupo2.aulavirtual.payload.request;
 import java.util.List;
 
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
