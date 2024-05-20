@@ -36,7 +36,8 @@ public class CommentServiceImpl implements CommentService {
     private CourseRepository courseRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
-
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     /**
      * Metodo para crear un comentario.
      * @param idUser Long con la id del usuario.
@@ -82,7 +83,7 @@ public class CommentServiceImpl implements CommentService {
     public ResponseEntity<?> commentList() {
         List<CommentEntity> commentEntities = commentRepository.findAll();
         if(commentEntities.isEmpty()){
-            return new ResponseEntity<>("No se encontraron los comentarios", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<CommentResponseDto> commentResponseDtos = commentEntities.stream().map(commentEntity -> dtoMapper.entityToResponseDto(commentEntity)).toList();
         return new ResponseEntity<>(commentResponseDtos, HttpStatus.OK);
@@ -103,12 +104,12 @@ public class CommentServiceImpl implements CommentService {
                 return ResponseEntity.status(200).body(dtoMapper.entityToResponseDto(comment));
             } else {
                 HashMap<String, Integer> error = new HashMap<>();
-                error.put("No ha encontrado el comentario con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> comentarios = new HashMap<>();
-            comentarios.put("Error", e.getMessage());
+            comentarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(comentarios);
         }
     }
@@ -138,16 +139,16 @@ public class CommentServiceImpl implements CommentService {
                     comment.setCourse(commentDTO.getCourse());
                 }
                 commentRepository.save(comment);
-                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(comment));
+                response.put(SAVE, dtoMapper.entityToResponseDto(comment));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Integer> error = new HashMap<>();
-                error.put("No ha encontrado el comentario con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> comentarios = new HashMap<>();
-            comentarios.put("Error", e.getMessage());
+            comentarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(comentarios);
         }
     }
@@ -163,12 +164,12 @@ public class CommentServiceImpl implements CommentService {
                 return ResponseEntity.status(200).body(commentResponseDtos);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado los comentarios por la id de curso: ", idCourse);
+                error.put(ERROR, idCourse);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> comentarios = new HashMap<>();
-            comentarios.put("Error", e.getMessage());
+            comentarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(comentarios);
         } 
     }  
@@ -185,16 +186,16 @@ public class CommentServiceImpl implements CommentService {
             if (commentRepository.existsById(id)) {
                 CommentEntity comment = commentRepository.findById(id).get();
                 commentRepository.delete(comment);
-                response.put("Ok","Se ha eliminado correctamente");
+                response.put(SAVE,"Se ha eliminado correctamente");
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Integer> error = new HashMap<>();
-                error.put("No ha encontrado el comentario con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> comentarios = new HashMap<>();
-            comentarios.put("Error", e.getMessage());
+            comentarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(comentarios);
         }
     }

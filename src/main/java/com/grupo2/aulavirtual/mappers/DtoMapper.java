@@ -9,7 +9,6 @@ import com.grupo2.aulavirtual.entities.CategoryEntity;
 import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
-import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
@@ -42,9 +41,7 @@ public class DtoMapper {
         return modelMapper.map(lessonsDTO, LessonsEntity.class);
     }
 
-    public RoleEntity dtoToEntity(RoleDTO roleDTO) {
-        return modelMapper.map(roleDTO, RoleEntity.class);
-    }
+
 
         public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
         return modelMapper.map(CommentDTO, CommentEntity.class);
@@ -113,23 +110,7 @@ public class DtoMapper {
 
     }
 
-    public RoleResponseDto entityToResponseDto(RoleEntity roleEntity) {
 
-        RoleResponseDto roleResponseDto = new RoleResponseDto()
-                .builder()
-                .idRole(roleEntity.getIdRole())
-                .role(roleEntity.getRole())
-                .build();
-
-        if (roleEntity.getUser() != null) {
-            List<UserResponseDto> usersResponseDto = roleEntity.getUser().stream()
-                    .map(user -> modelMapper.map(user, UserResponseDto.class)).toList();
-
-            roleResponseDto.setUser(usersResponseDto);
-        }
-        return roleResponseDto;
-
-    }
 
     public SubjectsResponseDto entityToResponseDto(SubjectsEntity subjectsEntity) {
 

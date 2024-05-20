@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import com.grupo2.aulavirtual.payload.request.CategoryDTO;
 import org.junit.jupiter.api.Test;
 
-import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
 
 
 public class CategoryDTOTest {
@@ -14,7 +13,6 @@ public class CategoryDTOTest {
     void testGettersAndSetters() {
         CategoryDTO categoryDTO = CategoryDTO.builder()
             .idCategory(1L)
-            .category(CategoryEnum.DESIGN.name())
             .course(null)
             .build();
 
@@ -22,7 +20,6 @@ public class CategoryDTOTest {
         categoryDTO.setIdCategory(2L);
         assertEquals(2L, categoryDTO.getIdCategory(), "idCategory setter must be equal to 2L");
 
-        assertEquals(CategoryEnum.DESIGN.name(), categoryDTO.getCategory(), "Category getter must be equal to CategoryEnum.MATH");
         categoryDTO.setCategory("Cooking");
         assertEquals("Cooking", categoryDTO.getCategory(), "Category setter must be equal to CategoryEnum.SCIENCE");
 
