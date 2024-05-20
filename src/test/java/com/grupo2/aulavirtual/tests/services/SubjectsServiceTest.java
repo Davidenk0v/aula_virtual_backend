@@ -6,6 +6,7 @@ import com.grupo2.aulavirtual.payload.request.SubjectDTO;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.SubjectsRepository;
 import com.grupo2.aulavirtual.services.SubjectsService;
+import com.grupo2.aulavirtual.services.impl.SubjectsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -32,12 +33,16 @@ class SubjectsServiceTest {
     private SubjectsRepository subjectsRepository;
 
     @InjectMocks
-    private SubjectsService subjectsService;
+    private SubjectsService subjectsService = new SubjectsServiceImpl();
 
     private SubjectDTO subjectDTO;
     private CourseEntity courseEntity;
     private SubjectsEntity subjectsEntity;
 
+
+    private static final String NOT_FOUND = "No encontrado";
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -65,7 +70,7 @@ class SubjectsServiceTest {
         // Verificar que se recibe una respuesta con el código de estado
         // HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("No se encontraron temas", response.getBody());
+        assertEquals(ERROR, response.getBody());
     }
 
     @Test
@@ -84,7 +89,7 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Tema subido "));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
@@ -100,7 +105,7 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha modificado correctamente"));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
@@ -116,7 +121,7 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Se ha borrado el tema "));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey(SAVE));
     }
 
     @Test
@@ -132,7 +137,7 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha encontrado el tema "));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
@@ -152,9 +157,9 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
 
         // Verificar los mensajes de error
-        assertEquals(2L, responseUpdate.getBody().get("No ha encontrado el tema con id: "));
-        assertEquals(2L, responseFind.getBody().get("No ha encontrado el tema con id: "));
-        assertEquals(2L, responseDelete.getBody().get("No ha encontrado el tema con id: "));
+        assertEquals(2L, responseUpdate.getBody().get(ERROR));
+        assertEquals(2L, responseFind.getBody().get(ERROR));
+        assertEquals(2L, responseDelete.getBody().get(ERROR));
     }
 
     @Test
@@ -175,8 +180,8 @@ class SubjectsServiceTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseDelete.getStatusCode());
 
         // Verificar los mensajes de error
-        assertEquals("Error simulado", responseUpdate.getBody().get("Error"));
-        assertEquals("Error simulado", responseFind.getBody().get("Error"));
-        assertEquals("Error simulado", responseDelete.getBody().get("Error"));
+        assertEquals("Error simulado", responseUpdate.getBody().get(ERROR));
+        assertEquals("Error simulado", responseFind.getBody().get(ERROR));
+        assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
 }

@@ -42,8 +42,8 @@ public class CoursesServiceImpl implements CourseService {
     @Autowired
     UserRepository userRepository;
 
-    private static final String ERROR = "Error";
-
+    private static final String ERROR = "error";
+    private static final String SAVE = "data";
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
 
@@ -52,6 +52,7 @@ public class CoursesServiceImpl implements CourseService {
     @Value("${default.img.course}")
     private String defaultImg;
 
+
     @Autowired
     private CourseRepository courseRepository;
 
@@ -59,7 +60,7 @@ public class CoursesServiceImpl implements CourseService {
     public ResponseEntity<?> courseList() {
         List<CourseEntity> courseEntities = courseRepository.findAll();
         if (courseEntities.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
                 .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
@@ -71,7 +72,7 @@ public class CoursesServiceImpl implements CourseService {
         pageable = PageRequest.of(pageable.getPageNumber(), 3, pageable.getSort());
         Page<CourseEntity> coursesPage = this.courseRepository.findAll(pageable);
         if (coursesPage.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron cursos", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<CourseResponseDto> courseResponseDtos = coursesPage.stream()
                 .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
@@ -106,11 +107,11 @@ public class CoursesServiceImpl implements CourseService {
                 userRepository.save(user);
                 UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
                 courseRepository.save(course);
-                response.put("Curso subido", objectResponse);
+                response.put(SAVE, objectResponse);
                 return ResponseEntity.status(201).body(course);
             } else {
                 HashMap<String, String> error = new HashMap<>();
-                error.put("No ha encontrado el usuario: ", idKeycloak);
+                error.put(ERROR, idKeycloak);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -168,7 +169,7 @@ public class CoursesServiceImpl implements CourseService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -187,7 +188,7 @@ public class CoursesServiceImpl implements CourseService {
             course.setUrlImg(path);
             repository.save(course);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
                         "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -218,7 +219,7 @@ public class CoursesServiceImpl implements CourseService {
                     // Eliminar el curso
                     courseRepository.delete(course);
 
-                    response.put("message", "El curso y sus relaciones han sido eliminados exitosamente.");
+                    response.put(SAVE, "El curso y sus relaciones han sido eliminados exitosamente.");
                     return ResponseEntity.status(200).body(response);
                 } else {
                     response.put(ERROR, "No se encontró el curso con ID: " + id);
@@ -249,9 +250,9 @@ public class CoursesServiceImpl implements CourseService {
                 course.setUrlImg(defaultUrlImage);
                 repository.save(course);
             }
-            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
+            return new ResponseEntity<>(SAVE, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -270,11 +271,11 @@ public class CoursesServiceImpl implements CourseService {
                     course.setDescription(courseDTO.getDescription());
                 }
                 courseRepository.save(course);
-                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(course));
+                response.put(SAVE, dtoMapper.entityToResponseDto(course));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -295,7 +296,7 @@ public class CoursesServiceImpl implements CourseService {
                 return ResponseEntity.status(200).body(dtoMapper.entityToResponseDto(course));
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -316,7 +317,7 @@ public class CoursesServiceImpl implements CourseService {
                 return ResponseEntity.status(200).body(courseResponseDtos);
             } else {
                 HashMap<String, String> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", category);
+                error.put(ERROR, category);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -338,7 +339,7 @@ public class CoursesServiceImpl implements CourseService {
                 return ResponseEntity.status(200).body(courseResponseDtos);
             } else {
                 HashMap<String, String> error = new HashMap<>();
-                error.put("No se ha encontrado cursos del usuario con id: ", idUser) ;
+                error.put(ERROR, idUser) ;
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
@@ -387,11 +388,11 @@ public class CoursesServiceImpl implements CourseService {
                 List<CourseEntity> courseEntities = courseRepository.findByKeyword(name).get();
                 List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
                         .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
-                response.put("Cursos", courseResponseDtos);
+                response.put(SAVE, courseResponseDtos);
                 return ResponseEntity.status(201).body(response);
             } else {
                 HashMap<String, String> errorNotFound = new HashMap<>();
-                errorNotFound.put("Ningun curso con:", name);
+                errorNotFound.put(ERROR, name);
                 return ResponseEntity.status(500).body(errorNotFound);
             }
         } catch (Exception e) {

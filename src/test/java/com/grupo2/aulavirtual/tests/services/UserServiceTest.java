@@ -35,7 +35,9 @@ class UserServiceTest {
     private UserEntity user;
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
-
+    private static final String NOT_FOUND = "No encontrado";
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -65,7 +67,7 @@ class UserServiceTest {
         // Ejecuta el método y verifica el resultado
         ResponseEntity<HashMap<String, Object>> response = userService.addUser(userDTO);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(userDTO, Objects.requireNonNull(response.getBody()).get("Guardado"));
+        assertEquals(userDTO, Objects.requireNonNull(response.getBody()).get(SAVE));
     }
 
     @Test
@@ -82,7 +84,7 @@ class UserServiceTest {
 
         // Verificar que se devuelva el mensaje de error apropiado y el código de estado
         // HTTP 500
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("No se encuntra este usuario con ese id"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey(ERROR));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -100,7 +102,7 @@ class UserServiceTest {
 
         // Verificar que se devuelva el mensaje de error apropiado y el código de estado
         // HTTP 500
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey(ERROR));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -110,8 +112,8 @@ class UserServiceTest {
 
         ResponseEntity<HashMap<String, Object>> response = userService.addUser(userDTO);
 
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
-        assertEquals(userDTO, response.getBody().get("Error"));
+        assertTrue(Objects.requireNonNull(response.getBody()).containsKey(ERROR));
+        assertEquals(userDTO, response.getBody().get(ERROR));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -137,8 +139,8 @@ class UserServiceTest {
 
         HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
         // Verifica que se devuelva el mensaje de error apropiado
-        assertTrue(Objects.requireNonNull(error).containsKey("Error"));
-        assertEquals("No se encuentra este usuario con ese id", error.get("Error"));
+        assertTrue(Objects.requireNonNull(error).containsKey(ERROR));
+        assertEquals(NOT_FOUND, error.get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
@@ -153,7 +155,7 @@ class UserServiceTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
-        assertEquals(userResponseDto.toString(), error.get("Guardado").toString());
+        assertEquals(userResponseDto.toString(), error.get(SAVE).toString());
     }
 
     @Test
@@ -169,7 +171,7 @@ class UserServiceTest {
         // Verifica que se devuelva el mensaje de error apropiado
 
         HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
-        assertEquals("No se encuentra este usuario con ese id", error.get("Error"));
+        assertEquals(NOT_FOUND, error.get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
@@ -187,11 +189,11 @@ class UserServiceTest {
 
         ResponseEntity<?> responseEmail = userService.findUserByEmail(userEmail);
         HashMap<String, Object> errorEmail = (HashMap<String, Object>) responseEmail.getBody();
-        assertTrue(errorEmail.containsKey("Error"));
-        assertEquals("Error simulado", errorEmail.get("Error"));
+        assertTrue(errorEmail.containsKey(ERROR));
+        assertEquals("Error simulado", errorEmail.get(ERROR));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEmail.getStatusCode());
         assertTrue(error.containsKey("Error"));
-        assertEquals("Error simulado", error.get("Error"));
+        assertEquals("Error simulado", error.get(ERROR));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
@@ -223,7 +225,7 @@ class UserServiceTest {
         ResponseEntity<HashMap<String, ?>> response = userService.deleteUser(userId);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(userId, response.getBody().get("Borrado id"));
+        assertEquals(userId, response.getBody().get(SAVE));
     }
 
 }

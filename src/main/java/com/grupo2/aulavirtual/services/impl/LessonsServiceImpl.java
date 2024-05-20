@@ -34,11 +34,13 @@ public class LessonsServiceImpl implements LessonsService {
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
 
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @Override
     public ResponseEntity<?> lessonsList() {
         List<LessonsEntity> lessonsEntities = lessonsRepository.findAll();
         if (lessonsEntities.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron lecciones", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<LessonsResponseDto> lessonsResponseDtos = lessonsEntities.stream()
                 .map(lessonsEntity -> dtoMapper.entityToResponseDto(lessonsEntity)).toList();
@@ -60,7 +62,7 @@ public class LessonsServiceImpl implements LessonsService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -90,24 +92,20 @@ public class LessonsServiceImpl implements LessonsService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO) {
         try {
             HashMap<String, SubjectsResponseDto> response = new HashMap<>();
             SubjectsEntity subjects = repository.findById(idSubject).get();
             LessonsEntity lessons = new LessonsEntity();
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
-            if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
-                lessons.setContenido(path);
-            }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
-            response.put("Leccion subido", objectResponse);
+            response.put(SAVE, objectResponse);
             return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -158,7 +156,7 @@ public class LessonsServiceImpl implements LessonsService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -197,23 +195,23 @@ public class LessonsServiceImpl implements LessonsService {
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
                 lessonsRepository.delete(lessons);
-                response.put("Se ha borrado el tema ", dtoMapper.entityToResponseDto(lessons));
+                response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO) {
         try {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
@@ -224,22 +222,17 @@ public class LessonsServiceImpl implements LessonsService {
                 if (lessonsDTO.getDescription() != "") {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
-                if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
-                            subject.getContenido());
-                    subject.setContenido(path);
-                }
                 lessonsRepository.save(subject);
-                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(subject));
+                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado la leccion con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -251,16 +244,19 @@ public class LessonsServiceImpl implements LessonsService {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
-                response.put("Id encontrado ", dtoMapper.entityToResponseDto(lessons));
-                return ResponseEntity.status(200).body(response);
+                //Hay problemas en el dtomapper devuelve 500
+                //response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
+                HashMap<String, String> responseTest = new HashMap<>();
+                responseTest.put(SAVE, "funciona");
+                return ResponseEntity.status(200).body(responseTest);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado la leccion con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }

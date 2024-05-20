@@ -47,11 +47,11 @@ public class UserServiceImpl implements UserService {
 
     FileUtil fileUtil = new FileUtil();
 
-    private static final String ERROR = "Error";
-    private static final String SAVE = "Guardado";
+    private static final String ERROR = "error";
+    private static final String SAVE = "data";
 
-    private static final String USER_NOT_FOUND = "No se encontró usuario con ese ID";
 
+    private static final String USER_NOT_FOUND = "No encontrado";
     @Value("${default.img.user}")
     private String defaultImg;
 
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(e.getMessage(), userDTO);
+            usuarios.put(ERROR, userDTO);
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -117,10 +117,10 @@ public class UserServiceImpl implements UserService {
                     return updateFile(user, file);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 
@@ -138,14 +138,14 @@ public class UserServiceImpl implements UserService {
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -166,14 +166,14 @@ public class UserServiceImpl implements UserService {
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -227,7 +227,8 @@ public class UserServiceImpl implements UserService {
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                return ResponseEntity.status(200).body(userRespuesta);
+                usuarios.put(SAVE,userRespuesta);
+                return ResponseEntity.status(200).body(usuarios);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
                 return ResponseEntity.status(404).body(usuarios);
@@ -323,7 +324,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<?> userCoursesList(String idUser) {
         Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(idUser);
         if (userOptional.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         UserEntity user = userOptional.get();
         List<CourseEntity> coursesList = user.getCourses();
@@ -336,7 +337,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<?> userList() {
         List<UserEntity> userEntities = userRepository.findAll();
         if (userEntities.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron usuarios", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<UserResponseDto> userResponseDtos = userEntities.stream()
                 .map(userEntity -> dtoMapper.entityToResponseDto(userEntity)).toList();
@@ -354,7 +355,7 @@ public class UserServiceImpl implements UserService {
                                                                                 // datos de keycloak
 
                 logger.info("Borrado de la base de datos del keycloak y de la tabla user");
-                response.put("Borrado id", id);
+                response.put(SAVE, id);
 
                 return ResponseEntity.status(201).body(response);
             } else {
