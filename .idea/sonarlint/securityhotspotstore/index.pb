@@ -207,3 +207,17 @@ n
 >src/main/java/com/grupo2/aulavirtual/util/DataInizializer.java,b\5\b5a10738ba9d1071eeb9b6b0d327c609a5393cfd
 C
 log/application.log,5\5\557bf5dd386a3868ae12430b3ea7363ae788f1ce
+g
+7src/main/java/com/grupo2/aulavirtual/util/FileUtil.java,6\e\6eb3f6e655607a1826468cbf163ac1d425c2bfaf
+m
+=src/main/java/com/grupo2/aulavirtual/util/files/FileUtil.java,c\3\c3a0c34beb25701aaa3c9889c5a40a9e52528e7a
+w
+Gsrc/main/java/com/grupo2/aulavirtual/util/database/DataInizializer.java,7\0\70d564203a4ec350babcf400af66cd46fc783556
+x
+Hsrc/main/java/com/grupo2/aulavirtual/util/keycloak/KeycloakProvider.java,b\2\b2380b91cd61a2fa585aa8e43e8afd60775f890e
+x
+Hsrc/main/java/com/grupo2/aulavirtual/services/impl/EmailServiceImpl.java,b\e\be41a64d88d5bd05bf376ea64d0ffde065edbf32
+o
+?src/main/java/com/grupo2/aulavirtual/services/EmailService.java,e\f\ef0800ccd2593d02a40567fc730853feca4e8bc8
+p
+@src/main/java/com/grupo2/aulavirtual/entities/CommentEntity.java,5\8\5801c6a66373ffa3e7a84891aa321b3d31308801

@@ -1,6 +1,7 @@
 package com.grupo2.aulavirtual.repositories;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
+import com.grupo2.aulavirtual.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +20,8 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     Optional<List<CourseEntity>> findByKeyword(@Param("keyword") String keyword);
 
     Set<CourseEntity> findCoursesByCategory(CategoryEntity category);
+
+    Set<CourseEntity> findCoursesByUser(UserEntity user);
 
 
 }

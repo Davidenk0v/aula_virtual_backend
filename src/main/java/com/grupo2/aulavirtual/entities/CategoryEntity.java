@@ -2,8 +2,6 @@ package com.grupo2.aulavirtual.entities;
 
 import java.util.List;
 
-import com.grupo2.aulavirtual.entities.enums.CategoryEnum;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

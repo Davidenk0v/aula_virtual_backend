@@ -8,16 +8,13 @@ import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
-import com.grupo2.aulavirtual.repositories.CourseCategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.grupo2.aulavirtual.util.FileUtil;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -320,6 +317,28 @@ public class CoursesServiceImpl implements CourseService {
             } else {
                 HashMap<String, String> error = new HashMap<>();
                 error.put("No ha encontrado el curso con id: ", category);
+                return ResponseEntity.status(404).body(error);
+            }
+        } catch (Exception e) {
+            HashMap<String, Object> usuarios = new HashMap<>();
+            usuarios.put(ERROR, e.getMessage());
+            return ResponseEntity.status(500).body(usuarios);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> findCoursesByUser(String idUser) {
+        try {
+            Optional<UserEntity> userEntityOptional = userRepository.findByIdKeycloak(idUser);
+            if (userEntityOptional.isPresent()) {
+                UserEntity user = userEntityOptional.get();
+                Set<CourseEntity> courseEntities = courseRepository.findCoursesByUser(user);
+                List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
+                        .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
+                return ResponseEntity.status(200).body(courseResponseDtos);
+            } else {
+                HashMap<String, String> error = new HashMap<>();
+                error.put("No se ha encontrado cursos del usuario con id: ", idUser) ;
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {

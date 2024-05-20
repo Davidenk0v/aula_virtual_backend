@@ -28,6 +28,11 @@ public class CourseController {
         return courseService.findCoursesByCategory(category);
     }
 
+    @GetMapping("/user/{idUser}")
+    public ResponseEntity<?> courseByUser(@PathVariable String idUser) {
+        return courseService.findCoursesByUser(idUser);
+    }
+
     @GetMapping("/pages")
     public ResponseEntity<?> getAllPageable(Pageable pageable) {
         return courseService.pageableCourseList(pageable);

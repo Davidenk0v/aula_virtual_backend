@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 
 import java.util.HashMap;
-import java.util.List;
 
 public interface CourseService {
     ResponseEntity<?> courseList();
@@ -23,5 +22,8 @@ public interface CourseService {
 
     ResponseEntity<?> findCoursesByCategory(String category);
 
+    ResponseEntity<?> findCoursesByUser(String idUSer);
+
     ResponseEntity<HashMap<String, ?>> findAllByContains(String name);
+
 }

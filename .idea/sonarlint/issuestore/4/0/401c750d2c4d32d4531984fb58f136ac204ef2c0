@@ -1,15 +1,15 @@
 
 “
-java:S1192\"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 4 times.(ÿÆèÔ8ıš¹Šø1J$306452bc-b1f8-459d-9a45-00b8703edcc2
+java:S1192\"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 4 times.(ÿÆèÔ8ıš¹Šø1J$882362ba-2cac-47bc-a990-500a588bc6b7
 
-java:S1192\"JDefine a constant instead of duplicating this literal "\\Image\\" 4 times.(ÿÆèÔ8“›¹Šø1J$688fd9fc-7b3d-4ac3-a3e9-830a1e8806b1
+java:S1192\"JDefine a constant instead of duplicating this literal "\\Image\\" 4 times.(ÿÆèÔ8“›¹Šø1J$86a2fe73-630a-4e52-8a09-3697ec44571e
 ¤
-java:S1192"\Define a constant instead of duplicating this literal "No se encontro el ususario." 3 times.(õî¹¸úÿÿÿÿ8”›¹Šø1J$4904dbf7-6aaf-47a7-98d4-8b17df0f5e16
+java:S1192"\Define a constant instead of duplicating this literal "No se encontro el ususario." 3 times.(õî¹¸úÿÿÿÿ8”›¹Šø1J$a38ae9ac-6ded-46ed-bb34-fc72f7c14736
 
-java:S1192›"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8‚›¹Šø1J$9756f886-170b-48c8-a940-a753dc6ef582
+java:S1192›"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8‚›¹Šø1J$a7d8c7b5-b0e5-40c3-9af0-c379beb3dccd
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$db05292c-90a7-4f39-bac2-48a35c397811
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$6f1b39ca-dfb2-432b-9431-137a0418e4a3
 …
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$feb1ffa4-4923-440c-b973-5b0bffc0669f
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$ebaf72a5-9115-4397-af82-0449fd670d34
 ›
-java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$448b218b-5e3f-4441-a516-30d696829dbf
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$27990229-7998-4f0a-8745-ab7ebab0872b
