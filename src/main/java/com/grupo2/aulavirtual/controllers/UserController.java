@@ -79,8 +79,8 @@ public class UserController {
         return userServiceImpl.setDefaultImage(id);
     }
 
-    @GetMapping("/listaTeacher/{email}")
-    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String email) {
-        return userServiceImpl.userCoursesList(email);
+    @GetMapping("/listaTeacher/{idUser}")
+    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String idUser) {
+        return userServiceImpl.userCoursesList(idUser);
     }
 }

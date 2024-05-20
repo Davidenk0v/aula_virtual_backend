@@ -31,7 +31,7 @@ public interface UserService {
     ResponseEntity<?> sendFile(Long id);
 
 
-    ResponseEntity<?> userCoursesList(String email);
+    ResponseEntity<?> userCoursesList(String idUser);
 
     ResponseEntity<?> userList();
 

@@ -1,27 +1,35 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ØêÅÛ÷1J$7ba85f89-4085-4401-b9bf-ee48ae6f1b1d
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÔİÛ³ù1J$38100bfc-3a96-4290-8c20-6f7bff5653d7
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÙêÅÛ÷1J$782e2c4c-0f80-42a1-813f-56200d286ffd
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÔİÛ³ù1J$2cf586a4-1a7b-4db0-b162-e39abc900646
 i
-java:S1452 "&Remove usage of generic wildcard type.(šÖêÌ8âêÅÛ÷1J$752ee0ec-d47c-4570-8ab3-d219c73b1f3b
+java:S1452 "&Remove usage of generic wildcard type.(šÖêÌ8äİÛ³ù1J$e7bb2639-ed3f-4fa0-9e93-563a8559c8bb
 
-java:S1854)"9Remove this useless assignment to local variable "token".(Ë¨ü•ÿÿÿÿÿ8äÁâÜ÷1J$b4798c9e-6ed9-4734-b3d8-a4122c517edd
+java:S1854)"9Remove this useless assignment to local variable "token".(Ë¨ü•ÿÿÿÿÿ8äİÛ³ù1J$744d2e72-f561-43d1-bb02-bc1a72879a50
 n
-java:S1452%"&Remove usage of generic wildcard type.(ë×–åúÿÿÿÿ8æêÅÛ÷1J$b6826e65-a268-4134-b33e-ae91c732e060
+java:S1452%"&Remove usage of generic wildcard type.(ë×–åúÿÿÿÿ8äİÛ³ù1J$8bfdfc43-f9dc-4371-ac3e-7cccb55abc61
 r
-java:S1481)"*Remove this unused "token" local variable.(Ë¨ü•ÿÿÿÿÿ8éÁâÜ÷1J$d147adff-2094-4ce2-ba27-0c7888c2b2d6
-C
-java:S14523"&Remove usage of generic wildcard type.(¶ëÒú8Ÿ´¶Šø1
-H
-java:S14528"&Remove usage of generic wildcard type.(»šÒêúÿÿÿÿ8§´¶Šø1
-C
-java:S1452>"&Remove usage of generic wildcard type.(ÀÃÔÔ8Ç´¶Šø1
-C
-java:S1452C"&Remove usage of generic wildcard type.(©‘¢¾8Ë´¶Šø1
+java:S1481)"*Remove this unused "token" local variable.(Ë¨ü•ÿÿÿÿÿ8äİÛ³ù1J$eae309aa-2339-4bbf-8784-2be77394b488
+i
+java:S14523"&Remove usage of generic wildcard type.(¶ëÒú8íİÛ³ù1J$95864822-6fa2-49d4-8fba-39e330850447
 n
-java:S1452I"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8îêÅÛ÷1J$a0b99397-fb3b-4747-a7a2-7d593f9397d2
-H
-java:S1452N"&Remove usage of generic wildcard type.(®‚¹şÿÿÿÿ8Ü´¶Šø1
-H
-java:S1452S"&Remove usage of generic wildcard type.(‚‡ñëøÿÿÿÿ8ß´¶Šø1
+java:S14528"&Remove usage of generic wildcard type.(»šÒêúÿÿÿÿ8ïİÛ³ù1J$d143221a-6e40-4c2a-89ed-313ee22347e7
+i
+java:S1452>"&Remove usage of generic wildcard type.(ÀÃÔÔ8òİÛ³ù1J$b0180d84-ed65-4798-a9ee-9deb6624a7c1
+i
+java:S1452C"&Remove usage of generic wildcard type.(©‘¢¾8ôİÛ³ù1J$4268af52-6240-4abb-bfaa-c19257d0a516
+n
+java:S1452I"&Remove usage of generic wildcard type.(ÅÇïÅúÿÿÿÿ8öİÛ³ù1J$22acb113-684a-42df-a106-6c3664f4c6b7
+n
+java:S1452N"&Remove usage of generic wildcard type.(®‚¹şÿÿÿÿ8ùİÛ³ù1J$2b28b5ce-c87b-4810-92f9-5fa3ebe15f6f
+n
+java:S1452S"&Remove usage of generic wildcard type.(ÊÂ†Äşÿÿÿÿ8üİÛ³ù1J$41d43b9a-686e-4c38-9344-fda638c775c1
+™
+java:S1128"QRemove this unused import 'com.grupo2.aulavirtual.services.impl.UserServiceImpl'.(£ºÙ›şÿÿÿÿ8‚ŞÛ³ù1J$f819dd42-509e-489c-8ad7-e7c91c0e4fa1
+ˆ
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8‚ŞÛ³ù1J$e7058cbf-282b-4186-b040-89fb97edb05f
+
+java:S1128"URemove this unused import 'org.springframework.security.access.prepost.PreAuthorize'.(ˆ†×ùÿÿÿÿ8‚ŞÛ³ù1J$789af615-e7d9-465b-8f65-0f3f36d736e0
+¸
+java:S1128"uRemove this unused import 'org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity'.(©œ…Ì8ƒŞÛ³ù1J$22a75680-6cb0-4d61-b7a8-238702527577

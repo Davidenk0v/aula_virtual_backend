@@ -39,10 +39,6 @@ e
 5src/test/java/com/grupo2/aulavirtual/MappersTest.java,2\4\241371512b99c92b9586da432695edc9b660557f
 z
 Jsrc/main/java/com/grupo2/aulavirtual/payload/response/UserResponseDto.java,1\d\1da43b5bc0e65909b6e255b18ed8376126c5503a
-u
-Esrc/main/java/com/grupo2/aulavirtual/entities/enums/CategoryEnum.java,7\5\75d3dfb720a6a00d61a873b5171844792c3ef108
-q
-Asrc/main/java/com/grupo2/aulavirtual/entities/enums/RoleEnum.java,b\a\ba4ce2d6190143431346fb60bbb90e09e369cb44
 z
 Jsrc/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java,8\1\815ba7529879929f1c8b45aecdb43e1cbc413234
 ‚
@@ -79,8 +75,6 @@ o
 ?src/main/java/com/grupo2/aulavirtual/entities/CourseEntity.java,3\c\3cae346a69dfcf29a74aa63f563afb32b6235f8c
 w
 Gsrc/main/java/com/grupo2/aulavirtual/controllers/SubjectController.java,a\0\a01aa166d50e98e56f9a968f69a58a8859626efe
-t
-Dsrc/main/java/com/grupo2/aulavirtual/controllers/RoleController.java,c\7\c7cbadfbc58dfd92bfebc4f2d2e82531cf63dec1
 v
 Fsrc/main/java/com/grupo2/aulavirtual/controllers/LessonController.java,5\4\54b4baeb00317799df2e28b490c237309f5270b5
 m
@@ -158,8 +152,6 @@ Rsrc/test/java/com/grupo2/aulavirtual/tests/responsedto/LessonsResponseDtoTest.j
 Osrc/test/java/com/grupo2/aulavirtual/tests/responsedto/RoleResponseDtoTest.java,5\3\539209441f64726c0d8428d45dd4935b881065bc
 o
 ?src/main/java/com/grupo2/aulavirtual/config/SecurityConfig.java,1\4\14cccfc62d546824d90a31da5f79a664feed815d
-o
-?src/main/java/com/grupo2/aulavirtual/util/KeycloakProvider.java,4\8\48aeb59ccb9086fe75aba723590daa0b6fcfbd90
 r
 Bsrc/main/java/com/grupo2/aulavirtual/services/KeycloakService.java,d\7\d7796e5954c8e074bc9d5f1556a6c2aecb06dad0
 {
@@ -178,14 +170,8 @@ H
 Ksrc/main/java/com/grupo2/aulavirtual/services/impl/CategoryServiceImpl.java,b\3\b32a1c220d925ba8ba31053fe53a3fbf33d40a25
 r
 Bsrc/main/java/com/grupo2/aulavirtual/services/CategoryService.java,1\6\16b411fa99955ee685c4260eb5344a5e13f39112
-
-Osrc/main/java/com/grupo2/aulavirtual/repositories/CourseCategoryRepository.java,1\c\1c0ff0bd77bb80f21a38e66e31d8a009f25ad3ca
 k
 ;src/main/java/com/grupo2/aulavirtual/config/CorsConfig.java,9\f\9f4c7e883267c43e1ce2a744eea04da3ce7497b6
-q
-Asrc/main/java/com/grupo2/aulavirtual/util/email/EmailService.java,e\0\e03bba929f8ec229b8684e08d2e6e0a4faef32a4
-u
-Esrc/main/java/com/grupo2/aulavirtual/util/email/EmailServiceImpl.java,0\4\0495dd32e779fc200aaab991592a5603cb242d6e
 x
 Hsrc/main/java/com/grupo2/aulavirtual/util/email/JavaEmailSenderImpl.java,a\a\aa040bc4496de6619be088ec4e1afe8a7cfc34c2
 t
@@ -198,17 +184,11 @@ q
 Asrc/main/java/com/grupo2/aulavirtual/services/CommentService.java,5\3\534c30f170c74ccc7adb72b6f670c38dd5237c62
 w
 Gsrc/main/java/com/grupo2/aulavirtual/controllers/CommentController.java,5\d\5d54024311236a20cbbb1f70cfe9d889caefd341
->
-src/Dockerfile,b\1\b1ac484b20625f94ee8fee74dce04369ea1760f1
 :
 
 Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
-n
->src/main/java/com/grupo2/aulavirtual/util/DataInizializer.java,b\5\b5a10738ba9d1071eeb9b6b0d327c609a5393cfd
 C
 log/application.log,5\5\557bf5dd386a3868ae12430b3ea7363ae788f1ce
-g
-7src/main/java/com/grupo2/aulavirtual/util/FileUtil.java,6\e\6eb3f6e655607a1826468cbf163ac1d425c2bfaf
 m
 =src/main/java/com/grupo2/aulavirtual/util/files/FileUtil.java,c\3\c3a0c34beb25701aaa3c9889c5a40a9e52528e7a
 w
@@ -221,3 +201,7 @@ o
 ?src/main/java/com/grupo2/aulavirtual/services/EmailService.java,e\f\ef0800ccd2593d02a40567fc730853feca4e8bc8
 p
 @src/main/java/com/grupo2/aulavirtual/entities/CommentEntity.java,5\8\5801c6a66373ffa3e7a84891aa321b3d31308801
+j
+:src/main/java/com/grupo2/aulavirtual/entities/UserImg.java,c\6\c612a5bd33ac52f2d2666a03fc802b90ea0d4919
+v
+Fsrc/main/java/com/grupo2/aulavirtual/repositories/ImageRepository.java,8\f\8fea1ffb183ad44575c213a805ffb6cf3c4e020a

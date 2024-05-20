@@ -29,6 +29,8 @@ public class SecurityConfig {
     @Autowired
     private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -59,8 +61,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/comment/**").permitAll()
                         // TEMAS
                         .requestMatchers("/api/v1/subjects/**").permitAll()
-
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .oauth2ResourceServer(oauth -> {
                     oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));
                 })
@@ -68,18 +69,5 @@ public class SecurityConfig {
                 .build();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Content-Type", "Authorization", "Content-Length",
-                "X-Requested-With",
-                "Accept", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
-        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
 
 }

@@ -1,39 +1,35 @@
 
 §
-java:S1192•"cDefine a constant instead of duplicating this literal "No ha encontrado el curso con id: " 3 times.(÷€²¥8Ø«î§ù1J$74234327-f1cb-46d3-9138-a3d87d8cfde5
+java:S1192•"cDefine a constant instead of duplicating this literal "No ha encontrado el curso con id: " 3 times.(÷€²¥8Ø«î§ù1J$a4683b7f-e4c1-4443-bb03-0545026c555b
 
-java:S1192«"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8Ù«î§ù1J$15719d3f-abbf-4f2c-9b5e-bb0e3cb41586
+java:S1192«"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8Ù«î§ù1J$b74fb7a4-8379-4bff-b1e4-6877f9ac7711
 h
-java:S2629„"$Invoke method(s) only conditionally.(äÄà8à«î§ù1J$1082abfb-36a3-4d42-b2bd-0b644db9db82
+java:S2629„"$Invoke method(s) only conditionally.(äÄà8à«î§ù1J$4698aeb3-9dab-4e84-a0d9-d12c8801711e
 h
-java:S2629…"$Invoke method(s) only conditionally.(äÄà8à«î§ù1J$0a26a55b-8728-4ae6-930b-622d060fb757
-g
-java:S2629¥"$Invoke method(s) only conditionally.(ß¦·8â«î§ù1J$09c2fe12-09a4-46e6-a269-2f1dc033e75a
-m
-java:S2629¦"$Invoke method(s) only conditionally.(ïËÂêûÿÿÿÿ8ã«î§ù1J$fdcc11c7-600d-41aa-a135-11437d9df253
+java:S2629…"$Invoke method(s) only conditionally.(äÄà8à«î§ù1J$8c914c3c-4934-4b0a-8d72-0d91573be93d
 ™
-java:S3655‰"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8È¬î§ù1J$ca751492-1fe8-4b6c-b34d-0dac49c59070
+java:S3655‰"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8È¬î§ù1J$13822d2e-6618-4621-a1c6-192a728ae382
 ™
-java:S3655¸"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(×ü‘Ûüÿÿÿÿ8È¬î§ù1J$5d7b6bdf-a9b4-4d58-80b7-5861bde3396b
+java:S3655¤"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8È¬î§ù1J$8b908931-19f4-4a1e-abe9-308873f932cf
 ™
-java:S3655¤"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8È¬î§ù1J$a17cd341-ebc7-4064-bbf1-a454f807de1c
+java:S3655¶"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(×ü‘Ûüÿÿÿÿ8È¬î§ù1J$64781a76-495e-4d84-bafb-688417d3e580
 ™
-java:S3655ƒ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8È¬î§ù1J$5dc3248e-5341-4237-bce7-f48ea0daf6b3
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8È¬î§ù1J$91d59390-36e1-4437-9b40-450e315fc961
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$d5b0836b-fa21-4790-82a9-a6ec857007d5
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$4e35c3f9-4d70-49dd-b498-43d6d93ab5d4
 …
-java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$1f733866-6048-4e2c-ad7a-efc49f7839ba
+java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$952b4473-d96b-4c45-bdb7-42e3cfffc9f2
 …
-java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$54a34a0a-56e4-4a91-8dbe-545063a3abb8
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¬î§ù1J$9e954cf9-9f69-4cc3-bb57-8144ad2dba89
 …
-java:S68137"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ë¬î§ù1J$00534ee5-5942-4d4f-8e4d-bbe713038822
+java:S68137"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ë¬î§ù1J$32d21636-c131-42d1-9f53-5d374a555ed8
 o
-java:S1452…"&Remove usage of generic wildcard type.(«Ò¨£ûÿÿÿÿ8î¬î§ù1J$794ebcd6-7402-4000-b710-972efa94bee7
+java:S1452…"&Remove usage of generic wildcard type.(«Ò¨£ûÿÿÿÿ8î¬î§ù1J$1759cbeb-8267-4c8c-a012-807cab13cdd9
 o
-java:S1452"&Remove usage of generic wildcard type.(–¯ÌØüÿÿÿÿ8ğ¬î§ù1J$e7f5c304-b9ab-45cb-879d-cf381c7ee84c
+java:S1452"&Remove usage of generic wildcard type.(–¯ÌØüÿÿÿÿ8ğ¬î§ù1J$dc03e538-490e-493b-9e6c-6ee31a85fd23
 j
-java:S1452·"&Remove usage of generic wildcard type.(ÅÅª…8ó¬î§ù1J$f00977e1-8fa2-42b7-b20d-b00aaa43c22d
+java:S1452·"&Remove usage of generic wildcard type.(ÅÅª…8ó¬î§ù1J$6b59a99c-af58-4826-9058-4aab3b39f24a
 j
-java:S1452î"&Remove usage of generic wildcard type.(ûüı²8ı¬î§ù1J$10238e6d-7577-4351-8d22-cec601a46bab
+java:S1452î"&Remove usage of generic wildcard type.(ûüı²8ı¬î§ù1J$7b05502e-b4e2-414c-aa35-8ad7cc7051e7
 o
-java:S1452å"&Remove usage of generic wildcard type.(õ—òïıÿÿÿÿ8’­î§ù1J$bcdeb25b-427f-451e-a89e-2d155e0420e0
+java:S1452ã"&Remove usage of generic wildcard type.(õ—òïıÿÿÿÿ8’­î§ù1J$27ac22af-e10e-4082-aeb6-a91cb46bb7b6

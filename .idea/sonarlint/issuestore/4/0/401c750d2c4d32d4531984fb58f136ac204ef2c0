@@ -1,15 +1,15 @@
 
 “
-java:S1192\"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 4 times.(ÿÆèÔ8ıš¹Šø1J$882362ba-2cac-47bc-a990-500a588bc6b7
-
-java:S1192\"JDefine a constant instead of duplicating this literal "\\Image\\" 4 times.(ÿÆèÔ8“›¹Šø1J$86a2fe73-630a-4e52-8a09-3697ec44571e
-¤
-java:S1192"\Define a constant instead of duplicating this literal "No se encontro el ususario." 3 times.(õî¹¸úÿÿÿÿ8”›¹Šø1J$a38ae9ac-6ded-46ed-bb34-fc72f7c14736
+java:S1192\"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 4 times.(ÿÆèÔ8ıš¹Šø1J$46fc20ca-2604-4dce-82d8-299b077b7813
 
-java:S1192›"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8‚›¹Šø1J$a7d8c7b5-b0e5-40c3-9af0-c379beb3dccd
+java:S1192›"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8‚›¹Šø1J$3cd3f869-9f85-47f1-b220-1ee169a5dab2
+
+java:S1192\"JDefine a constant instead of duplicating this literal "\\Image\\" 4 times.(ÿÆèÔ8“›¹Šø1J$af378c16-9bc0-4319-bc6a-95ec3c1e8256
+¤
+java:S1192"\Define a constant instead of duplicating this literal "No se encontro el ususario." 3 times.(õî¹¸úÿÿÿÿ8”›¹Šø1J$f1d0a632-de05-487b-a7f1-046cf29e8c65
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$6f1b39ca-dfb2-432b-9431-137a0418e4a3
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$0da9d53c-ad17-4baf-aa85-3b01609b7b1d
 …
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$ebaf72a5-9115-4397-af82-0449fd670d34
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$95a230c7-ca9f-4c06-a126-20c287910fbb
 ›
-java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$27990229-7998-4f0a-8745-ab7ebab0872b
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$4856ba17-2aa2-4204-9e7f-d4a93a88167a

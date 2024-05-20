@@ -290,8 +290,6 @@ public class CoursesServiceImpl implements CourseService {
         try {
             if (courseRepository.findById(id).isPresent()) {
                 CourseEntity course = courseRepository.findById(id).get();
-                logger.info(course.toString());
-                logger.info(dtoMapper.entityToResponseDto(course).toString());
                 return ResponseEntity.status(200).body(dtoMapper.entityToResponseDto(course));
             } else {
                 HashMap<String, Long> error = new HashMap<>();
