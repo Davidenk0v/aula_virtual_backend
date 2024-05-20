@@ -53,9 +53,8 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user, @PathVariable Long idTeacher,
-            @RequestParam(name = "file", required = false) MultipartFile file) {
-        return userServiceImpl.addUser(user, file);
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+        return userServiceImpl.addUser(user);
     }
 
     @PostMapping("/file/{id}")

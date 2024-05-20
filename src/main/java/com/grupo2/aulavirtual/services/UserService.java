@@ -12,7 +12,7 @@ public interface UserService {
 
     void syncUser(UserEntity user);
 
-    ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO, MultipartFile file);
+    ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO);
 
     ResponseEntity<?> downloadFile(Long id, MultipartFile file);
 

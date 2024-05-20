@@ -2,9 +2,7 @@ package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
@@ -28,7 +26,6 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Optional;
 
 class CoursesServiceTest {
@@ -47,7 +44,6 @@ class CoursesServiceTest {
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
     private DtoMapper dtoMapper = new DtoMapper();
-    private RoleEntity role;
 
     @BeforeEach
     void setUp() {
@@ -59,14 +55,12 @@ class CoursesServiceTest {
                 .description("Descripción del curso")
                 .startDate(Date.valueOf("2024-05-01")) // Ejemplo de fecha de inicio
                 .finishDate(Date.valueOf("2024-06-30")) // Ejemplo de fecha de finalización
-                .pago(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
+                .price(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
                 // Añadir otras configuraciones según sea necesario
                 .build();
         courseEntity = dtoMapper.dtoToEntity(courseDTO);
 
-        role = RoleEntity.builder()
-                .role(RoleEnum.ADMIN)
-                .build();
+   ;
 
         userDTO = UserDTO.builder()
                 .idUser(1L)

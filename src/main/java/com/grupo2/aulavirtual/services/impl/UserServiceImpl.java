@@ -83,18 +83,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
 
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
-            if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
-                user.setUrlImg(path);
-            } else {
-                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-                user.setUrlImg(defaultUrlImage);
-            }
             userRepository.save(user);
             usuarios.put(SAVE, userDTO);
             return ResponseEntity.status(201).body(usuarios);

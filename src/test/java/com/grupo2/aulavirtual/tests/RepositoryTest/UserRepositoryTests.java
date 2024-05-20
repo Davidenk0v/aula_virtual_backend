@@ -27,7 +27,7 @@ class UserRepositoryTests {
         userEntity.setEmail("joao@gmail.com");
         userEntity.setFirstname("Joao");
         userEntity.setLastname("Lima");
-        userEntity.setPassword("Lima");
+        userEntity.setIdKeycloak("Lima");
     }
 
     @Test

@@ -18,7 +18,7 @@ class CourseEntityTest {
                 .description("Learn Java programming language")
                 .startDate(Date.valueOf("2024-09-01"))
                 .finishDate(Date.valueOf("2024-12-31"))
-                .pago(BigDecimal.valueOf(100))
+                .price(BigDecimal.valueOf(100))
                 .user(null)
                 .build();
 
@@ -48,9 +48,9 @@ class CourseEntityTest {
         assertEquals(Date.valueOf("2025-12-31"), courseEntity.getFinishDate(),
                 "FinishDate setter must be equal to '2025-12-31'");
 
-        assertEquals(BigDecimal.valueOf(100), courseEntity.getPago(), "Pago getter must be equal to 100");
-        courseEntity.setPago(BigDecimal.valueOf(200));
-        assertEquals(BigDecimal.valueOf(200), courseEntity.getPago(), "Pago setter must be equal to 200");
+        assertEquals(BigDecimal.valueOf(100), courseEntity.getPrice(), "Pago getter must be equal to 100");
+        courseEntity.setPrice(BigDecimal.valueOf(200));
+        assertEquals(BigDecimal.valueOf(200), courseEntity.getPrice(), "Pago setter must be equal to 200");
 
         assertEquals(null, courseEntity.getUser(), "User getter must be null");
     }

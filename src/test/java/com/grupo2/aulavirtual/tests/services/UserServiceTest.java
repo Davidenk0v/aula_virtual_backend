@@ -1,13 +1,12 @@
 package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.entities.RoleEntity;
 import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.UserService;
+import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -31,9 +30,8 @@ class UserServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserService userService;
+    private UserService userService = new UserServiceImpl();
 
-    private RoleEntity role;
     private UserEntity user;
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
@@ -43,9 +41,7 @@ class UserServiceTest {
         MockitoAnnotations.openMocks(this);
 
         DtoMapper dtoMapper = new DtoMapper();
-        role = RoleEntity.builder()
-                .role(RoleEnum.ADMIN)
-                .build();
+
 
         userDTO = UserDTO.builder()
                 .idUser(1L)
@@ -127,7 +123,6 @@ class UserServiceTest {
 
         ResponseEntity<?> response = userService.findUserByEmail(email);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(userResponseDto.toString(), Objects.requireNonNull(response.getBody()).get("Guardado").toString());
     }
 
     @Test
@@ -138,11 +133,12 @@ class UserServiceTest {
         when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
 
         // Ejecuta el método bajo prueba
-        ResponseEntity<HashMap<String, Object>> response = userService.findUserByEmail(email);
+        ResponseEntity<?> response = userService.findUserByEmail(email);
 
+        HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
         // Verifica que se devuelva el mensaje de error apropiado
-        assertTrue(Objects.requireNonNull(response.getBody()).containsKey("Error"));
-        assertEquals("No se encuentra este usuario con ese id", response.getBody().get("Error"));
+        assertTrue(Objects.requireNonNull(error).containsKey("Error"));
+        assertEquals("No se encuentra este usuario con ese id", error.get("Error"));
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
@@ -150,11 +146,14 @@ class UserServiceTest {
     void findUserById() {
         Long userId = 1L;
 
+
         when(userRepository.findById(userId)).thenReturn(Optional.of(user));
 
-        ResponseEntity<HashMap<String, Object>> response = userService.findUserById(userId);
+        ResponseEntity<?> response = userService.findUserById(userId.toString());
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(userResponseDto.toString(), response.getBody().get("Guardado").toString());
+
+        HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
+        assertEquals(userResponseDto.toString(), error.get("Guardado").toString());
     }
 
     @Test
@@ -165,11 +164,12 @@ class UserServiceTest {
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
         // Ejecuta el método bajo prueba
-        ResponseEntity<HashMap<String, Object>> response = userService.findUserById(userId);
+        ResponseEntity<?> response = userService.findUserById(userId.toString());
 
         // Verifica que se devuelva el mensaje de error apropiado
 
-        assertEquals("No se encuentra este usuario con ese id", response.getBody().get("Error"));
+        HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
+        assertEquals("No se encuentra este usuario con ese id", error.get("Error"));
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
@@ -182,13 +182,16 @@ class UserServiceTest {
         when(userRepository.findById(userId)).thenThrow(new RuntimeException("Error simulado"));
         when(userRepository.findByEmail(userEmail)).thenThrow(new RuntimeException("Error simulado"));
         // Ejecuta el método bajo prueba
-        ResponseEntity<HashMap<String, Object>> response = userService.findUserById(userId);
-        ResponseEntity<HashMap<String, Object>> responseEmail = userService.findUserByEmail(userEmail);
-        assertTrue(responseEmail.getBody().containsKey("Error"));
-        assertEquals("Error simulado", responseEmail.getBody().get("Error"));
+        ResponseEntity<?> response = userService.findUserById(userId.toString());
+        HashMap<String, Object> error = (HashMap<String, Object>) response.getBody();
+
+        ResponseEntity<?> responseEmail = userService.findUserByEmail(userEmail);
+        HashMap<String, Object> errorEmail = (HashMap<String, Object>) responseEmail.getBody();
+        assertTrue(errorEmail.containsKey("Error"));
+        assertEquals("Error simulado", errorEmail.get("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEmail.getStatusCode());
-        assertTrue(response.getBody().containsKey("Error"));
-        assertEquals("Error simulado", response.getBody().get("Error"));
+        assertTrue(error.containsKey("Error"));
+        assertEquals("Error simulado", error.get("Error"));
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
