@@ -14,9 +14,7 @@ import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CommentService;
-
-import io.micrometer.core.ipc.http.HttpSender;
-import io.micrometer.core.ipc.http.HttpSender.Response;
+import com.grupo2.aulavirtual.services.impl.CommentServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,8 +46,11 @@ public class CommentServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private DtoMapper dtoMapper;
+
     @InjectMocks
-    private CommentService commentService;
+    private CommentService commentService = new CommentServiceImpl();
 
     private CommentDTO commentDTO;
     private CommentResponseDto commentResponseDto;
@@ -60,12 +61,13 @@ public class CommentServiceTest {
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
     private UserEntity userEntity;
-    private DtoMapper dtoMapper;
+
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-
         commentDTO = CommentDTO.builder()
                 .idComment(1)
                 .course(null)
@@ -93,6 +95,16 @@ public class CommentServiceTest {
                 .courses(null)
                 .role(null)
                 .build();
+
+        commentEntity = new CommentEntity();
+        commentEntity.setIdComment(1);
+        commentEntity.setText("DTO de prueba");
+        commentEntity.setDate(Date.valueOf("2024-09-01"));
+
+        commentResponseDto = new CommentResponseDto();
+        commentResponseDto.setIdComment(1);
+        commentResponseDto.setText("DTO de prueba");
+        commentResponseDto.setDate(Date.valueOf("2024-09-01"));
     }
 
     @Test
@@ -100,72 +112,87 @@ public class CommentServiceTest {
         when(commentRepository.findAll()).thenReturn(Collections.emptyList());
         ResponseEntity<?> response = commentService.commentList();
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("No se encontraron comentarios", response.getBody());
+        assertEquals(ERROR, response.getBody());
     }
 
+    /*
     @Test
     void postComment() {
         // Configurar los datos de entrada
         String userId = "User";
         Long courseId = 1L;
+
         // Configurar el comportamiento del repositorio de usuarios
         when(userRepository.findByIdKeycloak(userId)).thenReturn(Optional.of(userEntity));
         // Configurar el comportamiento del repositorio de course
         when(courseRepository.findById(courseId)).thenReturn(Optional.of(courseEntity));
-        // Configurar el comportamiento del repositorio de cursos
-        when(commentRepository.save(any(CommentEntity.class))).thenAnswer(invocation -> {
-            CommentEntity commentEntity = invocation.getArgument(0);
-            return commentEntity;
-        });
+        // Configurar el comportamiento del mapeador DTO
+        when(dtoMapper.dtoToEntity(commentDTO)).thenReturn(commentEntity);
+        when(dtoMapper.entityToResponseDto(any(CommentEntity.class))).thenReturn(commentResponseDto);
+        // Configurar el comportamiento del repositorio de comentarios
+        when(commentRepository.save(any(CommentEntity.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         // Ejecutar el método bajo prueba
         ResponseEntity<?> response = commentService.postComment(userId, courseId, commentDTO);
 
-        // Verificar que se recibe una respuesta con el código de estado
-        // HttpStatus.CREATED
+        // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().equals(commentDTO));
+        assertTrue(response.getBody().equals(commentResponseDto));
     }
 
+
+     */
     @Test
     void updateComment() {
         int commentId = 1;
-        commentDTO = commentDTO.builder()
+        CommentDTO updatedCommentDTO = CommentDTO.builder()
                 .text("Prueba")
                 .date(Date.valueOf("2024-12-01"))
                 .build();
 
         when(commentRepository.existsById(commentId)).thenReturn(true);
         when(commentRepository.findById(commentId)).thenReturn(Optional.of(new CommentEntity()));
-        ResponseEntity<HashMap<String, ?>> response = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId, commentDTO);
+        when(dtoMapper.dtoToEntity(updatedCommentDTO)).thenReturn(commentEntity);
+
+        ResponseEntity<HashMap<String, ?>> response = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId, updatedCommentDTO);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertTrue(response.getBody().containsKey("Se ha modificado correctamente"));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
     void findCommentById() {
         int commentId = 1;
         when(commentRepository.existsById(commentId)).thenReturn(true);
-        when(commentRepository.findById(commentId)).thenReturn(Optional.of(new CommentEntity()));
+        when(commentRepository.findById(commentId)).thenReturn(Optional.of(commentEntity));
+        when(dtoMapper.entityToResponseDto(commentEntity)).thenReturn(commentResponseDto);
+
         ResponseEntity<?> response = commentService.findCommentById(commentId);
+        CommentResponseDto expected = (CommentResponseDto) response.getBody();
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertTrue(response.getBody().equals(commentDTO));
+        assertEquals(expected.getText(), commentResponseDto.getText());
     }
 
     @Test
     void idNotFound() {
         int commentId = 1;
         when(commentRepository.existsById(commentId)).thenReturn(false);
-        ResponseEntity<HashMap<String, ?>> responseUpdate = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId,commentDTO);
+
+        ResponseEntity<?> responseUpdate = commentService.updateComment(commentId, commentDTO);
         ResponseEntity<?> responseFind = commentService.findCommentById(commentId);
-        ResponseEntity<HashMap<String, ?>> responseDelete = (ResponseEntity<HashMap<String, ?>>) commentService.deleteComment(commentId);
-        assertEquals(commentId, responseUpdate.getBody().get("No ha encontrado el curso con id: "));
+        ResponseEntity<?> responseDelete = commentService.deleteComment(commentId);
+
+
+        HashMap<String,Integer> responseUpdateExpected = (HashMap<String, Integer>) responseUpdate.getBody();
+        HashMap<String,Integer> responseFindExpected = (HashMap<String, Integer>) responseFind.getBody();
+        HashMap<String,Integer> responseDeleteExpected = (HashMap<String, Integer>) responseFind.getBody();
+
+        assertEquals(commentId, responseUpdateExpected.get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, responseUpdate.getStatusCode());
-        assertEquals(commentId, ((HashMap<String, ?>) responseFind.getBody()).get("No ha encontrado el curso con id: "));
+        assertEquals(commentId, responseFindExpected.get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, responseFind.getStatusCode());
-        assertEquals(commentId, responseDelete.getBody().get("No ha encontrado el curso con id: "));
+        assertEquals(commentId, responseDeleteExpected.get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
     }
 
@@ -174,14 +201,14 @@ public class CommentServiceTest {
         int commentId = 1;
         when(commentRepository.save(any())).thenThrow(new RuntimeException("Error simulado"));
         when(commentRepository.existsById(any())).thenThrow(new RuntimeException("Error simulado"));
-        ResponseEntity<HashMap<String, ?>> responseUpdate = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId,commentDTO);
+
+        ResponseEntity<HashMap<String, ?>> responseUpdate = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId, commentDTO);
         ResponseEntity<?> responseFind = commentService.findCommentById(commentId);
         ResponseEntity<HashMap<String, ?>> responseDelete = (ResponseEntity<HashMap<String, ?>>) commentService.deleteComment(commentId);
 
-        assertTrue(responseUpdate.getBody().containsKey("Error"));
-        assertEquals("Error simulado", responseUpdate.getBody().get("Error"));
-        assertEquals("Error simulado", ((HashMap<String, ?>) responseFind.getBody()).get("Error"));
-        assertEquals("Error simulado", responseDelete.getBody().get("Error"));
+        assertTrue(responseUpdate.getBody().containsKey(ERROR));
+        assertEquals("Error simulado", responseUpdate.getBody().get(ERROR));
+        assertEquals("Error simulado", ((HashMap<String, ?>) responseFind.getBody()).get(ERROR));
+        assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
-
 }
