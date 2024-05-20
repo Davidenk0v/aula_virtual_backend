@@ -58,4 +58,10 @@ public class CommentController {
             @PathVariable int id){
         return commentService.deleteComment(id);
     }
+
+    @GetMapping("/file/{id}")
+    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+        return commentService.sendFile(id);
+    }
+
 }

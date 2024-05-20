@@ -10,8 +10,12 @@ import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CommentService;
+import com.grupo2.aulavirtual.util.FileUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Clase de servicios que implementa los metodos de la interfaz CommentService.
@@ -36,6 +41,13 @@ public class CommentServiceImpl implements CommentService {
     private CourseRepository courseRepository;
 
     DtoMapper dtoMapper = new DtoMapper();
+
+    FileUtil fileUtil = new FileUtil();
+
+    @Value("${fileutil.default.img.user}")
+    private String defaultImg;
+    @Value("${fileutil.user.folder.path}")
+    private String userFolder;
 
     /**
      * Metodo para crear un comentario.
@@ -199,5 +211,38 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
-   
+   /**
+     * Metodo para enviar un archivo al frontend.
+     * 
+     * @param id Long con la id del usuario.
+     * @return ResponseEntity<?> con la imagen, con string en caso de error.
+     */
+    public ResponseEntity<?> sendFile(Long id) {
+        Optional<UserEntity> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            UserEntity user = optionalUser.get();
+            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
+                String fileRoute = getCustomPath(user.getUsername()) + user.getUrlImg();
+                String extension = fileUtil.getExtensionByPath(fileRoute);
+                String mediaType = fileUtil.getMediaType(extension);
+                byte[] file = fileUtil.sendFile(fileRoute, defaultImg);
+                if (file.length != 0) {
+                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
+                } else {
+                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
+                            HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } else {
+                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>("No se encuentra el archivo.",
+                    HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private String getCustomPath(String courseNane) {
+        return userFolder + courseNane + "\\Image\\";
+    }
+
 }
