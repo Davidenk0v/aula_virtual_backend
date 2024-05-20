@@ -1,21 +1,33 @@
 
+p
+java:S1192e"SDefine a constant instead of duplicating this literal "\\Media\\Lessons\\" 4 times.(äÉé¿8¾ç¤¨ù1
 ‚
-java:S11929"FDefine a constant instead of duplicating this literal "Error" 4 times.(•×±„J$54a13fe3-af0f-44cf-9876-20c393afbde3
-Y
-java:S4973["<Strings and Boxed types should be compared using "equals()".(’âõ–8é³³Çò1
-^
-java:S4973^"<Strings and Boxed types should be compared using "equals()".(ãõ•ùÿÿÿÿ8é³³Çò1
+java:S1192?"FDefine a constant instead of duplicating this literal "Error" 7 times.(•×±„J$54a13fe3-af0f-44cf-9876-20c393afbde3
+Z
+java:S4973İ"<Strings and Boxed types should be compared using "equals()".(’âõ–8é³³Çò1
+_
+java:S4973à"<Strings and Boxed types should be compared using "equals()".(ãõ•ùÿÿÿÿ8é³³Çò1
+n
+java:S3655Ü"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(‘··8À´³Çò1
+n
+java:S3655ı"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
 m
-java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(‘··8À´³Çò1
-m
-java:S3655D"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
-m
-java:S3655v"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
-m
-java:S3655/"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¾¦³8Á´³Çò1
+java:S3655`"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¾¦³8Á´³Çò1
+n
+java:S3655Æ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁÚöö8À´³Çò1
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$bb613f85-a756-4b92-aaf6-bf7799592b06
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$bb613f85-a756-4b92-aaf6-bf7799592b06
 ~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$0a172b4b-cabf-44d5-8400-cca63fb5c0e9
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$0a172b4b-cabf-44d5-8400-cca63fb5c0e9
+H
+java:S14520"&Remove usage of generic wildcard type.(»Íÿ´ùÿÿÿÿ8¡è¤¨ù1
+H
+java:S1452D"&Remove usage of generic wildcard type.(õ—òïıÿÿÿÿ8¤è¤¨ù1
 |
-java:S18540";Remove this useless assignment to local variable "lessons".(é»‹øÿÿÿÿJ$c578a531-b7bd-4073-8785-527bc9db4bd0
+java:S1854a";Remove this useless assignment to local variable "lessons".(é»‹øÿÿÿÿJ$c578a531-b7bd-4073-8785-527bc9db4bd0
+H
+java:S1452{"&Remove usage of generic wildcard type.(«Ò¨£ûÿÿÿÿ8¬è¤¨ù1
+I
+java:S1452”"&Remove usage of generic wildcard type.(î¿®ıûÿÿÿÿ8®è¤¨ù1
+C
+java:S1452®"&Remove usage of generic wildcard type.(€šéz8°è¤¨ù1

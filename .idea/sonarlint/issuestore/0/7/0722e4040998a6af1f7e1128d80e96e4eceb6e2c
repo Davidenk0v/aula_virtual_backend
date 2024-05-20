@@ -1,10 +1,7 @@
 
-—
-java:S1128"ORemove this unused import 'com.grupo2.aulavirtual.entities.enums.CategoryEnum'.(Â¦Õ¤ùÿÿÿÿ8§™Ş’÷1J$e36b2719-fe18-402d-9099-731135a3d287
 ~
-java:S1128"6Remove this unused import 'jakarta.persistence.Basic'.(¡ç¿øÿÿÿÿÿ8Éğİ’÷1J$8a099bf5-db5f-4007-bd92-f9b12254be19
+java:S1128"6Remove this unused import 'jakarta.persistence.Basic'.(¡ç¿øÿÿÿÿÿ8ĞŞ¾¦ù1J$d8adba03-adec-4fab-ab60-d7e2ec7a049b
 |
-java:S1128	"9Remove this unused import 'jakarta.persistence.EnumType'.(…÷Íà8Ëğİ’÷1J$f43925ea-ad48-4af1-ad2c-7f960bb19246
+java:S1128"9Remove this unused import 'jakarta.persistence.EnumType'.(…÷Íà8ĞŞ¾¦ù1J$be82284f-7eca-46ef-8ce0-9e3c373fdd0e
 ƒ
-java:S1128
-";Remove this unused import 'jakarta.persistence.Enumerated'.(àèòùÿÿÿÿ8Ëğİ’÷1J$732adb0c-c0aa-4381-a70b-904c1d0b9994
+java:S1128";Remove this unused import 'jakarta.persistence.Enumerated'.(àèòùÿÿÿÿ8ÑŞ¾¦ù1J$371d2cc0-0af5-4201-9be6-e5098c9fc66b

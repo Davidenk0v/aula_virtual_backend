@@ -9,7 +9,7 @@ import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.UserService;
-import com.grupo2.aulavirtual.util.FileUtil;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
