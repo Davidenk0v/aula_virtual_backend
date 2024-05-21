@@ -1,3 +1,11 @@
 
-i
-java:S14521"&Remove usage of generic wildcard type.(×’æ´8Á±µâ÷1J$fbfdd034-d4d7-4b41-9983-07432d90f143
+y
+java:S1128"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿ8õÁ–Üù1J$75b26b73-4271-43f4-a778-22f8fabd2c93
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ò÷–Üù1
+’
+java:S1128"ORemove this unused import 'org.springframework.security.core.GrantedAuthority'.(½Á±ÿ8öÁ–Üù1J$c7653ff9-d82e-4664-bf3e-fbbbe277c3ca
+§
+java:S1128"_Remove this unused import 'org.springframework.security.core.authority.SimpleGrantedAuthority'.(– ‹Ìûÿÿÿÿ8÷Á–Üù1J$cdfb35d9-bef5-4eaf-b383-1bbb02f07664
+™
+java:S1128	"VRemove this unused import 'org.springframework.security.core.userdetails.UserDetails'.(ÊÁ¥8÷Á–Üù1J$c3acf7e5-6b40-4815-b7e2-ae3f1adc1c9e

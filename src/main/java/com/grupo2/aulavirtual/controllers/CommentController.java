@@ -55,7 +55,7 @@ public class CommentController {
     }
 
     @GetMapping("/file/{id}")
-    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
+    public ResponseEntity<?> uploadFile(@PathVariable String id) {
         return commentService.sendFile(id);
     }
 

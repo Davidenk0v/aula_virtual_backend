@@ -193,3 +193,5 @@ w
 Gsrc/main/java/com/grupo2/aulavirtual/services/impl/FileServiceImpl.java,7\1\71791b0e4608987345166511bac92b38a81990c5
 n
 >src/main/java/com/grupo2/aulavirtual/services/FileService.java,f\f\ffafff471a3d7132f0c255627182a5e4104ba637
+p
+@src/main/java/com/grupo2/aulavirtual/util/mappers/DtoMapper.java,f\1\f185f2a17e9e027954c2b20301c384018831995f

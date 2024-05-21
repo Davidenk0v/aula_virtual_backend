@@ -2,25 +2,25 @@ package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.entities.UserImg;
+import com.grupo2.aulavirtual.repositories.ImageRepository;
+import com.grupo2.aulavirtual.services.KeycloakService;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.CommentDTO;
 import com.grupo2.aulavirtual.payload.response.CommentResponseDto;
 import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CommentService;
-import com.grupo2.aulavirtual.util.FileUtil;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 
+import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +35,10 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private ImageRepository imageRepository;
+
+    @Autowired
+    private KeycloakService keycloakService;
 
     @Autowired
     private CourseRepository courseRepository;
@@ -62,14 +65,13 @@ public class CommentServiceImpl implements CommentService {
     public ResponseEntity<?> postComment(String idUser, Long idCourse, CommentDTO commentDTO) {
         try {
             HashMap<String, CommentResponseDto> response = new HashMap<>();
-            UserEntity user = userRepository.findByIdKeycloak(idUser).get();
             CourseEntity course = courseRepository.findById(idCourse).get();
 
             CommentEntity comment = new CommentEntity();
             comment = dtoMapper.dtoToEntity(commentDTO);
 
             comment.setCourse(course);
-            comment.setUser(user);
+            comment.setUserId(idUser);
             CommentResponseDto objectResponse = dtoMapper.entityToResponseDto(comment);
 
             commentRepository.save(comment);
@@ -145,8 +147,8 @@ public class CommentServiceImpl implements CommentService {
                 if (commentDTO.getDate().toString() != "") {
                     comment.setDate(commentDTO.getDate());
                 }
-                if (commentDTO.getUser() != null) {
-                    comment.setUser(commentDTO.getUser());
+                if (commentDTO.getUserId() != null) {
+                    comment.setUserId(commentDTO.getUserId());
                 }
                 if (commentDTO.getCourse() != null) {
                     comment.setCourse(commentDTO.getCourse());
@@ -221,12 +223,13 @@ public class CommentServiceImpl implements CommentService {
      * @param id Long con la id del usuario.
      * @return ResponseEntity<?> con la imagen, con string en caso de error.
      */
-    public ResponseEntity<?> sendFile(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
-                String fileRoute = getCustomPath(user.getUsername()) + user.getUrlImg();
+    public ResponseEntity<?> sendFile(String id) {
+        UserRepresentation userRepresentation = keycloakService.findUserById(id);
+        if (userRepresentation != null) {
+            Optional<UserImg> userImg = imageRepository.findByIdUser(id);
+            if (userImg.isPresent()) {
+                UserImg user = userImg.get();
+                String fileRoute = getCustomPath(user.getIdUser()) + user.getUrlImg();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String mediaType = fileUtil.getMediaType(extension);
                 byte[] file = fileUtil.sendFile(fileRoute, defaultImg);

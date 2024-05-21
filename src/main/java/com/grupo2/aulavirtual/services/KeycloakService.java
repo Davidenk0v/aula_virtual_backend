@@ -3,6 +3,7 @@ package com.grupo2.aulavirtual.services;
 import com.grupo2.aulavirtual.payload.request.LoginRequestDto;
 import com.grupo2.aulavirtual.payload.request.RegisterRequestDto;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 
@@ -16,6 +17,10 @@ public interface KeycloakService {
     ResponseEntity<?> searchUserByUsername(String username);
 
     ResponseEntity<?> searchUserById(String userId);
+
+    UserRepresentation findUserById(String userId);
+
+    UserRepresentation findUserByEmail(String email);
 
     ResponseEntity<?> createUser(@NonNull RegisterRequestDto userDTO);
 

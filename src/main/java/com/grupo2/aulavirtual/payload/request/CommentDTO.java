@@ -1,7 +1,6 @@
 package com.grupo2.aulavirtual.payload.request;
 
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
 import lombok.*;
 
 import java.sql.Date;
@@ -19,7 +18,7 @@ public class CommentDTO {
 
     private Date date;
 
-    private UserEntity user;
+    private String userId;
 
     private CourseEntity course;
 

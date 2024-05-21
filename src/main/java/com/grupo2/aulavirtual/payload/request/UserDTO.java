@@ -14,7 +14,7 @@ import lombok.*;
 @Setter
 public class UserDTO {
 
-    private Long idUser;
+    private String idUser;
 
     private String email;
 

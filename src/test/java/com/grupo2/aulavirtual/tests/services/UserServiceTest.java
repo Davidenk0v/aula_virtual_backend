@@ -1,12 +1,8 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.entities.UserEntity;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
-import com.grupo2.aulavirtual.repositories.UserRepository;
-import com.grupo2.aulavirtual.services.UserService;
-import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

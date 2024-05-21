@@ -2,8 +2,7 @@ package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.CommentDTO;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
@@ -12,7 +11,6 @@ import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CommentService;
 import com.grupo2.aulavirtual.services.impl.CommentServiceImpl;
 

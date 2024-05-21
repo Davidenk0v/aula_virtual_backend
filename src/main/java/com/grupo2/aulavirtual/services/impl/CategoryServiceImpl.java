@@ -1,16 +1,9 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
-import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.mappers.DtoMapper;
-import com.grupo2.aulavirtual.payload.request.CategoryDTO;
-import com.grupo2.aulavirtual.payload.request.CourseDTO;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
-import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
-import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
-import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.services.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

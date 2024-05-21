@@ -21,11 +21,7 @@ public class CommentEntity {
     @Column(nullable = false)
     private Date date;
 
-    @ManyToOne(
-            fetch = FetchType.EAGER)
-    @JoinColumn(
-            name = "idUser", referencedColumnName = "idUser")
-    private UserEntity user;
+    private String userId;
     @ManyToOne(
             fetch = FetchType.EAGER)
     @JoinColumn(

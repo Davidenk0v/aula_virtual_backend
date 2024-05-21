@@ -137,6 +137,21 @@ public class KeycloakServiceImpl implements KeycloakService {
         }
     }
 
+    @Override
+    public UserRepresentation findUserById(String userId) {
+            UserResource userResource = KeycloakProvider.getRealmResource().users().get(userId);
+            return userResource.toRepresentation();
+    }
+
+    @Override
+    public UserRepresentation findUserByEmail(String email) {
+        return KeycloakProvider.getRealmResource().users()
+                .search(email)
+                .stream()
+                .findFirst()
+                .orElse(null);
+    }
+
     /**
      * Metodo para crear un usuario en keycloak
      *

@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
@@ -95,8 +95,9 @@ public class LessonsServiceImpl implements LessonsService {
         }
     }
 
+
     @Override
-    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO) {
+    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file) {
         try {
             HashMap<String, SubjectsResponseDto> response = new HashMap<>();
             SubjectsEntity subjects = repository.findById(idSubject).get();
@@ -107,14 +108,13 @@ public class LessonsServiceImpl implements LessonsService {
                 String path = fileUtil.saveFile(file, lessonsFolder);
                 lessons.setContenido(path);
             }
-
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
-            response.put(SAVE, objectResponse);
+            response.put("Leccion subido", objectResponse);
             return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -220,7 +220,7 @@ public class LessonsServiceImpl implements LessonsService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO) {
+    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file) {
         try {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
@@ -237,16 +237,16 @@ public class LessonsServiceImpl implements LessonsService {
                     subject.setContenido(path);
                 }
                 lessonsRepository.save(subject);
-                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
+                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put(ERROR, id);
+                error.put("No ha encontrado la leccion con id: ", id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
