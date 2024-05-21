@@ -48,39 +48,14 @@ public class UserServiceImpl implements UserService {
     FileUtil fileUtil = new FileUtil();
 
     private static final String ERROR = "error";
-    private static final String SAVE = "data";
 
+    private static final String DATA = "data";
 
     private static final String USER_NOT_FOUND = "No encontrado";
+
     @Value("${default.img.user}")
     private String defaultImg;
 
-    @Override
-    public UserEntity getLoggedUser() {
-        JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-
-        String email = String.valueOf(token.getTokenAttributes().get("email"));
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("Error while fetching user"));
-
-    }
-
-    @Override
-    public void syncUser(UserEntity user) {
-        if (user == null) {
-            throw new EntityNotFoundException("Error while user sync");
-        }
-
-        UserEntity saveUser = user;
-        Optional<UserEntity> optionalUser = userRepository.findByEmail(user.getEmail());
-
-        if (optionalUser.isPresent()) {
-            saveUser = optionalUser.get();
-            saveUser.setFirstname(user.getFirstname());
-            saveUser.setLastname(user.getLastname());
-        }
-        userRepository.save(saveUser);
-    }
 
     @Override
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
@@ -89,7 +64,7 @@ public class UserServiceImpl implements UserService {
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
             userRepository.save(user);
-            usuarios.put(SAVE, userDTO);
+            usuarios.put(DATA, userDTO);
             return ResponseEntity.status(201).body(usuarios);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -138,7 +113,7 @@ public class UserServiceImpl implements UserService {
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
-                return new ResponseEntity<>(SAVE, HttpStatus.OK);
+                return new ResponseEntity<>(DATA, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
                         ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -166,7 +141,7 @@ public class UserServiceImpl implements UserService {
             user.setUrlImg(path);
             userRepository.save(user);
             if (path != null) {
-                return new ResponseEntity<>(SAVE, HttpStatus.OK);
+                return new ResponseEntity<>(DATA, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
                         ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -227,7 +202,7 @@ public class UserServiceImpl implements UserService {
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE,userRespuesta);
+                usuarios.put(DATA,userRespuesta);
                 return ResponseEntity.status(200).body(usuarios);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
@@ -307,7 +282,7 @@ public class UserServiceImpl implements UserService {
                                                                            // keycloak
                 userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(SAVE, userRespuesta);
+                usuarios.put(DATA, userRespuesta);
                 return ResponseEntity.status(200).body(usuarios);
             } else {
                 usuarios.put(USER_NOT_FOUND, userDTO);
@@ -355,7 +330,7 @@ public class UserServiceImpl implements UserService {
                                                                                 // datos de keycloak
 
                 logger.info("Borrado de la base de datos del keycloak y de la tabla user");
-                response.put(SAVE, id);
+                response.put(DATA, id);
 
                 return ResponseEntity.status(201).body(response);
             } else {

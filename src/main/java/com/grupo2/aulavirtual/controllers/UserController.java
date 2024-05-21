@@ -1,6 +1,7 @@
 package com.grupo2.aulavirtual.controllers;
 
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.UserService;
 import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
 
@@ -9,11 +10,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.ws.rs.Produces;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -28,6 +32,9 @@ public class UserController {
     @Autowired
     private UserService userServiceImpl;
 
+    @Autowired
+    private KeycloakService keycloakService;
+
     @GetMapping("/")
     public ResponseEntity<?> getAllUserDTO() {
         return userServiceImpl.userList();
@@ -35,16 +42,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable String id) {
-        String authorizationHeader = request.getHeader("Authorization");
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 
-            String token = authorizationHeader.substring(7);
-
-        } else {
-            logger.info("No se ha proporcionado un token de acceso válido.");
-        }
-
-        return userServiceImpl.findUserById(id);
+        return keycloakService.searchUserById(id);
     }
 
     @GetMapping("/file/{id}")
@@ -52,10 +51,6 @@ public class UserController {
         return userServiceImpl.sendFile(id);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
-        return userServiceImpl.addUser(user);
-    }
 
     @PostMapping("/file/{id}")
     public ResponseEntity<?> saveFile(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
@@ -65,12 +60,12 @@ public class UserController {
     @PutMapping("/{idUser}")
     public ResponseEntity<?> updateUser(@RequestBody UserDTO user, @PathVariable String idUser,
             @PathVariable Long idTeacher, @RequestParam(name = "file", required = false) MultipartFile file) {
-        return userServiceImpl.updateUser(user, idUser, file);
+        return keycloakService.updateUser(idUser, user);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserById(@PathVariable Long id) {
-        return userServiceImpl.deleteUser(id);
+    public ResponseEntity<?> deleteUserById(@PathVariable String id) {
+        return keycloakService.deleteUser(id);
     }
 
     @DeleteMapping("/file/{id}")
@@ -78,8 +73,4 @@ public class UserController {
         return userServiceImpl.setDefaultImage(id);
     }
 
-    @GetMapping("/listaTeacher/{idUser}")
-    public ResponseEntity<?> getListaTeacherByEmail(@PathVariable String idUser) {
-        return userServiceImpl.userCoursesList(idUser);
-    }
 }

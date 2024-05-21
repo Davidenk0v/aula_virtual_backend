@@ -8,9 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 
 public interface UserService {
-    UserEntity getLoggedUser();
-
-    void syncUser(UserEntity user);
 
     ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO);
 

@@ -29,5 +29,9 @@ public class AuthController {
         return keycloakService.createUser(registerRequestDto);
     }
 
+    @GetMapping("/logout/{idUser}")
+    public ResponseEntity<?> logout(@PathVariable String idUser) {
+        return keycloakService.logoutUser(idUser);
+    }
 
 }
