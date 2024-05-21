@@ -1,16 +1,16 @@
 {"properties": [
   {
-    "name": "default.img.user",
+    "name": "fileutil.default.img.user",
     "type": "java.lang.String",
     "description": "The default user profile image"
   },
   {
-    "name": "default.img.course",
+    "name": "fileutil.default.img.course",
     "type": "java.lang.String",
     "description": "The default course profile image"
   },
   {
-    "name": "default.path",
+    "name": "fileutil.default.path",
     "type": "java.lang.String",
     "description": "The path for default files"
   }

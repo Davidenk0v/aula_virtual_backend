@@ -57,16 +57,22 @@ public class UserServiceImpl implements UserService {
 
     private static final String USER_NOT_FOUND = "No encontrado";
 
-    @Value("${default.img.user}")
+    @Value("${fileutil.default.img.user}")
     private String defaultImg;
-
+    @Value("${fileutil.user.folder.path}")
+    private String userFolder;
 
     @Override
     public ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO) {
         try {
-
             HashMap<String, Object> usuarios = new HashMap<>();
             UserEntity user = dtoMapper.dtoToEntity(userDTO);
+            if (file != null && !file.isEmpty() && user.getUrlImg() != null) {
+                String path = fileUtil.saveFile(file, getCustomPath(user.getUsername()));
+                user.setUrlImg(path);
+            } else {
+                user.setUrlImg(defaultImg);
+            }
             userRepository.save(user);
             usuarios.put(DATA, userDTO);
             return ResponseEntity.status(201).body(usuarios);
@@ -76,8 +82,6 @@ public class UserServiceImpl implements UserService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
-
-
 
     @Override
     public ResponseEntity<?> findUserByEmail(String email) {
@@ -128,7 +132,7 @@ public class UserServiceImpl implements UserService {
             if (optionalUser.isPresent()) {
                 UserEntity user = optionalUser.get();
                 UserResponseDto userRespuesta = dtoMapper.entityToResponseDto(user);
-                usuarios.put(DATA,userRespuesta);
+                usuarios.put(DATA, userRespuesta);
                 return ResponseEntity.status(200).body(usuarios);
             } else {
                 usuarios.put(ERROR, USER_NOT_FOUND);
@@ -141,7 +145,36 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    /**
+     * Metodo para enviar un archivo al frontend.
+     * 
+     * @param id Long con la id del usuario.
+     * @return ResponseEntity<?> con la imagen, con string en caso de error.
+     */
+    @Override
+    public ResponseEntity<?> sendFile(Long id) {
+        Optional<UserEntity> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            UserEntity user = optionalUser.get();
+            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
+                String fileRoute = user.getUrlImg();
+                String extension = fileUtil.getExtensionByPath(fileRoute);
+                String mediaType = fileUtil.getMediaType(extension);
+                byte[] file = fileUtil.sendFile(fileRoute);
+                if (file.length != 0) {
+                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
+                } else {
+                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
+                            HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } else {
+                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>("No se encuentra el archivo.",
+                    HttpStatus.NOT_FOUND);
+        }
+    }
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file) {
@@ -240,4 +273,23 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public ResponseEntity<?> setDefaultImage(Long id) {
+        Optional<UserEntity> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            UserEntity user = optionalUser.get();
+            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
+            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
+                fileUtil.deleteFile(user.getUrlImg());
+                user.setUrlImg(defaultUrlImage);
+                userRepository.save(user);
+            } else {
+                user.setUrlImg(defaultUrlImage);
+                userRepository.save(user);
+            }
+            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -41,9 +41,7 @@ public class DtoMapper {
         return modelMapper.map(lessonsDTO, LessonsEntity.class);
     }
 
-
-
-        public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
+    public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
         return modelMapper.map(CommentDTO, CommentEntity.class);
     }
 
@@ -79,6 +77,7 @@ public class DtoMapper {
                 .startDate(courseEntity.getStartDate())
                 .finishDate(courseEntity.getFinishDate())
                 .price(courseEntity.getPrice())
+                .urlImg(courseEntity.getUrlImg())
                 .build();
 
         if (courseEntity.getUser() != null) {
@@ -109,8 +108,6 @@ public class DtoMapper {
         return lessonsResponseDto;
 
     }
-
-
 
     public SubjectsResponseDto entityToResponseDto(SubjectsEntity subjectsEntity) {
 

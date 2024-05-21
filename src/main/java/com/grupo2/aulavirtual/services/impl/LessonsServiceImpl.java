@@ -12,6 +12,7 @@ import com.grupo2.aulavirtual.services.LessonsService;
 import com.grupo2.aulavirtual.util.files.FileUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +34,12 @@ public class LessonsServiceImpl implements LessonsService {
 
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
+    @Value("${fileutil.lessons.folder.path}")
+    private String lessonsFolder;
 
     private static final String SAVE = "data";
     private static final String ERROR = "error";
+
     @Override
     public ResponseEntity<?> lessonsList() {
         List<LessonsEntity> lessonsEntities = lessonsRepository.findAll();
@@ -75,7 +79,7 @@ public class LessonsServiceImpl implements LessonsService {
                 String fileRoute = lessons.getContenido();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String medoaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(lessonsFolder + fileRoute);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
                 } else {
@@ -99,6 +103,11 @@ public class LessonsServiceImpl implements LessonsService {
             LessonsEntity lessons = new LessonsEntity();
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
+            if (file != null && !file.isEmpty()) {
+                String path = fileUtil.saveFile(file, lessonsFolder);
+                lessons.setContenido(path);
+            }
+
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
             response.put(SAVE, objectResponse);
@@ -145,7 +154,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+            String path = fileUtil.saveFile(file, lessonsFolder);
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -171,8 +180,8 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
-                    lessons.getContenido());
+            String path = fileUtil.updateFile(file, lessonsFolder,
+                    lessonsFolder + lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -222,6 +231,11 @@ public class LessonsServiceImpl implements LessonsService {
                 if (lessonsDTO.getDescription() != "") {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
+                if (file != null && !file.isEmpty()) {
+                    String path = fileUtil.updateFile(file, lessonsFolder,
+                            subject.getContenido());
+                    subject.setContenido(path);
+                }
                 lessonsRepository.save(subject);
                 response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
@@ -244,8 +258,8 @@ public class LessonsServiceImpl implements LessonsService {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
-                //Hay problemas en el dtomapper devuelve 500
-                //response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
+                // Hay problemas en el dtomapper devuelve 500
+                // response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
                 HashMap<String, String> responseTest = new HashMap<>();
                 responseTest.put(SAVE, "funciona");
                 return ResponseEntity.status(200).body(responseTest);

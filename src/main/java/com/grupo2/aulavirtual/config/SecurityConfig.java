@@ -29,8 +29,6 @@ public class SecurityConfig {
     @Autowired
     private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -68,6 +66,5 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
-
 
 }

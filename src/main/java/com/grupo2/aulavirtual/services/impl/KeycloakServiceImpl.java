@@ -39,14 +39,12 @@ public class KeycloakServiceImpl implements KeycloakService {
     private ImageRepository imageRepository;
 
     FileUtil fileUtil = new FileUtil();
-
-    @Value("${default.img.user}")
+    @Value("${fileutil.default.img.user}")
     private String defaultImg;
 
     private final String DATA = "Data";
 
     private final String ERROR = "Error";
-
 
     /**
      * Metodo para listar todos los usuarios de Keycloak
@@ -55,19 +53,19 @@ public class KeycloakServiceImpl implements KeycloakService {
      */
     @Override
     public ResponseEntity<?> findAllUsers() {
-        try{
-        Map<String, List> response = new HashMap<>();
-            List<UserRepresentation> userList =  KeycloakProvider.getRealmResource()
+        try {
+            Map<String, List> response = new HashMap<>();
+            List<UserRepresentation> userList = KeycloakProvider.getRealmResource()
                     .users()
                     .list();
-            if(userList.isEmpty()){
+            if (userList.isEmpty()) {
                 Map<String, String> error = new HashMap<>();
                 error.put(ERROR, "No se encontro ningun usuario");
                 return ResponseEntity.status(404).body(error);
             }
             response.put(DATA, userList);
             return ResponseEntity.status(200).body(response);
-        }catch (Exception e){
+        } catch (Exception e) {
             Map<String, String> response = new HashMap<>();
             response.put(ERROR, "Error al buscar los usuarios");
             return ResponseEntity.status(500).body(response);
@@ -91,12 +89,12 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Override
     public ResponseEntity<?> logoutUser(String idUser) {
         Map<String, String> response = new HashMap<>();
-        try{
+        try {
             UserResource userResource = KeycloakProvider.getUserResource().get(idUser);
             userResource.logout();
             response.put(DATA, "Se ha cerrado la sesion correctamente");
             return ResponseEntity.status(200).body(response);
-        }catch (Exception e){
+        } catch (Exception e) {
             response.put(ERROR, "Error al cerrar la sesion");
             return ResponseEntity.status(500).body(response);
         }
@@ -111,15 +109,14 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Override
     public ResponseEntity<?> searchUserByUsername(String username) {
         try {
-            List<UserRepresentation> userRepresentationList = KeycloakProvider.getRealmResource().users().searchByUsername(username, true);
+            List<UserRepresentation> userRepresentationList = KeycloakProvider.getRealmResource().users()
+                    .searchByUsername(username, true);
             return ResponseEntity.status(200).body(userRepresentationList);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(404).body("No se encontro ningun usuario con ese username");
 
         }
     }
-
-
 
     /**
      * Metodo para buscar un usuario por su username
@@ -197,9 +194,7 @@ public class KeycloakServiceImpl implements KeycloakService {
                     new UserImg().builder()
                             .idUser(userId)
                             .urlImg(defaultUrlImage)
-                            .build()
-            );
-
+                            .build());
 
             logger.info("User created successfully");
             Map<String, String> userCreated = new HashMap<>();
@@ -242,7 +237,7 @@ public class KeycloakServiceImpl implements KeycloakService {
      * @return void
      */
     @Override
-    public ResponseEntity<?> updateUser(String userId, @NonNull UserDTO userDTO) { //FALTA ACTUALIZAR LA FOTO
+    public ResponseEntity<?> updateUser(String userId, @NonNull UserDTO userDTO) { // FALTA ACTUALIZAR LA FOTO
         Map<String, String> response = new HashMap<>();
         try {
             UserRepresentation user = new UserRepresentation();
