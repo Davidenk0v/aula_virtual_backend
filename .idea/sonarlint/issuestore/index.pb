@@ -221,3 +221,13 @@ o
 ?src/main/java/com/grupo2/aulavirtual/services/EmailService.java,e\f\ef0800ccd2593d02a40567fc730853feca4e8bc8
 p
 @src/main/java/com/grupo2/aulavirtual/entities/CommentEntity.java,5\8\5801c6a66373ffa3e7a84891aa321b3d31308801
+w
+Gsrc/main/java/com/grupo2/aulavirtual/controllers/MeetingController.java,6\c\6cd02b7401f7685dbab830dcd98f25675e4832e3
+q
+Asrc/main/java/com/grupo2/aulavirtual/services/MeetingService.java,f\9\f9345dd9ae31080d84874eb0364ae38c9b7caaa2
+p
+@src/main/java/com/grupo2/aulavirtual/entities/MeetingEntity.java,7\a\7a603d2663c244b33b5bb725dc8064ff0bfdeb90
+x
+Hsrc/main/java/com/grupo2/aulavirtual/repositories/MeetingRepository.java,6\5\659d292524cd6819eea7a3227c7ffc4f92efbdd3
+z
+Jsrc/main/java/com/grupo2/aulavirtual/services/impl/MeetingServiceImpl.java,0\5\05ebddcb887699cbe4bda37a03c3a467e5be5358
