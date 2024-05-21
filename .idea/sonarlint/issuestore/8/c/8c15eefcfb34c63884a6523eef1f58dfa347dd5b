@@ -1,17 +1,15 @@
 
-i
-java:S1452"&Remove usage of generic wildcard type.(åáõ»8Ğ®ÄŠø1J$059648d1-6a87-495b-a3c0-4db48576a8ac
-h
-java:S1452"&Remove usage of generic wildcard type.(½˜ì,8Ñ®ÄŠø1J$1b18fdeb-b78d-40b4-af25-0c5bd553e981
-n
-java:S1452"&Remove usage of generic wildcard type.(á¬Éùÿÿÿÿ8Ó®ÄŠø1J$5f5b3f02-164d-4ae8-9a85-d7b48ad7ff80
-n
-java:S1452"&Remove usage of generic wildcard type.(Ú–Ôıÿÿÿÿ8Ô®ÄŠø1J$514ece28-9151-4d35-b897-76d393d0dc10
-n
-java:S1452"&Remove usage of generic wildcard type.(ßšöşÿÿÿÿ8×®ÄŠø1J$11787db1-98cf-4152-926f-044d3de91747
-i
-java:S1452"&Remove usage of generic wildcard type.(èš¥¥8Ø®ÄŠø1J$a7f7015f-9490-4b84-a792-906eabc3c100
-n
-java:S1452"&Remove usage of generic wildcard type.(ÿ‹óêşÿÿÿÿ8áîËŠø1J$ad4032de-0189-456a-b5fa-73467b95305e
-
-java:S1128"GRemove this unused import 'com.grupo2.aulavirtual.entities.UserEntity'.(°øÿÿÿÿ8°§ÍÖù1J$9c3353ff-0291-4b03-8df3-3ae0cba235ad
+C
+java:S1452"&Remove usage of generic wildcard type.(åáõ»8Š“ËØù1
+B
+java:S1452"&Remove usage of generic wildcard type.(½˜ì,8­“ËØù1
+H
+java:S1452"&Remove usage of generic wildcard type.(á¬Éùÿÿÿÿ8¯“ËØù1
+H
+java:S1452"&Remove usage of generic wildcard type.(Ú–Ôıÿÿÿÿ8±“ËØù1
+H
+java:S1452"&Remove usage of generic wildcard type.(ßšöşÿÿÿÿ8´“ËØù1
+C
+java:S1452"&Remove usage of generic wildcard type.(èš¥¥8·“ËØù1
+H
+java:S1452"&Remove usage of generic wildcard type.(ÿ‹óêşÿÿÿÿ8º“ËØù1

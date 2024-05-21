@@ -266,11 +266,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AulaVirtualApplication" />
-        <item itemvalue="JUnit.com.grupo2.aulavirtual.tests in aula-virtual" />
         <item itemvalue="JUnit.CommentServiceTest.idNotFound" />
-        <item itemvalue="JUnit.CommentServiceTest" />
         <item itemvalue="JUnit.CommentServiceTest.findCommentById" />
+        <item itemvalue="JUnit.CommentServiceTest" />
+        <item itemvalue="JUnit.com.grupo2.aulavirtual.tests in aula-virtual" />
+        <item itemvalue="Application.AulaVirtualApplication" />
       </list>
     </recent_temporary>
   </component>
