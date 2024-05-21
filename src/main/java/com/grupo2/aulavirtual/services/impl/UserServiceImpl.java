@@ -145,36 +145,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    /**
-     * Metodo para enviar un archivo al frontend.
-     * 
-     * @param id Long con la id del usuario.
-     * @return ResponseEntity<?> con la imagen, con string en caso de error.
-     */
-    @Override
-    public ResponseEntity<?> sendFile(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                String fileRoute = user.getUrlImg();
-                String extension = fileUtil.getExtensionByPath(fileRoute);
-                String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
-                if (file.length != 0) {
-                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
-                } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
-        }
-    }
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file) {
