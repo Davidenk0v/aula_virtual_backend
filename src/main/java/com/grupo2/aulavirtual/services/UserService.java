@@ -11,12 +11,6 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, Object>> addUser(UserDTO userDTO);
 
-    ResponseEntity<?> downloadFile(Long id, MultipartFile file);
-
-    ResponseEntity<?> saveFile(UserEntity user, MultipartFile file);
-
-    ResponseEntity<?> updateFile(UserEntity user, MultipartFile file);
-
     ResponseEntity<?> findUserByEmail(String email);
 
     ResponseEntity<?> findUserByUsername(String username);
@@ -25,14 +19,10 @@ public interface UserService {
 
     ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file);
 
-    ResponseEntity<?> sendFile(Long id);
-
-
     ResponseEntity<?> userCoursesList(String idUser);
 
     ResponseEntity<?> userList();
 
     ResponseEntity<HashMap<String, ?>> deleteUser(Long id);
 
-    ResponseEntity<?> setDefaultImage(Long id);
 }

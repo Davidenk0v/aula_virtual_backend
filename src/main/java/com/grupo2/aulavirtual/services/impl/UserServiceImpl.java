@@ -7,6 +7,7 @@ import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.UserRepository;
+import com.grupo2.aulavirtual.services.FileService;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.UserService;
 import com.grupo2.aulavirtual.util.files.FileUtil;
@@ -37,6 +38,9 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FileService fileService;
 
     @Autowired
     private KeycloakService keycloakService;
@@ -73,85 +77,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    /**
-     * Metodo para distinguir entre nuevo archivo o actualizar archivo.
-     * 
-     * @param id   Long con la id de Lessons.
-     * @param file MultiparFile con los datos del archivo.
-     * @return ResponseEntity<?> con el estado de la operacion.
-     */
-    @Override
-    public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
-        if (!file.isEmpty()) {
-            Optional<UserEntity> optionalUser = userRepository.findById(id);
-            if (optionalUser.isPresent()) {
-                UserEntity user = optionalUser.get();
-                if (user.getUrlImg() == null || user.getUrlImg().isEmpty()) {
-                    return saveFile(user, file);
-                } else {
-                    return updateFile(user, file);
-                }
-            } else {
-                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return new ResponseEntity<>(ERROR, HttpStatus.NOT_ACCEPTABLE);
-        }
-    }
 
-    /**
-     * Metodo para guardar un archivo.
-     * 
-     * @param user UserEntity a la que se le hacen los cambios.
-     * @param file MultiparFile con los datos del archivo.
-     * @return ResponseEntity<?> con el estado de la operacion.
-     */
-    @Override
-    public ResponseEntity<?> saveFile(UserEntity user, MultipartFile file) {
-        try {
-            String path = fileUtil.saveFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\");
-            user.setUrlImg(path);
-            userRepository.save(user);
-            if (path != null) {
-                return new ResponseEntity<>(DATA, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(
-                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } catch (Exception e) {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
-            return ResponseEntity.status(500).body(usuarios);
-        }
-
-    }
-
-    /**
-     * Metodo para sobreescribir un archivo.
-     * 
-     * @param user UserEntity a la que se le hacen los cambios.
-     * @param file MultiparFile con los datos del archivo.
-     * @return ResponseEntity<?> con el estado de la operacion.
-     */
-    @Override
-    public ResponseEntity<?> updateFile(UserEntity user, MultipartFile file) {
-        try {
-            String path = fileUtil.updateFile(file, "\\Media\\User\\" + user.getUsername() + "\\Image\\",
-                    user.getUrlImg());
-            user.setUrlImg(path);
-            userRepository.save(user);
-            if (path != null) {
-                return new ResponseEntity<>(DATA, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(
-                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } catch (Exception e) {
-            HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
-            return ResponseEntity.status(500).body(usuarios);
-        }
-    }
 
     @Override
     public ResponseEntity<?> findUserByEmail(String email) {
@@ -216,37 +142,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    /**
-     * Metodo para enviar un archivo al frontend.
-     * 
-     * @param id Long con la id del usuario.
-     * @return ResponseEntity<?> con la imagen, con string en caso de error.
-     */
-    @Override
-    public ResponseEntity<?> sendFile(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                String fileRoute = user.getUrlImg();
-                String extension = fileUtil.getExtensionByPath(fileRoute);
-                String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
-                if (file.length != 0) {
-                    return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
-                } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
-        }
-    }
-
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateUser(UserDTO userDTO, String idUser, MultipartFile file) {
@@ -280,7 +175,6 @@ public class UserServiceImpl implements UserService {
                 }
                 keycloakService.updateUser(user.getIdKeycloak(), userDTO); // Actualiza el usuario de la base de
                                                                            // keycloak
-                userRepository.save(user);
                 userRespuesta = dtoMapper.entityToResponseDto(user);
                 usuarios.put(DATA, userRespuesta);
                 return ResponseEntity.status(200).body(usuarios);
@@ -345,23 +239,5 @@ public class UserServiceImpl implements UserService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
-@Override
-    public ResponseEntity<?> setDefaultImage(Long id) {
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(user.getUrlImg());
-                user.setUrlImg(defaultUrlImage);
-                userRepository.save(user);
-            } else {
-                user.setUrlImg(defaultUrlImage);
-                userRepository.save(user);
-            }
-            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
-        }
-    }
+
 }

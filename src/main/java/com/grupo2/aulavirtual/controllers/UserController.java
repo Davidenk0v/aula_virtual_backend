@@ -1,6 +1,7 @@
 package com.grupo2.aulavirtual.controllers;
 
 import com.grupo2.aulavirtual.payload.request.UserDTO;
+import com.grupo2.aulavirtual.services.FileService;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.UserService;
 import com.grupo2.aulavirtual.services.impl.UserServiceImpl;
@@ -27,7 +28,7 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private HttpServletRequest request;
+    private FileService fileService;
 
     @Autowired
     private UserService userServiceImpl;
@@ -47,14 +48,14 @@ public class UserController {
     }
 
     @GetMapping("/file/{id}")
-    public ResponseEntity<?> uploadFile(@PathVariable Long id) {
-        return userServiceImpl.sendFile(id);
+    public ResponseEntity<?> uploadFile(@PathVariable String id) {
+        return fileService.sendFile(id);
     }
 
 
     @PostMapping("/file/{id}")
-    public ResponseEntity<?> saveFile(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
-        return userServiceImpl.downloadFile(id, file);
+    public ResponseEntity<?> saveFile(@PathVariable String id, @RequestParam("file") MultipartFile file) {
+        return fileService.downloadFile(id, file);
     }
 
     @PutMapping("/{idUser}")
@@ -69,8 +70,8 @@ public class UserController {
     }
 
     @DeleteMapping("/file/{id}")
-    public ResponseEntity<?> setDefaultImage(@PathVariable Long id) {
-        return userServiceImpl.setDefaultImage(id);
+    public ResponseEntity<?> setDefaultImage(@PathVariable String id) {
+        return fileService.setDefaultImage(id);
     }
 
 }

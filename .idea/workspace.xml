@@ -4,32 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor user table">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/001cb127c8824d9858f21b98431a88456e0c7ae5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/2/023d81c9fbbf41e9c88dfc0ca058814bec7bd066" beforeDir="false" />
+    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="fixed merge error">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0cf5ebab53d268b2622e2c1205a5a170e17e26ca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0cf5ebab53d268b2622e2c1205a5a170e17e26ca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1baacdccbc63d1a6c330169ccde907e83b068d8f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1baacdccbc63d1a6c330169ccde907e83b068d8f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33bd2b2117520c56134d639b64cd1ace9dc0b994" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33bd2b2117520c56134d639b64cd1ace9dc0b994" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/401c750d2c4d32d4531984fb58f136ac204ef2c0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/401c750d2c4d32d4531984fb58f136ac204ef2c0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/68593656aaf75f556e924b87f30f22af94ce0821" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88402fdb61ee5509c64280f4f60ed777184d5a56" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c15eefcfb34c63884a6523eef1f58dfa347dd5b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c15eefcfb34c63884a6523eef1f58dfa347dd5b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7348fd5481ae95d06c4b041d1e6e145c509c569" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/0/001cb127c8824d9858f21b98431a88456e0c7ae5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/2/023d81c9fbbf41e9c88dfc0ca058814bec7bd066" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/8/68593656aaf75f556e924b87f30f22af94ce0821" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/8/88402fdb61ee5509c64280f4f60ed777184d5a56" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/7/f7348fd5481ae95d06c4b041d1e6e145c509c569" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/repositories/ImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/KeycloakService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloakServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/KeycloakServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/AulaVirtualApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/AulaVirtualApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/CategoryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/CourseController.class" afterDir="false" />
@@ -38,22 +28,14 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/controllers/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CategoryEntity$CategoryEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CategoryEntity$CategoryEntityBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CategoryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CourseEntity$CourseEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CourseEntity$CourseEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CourseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/CourseEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/LessonsEntity$LessonsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/LessonsEntity$LessonsEntityBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/LessonsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/LessonsEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/SubjectsEntity$SubjectsEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/SubjectsEntity$SubjectsEntityBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/SubjectsEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/SubjectsEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/UserEntity$UserEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/UserEntity$UserEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/entities/UserEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CategoryDTO$CategoryDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CategoryDTO$CategoryDTOBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CategoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CategoryDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CourseDTO$CourseDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CourseDTO$CourseDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CourseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/CourseDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/LessonsDTO$LessonsDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/LessonsDTO$LessonsDTOBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/LessonsDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/LessonsDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/RoleDTO$RoleDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/RoleDTO$RoleDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/RoleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/RoleDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/SubjectDTO$SubjectDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/SubjectDTO$SubjectDTOBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/SubjectDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/SubjectDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/request/UserDTO$UserDTOBuilder.class" afterDir="false" />
@@ -71,18 +53,12 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/response/UserResponseDto$UserResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/response/UserResponseDto$UserResponseDtoBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/response/UserResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/payload/response/UserResponseDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/CategoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/CourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/CourseRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/LessonsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/LessonsRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/SubjectsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/SubjectsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/repositories/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/CourseService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/LessonsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/LessonsService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/SubjectsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/SubjectsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/SubjectsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/SubjectsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/grupo2/aulavirtual/services/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/AulaVirtualApplicationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/MappersTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/dtotest/CategoryDTOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/grupo2/aulavirtual/tests/dtotest/CategoryDTOTest.class" afterDir="false" />
@@ -138,58 +114,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AulaVirtualApplication.executor": "Run",
-    "Docker.docker-compose.yml.mailserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.spring-boot: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "JUnit.CommentServiceTest.executor": "Run",
-    "JUnit.CommentServiceTest.findCommentById.executor": "Run",
-    "JUnit.CommentServiceTest.idNotFound.executor": "Run",
-    "JUnit.CoursesServiceTest.executor": "Run",
-    "JUnit.LessonsServiceTest.executor": "Run",
-    "JUnit.LessonsServiceTest.findLessonsById.executor": "Debug",
-    "JUnit.LessonsServiceTest.lessonIdNotFound.executor": "Run",
-    "JUnit.LessonsServiceTest.lessonsListEmpty.executor": "Run",
-    "JUnit.SubjectsServiceTest.executor": "Run",
-    "JUnit.SubjectsServiceTest.subjectIdNotFound.executor": "Run",
-    "JUnit.SubjectsServiceTest.subjectsListEmpty.executor": "Run",
-    "JUnit.UserServiceTest.addUserError.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.findUserByEmail.executor": "Run",
-    "JUnit.UserServiceTest.findUserByEmailNotFound.executor": "Run",
-    "JUnit.UserServiceTest.findUserById.executor": "Run",
-    "JUnit.aulavirtual in aula-virtual.executor": "Coverage",
-    "JUnit.com.grupo2.aulavirtual in aula-virtual.executor": "Run",
-    "JUnit.com.grupo2.aulavirtual.tests in aula-virtual.executor": "Run",
-    "JUnit.com.grupo2.aulavirtual.tests.services in aula-virtual.executor": "Run",
-    "JUnit.tests in aula-virtual.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.AulaVirtualApplication.executor": "Run",
-    "git-widget-placeholder": "backend-refactor-LuisDavid",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.mailserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.spring-boot: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceTest.findCommentById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceTest.idNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CoursesServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LessonsServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LessonsServiceTest.findLessonsById.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LessonsServiceTest.lessonIdNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LessonsServiceTest.lessonsListEmpty.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubjectsServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubjectsServiceTest.subjectIdNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubjectsServiceTest.subjectsListEmpty.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.addUserError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.findUserByEmail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.findUserByEmailNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.findUserById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.aulavirtual in aula-virtual.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.com.grupo2.aulavirtual in aula-virtual.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.grupo2.aulavirtual.tests in aula-virtual.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.grupo2.aulavirtual.tests.services in aula-virtual.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests in aula-virtual.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend-refactor-LuisDavid&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.grupo2.aulavirtual.services" />
+      <recent name="com.grupo2.aulavirtual.services.impl" />
       <recent name="com.grupo2.aulavirtual.security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -664,7 +641,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor controllers" />
     <MESSAGE value="refactor controllers 2" />
     <MESSAGE value="starting keycloack" />
     <MESSAGE value="Trying keycloack" />
@@ -689,7 +665,8 @@
     <MESSAGE value="fixed some bug for merge" />
     <MESSAGE value="DataInizializer added" />
     <MESSAGE value="refactor user table" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor user table" />
+    <MESSAGE value="fixed merge error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed merge error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,11 +1,17 @@
 
-“
-java:S1192p"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 3 times.(ÿÆèÔ8ıš¹Šø1J$5c026af7-84b1-4b8a-9349-0ad3761b21d7
-
-java:S1192p"JDefine a constant instead of duplicating this literal "\\Image\\" 3 times.(ÿÆèÔ8“›¹Šø1J$944ff16d-0734-4f59-8bbb-6a39dc1c9a08
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$9dfd4961-921d-409d-9a84-16fbc968b8f3
+java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$98797df5-9352-41d4-bbbe-b089373ee8da
 …
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$fe6b601d-210d-4e09-bad9-d836390b8795
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$29ceac4e-d937-4915-abd3-7b6037afce01
+…
+java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ğ´×ù1J$372a0dfb-4360-48fd-96e7-0b63793a563b
 ›
-java:S3776ü"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$a50e8bf6-131d-4793-9f91-a1688063a8ea
+java:S3776“"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$1d4765cc-5ed7-4c13-9baf-6dd2d9b04bed
+‹
+java:S1128"HRemove this unused import 'jakarta.persistence.EntityNotFoundException'.(†œşè8èÔæÕù1J$1371badc-38f1-41b6-9c77-30115acc1660
+¹
+java:S1128"vRemove this unused import 'org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken'.(˜Ùò¹8èÔæÕù1J$64606419-b54a-4c76-8135-3845986ff608
+‡
+java:S1128"?Remove this unused import 'org.springframework.http.MediaType'.(úŸİ¯şÿÿÿÿ8šñ´×ù1J$314a3e05-49bf-4e75-b0ad-94327ca6f1b1
+Ÿ
+java:S1128"\Remove this unused import 'org.springframework.security.core.context.SecurityContextHolder'.(ŒÄæë8èÔæÕù1J$a0ba5a0e-9f2f-496a-897a-3e7ca4bcfd4e

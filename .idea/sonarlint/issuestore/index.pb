@@ -189,3 +189,7 @@ Dsrc/main/java/com/grupo2/aulavirtual/payload/request/CommentDTO.java,a\0\a0f2a
 Msrc/main/java/com/grupo2/aulavirtual/payload/response/CommentResponseDto.java,8\9\89ae49c4d388420c566bbf38d19e838dfb9fb295
 {
 Ksrc/test/java/com/grupo2/aulavirtual/tests/services/CommentServiceTest.java,6\a\6a55983f31c666555f958febe3776e2b41e42444
+w
+Gsrc/main/java/com/grupo2/aulavirtual/services/impl/FileServiceImpl.java,7\1\71791b0e4608987345166511bac92b38a81990c5
+n
+>src/main/java/com/grupo2/aulavirtual/services/FileService.java,f\f\ffafff471a3d7132f0c255627182a5e4104ba637
