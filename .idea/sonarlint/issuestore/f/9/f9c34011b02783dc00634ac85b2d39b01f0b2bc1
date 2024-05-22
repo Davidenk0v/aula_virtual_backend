@@ -1,11 +1,21 @@
 
-„
-java:S1192E"bDefine a constant instead of duplicating this literal "No ha encontrado el tema con id: " 3 times.(¬°Ûßıÿÿÿÿ8ä“ïÇò1
-c
-java:S1192J"FDefine a constant instead of duplicating this literal "Error" 3 times.(•×±„8å“ïÇò1
+^
+java:S4973e"<Strings and Boxed types should be compared using "equals()".(’ñ¾Äùÿÿÿÿ8™¹¶ßù1
+^
+java:S4973h"<Strings and Boxed types should be compared using "equals()".(ğŸ›Ãøÿÿÿÿ8™¹¶ßù1
+m
+java:S3655V"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(½¬´À8´¹¶ßù1
+m
+java:S36550"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(àøŠÂ8´¹¶ßù1
+m
+java:S3655d"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(°ù–×8´¹¶ßù1
+m
+java:S3655A"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(°ù–×8´¹¶ßù1
+n
+java:S3655ƒ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(°ù–×8´¹¶ßù1
 ~
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$913860f5-bc17-460d-9440-afa560da6d2c
 ~
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$20317a56-6cc3-4c28-ade2-497b61b03446
 v
-java:S1854/";Remove this useless assignment to local variable "subject".(ÛË·$J$41256cbb-02dd-4c8b-af34-0efa873a25e7
+java:S18541";Remove this useless assignment to local variable "subject".(ÛË·$J$41256cbb-02dd-4c8b-af34-0efa873a25e7
