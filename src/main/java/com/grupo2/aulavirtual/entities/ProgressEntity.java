@@ -23,6 +23,9 @@ public class ProgressEntity {
     @Column(nullable = false)
     private Long idCourse;
 
+    @Basic
+    @Column(nullable = false)
+    private float points;
 
     @Basic
     @Column(nullable = false)

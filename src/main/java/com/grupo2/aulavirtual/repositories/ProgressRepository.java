@@ -13,4 +13,6 @@ import java.util.Optional;
 public interface ProgressRepository extends JpaRepository<ProgressEntity, Long> {
     @Query("SELECT p.progress FROM ProgressEntity p WHERE p.idKeyCloak = :idKeyCloak AND p.idCourse = :idCourse")
     Optional<Float> findProgressByIdKeyCloakAndIdCourse(@Param("idKeyCloak") String idKeyCloak, @Param("idCourse") Long idCourse);
+
+    Optional<ProgressEntity> findByIdCourseAndIdKeyCloak(Long idCourse, String idKeyCloak);
 }
