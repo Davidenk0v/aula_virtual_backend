@@ -30,9 +30,4 @@ public class MeetingEntity {
     @Column(nullable = false)
     private String password;
 
-    //@ManyToOne
-    //@JoinColumn(
-    //        name = "idCourse")
-    //@JsonIgnore
-    //private CourseEntity course;
 }

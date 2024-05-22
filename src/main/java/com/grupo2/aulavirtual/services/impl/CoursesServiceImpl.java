@@ -33,13 +33,13 @@ import java.util.*;
 public class CoursesServiceImpl implements CourseService {
 
     @Autowired
-    CourseRepository repository;
+    private CourseRepository repository;
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    KeycloakService keycloakService;
+    private KeycloakService keycloakService;
 
     private static final String ERROR = "error";
     private static final String SAVE = "data";
@@ -210,28 +210,35 @@ public class CoursesServiceImpl implements CourseService {
             }
         } catch (Exception e) {
             HashMap<String, Object> error = new HashMap<>();
-            error.put(ERROR, "Error al intentar eliminar el curso y sus relaciones: " + e.getMessage());
+            error.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(error);
         }
     }
 
     public ResponseEntity<?> setDefaultImage(Long id) {
-        Optional<CourseEntity> optionalCourse = repository.findById(id);
-        if (optionalCourse.isPresent()) {
-            CourseEntity course = optionalCourse.get();
-            course.setLastModifiedDate(LocalDateTime.now());
-            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
-                course.setUrlImg(defaultImg);
-                repository.save(course);
+        try {
+            Optional<CourseEntity> optionalCourse = repository.findById(id);
+            if (optionalCourse.isPresent()) {
+                CourseEntity course = optionalCourse.get();
+                course.setLastModifiedDate(LocalDateTime.now());
+                if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                    fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
+                    course.setUrlImg(defaultImg);
+                    repository.save(course);
+                } else {
+                    course.setUrlImg(defaultImg);
+                    repository.save(course);
+                }
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
-                course.setUrlImg(defaultImg);
-                repository.save(course);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(SAVE, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            HashMap<String, Object> error = new HashMap<>();
+            error.put(ERROR, "Error : " + e.getMessage());
+            return ResponseEntity.status(500).body(error);
         }
+
     }
 
     @Override

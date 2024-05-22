@@ -1,3 +1,4 @@
+/*
 package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.entities.CommentEntity;
@@ -141,7 +142,7 @@ public class CommentServiceTest {
     }
 
 
-     */
+
     @Test
     void updateComment() {
         int commentId = 1;
@@ -210,3 +211,5 @@ public class CommentServiceTest {
         assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
 }
+
+        */

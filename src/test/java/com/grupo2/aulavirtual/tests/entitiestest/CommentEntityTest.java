@@ -17,7 +17,6 @@ public class CommentEntityTest {
         commentEntity = CommentEntity.builder()
                 .idComment(1)
                 .course(null)
-                .user(null)
                 .text("Comentario de prueba")
                 .date(Date.valueOf("2024-09-01"))
                 .build();
@@ -31,7 +30,6 @@ public class CommentEntityTest {
 
         assertNull(commentEntity.getCourse(), "Course getter must be null");
 
-        assertNull(commentEntity.getUser(), "User getter must be null");
 
         assertEquals("Comentario de prueba", commentEntity.getText(), "text getter must be equal to 'Comentario de prueba'");
         commentEntity.setText("Comentario actualizado");

@@ -97,24 +97,20 @@ public class LessonsServiceImpl implements LessonsService {
 
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO) {
         try {
             HashMap<String, SubjectsResponseDto> response = new HashMap<>();
             SubjectsEntity subjects = repository.findById(idSubject).get();
             LessonsEntity lessons = new LessonsEntity();
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
-            if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, lessonsFolder);
-                lessons.setContenido(path);
-            }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
-            response.put("Leccion subido", objectResponse);
+            response.put(SAVE, objectResponse);
             return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -220,7 +216,7 @@ public class LessonsServiceImpl implements LessonsService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file) {
+    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO) {
         try {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
@@ -231,22 +227,17 @@ public class LessonsServiceImpl implements LessonsService {
                 if (lessonsDTO.getDescription() != "") {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
-                if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.updateFile(file, lessonsFolder,
-                            subject.getContenido());
-                    subject.setContenido(path);
-                }
                 lessonsRepository.save(subject);
-                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(subject));
+                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado la leccion con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 

@@ -9,11 +9,13 @@ import java.util.HashMap;
 public interface LessonsService {
     ResponseEntity<?> lessonsList();
 
-    ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file);
+
+    ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO);
 
     ResponseEntity<HashMap<String, ?>> deleteLesson(Long id);
 
-    ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file);
+
+    ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO);
 
     ResponseEntity<HashMap<String, ?>> findLessonsById(Long id);
 }
