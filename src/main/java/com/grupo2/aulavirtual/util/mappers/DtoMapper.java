@@ -1,8 +1,9 @@
-package com.grupo2.aulavirtual.mappers;
+package com.grupo2.aulavirtual.util.mappers;
 
 import java.util.List;
 
 import com.grupo2.aulavirtual.payload.request.*;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.modelmapper.ModelMapper;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
@@ -10,12 +11,10 @@ import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.response.CategoryResponseDto;
 import com.grupo2.aulavirtual.payload.response.CommentResponseDto;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.LessonsResponseDto;
-import com.grupo2.aulavirtual.payload.response.RoleResponseDto;
 import com.grupo2.aulavirtual.payload.response.SubjectsResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import org.springframework.stereotype.Component;
@@ -24,6 +23,16 @@ import org.springframework.stereotype.Component;
 public class DtoMapper {
 
     ModelMapper modelMapper = new ModelMapper();
+
+    public UserDTO userRepresentationToDto (UserRepresentation userRepresentation) {
+        return UserDTO.builder()
+                .idUser(userRepresentation.getId())
+                .email(userRepresentation.getEmail())
+                .password(userRepresentation.getCredentials().get(0).getValue())
+                .firstname(userRepresentation.getFirstName())
+                .lastname(userRepresentation.getLastName())
+                .build();
+    }
 
     public CategoryEntity dtoToEntity(CategoryDTO categoryDTO) {
         return modelMapper.map(categoryDTO, CategoryEntity.class);
@@ -41,15 +50,10 @@ public class DtoMapper {
         return modelMapper.map(lessonsDTO, LessonsEntity.class);
     }
 
-
-
-        public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
+    public CommentEntity dtoToEntity(CommentDTO CommentDTO) {
         return modelMapper.map(CommentDTO, CommentEntity.class);
     }
 
-    public UserEntity dtoToEntity(UserDTO userDTO) {
-        return modelMapper.map(userDTO, UserEntity.class);
-    }
 
     public CategoryResponseDto entityToResponse(CategoryEntity categoryEntity) {
 
@@ -79,14 +83,9 @@ public class DtoMapper {
                 .startDate(courseEntity.getStartDate())
                 .finishDate(courseEntity.getFinishDate())
                 .price(courseEntity.getPrice())
+                .urlImg(courseEntity.getUrlImg())
                 .build();
 
-        if (courseEntity.getUser() != null) {
-            List<UserResponseDto> userResponseDto = courseEntity.getUser().stream()
-                    .map(user -> modelMapper.map(user, UserResponseDto.class)).toList();
-
-            courseResponseDto.setUsers(userResponseDto);
-        }
         return courseResponseDto;
 
     }
@@ -109,8 +108,6 @@ public class DtoMapper {
         return lessonsResponseDto;
 
     }
-
-
 
     public SubjectsResponseDto entityToResponseDto(SubjectsEntity subjectsEntity) {
 
@@ -137,27 +134,6 @@ public class DtoMapper {
 
     }
 
-    public UserResponseDto entityToResponseDto(UserEntity userEntity) {
-
-        UserResponseDto userResponseDto = new UserResponseDto()
-                .builder()
-                .idUser(userEntity.getIdUser())
-                .email(userEntity.getEmail())
-                .lastname(userEntity.getLastname())
-                .firstname(userEntity.getFirstname())
-                .username(userEntity.getUsername())
-                .address(userEntity.getAddress())
-                .build();
-
-        if (userEntity.getCourses() != null) {
-            List<CourseResponseDto> courseResponseDto = userEntity.getCourses().stream()
-                    .map(course -> modelMapper.map(course, CourseResponseDto.class)).toList();
-
-            userResponseDto.setCourses(courseResponseDto);
-        }
-        return userResponseDto;
-
-    }
 
     public CommentResponseDto entityToResponseDto(CommentEntity commentEntity) {
 
@@ -168,8 +144,8 @@ public class DtoMapper {
                 .date(commentEntity.getDate())
                 .build();
 
-        if (commentEntity.getUser() != null) {
-            UserResponseDto userResponseDto = modelMapper.map(commentEntity.getUser(), UserResponseDto.class);
+        if (commentEntity.getUserId() != null) {
+            UserResponseDto userResponseDto = modelMapper.map(commentEntity.getUserId(), UserResponseDto.class);
             commentResponseDto.setUser(userResponseDto);
         }
 

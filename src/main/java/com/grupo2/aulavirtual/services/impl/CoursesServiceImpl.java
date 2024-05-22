@@ -1,16 +1,15 @@
 package com.grupo2.aulavirtual.services.impl;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
-import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
+import com.grupo2.aulavirtual.services.KeycloakService;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.grupo2.aulavirtual.util.files.FileUtil;
@@ -40,7 +39,7 @@ public class CoursesServiceImpl implements CourseService {
     CategoryRepository categoryRepository;
 
     @Autowired
-    UserRepository userRepository;
+    KeycloakService keycloakService;
 
     private static final String ERROR = "error";
     private static final String SAVE = "data";
@@ -49,8 +48,10 @@ public class CoursesServiceImpl implements CourseService {
 
     Logger logger = LoggerFactory.getLogger(CoursesServiceImpl.class);
 
-    @Value("${default.img.course}")
+    @Value("${fileutil.default.img.course}")
     private String defaultImg;
+    @Value("${fileutil.course.folder.path}")
+    private String courseFolder;
 
 
     @Autowired
@@ -82,32 +83,19 @@ public class CoursesServiceImpl implements CourseService {
     @Override
     public ResponseEntity<?> postCourse(String idKeycloak, CourseDTO courseDTO) {
         try {
-            HashMap<String, UserResponseDto> response = new HashMap<>();
-            Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(idKeycloak);
-            if (userOptional.isPresent()) {
-                logger.info("Usuario encontrado");
-                UserEntity user = userOptional.get();
+            HashMap<String, CourseResponseDto> response = new HashMap<>();
+            UserRepresentation user = keycloakService.findUserById(idKeycloak);
+            if (user != null) {
                 CourseEntity course = dtoMapper.dtoToEntity(courseDTO);
-                logger.info("Curso mapeado");
+                course.setIdTeacher(idKeycloak);
+                course.getIdCourse();
                 course.setCreatedDate(LocalDateTime.now());
                 course.setLastModifiedDate(LocalDateTime.now());
                 String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
                 course.setUrlImg(defaultUrlImage);
-                if (user.getCourses() == null) {
-                    ArrayList<CourseEntity> lista = new ArrayList<>();
-                    lista.add(course);
-                    user.setCourses(lista);
-                    logger.info("Lista de cursos creada");
-                } else {
-                    List<CourseEntity> listaExist = user.getCourses();
-                    listaExist.add(course);
-                    user.setCourses(listaExist);
-                    logger.info("Añadido a la lista");
-                }
-                userRepository.save(user);
-                UserResponseDto objectResponse = dtoMapper.entityToResponseDto(user);
+                CourseResponseDto responseDto = dtoMapper.entityToResponseDto(course);
                 courseRepository.save(course);
-                response.put(SAVE, objectResponse);
+                response.put(SAVE, responseDto);
                 return ResponseEntity.status(201).body(course);
             } else {
                 HashMap<String, String> error = new HashMap<>();
@@ -115,7 +103,6 @@ public class CoursesServiceImpl implements CourseService {
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
-            logger.error(e.getMessage());
             logger.error(e.getMessage());
             HashMap<String, Object> usuarios = new HashMap<>();
             usuarios.put(ERROR, e.getMessage());
@@ -136,7 +123,7 @@ public class CoursesServiceImpl implements CourseService {
             Optional<CourseEntity> optionalCourse = repository.findById(id);
             if (optionalCourse.isPresent()) {
                 CourseEntity course = optionalCourse.get();
-                if (course.getUrlImg() == null || course.getUrlImg().isEmpty()) {
+                if (course.getUrlImg() == null && course.getUrlImg().isEmpty()) {
                     return saveFile(course, file);
                 } else {
                     return updateFile(course, file);
@@ -158,7 +145,7 @@ public class CoursesServiceImpl implements CourseService {
      */
     public ResponseEntity<?> saveFile(CourseEntity course, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\");
+            String path = fileUtil.saveFile(file, getCustomPath(course.getName()));
             course.setUrlImg(path);
             repository.save(course);
             if (path != null) {
@@ -183,8 +170,8 @@ public class CoursesServiceImpl implements CourseService {
      */
     public ResponseEntity<?> updateFile(CourseEntity course, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Course\\" + course.getName() + "\\Image\\",
-                    course.getUrlImg());
+            String path = fileUtil.updateFile(file, getCustomPath(course.getName()),
+            getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
             course.setUrlImg(path);
             repository.save(course);
             if (path != null) {
@@ -207,14 +194,6 @@ public class CoursesServiceImpl implements CourseService {
             if (courseRepository.existsById(id)) {
                 CourseEntity course = courseRepository.findById(id).orElse(null);
                 if (course != null) {
-                    // Eliminar las relaciones del curso con los usuarios
-                    List<UserEntity> users = course.getUser();
-                    if (users != null && !users.isEmpty()) {
-                        for (UserEntity user : users) {
-                            user.getCourses().remove(course);
-                            userRepository.save(user);
-                        }
-                    }
 
                     // Eliminar el curso
                     courseRepository.delete(course);
@@ -240,14 +219,13 @@ public class CoursesServiceImpl implements CourseService {
         Optional<CourseEntity> optionalCourse = repository.findById(id);
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
             course.setLastModifiedDate(LocalDateTime.now());
-            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(course.getUrlImg());
-                course.setUrlImg(defaultUrlImage);
+            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
+                course.setUrlImg(defaultImg);
                 repository.save(course);
             } else {
-                course.setUrlImg(defaultUrlImage);
+                course.setUrlImg(defaultImg);
                 repository.save(course);
             }
             return new ResponseEntity<>(SAVE, HttpStatus.OK);
@@ -291,8 +269,6 @@ public class CoursesServiceImpl implements CourseService {
         try {
             if (courseRepository.findById(id).isPresent()) {
                 CourseEntity course = courseRepository.findById(id).get();
-                logger.info(course.toString());
-                logger.info(dtoMapper.entityToResponseDto(course).toString());
                 return ResponseEntity.status(200).body(dtoMapper.entityToResponseDto(course));
             } else {
                 HashMap<String, Long> error = new HashMap<>();
@@ -330,10 +306,8 @@ public class CoursesServiceImpl implements CourseService {
     @Override
     public ResponseEntity<?> findCoursesByUser(String idUser) {
         try {
-            Optional<UserEntity> userEntityOptional = userRepository.findByIdKeycloak(idUser);
-            if (userEntityOptional.isPresent()) {
-                UserEntity user = userEntityOptional.get();
-                Set<CourseEntity> courseEntities = courseRepository.findCoursesByUser(user);
+                Set<CourseEntity> courseEntities = courseRepository.findCoursesByIdTeacher(idUser);
+            if (!courseEntities.isEmpty()) {
                 List<CourseResponseDto> courseResponseDtos = courseEntities.stream()
                         .map(courseEntity -> dtoMapper.entityToResponseDto(courseEntity)).toList();
                 return ResponseEntity.status(200).body(courseResponseDtos);
@@ -359,11 +333,11 @@ public class CoursesServiceImpl implements CourseService {
         Optional<CourseEntity> optionalCourse = repository.findById(id);
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
-            if (course.getUrlImg() != null || !course.getUrlImg().isEmpty()) {
-                String fileRoute = course.getUrlImg();
+            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                String fileRoute = getCustomPath(course.getName()) + course.getUrlImg();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String mediaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(fileRoute, defaultImg);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
@@ -401,4 +375,9 @@ public class CoursesServiceImpl implements CourseService {
             return ResponseEntity.status(500).body(usuarios);
         }
     }
+
+    private String getCustomPath(String courseNane) {
+        return courseFolder + courseNane + "\\Image\\";
+    }
+
 }

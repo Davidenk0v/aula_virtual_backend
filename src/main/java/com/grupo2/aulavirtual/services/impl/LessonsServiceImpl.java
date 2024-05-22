@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
@@ -12,6 +12,7 @@ import com.grupo2.aulavirtual.services.LessonsService;
 import com.grupo2.aulavirtual.util.files.FileUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +34,12 @@ public class LessonsServiceImpl implements LessonsService {
 
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
+    @Value("${fileutil.lessons.folder.path}")
+    private String lessonsFolder;
 
     private static final String SAVE = "data";
     private static final String ERROR = "error";
+
     @Override
     public ResponseEntity<?> lessonsList() {
         List<LessonsEntity> lessonsEntities = lessonsRepository.findAll();
@@ -75,7 +79,7 @@ public class LessonsServiceImpl implements LessonsService {
                 String fileRoute = lessons.getContenido();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String medoaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(lessonsFolder + fileRoute);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
                 } else {
@@ -91,21 +95,26 @@ public class LessonsServiceImpl implements LessonsService {
         }
     }
 
+
     @Override
-    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO) {
+    public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file) {
         try {
             HashMap<String, SubjectsResponseDto> response = new HashMap<>();
             SubjectsEntity subjects = repository.findById(idSubject).get();
             LessonsEntity lessons = new LessonsEntity();
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
+            if (file != null && !file.isEmpty()) {
+                String path = fileUtil.saveFile(file, lessonsFolder);
+                lessons.setContenido(path);
+            }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
             lessonsRepository.save(lessons);
-            response.put(SAVE, objectResponse);
+            response.put("Leccion subido", objectResponse);
             return ResponseEntity.status(201).body(response);
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -145,7 +154,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+            String path = fileUtil.saveFile(file, lessonsFolder);
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -171,8 +180,8 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
-                    lessons.getContenido());
+            String path = fileUtil.updateFile(file, lessonsFolder,
+                    lessonsFolder + lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -211,7 +220,7 @@ public class LessonsServiceImpl implements LessonsService {
     }
 
     @Override
-    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO) {
+    public ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file) {
         try {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
@@ -222,17 +231,22 @@ public class LessonsServiceImpl implements LessonsService {
                 if (lessonsDTO.getDescription() != "") {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
+                if (file != null && !file.isEmpty()) {
+                    String path = fileUtil.updateFile(file, lessonsFolder,
+                            subject.getContenido());
+                    subject.setContenido(path);
+                }
                 lessonsRepository.save(subject);
-                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
+                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put(ERROR, id);
+                error.put("No ha encontrado la leccion con id: ", id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put(ERROR, e.getMessage());
+            usuarios.put("Error", e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -244,8 +258,8 @@ public class LessonsServiceImpl implements LessonsService {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
-                //Hay problemas en el dtomapper devuelve 500
-                //response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
+                // Hay problemas en el dtomapper devuelve 500
+                // response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
                 HashMap<String, String> responseTest = new HashMap<>();
                 responseTest.put(SAVE, "funciona");
                 return ResponseEntity.status(200).body(responseTest);

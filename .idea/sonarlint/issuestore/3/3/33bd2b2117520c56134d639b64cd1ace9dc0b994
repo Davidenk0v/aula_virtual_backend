@@ -1,27 +1,52 @@
 
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8ê†…Û÷1J$1f89d620-bd4a-49d0-b5b3-079d84935e95
+ï¿½
+java:S6813"BRemove this field injection and use constructor injection instead.(ï¿½ï¿½ï¿½ï¿½8ê†…ï¿½ï¿½1J$b1b9e370-2344-42c3-abdf-add99d21c6e0
 h
-java:S1452"&Remove usage of generic wildcard type.(Òâý8ó†…Û÷1J$df0ca0a8-ed63-4bc3-a977-6ae9c57e2095
+java:S1452"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½1J$fb82e356-2aff-4a90-89f5-bc10974a313d
 n
-java:S1452"&Remove usage of generic wildcard type.(‡ØÊÀýÿÿÿÿ8÷†…Û÷1J$8f2ea68b-4676-4527-a9ed-3c23c0a2aca5
+java:S1452"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$f44ddb88-54ba-453a-865c-bede816f5007
 h
-java:S1452 "&Remove usage of generic wildcard type.(É­þE8ú†…Û÷1J$6b7bec93-7bcb-432d-b000-a065bd24ff92
+java:S1452 "&Remove usage of generic wildcard type.(É­ï¿½E8ï¿½ï¿½ï¿½ï¿½ï¿½1J$677d586b-469f-420c-aff5-ff9798a7e4f2
 i
-java:S1452%"&Remove usage of generic wildcard type.(ñðúÈ8ý†…Û÷1J$2d981268-3ef8-4c57-9f49-eed178b51c37
+java:S1452%"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$cdcc1300-b619-490b-86c6-e0894fb45bd2
 n
-java:S1452*"&Remove usage of generic wildcard type.(õ¡Çùÿÿÿÿ8¨Ð®ø1J$971e22a8-e972-4dd0-8e15-0ff525b9cdb5
+java:S1452*"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$fae575df-e741-47a2-9b0c-88c9a425eeff
 i
-java:S1452/"&Remove usage of generic wildcard type.(¶ëÒú8ÿ†…Û÷1J$b7c7a606-5c81-4762-b4f2-17436e541afd
+java:S1452/"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$d47ef345-d9c5-4fe6-9d2b-2926380addbf
 n
-java:S14524"&Remove usage of generic wildcard type.(á‡™¡üÿÿÿÿ8«Ð®ø1J$02e5b8a1-51c0-48bb-b9b9-51caaaba3d71
+java:S14524"&Remove usage of generic wildcard type.(á‡™ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$350d1704-b19d-4c78-bb42-d86870f7a10a
 i
-java:S14529"&Remove usage of generic wildcard type.(ÀÃÔÔ8­Ð®ø1J$759d6325-acab-4501-acbd-7a5e8806d87e
+java:S14529"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$63375c5f-db07-4278-9efb-4f20d34e85b7
 n
-java:S1452>"&Remove usage of generic wildcard type.(ôÌŽÿÿÿÿÿ8„‡…Û÷1J$a112eceb-1114-4f51-91c7-8c09bb7ac05f
+java:S1452>"&Remove usage of generic wildcard type.(ï¿½ï¿½ÌŽï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$e34409fd-91cc-43e8-aa1d-8277947711c5
 n
-java:S1452D"&Remove usage of generic wildcard type.(®ÉÕùÿÿÿÿ8°Ð®ø1J$3d3a8e30-1255-405b-b30c-8e45df463306
+java:S1452D"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$7f5657a7-0c9e-4c9e-b545-b820552fe007
 n
-java:S1452I"&Remove usage of generic wildcard type.(®‚¹þÿÿÿÿ8†‡…Û÷1J$cf56e0a1-7da1-4e5f-a9de-87070381272a
+java:S1452I"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$94a17496-3246-40a3-948f-c26becbe2026
 n
-java:S1452N"&Remove usage of generic wildcard type.(ãÞþùÿÿÿÿ8‰‰ó§ù1J$63b6fe16-2e85-432d-9d1c-c2cd62987af4
+java:S1452N"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½1J$99796b6d-e870-4eab-86d6-165cb3cef21f
+java:S6813"BRemove this field injection and use constructor injection instead.(ï¿½ï¿½ï¿½ï¿½8ê†…ï¿½ï¿½1J$a8972425-693c-45bc-b6b6-480cd081524d
+h
+java:S1452"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½1J$2930b8b6-f339-4496-ae0b-5083d95b7c2b
+n
+java:S1452"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$b561b0d8-67d5-4538-b367-d45d047319f4
+h
+java:S1452 "&Remove usage of generic wildcard type.(É­ï¿½E8ï¿½ï¿½ï¿½ï¿½ï¿½1J$fcea3eea-6853-4eff-a165-c04f616e1462
+i
+java:S1452%"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$f09db7d7-3df4-4e80-a22a-980f471a1be7
+n
+java:S1452*"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$9e1ac496-0ece-4ebc-b31d-95976af5433c
+i
+java:S1452/"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$f0741d78-b36b-43ac-b2bc-9671b839b032
+n
+java:S14524"&Remove usage of generic wildcard type.(á‡™ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$b6f52c85-439e-4966-b038-32b8b6556de5
+i
+java:S14529"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$e763c0d8-a10b-4402-9de8-330d589a51f1
+n
+java:S1452>"&Remove usage of generic wildcard type.(ï¿½ï¿½ÌŽï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$60e6b96d-53f7-4a5c-83dc-9f01ec89f9e1
+n
+java:S1452D"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½Ð®ï¿½1J$cac14b73-befc-4c2c-a8cb-b1b8c7a139b8
+n
+java:S1452I"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$6c3c6d78-11c6-41f6-848e-02f21780f77a
+n
+java:S1452N"&Remove usage of generic wildcard type.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½1J$ab89abc4-e8b5-4e8b-8b2a-afce726e04da

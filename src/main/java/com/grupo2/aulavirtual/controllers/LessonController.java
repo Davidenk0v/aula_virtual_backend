@@ -62,8 +62,8 @@ public class LessonController {
             @ApiResponse(responseCode = "400", description = "Solicitud incorrecta", content = @Content)
     })
     @PostMapping("/{idSubject}")
-    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson) {
-        return lessonService.postLessons(idSubject, lesson);
+    public ResponseEntity<?> saveLesson(@PathVariable Long idSubject, @RequestBody LessonsDTO lesson, @RequestParam(name = "file", required = false) MultipartFile file) {
+        return lessonService.postLessons(idSubject, lesson, file);
     }
 
     @PostMapping("/file/{id}")
@@ -77,8 +77,8 @@ public class LessonController {
             @ApiResponse(responseCode = "404", description = "Leccion no encontrada", content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id) {
-        return lessonService.updateLesson(id, lessonsDTO);
+    public ResponseEntity<?> updateLesson(@RequestBody LessonsDTO lessonsDTO, @PathVariable Long id, @RequestParam(name = "file", required = false)MultipartFile file) {
+        return lessonService.updateLesson(id, lessonsDTO, file);
     }
 
     @Operation(summary = "Eliminar una lección por ID", tags = "Lessons API")

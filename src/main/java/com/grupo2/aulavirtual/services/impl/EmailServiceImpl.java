@@ -1,13 +1,13 @@
 package com.grupo2.aulavirtual.services.impl;
 
 
-import com.grupo2.aulavirtual.entities.UserEntity;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
-import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.EmailService;
 import com.grupo2.aulavirtual.services.KeycloakService;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +23,7 @@ import java.util.Optional;
 @Service
 public class EmailServiceImpl implements EmailService {
 
-    @Autowired
-    private UserRepository userRepository;
+    DtoMapper dtoMapper = new DtoMapper();
 
     @Autowired
     private KeycloakService keycloakService;
@@ -41,10 +40,9 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public ResponseEntity<?> sendVerifyEmail(String email) throws Exception {
 
-        Optional<UserEntity> optionalUserEntity = userRepository.findByEmail(email);
-        if (optionalUserEntity.isPresent()) {
-            UserEntity user = optionalUserEntity.get();
-            sendPasswordResetEmail(email, user.getIdKeycloak());
+        UserRepresentation userRepresentation = keycloakService.findUserByEmail(email);
+        if (userRepresentation != null) {
+            sendPasswordResetEmail(email, userRepresentation.getId());
             Map<String, String> response = new HashMap<>();
             response.put("OK", "Se ha enviado el correo a su email");
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -56,8 +54,8 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public ResponseEntity<?> setNewPasswordByEmail(String id, String newPassword) throws Exception {
-        Optional<UserEntity> userOptional = userRepository.findByIdKeycloak(id);
-        if (userOptional.isPresent()) {
+        UserRepresentation userRepresentation = keycloakService.findUserById(id);
+        if (userRepresentation != null) {
             UserDTO user = new UserDTO().builder()
                     .password(newPassword)
                     .build();
@@ -77,10 +75,10 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public ResponseEntity<?> sendVerifyCountEmail(String email) throws Exception {
-        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
-        if (userOptional.isPresent()) {
+        UserRepresentation userRepresentation = keycloakService.findUserByEmail(email);
+        if (userRepresentation != null) {
             try {
-                verfifyEmail(email, userOptional.get().getIdKeycloak());
+                verfifyEmail(email, userRepresentation.getId());
             } catch (Exception e) {
                 return new ResponseEntity<>("Error al verficar email", HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -94,12 +92,12 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public ResponseEntity<?> verifyCount(String email) throws Exception {
-        Optional<UserEntity> userOptional = userRepository.findByEmail(email);
+        UserRepresentation userRepresentation = keycloakService.findUserByEmail(email);
         Map<String, String> response = new HashMap<>();
-        if (userOptional.isPresent()) {
-            UserDTO user = modelMapper.map(userOptional.get(), UserDTO.class);
+        if (userRepresentation != null) {
+            UserDTO user = dtoMapper.userRepresentationToDto(userRepresentation);
             try {
-                keycloakService.updateUser(userOptional.get().getIdKeycloak(), user);
+                keycloakService.updateUser(userRepresentation.getId(), user);
                 response.put("OK", "Correo verificado correctamente");
 
 

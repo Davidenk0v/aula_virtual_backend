@@ -1,10 +1,10 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.entities.UserEntity;
+import com.grupo2.aulavirtual.entities.UserImg;
 import com.grupo2.aulavirtual.payload.request.LoginRequestDto;
 import com.grupo2.aulavirtual.payload.request.RegisterRequestDto;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
-import com.grupo2.aulavirtual.repositories.UserRepository;
+import com.grupo2.aulavirtual.repositories.ImageRepository;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.util.files.FileUtil;
 import com.grupo2.aulavirtual.util.keycloak.KeycloakProvider;
@@ -36,11 +36,15 @@ public class KeycloakServiceImpl implements KeycloakService {
     Logger logger = LoggerFactory.getLogger(KeycloakServiceImpl.class);
 
     @Autowired
-    private UserRepository userRepository;
+    private ImageRepository imageRepository;
 
     FileUtil fileUtil = new FileUtil();
-    @Value("${default.img.user}")
+    @Value("${fileutil.default.img.user}")
     private String defaultImg;
+
+    private final String DATA = "Data";
+
+    private final String ERROR = "Error";
 
     /**
      * Metodo para listar todos los usuarios de Keycloak
@@ -48,10 +52,24 @@ public class KeycloakServiceImpl implements KeycloakService {
      * @return List<UserRepresentation>
      */
     @Override
-    public List<UserRepresentation> findAllUsers() {
-        return KeycloakProvider.getRealmResource()
-                .users()
-                .list();
+    public ResponseEntity<?> findAllUsers() {
+        try {
+            Map<String, List> response = new HashMap<>();
+            List<UserRepresentation> userList = KeycloakProvider.getRealmResource()
+                    .users()
+                    .list();
+            if (userList.isEmpty()) {
+                Map<String, String> error = new HashMap<>();
+                error.put(ERROR, "No se encontro ningun usuario");
+                return ResponseEntity.status(404).body(error);
+            }
+            response.put(DATA, userList);
+            return ResponseEntity.status(200).body(response);
+        } catch (Exception e) {
+            Map<String, String> response = new HashMap<>();
+            response.put(ERROR, "Error al buscar los usuarios");
+            return ResponseEntity.status(500).body(response);
+        }
     }
 
     @Override
@@ -68,16 +86,70 @@ public class KeycloakServiceImpl implements KeycloakService {
         }
     }
 
+    @Override
+    public ResponseEntity<?> logoutUser(String idUser) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            UserResource userResource = KeycloakProvider.getUserResource().get(idUser);
+            userResource.logout();
+            response.put(DATA, "Se ha cerrado la sesion correctamente");
+            return ResponseEntity.status(200).body(response);
+        } catch (Exception e) {
+            response.put(ERROR, "Error al cerrar la sesion");
+            return ResponseEntity.status(500).body(response);
+        }
+
+    }
+
     /**
      * Metodo para buscar un usuario por su username
      *
      * @return List<UserRepresentation>
      */
     @Override
-    public List<UserRepresentation> searchUserByUsername(String username) {
-        return KeycloakProvider.getRealmResource()
-                .users()
-                .searchByUsername(username, true);
+    public ResponseEntity<?> searchUserByUsername(String username) {
+        try {
+            List<UserRepresentation> userRepresentationList = KeycloakProvider.getRealmResource().users()
+                    .searchByUsername(username, true);
+            return ResponseEntity.status(200).body(userRepresentationList);
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body("No se encontro ningun usuario con ese username");
+
+        }
+    }
+
+    /**
+     * Metodo para buscar un usuario por su username
+     *
+     * @return List<UserRepresentation>
+     */
+    @Override
+    public ResponseEntity<?> searchUserById(String userId) {
+        try {
+            UserResource userResource = KeycloakProvider.getRealmResource().users().get(userId);
+            if (userResource == null) {
+                return ResponseEntity.status(404).body("No se encontró ningún usuario con ese ID");
+            }
+            UserRepresentation user = userResource.toRepresentation();
+            return ResponseEntity.status(200).body(user);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Ocurrió un error al buscar el usuario");
+        }
+    }
+
+    @Override
+    public UserRepresentation findUserById(String userId) {
+            UserResource userResource = KeycloakProvider.getRealmResource().users().get(userId);
+            return userResource.toRepresentation();
+    }
+
+    @Override
+    public UserRepresentation findUserByEmail(String email) {
+        return KeycloakProvider.getRealmResource().users()
+                .search(email)
+                .stream()
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -132,19 +204,16 @@ public class KeycloakServiceImpl implements KeycloakService {
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
             String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-            userRepository.save(
-                    new UserEntity().builder()
-                            .email(userDTO.getEmail())
-                            .firstname(userDTO.getFirstname())
-                            .lastname(userDTO.getLastname())
-                            .username(userDTO.getUsername())
-                            .idKeycloak(userId)
+
+            imageRepository.save(
+                    new UserImg().builder()
+                            .idUser(userId)
                             .urlImg(defaultUrlImage)
                             .build());
 
             logger.info("User created successfully");
             Map<String, String> userCreated = new HashMap<>();
-            userCreated.put("OK", "User created succesfully");
+            userCreated.put(DATA, "User created succesfully");
             return ResponseEntity.status(201).body(userCreated);
 
         } else if (status == 409) {
@@ -162,13 +231,18 @@ public class KeycloakServiceImpl implements KeycloakService {
      * @return void
      */
     @Override
-    public void deleteUser(String userId) {
+    public ResponseEntity<?> deleteUser(String userId) {
+        Map<String, String> response = new HashMap<>();
         try {
             KeycloakProvider.getUserResource()
                     .get(userId)
                     .remove();
+            response.put(DATA, "Usuario eliminado");
+            return ResponseEntity.status(200).body(response);
         } catch (Exception e) {
             logger.error(e.getMessage());
+            response.put(ERROR, "Error al eliminar usuario");
+            return ResponseEntity.status(500).body(response);
         }
     }
 
@@ -178,7 +252,8 @@ public class KeycloakServiceImpl implements KeycloakService {
      * @return void
      */
     @Override
-    public void updateUser(String userId, @NonNull UserDTO userDTO) {
+    public ResponseEntity<?> updateUser(String userId, @NonNull UserDTO userDTO) { // FALTA ACTUALIZAR LA FOTO
+        Map<String, String> response = new HashMap<>();
         try {
             UserRepresentation user = new UserRepresentation();
             if (!Objects.equals(userDTO.getUsername(), "")) {
@@ -204,8 +279,12 @@ public class KeycloakServiceImpl implements KeycloakService {
 
             UserResource usersResource = KeycloakProvider.getUserResource().get(userId);
             usersResource.update(user);
+            response.put(DATA, "Usuario actualizado correctamente");
+            return ResponseEntity.status(200).body(response);
         } catch (Exception e) {
             logger.error(e.getMessage());
+            response.put(ERROR, "Error al actualizar el usuario");
+            return ResponseEntity.status(500).body(response);
         }
     }
 

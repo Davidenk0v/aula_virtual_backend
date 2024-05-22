@@ -1,8 +1,6 @@
 package com.grupo2.aulavirtual.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
 import lombok.*;
 
 import java.sql.Date;

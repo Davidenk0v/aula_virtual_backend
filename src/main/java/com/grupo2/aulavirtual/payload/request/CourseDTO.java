@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
-import com.grupo2.aulavirtual.entities.UserEntity;
-
 import lombok.*;
 
 @ToString
@@ -28,9 +26,9 @@ public class CourseDTO {
 
     private BigDecimal price;
 
-    private Long idTeacher;
+    private String idTeacher;
 
-    private List<UserEntity> user;
+    private List<String> users;
 
     private String urlImg;
 }

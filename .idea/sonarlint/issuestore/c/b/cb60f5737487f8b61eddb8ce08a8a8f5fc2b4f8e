@@ -1,5 +1,3 @@
 
 ˆ
-java:S2259*"FA "NullPointerException" could be thrown; "convert()" can return null.(Œé‘I8à‰ø·÷1J$28eeafca-c4cb-44d0-b3a9-5df19fdf0125
-™
-java:S1128"QRemove this unused import 'com.grupo2.aulavirtual.services.impl.UserServiceImpl'.(£ºÙ›þÿÿÿÿ8÷‰ø·÷1J$144685a0-a473-4f5b-8ce0-942a456c5516
+java:S2259)"FA "NullPointerException" could be thrown; "convert()" can return null.(Œé‘I8à‰ø·÷1J$28eeafca-c4cb-44d0-b3a9-5df19fdf0125

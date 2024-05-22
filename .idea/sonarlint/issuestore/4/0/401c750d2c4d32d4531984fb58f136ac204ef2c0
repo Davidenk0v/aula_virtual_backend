@@ -1,15 +1,9 @@
 
-“
-java:S1192\"PDefine a constant instead of duplicating this literal "\\Media\\User\\" 4 times.(ÿÆèÔ8ıš¹Šø1J$882362ba-2cac-47bc-a990-500a588bc6b7
-
-java:S1192\"JDefine a constant instead of duplicating this literal "\\Image\\" 4 times.(ÿÆèÔ8“›¹Šø1J$86a2fe73-630a-4e52-8a09-3697ec44571e
-¤
-java:S1192"\Define a constant instead of duplicating this literal "No se encontro el ususario." 3 times.(õî¹¸úÿÿÿÿ8”›¹Šø1J$a38ae9ac-6ded-46ed-bb34-fc72f7c14736
-
-java:S1192›"KUse already-defined constant 'ERROR' instead of duplicating its value here.(•×±„8‚›¹Šø1J$a7d8c7b5-b0e5-40c3-9af0-c379beb3dccd
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$6f1b39ca-dfb2-432b-9431-137a0418e4a3
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Öë›ö1J$81715c12-4353-46d2-964e-31b896303dd1
 …
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$ebaf72a5-9115-4397-af82-0449fd670d34
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8×ë›ö1J$1394b47d-4f50-47c8-89da-45baed006c54
+…
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ğ´×ù1J$e50c329f-d983-4e85-aa45-8f0875e1fff4
 ›
-java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$27990229-7998-4f0a-8745-ab7ebab0872b
+java:S3776ˆ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ö•ó­úÿÿÿÿ8·¹Šø1J$593e70cf-ce43-469b-a0ae-761b5696f5d7

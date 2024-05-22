@@ -1,20 +1,11 @@
 package com.grupo2.aulavirtual.controllers;
 
-import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.payload.request.UserDTO;
-import com.grupo2.aulavirtual.repositories.UserRepository;
-import com.grupo2.aulavirtual.services.CourseService;
 import com.grupo2.aulavirtual.services.EmailService;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -24,8 +15,6 @@ public class EmailController {
     @Autowired
     private EmailService emailService;
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private KeycloakService keycloakService;
