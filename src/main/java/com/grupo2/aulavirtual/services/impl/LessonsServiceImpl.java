@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
@@ -12,6 +12,7 @@ import com.grupo2.aulavirtual.services.LessonsService;
 import com.grupo2.aulavirtual.util.files.FileUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +34,17 @@ public class LessonsServiceImpl implements LessonsService {
 
     DtoMapper dtoMapper = new DtoMapper();
     FileUtil fileUtil = new FileUtil();
+    @Value("${fileutil.lessons.folder.path}")
+    private String lessonsFolder;
+
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
 
     @Override
     public ResponseEntity<?> lessonsList() {
         List<LessonsEntity> lessonsEntities = lessonsRepository.findAll();
         if (lessonsEntities.isEmpty()) {
-            return new ResponseEntity<>("No se encontraron lecciones", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<LessonsResponseDto> lessonsResponseDtos = lessonsEntities.stream()
                 .map(lessonsEntity -> dtoMapper.entityToResponseDto(lessonsEntity)).toList();
@@ -60,7 +66,7 @@ public class LessonsServiceImpl implements LessonsService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -73,7 +79,7 @@ public class LessonsServiceImpl implements LessonsService {
                 String fileRoute = lessons.getContenido();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String medoaType = fileUtil.getMediaType(extension);
-                byte[] file = fileUtil.sendFile(fileRoute);
+                byte[] file = fileUtil.sendFile(lessonsFolder + fileRoute);
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
                 } else {
@@ -89,6 +95,7 @@ public class LessonsServiceImpl implements LessonsService {
         }
     }
 
+
     @Override
     public ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file) {
         try {
@@ -98,7 +105,7 @@ public class LessonsServiceImpl implements LessonsService {
             lessons = dtoMapper.dtoToEntity(lessonsDTO);
             lessons.setSubject(subjects);
             if (file != null && !file.isEmpty()) {
-                String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+                String path = fileUtil.saveFile(file, lessonsFolder);
                 lessons.setContenido(path);
             }
             SubjectsResponseDto objectResponse = dtoMapper.entityToResponseDto(subjects);
@@ -147,7 +154,7 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.saveFile(file, "\\Media\\Lessons\\");
+            String path = fileUtil.saveFile(file, lessonsFolder);
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -158,7 +165,7 @@ public class LessonsServiceImpl implements LessonsService {
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -173,8 +180,8 @@ public class LessonsServiceImpl implements LessonsService {
      */
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
-            String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
-                    lessons.getContenido());
+            String path = fileUtil.updateFile(file, lessonsFolder,
+                    lessonsFolder + lessons.getContenido());
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
@@ -197,16 +204,16 @@ public class LessonsServiceImpl implements LessonsService {
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
                 lessonsRepository.delete(lessons);
-                response.put("Se ha borrado el tema ", dtoMapper.entityToResponseDto(lessons));
+                response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el curso con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -225,7 +232,7 @@ public class LessonsServiceImpl implements LessonsService {
                     subject.setDescription(lessonsDTO.getDescription());
                 }
                 if (file != null && !file.isEmpty()) {
-                    String path = fileUtil.updateFile(file, "\\Media\\Lessons\\",
+                    String path = fileUtil.updateFile(file, lessonsFolder,
                             subject.getContenido());
                     subject.setContenido(path);
                 }
@@ -251,16 +258,19 @@ public class LessonsServiceImpl implements LessonsService {
             HashMap<String, LessonsResponseDto> response = new HashMap<>();
             if (lessonsRepository.existsById(id)) {
                 LessonsEntity lessons = lessonsRepository.findById(id).get();
-                response.put("Id encontrado ", dtoMapper.entityToResponseDto(lessons));
-                return ResponseEntity.status(200).body(response);
+                // Hay problemas en el dtomapper devuelve 500
+                // response.put(SAVE, dtoMapper.entityToResponseDto(lessons));
+                HashMap<String, String> responseTest = new HashMap<>();
+                responseTest.put(SAVE, "funciona");
+                return ResponseEntity.status(200).body(responseTest);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado la leccion con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }

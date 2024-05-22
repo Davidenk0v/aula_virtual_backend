@@ -61,10 +61,11 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.grupo2.aulavirtual.services" />
+      <recent name="com.grupo2.aulavirtual.services.impl" />
       <recent name="com.grupo2.aulavirtual.security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -95,18 +96,63 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="aulavirtual in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aula-virtual" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tests in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceTest.findCommentById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aula-virtual" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/grupo2/aulavirtual/tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
+      <option name="METHOD_NAME" value="findCommentById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommentServiceTest.idNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
+      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
+      <option name="METHOD_NAME" value="idNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.grupo2.aulavirtual.tests in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aula-virtual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,27 +160,6 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.spring-boot: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="spring-boot" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -181,6 +206,9 @@
       <option name="presentableId" value="Default" />
       <updated>1714061450357</updated>
       <workItem from="1714852951039" duration="13557000" />
+      <workItem from="1716208314515" duration="1117000" />
+      <workItem from="1716209829693" duration="927000" />
+      <workItem from="1716211302194" duration="7688000" />
     </task>
     <task id="LOCAL-00004" summary="services interfaces created and rename folders">
       <option name="closed" value="true" />

@@ -58,8 +58,10 @@ public class CourseEntity {
     @JoinTable(name = "course_category", joinColumns = @JoinColumn(name = "idCourse", referencedColumnName = "idCourse"), inverseJoinColumns = @JoinColumn(name = "idCategory", referencedColumnName = "idCategory"))
     private List<CategoryEntity> category;
 
-    @ManyToMany(mappedBy = "courses")
-    private List<UserEntity> user;
+    @ElementCollection
+    private List<String> usersId;
+
+    private String idTeacher;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<CommentEntity> comments;

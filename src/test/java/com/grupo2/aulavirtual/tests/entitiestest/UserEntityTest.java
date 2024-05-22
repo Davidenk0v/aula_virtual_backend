@@ -1,6 +1,5 @@
 package com.grupo2.aulavirtual.tests.entitiestest;
 
-import com.grupo2.aulavirtual.entities.UserEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,10 +14,8 @@ class UserEntityTest {
                 .lastname("Doe")
                 .firstname("John")
                 .username("johndoe")
-                .password("password")
                 .address(null)
                 .courses(null)
-                .role(null)
                 .build();
 
         assertEquals(1L, userDTO.getIdUser(), "idUser getter must be equal to 1L");
@@ -41,9 +38,6 @@ class UserEntityTest {
         userDTO.setUsername("janedoe");
         assertEquals("janedoe", userDTO.getUsername(), "Username setter must be equal to \"janedoe\"");
 
-        assertEquals("password", userDTO.getPassword(), "Password getter must be equal to \"password\"");
-        userDTO.setPassword("newpassword");
-        assertEquals("newpassword", userDTO.getPassword(), "Password setter must be equal to \"newpassword\"");
     }
 
     @Test

@@ -1,12 +1,13 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.LessonsEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.LessonsDTO;
 import com.grupo2.aulavirtual.repositories.LessonsRepository;
 import com.grupo2.aulavirtual.repositories.SubjectsRepository;
 import com.grupo2.aulavirtual.services.LessonsService;
+import com.grupo2.aulavirtual.services.impl.LessonsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -33,13 +34,16 @@ class LessonsServiceTest {
     private LessonsRepository lessonsRepository;
 
     @InjectMocks
-    private LessonsService lessonsService;
+    private LessonsService lessonsService = new LessonsServiceImpl();
 
     private LessonsDTO lessonsDTO;
     private SubjectsEntity subjectsEntity;
     private LessonsEntity lessonsEntity;
     MockMultipartFile mockFile;
 
+    private static final String NOT_FOUND = "No encontrado";
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -67,7 +71,7 @@ class LessonsServiceTest {
 
         // Verificar que se recibe una respuesta con el código de estado HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("No se encontraron lecciones", response.getBody());
+        assertEquals(ERROR, response.getBody());
     }
 
     @Test
@@ -80,46 +84,17 @@ class LessonsServiceTest {
 
         // Ejecutar el método bajo prueba
         
-        ResponseEntity<HashMap<String, ?>> response = lessonsService.postLessons(1L, lessonsDTO, mockFile);
+        ResponseEntity<HashMap<String, ?>> response = lessonsService.postLessons(1L, lessonsDTO);
 
         // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Tema subido "));
-    }
-    /*
-    @Test
-    void updateLesson() {
-        // Configurar el comportamiento del repositorio de lecciones
-        when(lessonsRepository.existsById(1L)).thenReturn(true);
-        when(lessonsRepository.findById(1L)).thenReturn(Optional.of(lessonsEntity));
-
-        // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> response = lessonsService.updateLesson(1L, lessonsDTO);
-
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.OK
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-
-        // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha modificado correctamente"));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
-    @Test
-    void deleteLesson() {
-        // Configurar el comportamiento del repositorio de lecciones
-        when(lessonsRepository.existsById(1L)).thenReturn(true);
-        when(lessonsRepository.findById(1L)).thenReturn(Optional.of(lessonsEntity));
 
-        // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> response = lessonsService.deleteLesson(1L);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.OK
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-
-        // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha borrado el tema "));
-    }
 
     @Test
     void findLessonsById() {
@@ -134,7 +109,7 @@ class LessonsServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Error"));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
@@ -153,11 +128,11 @@ class LessonsServiceTest {
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
 
         // Verificar los mensajes de error
-        assertEquals(2L, responseUpdate.getBody().get("No ha encontrado el curso con id: "));
-        assertEquals(2L, responseFind.getBody().get("No ha encontrado el curso con id: "));
-        assertEquals(2L, responseDelete.getBody().get("No ha encontrado el curso con id: "));
+        assertEquals(2L, responseUpdate.getBody().get(ERROR));
+        assertEquals(2L, responseFind.getBody().get(ERROR));
+        assertEquals(2L, responseDelete.getBody().get(ERROR));
     }
-    */
+
 
     @Test
     void catchError() {
@@ -166,7 +141,7 @@ class LessonsServiceTest {
         when(lessonsRepository.existsById(any())).thenThrow(new RuntimeException("Error simulado"));
 
         // Ejecutar el método bajo prueba
-        ResponseEntity<HashMap<String, ?>> responseUpdate = lessonsService.updateLesson(1L, lessonsDTO, mockFile);
+        ResponseEntity<HashMap<String, ?>> responseUpdate = lessonsService.updateLesson(1L, lessonsDTO);
         ResponseEntity<HashMap<String, ?>> responseFind = lessonsService.findLessonsById(1L);
         ResponseEntity<HashMap<String, ?>> responseDelete = lessonsService.deleteLesson(1L);
 
@@ -176,8 +151,8 @@ class LessonsServiceTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseDelete.getStatusCode());
 
         // Verificar los mensajes de error
-        assertEquals("Error simulado", responseUpdate.getBody().get("Error"));
-        assertEquals("Error simulado", responseFind.getBody().get("Error"));
-        assertEquals("Error simulado", responseDelete.getBody().get("Error"));
+        assertEquals("Error simulado", responseUpdate.getBody().get(ERROR));
+        assertEquals("Error simulado", responseFind.getBody().get(ERROR));
+        assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
 }

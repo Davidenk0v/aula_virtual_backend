@@ -1,16 +1,13 @@
 package com.grupo2.aulavirtual.tests.services;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
-import com.grupo2.aulavirtual.entities.RoleEntity;
-import com.grupo2.aulavirtual.entities.UserEntity;
-import com.grupo2.aulavirtual.entities.enums.RoleEnum;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
 import com.grupo2.aulavirtual.payload.request.UserDTO;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.repositories.UserRepository;
 import com.grupo2.aulavirtual.services.CourseService;
+import com.grupo2.aulavirtual.services.impl.CoursesServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -28,7 +25,6 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Optional;
 
 class CoursesServiceTest {
@@ -39,7 +35,7 @@ class CoursesServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private CourseService coursesService;
+    private CourseService coursesService = new CoursesServiceImpl();
 
     private CourseDTO courseDTO;
     private CourseEntity courseEntity;
@@ -47,8 +43,10 @@ class CoursesServiceTest {
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
     private DtoMapper dtoMapper = new DtoMapper();
-    private RoleEntity role;
 
+    private static final String NOT_FOUND = "No encontrado";
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -59,14 +57,12 @@ class CoursesServiceTest {
                 .description("Descripción del curso")
                 .startDate(Date.valueOf("2024-05-01")) // Ejemplo de fecha de inicio
                 .finishDate(Date.valueOf("2024-06-30")) // Ejemplo de fecha de finalización
-                .pago(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
+                .price(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
                 // Añadir otras configuraciones según sea necesario
                 .build();
         courseEntity = dtoMapper.dtoToEntity(courseDTO);
 
-        role = RoleEntity.builder()
-                .role(RoleEnum.ADMIN)
-                .build();
+   ;
 
         userDTO = UserDTO.builder()
                 .idUser(1L)
@@ -93,7 +89,7 @@ class CoursesServiceTest {
         // Verificar que se recibe una respuesta con el código de estado
         // HttpStatus.NOT_FOUND
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("No se encontraron cursos", response.getBody());
+        assertEquals(ERROR, response.getBody());
     }
     
 //    void postCourse() {
@@ -140,7 +136,7 @@ class CoursesServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().containsKey("Se ha modificado correctamente"));
+        assertTrue(response.getBody().containsKey(SAVE));
     }
 
     @Test
@@ -169,7 +165,7 @@ class CoursesServiceTest {
         ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
         ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 
-        assertEquals(courseId, responseUpdate.getBody().get("No ha encontrado el curso con id: "));
+        assertEquals(courseId, responseUpdate.getBody().get(ERROR));
         assertEquals(HttpStatus.NOT_FOUND, responseUpdate.getStatusCode());
         assertEquals(HttpStatus.NOT_FOUND, responseFind.getStatusCode());
         assertEquals(HttpStatus.NOT_FOUND, responseDelete.getStatusCode());
@@ -184,7 +180,7 @@ class CoursesServiceTest {
         ResponseEntity<?> responseFind = coursesService.findCourseById(courseId);
         ResponseEntity<?> responseDelete = coursesService.deleteCourse(courseId);
 
-        assertTrue(responseUpdate.getBody().containsKey("Error"));
-        assertEquals("Error simulado", responseUpdate.getBody().get("Error"));
+        assertTrue(responseUpdate.getBody().containsKey(ERROR));
+        assertEquals("Error simulado", responseUpdate.getBody().get(ERROR));
     }
 }

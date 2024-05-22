@@ -1,6 +1,6 @@
 package com.grupo2.aulavirtual.services.impl;
 
-import com.grupo2.aulavirtual.mappers.DtoMapper;
+import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.entities.CourseEntity;
 import com.grupo2.aulavirtual.entities.SubjectsEntity;
 import com.grupo2.aulavirtual.payload.request.SubjectDTO;
@@ -29,12 +29,14 @@ public class SubjectsServiceImpl implements SubjectsService {
 
     DtoMapper dtoMapper = new DtoMapper();
 
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
 
     @Override
     public ResponseEntity<?> subjectsList() {
         List<SubjectsEntity> subjectsEntities = repositorySubjects.findAll();
         if(subjectsEntities.isEmpty()){
-            return new ResponseEntity<>("No se encontraron temas", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<SubjectsResponseDto> courseResponseDtos = subjectsEntities.stream().map(subjectEntity -> dtoMapper.entityToResponseDto(subjectEntity)).toList();
         return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
@@ -50,7 +52,7 @@ public class SubjectsServiceImpl implements SubjectsService {
             repositorySubjects.save(subject);
             CourseResponseDto objectResponse = dtoMapper.entityToResponseDto(course);
             repository.save(course);
-            response.put("Tema subido ", objectResponse);
+            response.put(SAVE, objectResponse);
             return ResponseEntity.status(201).body(response);
 
     }
@@ -62,16 +64,16 @@ public class SubjectsServiceImpl implements SubjectsService {
             if (repositorySubjects.existsById(id)) {
                 SubjectsEntity subject = repositorySubjects.findById(id).get();
                 repositorySubjects.delete(subject);
-                response.put("Se ha borrado el tema ", dtoMapper.entityToResponseDto(subject));
+                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el tema con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -83,7 +85,7 @@ public class SubjectsServiceImpl implements SubjectsService {
     public ResponseEntity<?> subjectsListByIdCourse(Long idCourse) {
         List<SubjectsEntity> subjectsEntities = repositorySubjects.findByCourseIdCourse(idCourse).get();
         if(subjectsEntities.isEmpty()){
-            return new ResponseEntity<>("No se encontraron temas", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         List<SubjectsResponseDto> courseResponseDtos = subjectsEntities.stream().map(subjectEntity -> dtoMapper.entityToResponseDto(subjectEntity)).toList();
         return new ResponseEntity<>(courseResponseDtos, HttpStatus.OK);
@@ -103,16 +105,16 @@ public class SubjectsServiceImpl implements SubjectsService {
                     subject.setDescription(subjectDTO.getDescription());
                 }
                 repositorySubjects.save(subject);
-                response.put("Se ha modificado correctamente", dtoMapper.entityToResponseDto(subject));
+                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el tema con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
 
@@ -127,16 +129,16 @@ public class SubjectsServiceImpl implements SubjectsService {
             HashMap<String, SubjectsResponseDto> response = new HashMap<>();
             if (repositorySubjects.existsById(id)) {
                 SubjectsEntity subject = repositorySubjects.findById(id).get();
-                response.put("Se ha encontrado el tema ", dtoMapper.entityToResponseDto(subject));
+                response.put(SAVE, dtoMapper.entityToResponseDto(subject));
                 return ResponseEntity.status(200).body(response);
             } else {
                 HashMap<String, Long> error = new HashMap<>();
-                error.put("No ha encontrado el tema con id: ", id);
+                error.put(ERROR, id);
                 return ResponseEntity.status(404).body(error);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }

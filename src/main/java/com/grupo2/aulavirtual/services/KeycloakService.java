@@ -7,18 +7,24 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 
-import java.util.List;
-
 public interface KeycloakService {
-    List<UserRepresentation> findAllUsers();
+    ResponseEntity<?> findAllUsers();
 
     ResponseEntity<?> loginUser(LoginRequestDto loginRequest);
 
-    List<UserRepresentation> searchUserByUsername(String username);
+    ResponseEntity<?> logoutUser(String idUser);
+
+    ResponseEntity<?> searchUserByUsername(String username);
+
+    ResponseEntity<?> searchUserById(String userId);
+
+    UserRepresentation findUserById(String userId);
+
+    UserRepresentation findUserByEmail(String email);
 
     ResponseEntity<?> createUser(@NonNull RegisterRequestDto userDTO);
 
-    void deleteUser(String userId);
+    ResponseEntity<?> deleteUser(String userId);
 
-    void updateUser(String userId, @NonNull UserDTO userDTO);
+    ResponseEntity<?> updateUser(String userId, @NonNull UserDTO userDTO);
 }
