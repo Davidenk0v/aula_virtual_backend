@@ -175,36 +175,6 @@ public class FileUtil {
         }
     }
 
-    /**
-     * Guarda la lista de archivos en la ruta asignada.
-     * 
-     * @param file List<MultipartFile> que contiene la informacion de lo archivos.
-     * @param path String con la ruta donde se va a almacenar los archivos (Debe
-     *             terminar en / o \ dependiendo del SO)
-     * @return List<String> con la ruta absoluta de los archivos, si ocurre un
-     *         error, envia un la lista vacia.
-     */
-    public List<String> saveListFile(List<MultipartFile> files, String path) {
-        try {
-            List<String> pathList = new ArrayList<>();
-            File newPath = new File(root + path);
-            if (!newPath.exists()) {
-                newPath.mkdirs();
-            }
-            for (MultipartFile file : files) {
-                String extension = getExtensionByName(file.getOriginalFilename());
-                String newName = stringGenerator(25) + "." + extension;
-                File newFile = new File(root + path + newName);
-
-                file.transferTo(newFile);
-                pathList.add(newFile.getAbsolutePath());
-            }
-            return pathList;
-        } catch (IllegalStateException | IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }
 
     /**
      * Recoge el archivo almacenado y lo convierte a un byte[]
@@ -253,28 +223,6 @@ public class FileUtil {
         }
     }
 
-    /**
-     * Recoge una lista de archivos almacenados y los convierte a byte[]
-     * 
-     * @param fileName El nombre de la imagen.
-     * @return List<byte[]> con los datos de los archivos, se devuelve la lista
-     *         vacia, si el archivo no existe u ocurre un error.
-     */
-    public List<byte[]> sendArrayFile(List<String> paths) {
-        try {
-            List<byte[]> files = new ArrayList<>();
-            for (String path : paths) {
-                File file = new File(root + path);
-                if (file.exists()) {
-                    files.add(Files.readAllBytes(file.toPath()));
-                }
-            }
-            return files;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }
 
     /**
      * Metodo para obtener la extencion de un archivo.
@@ -349,29 +297,6 @@ public class FileUtil {
                 break;
         }
         return mediaType;
-    }
-
-    /**
-     * Metodo para generar Strings aleatorios.
-     * 
-     * @param size int con el tamaño del String generado.
-     * @return String aleatorio.
-     */
-    public String stringGenerator(int size) {
-        try {
-            String menu = "menuABCDFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-            char[] alfabeto = menu.toCharArray();
-            SecureRandom objetoRandom;
-            objetoRandom = SecureRandom.getInstance("SHA1PRNG", "SUN");
-            char[] caracteres = new char[size];
-            for (int i = 0; i < size; i++) {
-                caracteres[i] = alfabeto[objetoRandom.nextInt(alfabeto.length)];
-            }
-            return String.valueOf(caracteres);
-        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
-            e.printStackTrace();
-            return "";
-        }
     }
 
     /**
