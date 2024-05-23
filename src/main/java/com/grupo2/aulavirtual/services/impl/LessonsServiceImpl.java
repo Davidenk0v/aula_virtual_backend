@@ -75,7 +75,7 @@ public class LessonsServiceImpl implements LessonsService {
         Optional<LessonsEntity> optionalLessons = lessonsRepository.findById(id);
         if (optionalLessons.isPresent()) {
             LessonsEntity lessons = optionalLessons.get();
-            if (lessons.getContenido() != null || !lessons.getContenido().isEmpty()) {
+            if (lessons.getContenido() != null && !lessons.getContenido().isEmpty()) {
                 String fileRoute = lessons.getContenido();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String medoaType = fileUtil.getMediaType(extension);
@@ -83,14 +83,13 @@ public class LessonsServiceImpl implements LessonsService {
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(medoaType)).body(file);
                 } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro la leccion.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
+            return new ResponseEntity<>(ERROR,
                     HttpStatus.NOT_FOUND);
         }
     }
@@ -134,10 +133,10 @@ public class LessonsServiceImpl implements LessonsService {
                     return updateFile(lessons, file);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro la leccion.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 
@@ -154,10 +153,10 @@ public class LessonsServiceImpl implements LessonsService {
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -181,14 +180,14 @@ public class LessonsServiceImpl implements LessonsService {
             lessons.setContenido(path);
             lessonsRepository.save(lessons);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                    ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }

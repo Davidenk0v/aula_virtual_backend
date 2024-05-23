@@ -67,8 +67,7 @@ public class FileServiceImpl implements FileService
             if (path != null) {
                 return new ResponseEntity<>(DATA, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(
-                        ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -102,7 +101,7 @@ public class FileServiceImpl implements FileService
 
         UserRepresentation userRepresentation = keycloakService.findUserById(id);
         if(userRepresentation == null){
-            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
 
         UserImg user;
@@ -115,7 +114,7 @@ public class FileServiceImpl implements FileService
             user.setIdUser(id);
             setDefaultImage(id);
         }
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
+            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
                 String fileRoute = user.getUrlImg();
                 String extension = fileUtil.getExtensionByPath(fileRoute);
                 String mediaType = fileUtil.getMediaType(extension);
@@ -124,12 +123,10 @@ public class FileServiceImpl implements FileService
                     imageRepository.save(user);
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
         }
 
@@ -140,7 +137,7 @@ public class FileServiceImpl implements FileService
         if (optionalUser.isPresent()) {
             UserImg user = optionalUser.get();
             String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-            if (user.getUrlImg() != null || !user.getUrlImg().isEmpty()) {
+            if (user.getUrlImg() != null && !user.getUrlImg().isEmpty()) {
                 fileUtil.deleteFile(user.getUrlImg());
                 user.setUrlImg(defaultUrlImage);
                 imageRepository.save(user);
@@ -148,9 +145,9 @@ public class FileServiceImpl implements FileService
                 user.setUrlImg(defaultUrlImage);
                 imageRepository.save(user);
             }
-            return new ResponseEntity<>("Se elimino la imagen", HttpStatus.OK);
+            return new ResponseEntity<>(DATA, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
     }
 

@@ -100,7 +100,7 @@ public class exceptiontest {
         assertTrue(responseUpdate.getBody().containsKey(ERROR));
         assertEquals("Error simulado", responseUpdate.getBody().get(ERROR));
 
-        assertTrue(responseSetDefaultImageDef.containsKey("Error"));
+        assertTrue(responseSetDefaultImageDef.containsKey(ERROR));
         assertTrue(responseSaveDefaultImageDef.containsKey(ERROR));
 
         assertTrue(responseFindDef.containsKey(ERROR));

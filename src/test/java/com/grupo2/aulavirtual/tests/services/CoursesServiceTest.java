@@ -2,15 +2,17 @@ package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.entities.CategoryEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.LessonsEntity;
+import com.grupo2.aulavirtual.entities.UserImg;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
-import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.repositories.CategoryRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.impl.CoursesServiceImpl;
+import com.grupo2.aulavirtual.services.impl.FileServiceImpl;
+import com.grupo2.aulavirtual.services.impl.LessonsServiceImpl;
 import com.grupo2.aulavirtual.util.files.FileUtil;
 import com.grupo2.aulavirtual.util.mappers.DtoMapper;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -23,19 +25,22 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -54,7 +59,7 @@ class CoursesServiceTest {
     private FileUtil fileUtil;
 
     @InjectMocks
-    private CoursesServiceImpl coursesService;
+    private CoursesServiceImpl coursesService = new CoursesServiceImpl();
 
     private CourseDTO courseDTO;
     private CourseEntity courseEntity;
@@ -65,7 +70,16 @@ class CoursesServiceTest {
     private static final String ERROR = "error";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchFieldException, IllegalAccessException {
+
+        Field defaultImgField = CoursesServiceImpl.class.getDeclaredField("defaultImg");
+        defaultImgField.setAccessible(true);
+        defaultImgField.set(coursesService, "defaultImage.png");
+
+        Field coursesServiceImpl = CoursesServiceImpl.class.getDeclaredField("courseFolder");
+        coursesServiceImpl.setAccessible(true);
+        coursesServiceImpl.set(coursesService, "/path/to/course/");
+
         MockitoAnnotations.openMocks(this);
 
         courseDTO = CourseDTO.builder()
@@ -75,6 +89,7 @@ class CoursesServiceTest {
                 .startDate(Date.valueOf("2024-05-01")) // Ejemplo de fecha de inicio
                 .finishDate(Date.valueOf("2024-06-30")) // Ejemplo de fecha de finalización
                 .price(BigDecimal.valueOf(100)) // Ejemplo de monto de pago
+                .urlImg("image.jpeg")
                 // Añadir otras configuraciones según sea necesario
                 .build();
         courseEntity = dtoMapper.dtoToEntity(courseDTO);
@@ -247,14 +262,283 @@ class CoursesServiceTest {
 
     @Test
     @Order(12)
-    void downloadFile() {
-        Long courseId = 1L;
-        MultipartFile file = null; // Mock your MultipartFile here
+    void downloadFile_FileEmpty_NotFound() {
+        // Arrange
+        MultipartFile file = mock(MultipartFile.class);
 
-        // Implement the logic to handle file upload tests
+        when(file.isEmpty()).thenReturn(true);
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_ACCEPTABLE, response.getStatusCode());
+        assertEquals("error", response.getBody());
+        verify(courseRepository, never()).save(any());
     }
 
+    @Test
+    @Order(13)
+    void downloadFile_CourseEmpty_NotFound() {
+        // Arrange
+        Long courseId = 1L;
+        MultipartFile file = mock(MultipartFile.class);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseId)).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseId, file);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+        verify(courseRepository, never()).save(any());
+    }
+
+    @Test
+    void downloadFile_saveFile_Success() {
+        // Arrange
+        String urlImg = courseEntity.getUrlImg();
+        courseEntity.setUrlImg(null);
+        MultipartFile file = mock(MultipartFile.class);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenReturn(urlImg);
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("data", response.getBody());
+        assertEquals(urlImg, courseEntity.getUrlImg());
+        verify(courseRepository, times(1)).save(courseEntity);
+    }
+
+    @Test
+    void downloadFile_saveFile_Failure() {
+        // Arrange
+        MultipartFile file = mock(MultipartFile.class);
+        courseEntity.setUrlImg(null);
+        
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenReturn(null);
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void downloadFile_saveFile_Error() {
+        // Arrange
+        MultipartFile file = mock(MultipartFile.class);
+        courseEntity.setUrlImg(null);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenThrow(new RuntimeException("File saving error"));
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("File saving error", ((HashMap<String, Object>) response.getBody()).get("error"));
+    }
+
+    @Test
+    void downloadFile_updateFile_Success() {
+        // Arrange
+        String urlImg = courseEntity.getUrlImg();
+        String newUrlImg = "new " + urlImg;
+        MultipartFile file = mock(MultipartFile.class);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenReturn(newUrlImg);
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("data", response.getBody());
+        assertEquals(newUrlImg, courseEntity.getUrlImg());
+        verify(courseRepository, times(1)).save(courseEntity);
+    }
+
+    @Test
+    void downloadFile_updateFile_Failure() {
+        // Arrange
+        MultipartFile file = mock(MultipartFile.class);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenThrow(new RuntimeException("File saving error"));
 
 
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("File saving error", ((HashMap<String, Object>) response.getBody()).get("error"));
+    }
+
+    @Test
+    void downloadFile_updateFile_Error() {
+        // Arrange
+        MultipartFile file = mock(MultipartFile.class);
+
+        when(file.isEmpty()).thenReturn(false);
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenThrow(new RuntimeException("File saving error"));
+
+        // Act
+        ResponseEntity<?> response = coursesService.downloadFile(courseEntity.getIdCourse(), file);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("File saving error", ((HashMap<String, Object>) response.getBody()).get("error"));
+    }
+
+    @Test
+    void sendFile_Course_NotFound() {
+        // Arrange
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<?> response = coursesService.sendFile(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_Course_Image_NotFound() {
+        courseEntity.setUrlImg(null);
+
+        // Arrange
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+
+        // Act
+        ResponseEntity<?> response = coursesService.sendFile(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_Course_Image_File_Found() {
+        // Arrange
+        byte[] fileContent = "fileContent".getBytes();
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
+        when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);
+
+        // Act
+        ResponseEntity<?> response = coursesService.sendFile(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(MediaType.IMAGE_JPEG, response.getHeaders().getContentType());
+        assertEquals(fileContent, response.getBody());
+    }
+
+    @Test
+    void sendFile_Course_Image_File_NotFound() {
+        // Arrange
+        byte[] fileContent = new byte[0];
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
+        when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);
+
+        // Act
+        ResponseEntity<?> response = coursesService.sendFile(courseEntity.getIdCourse());
+        
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void setDefaultImage_CourseNotFound_NotFound() {
+        // Arrange
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<?> response = coursesService.sendFile(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+        verify(courseRepository, never()).save(any());
+    }
+
+    @Test
+    void setDefaultImage_CourseFound_ExistingImage() {
+        // Arrange
+        String defaultImg = "default.jpg";
+        courseEntity.setUrlImg(null);
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
+
+        // Act
+        ResponseEntity<?> response = coursesService.setDefaultImage(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("data", response.getBody());
+    }
+
+    @Test
+    void setDefaultImage_CourseFound_NoExistingImage() {
+        // Arrange
+        String defaultImg = "default.jpg";
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
+
+        // Act
+        ResponseEntity<?> response = coursesService.setDefaultImage(courseEntity.getIdCourse());
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("data", response.getBody());    
+    }
+
+    @Test
+    void setDefaultImage_CourseFound_Error() {
+        // Arrange
+        String defaultImg = "default.jpg";
+
+        when(courseRepository.findById(courseEntity.getIdCourse())).thenReturn(Optional.of(courseEntity));
+        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
+        when(courseRepository.save(courseEntity)).thenThrow(new RuntimeException("File saving error"));
+        try {
+            // Act
+            coursesService.setDefaultImage(courseEntity.getIdCourse());
+        } catch (RuntimeException e) {
+            // Assert
+            assertEquals("File saving error", e.getMessage());
+        }
+    }
 
 }

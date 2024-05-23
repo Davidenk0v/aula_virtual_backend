@@ -80,7 +80,7 @@ public class CommentServiceImpl implements CommentService {
 
         } catch (Exception e) {
             HashMap<String, Object> comentarios = new HashMap<>();
-            comentarios.put("Error", e.getMessage());
+            comentarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(comentarios);
         }
     }
@@ -236,15 +236,13 @@ public class CommentServiceImpl implements CommentService {
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
     }
 

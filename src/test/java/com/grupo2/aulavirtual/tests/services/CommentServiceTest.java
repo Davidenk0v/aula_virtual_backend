@@ -11,12 +11,14 @@ import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.services.CommentService;
+import com.grupo2.aulavirtual.repositories.ImageRepository;
+import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.impl.CommentServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -27,6 +29,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -41,12 +44,16 @@ public class CommentServiceTest {
     @Mock
     private CourseRepository courseRepository;
 
+    @Mock
+    private KeycloakService keycloakService;
 
+    @Mock
+    private ImageRepository imageRepository;
 
     private DtoMapper dtoMapper;
 
     @InjectMocks
-    private CommentService commentService = new CommentServiceImpl();
+    private CommentServiceImpl commentService = new CommentServiceImpl();
 
     private CommentDTO commentDTO;
     private CommentResponseDto commentResponseDto;
@@ -187,4 +194,37 @@ public class CommentServiceTest {
         assertEquals("Error simulado", ((HashMap<String, ?>) responseFind.getBody()).get(ERROR));
         assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
+
+    @Test
+    void sendFile_KeycloakUser_NotFound() {
+        // Arrange
+
+        String userId = "user1";
+        when(keycloakService.findUserById(userId)).thenReturn(null);
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_User_NotFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
 }
