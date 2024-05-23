@@ -250,7 +250,7 @@ class FileServiceImplTest {
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
         when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.sendFile(anyString())).thenReturn(new byte[0]);
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(new byte[0]);
 
         // Act
         ResponseEntity<?> response = fileService.sendFile(userId);
@@ -273,7 +273,7 @@ class FileServiceImplTest {
         when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
         when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
-        when(fileUtil.sendFile(anyString())).thenReturn(fileContent);
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);
         
         // Act
         ResponseEntity<?> response = fileService.sendFile(userId);
@@ -309,7 +309,6 @@ class FileServiceImplTest {
         UserImg userImg = new UserImg(userId, urlImg);
 
         when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
 
         // Act
         ResponseEntity<?> response = fileService.setDefaultImage(userId);
@@ -327,7 +326,6 @@ class FileServiceImplTest {
         UserImg userImg = new UserImg(userId, null);
 
         when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
 
         // Act
         ResponseEntity<?> response = fileService.setDefaultImage(userId);
@@ -346,7 +344,6 @@ class FileServiceImplTest {
         UserImg userImg = new UserImg(userId, urlImg);
 
         when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
         when(imageRepository.save(userImg)).thenThrow(new RuntimeException("File saving error"));
         try {
             // Act
