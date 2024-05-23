@@ -2,6 +2,8 @@ package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.UserImg;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.CommentDTO;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
@@ -14,13 +16,16 @@ import com.grupo2.aulavirtual.repositories.CourseRepository;
 import com.grupo2.aulavirtual.repositories.ImageRepository;
 import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.impl.CommentServiceImpl;
+import com.grupo2.aulavirtual.services.impl.CoursesServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collections;
@@ -34,6 +39,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 public class CommentServiceTest {
@@ -49,6 +55,9 @@ public class CommentServiceTest {
 
     @Mock
     private ImageRepository imageRepository;
+
+    @Mock
+    private FileUtil fileUtil;
 
     private DtoMapper dtoMapper;
 
@@ -68,7 +77,16 @@ public class CommentServiceTest {
     private static final String ERROR = "error";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchFieldException, IllegalAccessException {
+
+        Field defaultImgField = CommentServiceImpl.class.getDeclaredField("defaultImg");
+        defaultImgField.setAccessible(true);
+        defaultImgField.set(commentService, "defaultImage.png");
+
+        Field coursesServiceImpl = CommentServiceImpl.class.getDeclaredField("userFolder");
+        coursesServiceImpl.setAccessible(true);
+        coursesServiceImpl.set(commentService, "/path/to/Users/");
+
         MockitoAnnotations.openMocks(this);
         dtoMapper = new DtoMapper();
         commentDTO = CommentDTO.builder()
@@ -225,6 +243,50 @@ public class CommentServiceTest {
         // Assert
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_File_NotFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+        String urlImg = "image.jpg";
+        UserImg userImg = new UserImg(1L, userId, urlImg);
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(new byte[0]);
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_FileFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+        String urlImg = "image.jpeg";
+        UserImg userImg = new UserImg(1L, userId, urlImg);
+        byte[] fileContent = "fileContent".getBytes();
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
+        when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);
+        
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(MediaType.IMAGE_JPEG, response.getHeaders().getContentType());
+        assertEquals(fileContent, response.getBody());
     }
 
 }
