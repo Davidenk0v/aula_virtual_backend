@@ -226,7 +226,7 @@ public class CommentServiceImpl implements CommentService {
     public ResponseEntity<?> sendFile(String id) {
         UserRepresentation userRepresentation = keycloakService.findUserById(id);
         if (userRepresentation != null) {
-            Optional<UserImg> userImg = imageRepository.findByIdUser(id);
+            Optional<UserImg> userImg = imageRepository.findById(id);
             if (userImg.isPresent()) {
                 UserImg user = userImg.get();
                 String fileRoute = getCustomPath(user.getIdUser()) + user.getUrlImg();

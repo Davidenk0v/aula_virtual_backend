@@ -87,8 +87,7 @@ public class CoursesServiceImpl implements CourseService {
                 course.getIdCourse();
                 course.setCreatedDate(LocalDateTime.now());
                 course.setLastModifiedDate(LocalDateTime.now());
-                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-                course.setUrlImg(defaultUrlImage);
+                course.setUrlImg(defaultImg);
                 CourseResponseDto responseDto = dtoMapper.entityToResponseDto(course);
                 courseRepository.save(course);
                 response.put(SAVE, responseDto);

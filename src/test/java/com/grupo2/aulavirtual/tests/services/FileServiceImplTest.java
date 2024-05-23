@@ -74,7 +74,7 @@ class FileServiceImplTest {
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.empty());
+        when(imageRepository.findById(userId)).thenReturn(Optional.empty());
 
         // Act
         ResponseEntity<?> response = fileService.downloadFile(userId, file);
@@ -90,11 +90,11 @@ class FileServiceImplTest {
         // Arrange
         String userId = "user1";
         String urlImg = "image.jpg";
-        UserImg userImg = new UserImg(1L, userId, null);
+        UserImg userImg = new UserImg(userId, null);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenReturn(urlImg);
 
         // Act
@@ -111,11 +111,11 @@ class FileServiceImplTest {
     void downloadFile_saveFile_Failure() {
         // Arrange
         String userId = "user1";
-        UserImg userImg = new UserImg(1L, userId, null);
+        UserImg userImg = new UserImg(userId, null);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenReturn(null);
 
         // Act
@@ -130,11 +130,11 @@ class FileServiceImplTest {
     void downloadFile_saveFile_Error() {
         // Arrange
         String userId = "user1";
-        UserImg userImg = new UserImg(1L, userId, null);
+        UserImg userImg = new UserImg(userId, null);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.saveFile(any(MultipartFile.class), anyString())).thenThrow(new RuntimeException("File saving error"));
 
         // Act
@@ -151,12 +151,12 @@ class FileServiceImplTest {
         String userId = "user1";
         String urlImg = "image.jpg";
         String newUrlImg = "new image.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString())).thenReturn(newUrlImg);
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenReturn(newUrlImg);
 
         // Act
         ResponseEntity<?> response = fileService.downloadFile(userId, file);
@@ -173,12 +173,12 @@ class FileServiceImplTest {
         // Arrange
         String userId = "user1";
         String urlImg = "image.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString())).thenReturn(null);
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenReturn(null);
 
         // Act
         ResponseEntity<?> response = fileService.downloadFile(userId, file);
@@ -193,12 +193,12 @@ class FileServiceImplTest {
         // Arrange
         String userId = "user1";
         String urlImg = "image.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
         MultipartFile file = mock(MultipartFile.class);
 
         when(file.isEmpty()).thenReturn(false);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
-        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString())).thenThrow(new RuntimeException("File saving error"));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.updateFile(any(MultipartFile.class), anyString(), anyString(), anyString())).thenThrow(new RuntimeException("File saving error"));
 
         // Act
         ResponseEntity<?> response = fileService.downloadFile(userId, file);
@@ -230,7 +230,7 @@ class FileServiceImplTest {
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.empty());
+        when(imageRepository.findById(userId)).thenReturn(Optional.empty());
 
         // Act
         ResponseEntity<?> response = fileService.sendFile(userId);
@@ -246,10 +246,10 @@ class FileServiceImplTest {
         String userId = "user1";
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
         String urlImg = "image.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.sendFile(anyString())).thenReturn(new byte[0]);
 
         // Act
@@ -266,11 +266,11 @@ class FileServiceImplTest {
         String userId = "user1";
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
         String urlImg = "image.jpeg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
         byte[] fileContent = "fileContent".getBytes();
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
         when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
         when(fileUtil.sendFile(anyString())).thenReturn(fileContent);
@@ -289,7 +289,7 @@ class FileServiceImplTest {
         // Arrange
         String userId = "user1";
 
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.empty());
+        when(imageRepository.findById(userId)).thenReturn(Optional.empty());
 
         // Act
         ResponseEntity<?> response = fileService.setDefaultImage(userId);
@@ -306,9 +306,9 @@ class FileServiceImplTest {
         String userId = "user1";
         String urlImg = "image.jpg";
         String defaultImg = "default.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
 
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
 
         // Act
@@ -324,9 +324,9 @@ class FileServiceImplTest {
         // Arrange
         String userId = "user1";
         String defaultImg = "default.jpg";
-        UserImg userImg = new UserImg(1L, userId, null);
+        UserImg userImg = new UserImg(userId, null);
 
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
 
         // Act
@@ -343,9 +343,9 @@ class FileServiceImplTest {
         String userId = "user1";
         String urlImg = "";
         String defaultImg = "default.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
 
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.setDefaultImage(anyString())).thenReturn(defaultImg);
         when(imageRepository.save(userImg)).thenThrow(new RuntimeException("File saving error"));
         try {

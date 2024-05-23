@@ -235,7 +235,7 @@ public class CommentServiceTest {
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.empty());
+        when(imageRepository.findById(userId)).thenReturn(Optional.empty());
 
         // Act
         ResponseEntity<?> response = commentService.sendFile(userId);
@@ -251,10 +251,10 @@ public class CommentServiceTest {
         String userId = "user1";
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
         String urlImg = "image.jpg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.sendFile(anyString(), anyString())).thenReturn(new byte[0]);
 
         // Act
@@ -271,11 +271,11 @@ public class CommentServiceTest {
         String userId = "user1";
         UserRepresentation userRepresentation = mock(UserRepresentation.class);
         String urlImg = "image.jpeg";
-        UserImg userImg = new UserImg(1L, userId, urlImg);
+        UserImg userImg = new UserImg(userId, urlImg);
         byte[] fileContent = "fileContent".getBytes();
 
         when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
-        when(imageRepository.findByIdUser(userId)).thenReturn(Optional.of(userImg));
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
         when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
         when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
         when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);

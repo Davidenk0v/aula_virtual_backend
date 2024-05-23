@@ -14,9 +14,6 @@ import lombok.*;
 public class UserImg {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String idUser;
 
     private String urlImg;

@@ -10,14 +10,9 @@ class UserImgTest {
     @Test
     void testGettersAndSetters() {
         UserImg userImg = UserImg.builder()
-                .id(1L)
                 .idUser("user123")
                 .urlImg("http://example.com/image.jpg")
                 .build();
-
-        assertEquals(1L, userImg.getId(), "id getter must be equal to 1L");
-        userImg.setId(2L);
-        assertEquals(2L, userImg.getId(), "id setter must be equal to 2L");
 
         assertEquals("user123", userImg.getIdUser(), "idUser getter must be equal to 'user123'");
         userImg.setIdUser("user456");
