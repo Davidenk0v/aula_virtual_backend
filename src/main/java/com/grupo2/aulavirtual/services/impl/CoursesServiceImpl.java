@@ -70,7 +70,7 @@ public class CoursesServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<?> pageableCourseList(@NonNull Pageable pageable) {
-        pageable = PageRequest.of(pageable.getPageNumber(), 3, pageable.getSort());
+        pageable = PageRequest.of(pageable.getPageNumber(), 5, pageable.getSort());
         Page<CourseEntity> coursesPage = this.courseRepository.findAll(pageable);
         if (coursesPage.isEmpty()) {
             return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
@@ -236,7 +236,6 @@ public class CoursesServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<HashMap<String, ?>> updateCourse(Long id, CourseDTO courseDTO) {
-        logger.info(courseDTO.toString());
         logger.info(courseDTO.toString());
         try {
             HashMap<String, CourseResponseDto> response = new HashMap<>();

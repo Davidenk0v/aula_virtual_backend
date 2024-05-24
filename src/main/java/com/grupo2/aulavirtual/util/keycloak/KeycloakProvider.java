@@ -15,7 +15,7 @@ public class KeycloakProvider {
     private static final String USER_CONSOLE = "admin";
     private static final String PASSWORD_CONSOLE = "admin";
     private static final String CLIENT_ID = "virtual-class-room";
-    private static final String CLIENT_SECRET = "pzwpuR1GjpRauqP0fr8aSPpNDDMNzRIQ";
+    private static final String CLIENT_SECRET = "rDG28AZZRM7aFZa7fnXLvNp0xSAjNyX2";
 
 
 

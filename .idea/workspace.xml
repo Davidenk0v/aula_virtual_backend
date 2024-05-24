@@ -4,85 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="backend refactor: delete userEntity, services, and repositories">
+    <list default="true" id="15ee5d07-848e-4949-a145-74d93e2bb6bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1baacdccbc63d1a6c330169ccde907e83b068d8f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1baacdccbc63d1a6c330169ccde907e83b068d8f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33bd2b2117520c56134d639b64cd1ace9dc0b994" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33bd2b2117520c56134d639b64cd1ace9dc0b994" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/7839111161f8f43f20f28819dba99ee787812873" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/7839111161f8f43f20f28819dba99ee787812873" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/815ba7529879929f1c8b45aecdb43e1cbc413234" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/815ba7529879929f1c8b45aecdb43e1cbc413234" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fc7b8fba5fa45f57174a361604bd1ae27087a45" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fc7b8fba5fa45f57174a361604bd1ae27087a45" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ecb37979b7a351fa19d72e000940d99c5efd2989" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ecb37979b7a351fa19d72e000940d99c5efd2989" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/LessonsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/LessonsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/CoursesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/services/impl/LessonsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/util/keycloak/KeycloakProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/grupo2/aulavirtual/util/keycloak/KeycloakProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dockerfile" />
-        <option value="Class" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="backend-refactor-LuisDavid" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2fbEagPcxw27Ef6LO8lHhWt5L8q" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2goWrCzZnRPSwTbotUU3wGQjiM8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AulaVirtualApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mailserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.spring-boot: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.aulavirtual in aula-virtual.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.tests in aula-virtual.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AulaVirtualApplication.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "development",
+    "kotlin-language-version-configured": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.grupo2.aulavirtual.services" />
-      <recent name="com.grupo2.aulavirtual.services.impl" />
-      <recent name="com.grupo2.aulavirtual.security" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back" />
-      <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back\src\target" />
-      <recent name="C:\Users\a925534\OneDrive - Eviden\Desktop\My projects\Aula virtual - Grupo 2\Aula-Grupo-2-Back\src" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.grupo2.aulavirtual.config" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.grupo2.aulavirtual.services.impl" />
-      <recent name="com.grupo2.aulavirtual.payload.request" />
-      <recent name="com.grupo2.aulavirtual.payload.keycloack" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.AulaVirtualApplication">
+  <component name="RunManager">
     <configuration name="AulaVirtualApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.AulaVirtualApplication" />
       <module name="aula-virtual" />
@@ -96,495 +63,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommentServiceTest.findCommentById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
-      <option name="METHOD_NAME" value="findCommentById" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommentServiceTest.idNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests.services" />
-      <option name="MAIN_CLASS_NAME" value="com.grupo2.aulavirtual.tests.services.CommentServiceTest" />
-      <option name="METHOD_NAME" value="idNotFound" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.grupo2.aulavirtual.tests in aula-virtual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aula-virtual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.grupo2.aulavirtual.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.grupo2.aulavirtual.tests" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.tests in aula-virtual" />
-        <item itemvalue="JUnit.aulavirtual in aula-virtual" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.spring-boot: Compose Deployment" />
         <item itemvalue="Application.AulaVirtualApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00001" summary="refactor controllers 2">
-      <option name="closed" value="true" />
-      <created>1713958974687</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1713958974687</updated>
-    </task>
-    <task id="LOCAL-00002" summary="refactor controllers and get ready for merge">
-      <option name="closed" value="true" />
-      <created>1714061030492</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1714061030492</updated>
-    </task>
-    <task id="LOCAL-00003" summary="refactor controllers and get ready for merge">
-      <option name="closed" value="true" />
-      <created>1714061077185</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1714061077185</updated>
-    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="764e6fd5-2bc0-4089-b139-9dd19028bd93" name="Changes" comment="refactor controllers and get ready for merge" />
-      <created>1714061450357</created>
+      <changelist id="15ee5d07-848e-4949-a145-74d93e2bb6bf" name="Changes" comment="" />
+      <created>1716364613232</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1714061450357</updated>
-      <workItem from="1714852951039" duration="13557000" />
-      <workItem from="1716208314515" duration="1117000" />
-      <workItem from="1716209829693" duration="927000" />
-      <workItem from="1716211302194" duration="7688000" />
+      <updated>1716364613232</updated>
     </task>
-    <task id="LOCAL-00004" summary="services interfaces created and rename folders">
-      <option name="closed" value="true" />
-      <created>1714062239633</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1714062239633</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fixed merge errors">
-      <option name="closed" value="true" />
-      <created>1714392340961</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1714392340961</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fixed merge errors">
-      <option name="closed" value="true" />
-      <created>1714392352537</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1714392352537</updated>
-    </task>
-    <task id="LOCAL-00007" summary="keycloack providers method">
-      <option name="closed" value="true" />
-      <created>1714394075573</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1714394075573</updated>
-    </task>
-    <task id="LOCAL-00008" summary="crud with docker done">
-      <option name="closed" value="true" />
-      <created>1714399624255</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1714399624255</updated>
-    </task>
-    <task id="LOCAL-00009" summary="crud with docker done">
-      <option name="closed" value="true" />
-      <created>1714399665935</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1714399665935</updated>
-    </task>
-    <task id="LOCAL-00010" summary="docker with keycloack, postgress and pgadmin done">
-      <option name="closed" value="true" />
-      <created>1714402732439</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1714402732439</updated>
-    </task>
-    <task id="LOCAL-00011" summary="start with keycloack implement">
-      <option name="closed" value="true" />
-      <created>1714406640838</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1714406640839</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fixed findById course method">
-      <option name="closed" value="true" />
-      <created>1714584405104</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1714584405104</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fixed findById course method">
-      <option name="closed" value="true" />
-      <created>1714586435814</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1714586435814</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fixed delete course method">
-      <option name="closed" value="true" />
-      <created>1714587708968</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1714587708968</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fixed delete course method">
-      <option name="closed" value="true" />
-      <created>1714631777649</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1714631777649</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fixed delete course method">
-      <option name="closed" value="true" />
-      <created>1714727639590</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1714727639590</updated>
-    </task>
-    <task id="LOCAL-00017" summary="login and register with keycloak done">
-      <option name="closed" value="true" />
-      <created>1715082454783</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1715082454783</updated>
-    </task>
-    <task id="LOCAL-00018" summary="login and register with keycloak done">
-      <option name="closed" value="true" />
-      <created>1715082466186</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1715082466186</updated>
-    </task>
-    <task id="LOCAL-00019" summary="login and register with keycloak done">
-      <option name="closed" value="true" />
-      <created>1715085385718</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1715085385719</updated>
-    </task>
-    <task id="LOCAL-00020" summary="login and register with keycloak done">
-      <option name="closed" value="true" />
-      <created>1715085496542</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1715085496542</updated>
-    </task>
-    <task id="LOCAL-00021" summary="refactor user table and method for delete, update for keycloak added">
-      <option name="closed" value="true" />
-      <created>1715159460254</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1715159460254</updated>
-    </task>
-    <task id="LOCAL-00022" summary="refactor user table and method for delete, update for keycloak added">
-      <option name="closed" value="true" />
-      <created>1715159631200</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1715159631200</updated>
-    </task>
-    <task id="LOCAL-00023" summary="refactor register and login">
-      <option name="closed" value="true" />
-      <created>1715183685182</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1715183685182</updated>
-    </task>
-    <task id="LOCAL-00024" summary="trying fix CORS Error">
-      <option name="closed" value="true" />
-      <created>1715271831035</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1715271831036</updated>
-    </task>
-    <task id="LOCAL-00025" summary="trying fix CORS Error">
-      <option name="closed" value="true" />
-      <created>1715271881742</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1715271881742</updated>
-    </task>
-    <task id="LOCAL-00026" summary="refactor addCourse, editCourse and added findbyemail methods">
-      <option name="closed" value="true" />
-      <created>1715345627137</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1715345627138</updated>
-    </task>
-    <task id="LOCAL-00027" summary="refactor addCourse, editCourse and added findbyemail methods">
-      <option name="closed" value="true" />
-      <created>1715590785187</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1715590785187</updated>
-    </task>
-    <task id="LOCAL-00028" summary="categoryService added">
-      <option name="closed" value="true" />
-      <created>1715608272956</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1715608272956</updated>
-    </task>
-    <task id="LOCAL-00029" summary="categoryService added and filter by categories method">
-      <option name="closed" value="true" />
-      <created>1715615930291</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1715615930291</updated>
-    </task>
-    <task id="LOCAL-00030" summary="start with filter methods">
-      <option name="closed" value="true" />
-      <created>1715702603415</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1715702603416</updated>
-    </task>
-    <task id="LOCAL-00031" summary="forgot my password system done">
-      <option name="closed" value="true" />
-      <created>1715777421788</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1715777421788</updated>
-    </task>
-    <task id="LOCAL-00032" summary="password verified system done">
-      <option name="closed" value="true" />
-      <created>1715787453241</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1715787453241</updated>
-    </task>
-    <task id="LOCAL-00033" summary="password verified system done">
-      <option name="closed" value="true" />
-      <created>1715800627249</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1715800627249</updated>
-    </task>
-    <task id="LOCAL-00034" summary="password verified system done">
-      <option name="closed" value="true" />
-      <created>1715801456597</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1715801456597</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fixed some bug for merge">
-      <option name="closed" value="true" />
-      <created>1715814149773</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1715814149773</updated>
-    </task>
-    <task id="LOCAL-00036" summary="fixed some bug for merge">
-      <option name="closed" value="true" />
-      <created>1715845828564</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1715845828564</updated>
-    </task>
-    <task id="LOCAL-00037" summary="fixed some bug for merge">
-      <option name="closed" value="true" />
-      <created>1715852627416</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1715852627416</updated>
-    </task>
-    <task id="LOCAL-00038" summary="fixed some bug for merge">
-      <option name="closed" value="true" />
-      <created>1715933823666</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1715933823666</updated>
-    </task>
-    <task id="LOCAL-00039" summary="DataInizializer added">
-      <option name="closed" value="true" />
-      <created>1715935810979</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1715935810979</updated>
-    </task>
-    <task id="LOCAL-00040" summary="fixed merge error">
-      <option name="closed" value="true" />
-      <created>1716293201141</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1716293201141</updated>
-    </task>
-    <task id="LOCAL-00041" summary="fixed merge error">
-      <option name="closed" value="true" />
-      <created>1716293340281</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1716293340281</updated>
-    </task>
-    <task id="LOCAL-00042" summary="backend refactor: delete userEntity, services, and repositories">
-      <option name="closed" value="true" />
-      <created>1716361641507</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1716361641507</updated>
-    </task>
-    <task id="LOCAL-00043" summary="backend refactor: delete userEntity, services, and repositories">
-      <option name="closed" value="true" />
-      <created>1716361691518</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1716361691518</updated>
-    </task>
-    <task id="LOCAL-00044" summary="backend refactor: delete userEntity, services, and repositories">
-      <option name="closed" value="true" />
-      <created>1716361728740</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1716361728740</updated>
-    </task>
-    <option name="localTasksCounter" value="45" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor controllers 2" />
-    <MESSAGE value="starting keycloack" />
-    <MESSAGE value="Trying keycloack" />
-    <MESSAGE value="services interfaces created and rename folders" />
-    <MESSAGE value="fixed merge errors" />
-    <MESSAGE value="keycloack providers method" />
-    <MESSAGE value="crud with docker done" />
-    <MESSAGE value="docker with keycloack, postgress and pgadmin done" />
-    <MESSAGE value="start with keycloack implement" />
-    <MESSAGE value="fixed findById course method" />
-    <MESSAGE value="fixed delete course method" />
-    <MESSAGE value="login and register with keycloak done" />
-    <MESSAGE value="refactor user table and method for delete, update for keycloak added" />
-    <MESSAGE value="refactor register and login" />
-    <MESSAGE value="trying fix CORS Error" />
-    <MESSAGE value="refactor addCourse, editCourse and added findbyemail methods" />
-    <MESSAGE value="categoryService added" />
-    <MESSAGE value="categoryService added and filter by categories method" />
-    <MESSAGE value="start with filter methods" />
-    <MESSAGE value="forgot my password system done" />
-    <MESSAGE value="password verified system done" />
-    <MESSAGE value="fixed some bug for merge" />
-    <MESSAGE value="DataInizializer added" />
-    <MESSAGE value="fixed merge error" />
-    <MESSAGE value="backend refactor: delete userEntity, services, and repositories" />
-    <option name="LAST_COMMIT_MESSAGE" value="backend refactor: delete userEntity, services, and repositories" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Aula_Grupo_2_Back$Tests_in_aula_virtual.ic" NAME="Tests in aula-virtual Coverage Results" MODIFIED="1714381791188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Aula_Grupo_2_Back$aulavirtual_in_aula_virtual.ic" NAME="aulavirtual in aula-virtual Coverage Results" MODIFIED="1714381816171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

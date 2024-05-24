@@ -51,6 +51,7 @@ public class LessonsServiceImpl implements LessonsService {
         return new ResponseEntity<>(lessonsResponseDtos, HttpStatus.OK);
     }
 
+    @Override
     public ResponseEntity<?> getLessonBySubjebtId(Long subjectId) {
         try {
             Optional<SubjectsEntity> subject = repository.findById(subjectId);
@@ -71,6 +72,7 @@ public class LessonsServiceImpl implements LessonsService {
         }
     }
 
+    @Override
     public ResponseEntity<?> sendFile(Long id) {
         Optional<LessonsEntity> optionalLessons = lessonsRepository.findById(id);
         if (optionalLessons.isPresent()) {
@@ -127,6 +129,7 @@ public class LessonsServiceImpl implements LessonsService {
      * @param file MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
+    @Override
     public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
         if (!file.isEmpty()) {
             Optional<LessonsEntity> optionalLessons = lessonsRepository.findById(id);
@@ -152,6 +155,7 @@ public class LessonsServiceImpl implements LessonsService {
      * @param file    MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
+    @Override
     public ResponseEntity<?> saveFile(LessonsEntity lessons, MultipartFile file) {
         try {
             String path = fileUtil.saveFile(file, lessonsFolder);
@@ -178,6 +182,7 @@ public class LessonsServiceImpl implements LessonsService {
      * @param file    MultiparFile con los datos del archivo.
      * @return ResponseEntity<?> con el estado de la operacion.
      */
+    @Override
     public ResponseEntity<?> updateFile(LessonsEntity lessons, MultipartFile file) {
         try {
             String path = fileUtil.updateFile(file, lessonsFolder,

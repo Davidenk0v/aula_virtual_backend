@@ -1,13 +1,13 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Å¥¡“÷1J$e13ee35c-8c18-4290-8ef0-6642709542f9
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Å¥¡“÷1J$c9e81b82-aea0-49b8-8e44-7b98524cb1ba
 h
-java:S1452"&Remove usage of generic wildcard type.(ÜÙð8Ë¥¡“÷1J$3dc3b28f-3ef2-4a0f-9942-a7b625d65a04
+java:S1452"&Remove usage of generic wildcard type.(ÜÙð8Ë¥¡“÷1J$a6bf6e26-59fe-4f33-a2f4-4575d895479c
 i
-java:S1452"&Remove usage of generic wildcard type.(¶üë„8Ì¥¡“÷1J$b6856e3d-d259-4cc5-b3ac-ff149bfe7905
+java:S1452"&Remove usage of generic wildcard type.(¶üë„8Ì¥¡“÷1J$1b284a87-b7b8-406c-b7ff-4405c4abfb17
 n
-java:S1452"&Remove usage of generic wildcard type.( ¥ä¯üÿÿÿÿ8Î¥¡“÷1J$fd7359d0-91fe-4d7b-a711-5a7411658634
+java:S1452"&Remove usage of generic wildcard type.( ¥ä¯üÿÿÿÿ8Î¥¡“÷1J$49f9ab3b-3124-47ce-8e96-3952aaa33f4d
 n
-java:S1452$"&Remove usage of generic wildcard type.(™ ÷åÿÿÿÿÿ8Î¥¡“÷1J$c81cf0ae-1c49-426b-8883-9da8c73c6362
-B
-java:S1452)"&Remove usage of generic wildcard type.(á‡×)8“©Ì®ø1
+java:S1452$"&Remove usage of generic wildcard type.(™ ÷åÿÿÿÿÿ8Î¥¡“÷1J$d00c8a2d-7f63-4094-b6ba-9eaf0057e696
+h
+java:S1452)"&Remove usage of generic wildcard type.(á‡×)8“©Ì®ø1J$52b02bad-d07e-4e58-ad34-2f171582de5e

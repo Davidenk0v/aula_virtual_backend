@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/courses")
 public class CourseController {
 
@@ -59,8 +59,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id,
-            @PathVariable Long idTeacher) {
+    public ResponseEntity<?> updateCourse(@RequestBody CourseDTO course, @PathVariable Long id) {
         return courseService.updateCourse(id, course);
     }
 
