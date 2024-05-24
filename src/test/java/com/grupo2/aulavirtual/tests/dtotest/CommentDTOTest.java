@@ -18,7 +18,6 @@ public class CommentDTOTest {
         commentDTO = CommentDTO.builder()
                 .idComment(1)
                 .course(null)
-                .user(null)
                 .text("DTO de prueba")
                 .date(Date.valueOf("2024-09-01"))
                 .build();
@@ -32,7 +31,6 @@ public class CommentDTOTest {
 
         assertNull(commentDTO.getCourse(), "Course getter must be null");
 
-        assertNull(commentDTO.getUser(), "User getter must be null");
 
         assertEquals("DTO de prueba", commentDTO.getText(), "text getter must be equal to 'DTO de prueba'");
         commentDTO.setText("DTO actualizado");

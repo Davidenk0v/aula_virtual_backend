@@ -203,12 +203,11 @@ public class KeycloakServiceImpl implements KeycloakService {
             }
 
             realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
-            String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
 
             imageRepository.save(
                     new UserImg().builder()
                             .idUser(userId)
-                            .urlImg(defaultUrlImage)
+                            .urlImg(defaultImg)
                             .build());
 
             logger.info("User created successfully");

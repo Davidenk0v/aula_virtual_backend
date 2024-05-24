@@ -2,6 +2,8 @@ package com.grupo2.aulavirtual.tests.services;
 
 import com.grupo2.aulavirtual.entities.CommentEntity;
 import com.grupo2.aulavirtual.entities.CourseEntity;
+import com.grupo2.aulavirtual.entities.UserImg;
+import com.grupo2.aulavirtual.util.files.FileUtil;
 import com.grupo2.aulavirtual.util.mappers.DtoMapper;
 import com.grupo2.aulavirtual.payload.request.CommentDTO;
 import com.grupo2.aulavirtual.payload.request.CourseDTO;
@@ -11,14 +13,19 @@ import com.grupo2.aulavirtual.payload.response.CourseResponseDto;
 import com.grupo2.aulavirtual.payload.response.UserResponseDto;
 import com.grupo2.aulavirtual.repositories.CommentRepository;
 import com.grupo2.aulavirtual.repositories.CourseRepository;
-import com.grupo2.aulavirtual.services.CommentService;
+import com.grupo2.aulavirtual.repositories.ImageRepository;
+import com.grupo2.aulavirtual.services.KeycloakService;
 import com.grupo2.aulavirtual.services.impl.CommentServiceImpl;
+import com.grupo2.aulavirtual.services.impl.CoursesServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collections;
@@ -27,10 +34,12 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.keycloak.representations.idm.UserRepresentation;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 public class CommentServiceTest {
@@ -42,13 +51,18 @@ public class CommentServiceTest {
     private CourseRepository courseRepository;
 
     @Mock
-    private UserRepository userRepository;
+    private KeycloakService keycloakService;
 
     @Mock
+    private ImageRepository imageRepository;
+
+    @Mock
+    private FileUtil fileUtil;
+
     private DtoMapper dtoMapper;
 
     @InjectMocks
-    private CommentService commentService = new CommentServiceImpl();
+    private CommentServiceImpl commentService = new CommentServiceImpl();
 
     private CommentDTO commentDTO;
     private CommentResponseDto commentResponseDto;
@@ -58,18 +72,26 @@ public class CommentServiceTest {
     private CourseEntity courseEntity;
     private UserDTO userDTO;
     private UserResponseDto userResponseDto;
-    private UserEntity userEntity;
 
     private static final String SAVE = "data";
     private static final String ERROR = "error";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchFieldException, IllegalAccessException {
+
+        Field defaultImgField = CommentServiceImpl.class.getDeclaredField("defaultImg");
+        defaultImgField.setAccessible(true);
+        defaultImgField.set(commentService, "defaultImage.png");
+
+        Field coursesServiceImpl = CommentServiceImpl.class.getDeclaredField("userFolder");
+        coursesServiceImpl.setAccessible(true);
+        coursesServiceImpl.set(commentService, "/path/to/Users/");
+
         MockitoAnnotations.openMocks(this);
+        dtoMapper = new DtoMapper();
         commentDTO = CommentDTO.builder()
                 .idComment(1)
                 .course(null)
-                .user(null)
                 .text("DTO de prueba")
                 .date(Date.valueOf("2024-09-01"))
                 .build();
@@ -83,16 +105,7 @@ public class CommentServiceTest {
                 .price(BigDecimal.valueOf(100))
                 .build();
 
-        userDTO = UserDTO.builder()
-                .idUser(1L)
-                .email("test@example.com")
-                .lastname("Doe")
-                .firstname("John")
-                .username("johndoe")
-                .address(null)
-                .courses(null)
-                .role(null)
-                .build();
+        courseEntity = dtoMapper.dtoToEntity(courseDTO);
 
         commentEntity = new CommentEntity();
         commentEntity.setIdComment(1);
@@ -113,35 +126,27 @@ public class CommentServiceTest {
         assertEquals(ERROR, response.getBody());
     }
 
-    /*
     @Test
-    void postComment() {
-        // Configurar los datos de entrada
-        String userId = "User";
-        Long courseId = 1L;
+    void postComment_Success() {
+        // Arrange
+        String idUser = "user1";
+        Long idCourse = 1L;
+        CommentDTO commentDTO = new CommentDTO();
+        CourseEntity courseEntity = new CourseEntity();
+        CommentEntity commentEntity = new CommentEntity();
+        CommentResponseDto responseDto = new CommentResponseDto();
 
-        // Configurar el comportamiento del repositorio de usuarios
-        when(userRepository.findByIdKeycloak(userId)).thenReturn(Optional.of(userEntity));
-        // Configurar el comportamiento del repositorio de course
-        when(courseRepository.findById(courseId)).thenReturn(Optional.of(courseEntity));
-        // Configurar el comportamiento del mapeador DTO
-        when(dtoMapper.dtoToEntity(commentDTO)).thenReturn(commentEntity);
-        when(dtoMapper.entityToResponseDto(any(CommentEntity.class))).thenReturn(commentResponseDto);
-        // Configurar el comportamiento del repositorio de comentarios
-        when(commentRepository.save(any(CommentEntity.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        when(courseRepository.findById(idCourse)).thenReturn(Optional.of(courseEntity));
 
-        // Ejecutar el método bajo prueba
-        ResponseEntity<?> response = commentService.postComment(userId, courseId, commentDTO);
+        // Act
+        ResponseEntity<?> response = commentService.postComment(idUser, idCourse, commentDTO);
 
-        // Verificar que se recibe una respuesta con el código de estado HttpStatus.CREATED
+        // Assert
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-
-        // Verificar que se recibió la respuesta esperada
-        assertTrue(response.getBody().equals(commentResponseDto));
     }
 
 
-     */
+
     @Test
     void updateComment() {
         int commentId = 1;
@@ -152,7 +157,6 @@ public class CommentServiceTest {
 
         when(commentRepository.existsById(commentId)).thenReturn(true);
         when(commentRepository.findById(commentId)).thenReturn(Optional.of(new CommentEntity()));
-        when(dtoMapper.dtoToEntity(updatedCommentDTO)).thenReturn(commentEntity);
 
         ResponseEntity<HashMap<String, ?>> response = (ResponseEntity<HashMap<String, ?>>) commentService.updateComment(commentId, updatedCommentDTO);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -164,7 +168,6 @@ public class CommentServiceTest {
         int commentId = 1;
         when(commentRepository.existsById(commentId)).thenReturn(true);
         when(commentRepository.findById(commentId)).thenReturn(Optional.of(commentEntity));
-        when(dtoMapper.entityToResponseDto(commentEntity)).thenReturn(commentResponseDto);
 
         ResponseEntity<?> response = commentService.findCommentById(commentId);
         CommentResponseDto expected = (CommentResponseDto) response.getBody();
@@ -209,4 +212,81 @@ public class CommentServiceTest {
         assertEquals("Error simulado", ((HashMap<String, ?>) responseFind.getBody()).get(ERROR));
         assertEquals("Error simulado", responseDelete.getBody().get(ERROR));
     }
+
+    @Test
+    void sendFile_KeycloakUser_NotFound() {
+        // Arrange
+
+        String userId = "user1";
+        when(keycloakService.findUserById(userId)).thenReturn(null);
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_User_NotFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findById(userId)).thenReturn(Optional.empty());
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_File_NotFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+        String urlImg = "image.jpg";
+        UserImg userImg = new UserImg(userId, urlImg);
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(new byte[0]);
+
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("error", response.getBody());
+    }
+
+    @Test
+    void sendFile_FileFound() {
+        // Arrange
+        String userId = "user1";
+        UserRepresentation userRepresentation = mock(UserRepresentation.class);
+        String urlImg = "image.jpeg";
+        UserImg userImg = new UserImg(userId, urlImg);
+        byte[] fileContent = "fileContent".getBytes();
+
+        when(keycloakService.findUserById(userId)).thenReturn(userRepresentation);
+        when(imageRepository.findById(userId)).thenReturn(Optional.of(userImg));
+        when(fileUtil.getExtensionByPath(anyString())).thenReturn("jpeg");
+        when(fileUtil.getMediaType(anyString())).thenReturn("image/jpeg");
+        when(fileUtil.sendFile(anyString(), anyString())).thenReturn(fileContent);
+        
+        // Act
+        ResponseEntity<?> response = commentService.sendFile(userId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(MediaType.IMAGE_JPEG, response.getHeaders().getContentType());
+        assertEquals(fileContent, response.getBody());
+    }
+
 }

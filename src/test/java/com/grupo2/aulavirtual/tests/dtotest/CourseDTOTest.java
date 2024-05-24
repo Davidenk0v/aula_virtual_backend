@@ -20,7 +20,6 @@ public class CourseDTOTest {
             .startDate(Date.valueOf("2024-09-01"))
             .finishDate(Date.valueOf("2024-12-31"))
             .price(BigDecimal.valueOf(100))
-            .user(null)
             .build();
 
         assertEquals(1L, courseDTO.getIdCourse(), "idCourse getter must be equal to 1L");
@@ -47,7 +46,6 @@ public class CourseDTOTest {
         courseDTO.setPrice(BigDecimal.valueOf(200));
         assertEquals(BigDecimal.valueOf(200), courseDTO.getPrice(), "Pago setter must be equal to 200");
 
-        assertEquals(null, courseDTO.getUser(), "User getter must be null");
     }
 
     @Test

@@ -33,13 +33,13 @@ import java.util.*;
 public class CoursesServiceImpl implements CourseService {
 
     @Autowired
-    CourseRepository repository;
+    private CourseRepository courseRepository;
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    KeycloakService keycloakService;
+    private KeycloakService keycloakService;
 
     private static final String ERROR = "error";
     private static final String SAVE = "data";
@@ -52,10 +52,6 @@ public class CoursesServiceImpl implements CourseService {
     private String defaultImg;
     @Value("${fileutil.course.folder.path}")
     private String courseFolder;
-
-
-    @Autowired
-    private CourseRepository courseRepository;
 
     @Override
     public ResponseEntity<?> courseList() {
@@ -91,8 +87,7 @@ public class CoursesServiceImpl implements CourseService {
                 course.getIdCourse();
                 course.setCreatedDate(LocalDateTime.now());
                 course.setLastModifiedDate(LocalDateTime.now());
-                String defaultUrlImage = fileUtil.setDefaultImage(defaultImg);
-                course.setUrlImg(defaultUrlImage);
+                course.setUrlImg(defaultImg);
                 CourseResponseDto responseDto = dtoMapper.entityToResponseDto(course);
                 courseRepository.save(course);
                 response.put(SAVE, responseDto);
@@ -120,19 +115,19 @@ public class CoursesServiceImpl implements CourseService {
      */
     public ResponseEntity<?> downloadFile(Long id, MultipartFile file) {
         if (!file.isEmpty()) {
-            Optional<CourseEntity> optionalCourse = repository.findById(id);
+            Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
             if (optionalCourse.isPresent()) {
                 CourseEntity course = optionalCourse.get();
-                if (course.getUrlImg() == null && course.getUrlImg().isEmpty()) {
+                if (course.getUrlImg() == null || course.getUrlImg().isEmpty()) {
                     return saveFile(course, file);
                 } else {
                     return updateFile(course, file);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro el ususario.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se ha enviado ningun archivo", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 
@@ -147,12 +142,11 @@ public class CoursesServiceImpl implements CourseService {
         try {
             String path = fileUtil.saveFile(file, getCustomPath(course.getName()));
             course.setUrlImg(path);
-            repository.save(course);
+            courseRepository.save(course);
             if (path != null) {
-                return new ResponseEntity<>("Se ha añadido el archivo", HttpStatus.OK);
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
@@ -173,16 +167,15 @@ public class CoursesServiceImpl implements CourseService {
             String path = fileUtil.updateFile(file, getCustomPath(course.getName()),
             getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
             course.setUrlImg(path);
-            repository.save(course);
+            courseRepository.save(course);
             if (path != null) {
                 return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(
-                        "Ocurrio un error al almacenar el archivo", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } catch (Exception e) {
             HashMap<String, Object> usuarios = new HashMap<>();
-            usuarios.put("Error", e.getMessage());
+            usuarios.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(usuarios);
         }
     }
@@ -210,28 +203,35 @@ public class CoursesServiceImpl implements CourseService {
             }
         } catch (Exception e) {
             HashMap<String, Object> error = new HashMap<>();
-            error.put(ERROR, "Error al intentar eliminar el curso y sus relaciones: " + e.getMessage());
+            error.put(ERROR, e.getMessage());
             return ResponseEntity.status(500).body(error);
         }
     }
 
     public ResponseEntity<?> setDefaultImage(Long id) {
-        Optional<CourseEntity> optionalCourse = repository.findById(id);
-        if (optionalCourse.isPresent()) {
-            CourseEntity course = optionalCourse.get();
-            course.setLastModifiedDate(LocalDateTime.now());
-            if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
-                fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
-                course.setUrlImg(defaultImg);
-                repository.save(course);
+        try {
+            Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
+            if (optionalCourse.isPresent()) {
+                CourseEntity course = optionalCourse.get();
+                course.setLastModifiedDate(LocalDateTime.now());
+                if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
+                    fileUtil.deleteFile(getCustomPath(course.getName()) + course.getUrlImg(), defaultImg);
+                    course.setUrlImg(defaultImg);
+                    courseRepository.save(course);
+                } else {
+                    course.setUrlImg(defaultImg);
+                    courseRepository.save(course);
+                }
+                return new ResponseEntity<>(SAVE, HttpStatus.OK);
             } else {
-                course.setUrlImg(defaultImg);
-                repository.save(course);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(SAVE, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            HashMap<String, Object> error = new HashMap<>();
+            error.put(ERROR, e.getMessage());
+            return ResponseEntity.status(500).body(error);
         }
+
     }
 
     @Override
@@ -329,7 +329,7 @@ public class CoursesServiceImpl implements CourseService {
      * @return ResponseEntity<?> con la imagen, con string en caso de error.
      */
     public ResponseEntity<?> sendFile(Long id) {
-        Optional<CourseEntity> optionalCourse = repository.findById(id);
+        Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             CourseEntity course = optionalCourse.get();
             if (course.getUrlImg() != null && !course.getUrlImg().isEmpty()) {
@@ -340,15 +340,13 @@ public class CoursesServiceImpl implements CourseService {
                 if (file.length != 0) {
                     return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf(mediaType)).body(file);
                 } else {
-                    return new ResponseEntity<>("Ocurrio un error, el archivo puede estar corrupto.",
-                            HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity<>(ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             } else {
-                return new ResponseEntity<>("No se encontro el curso.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity<>("No se encuentra el archivo.",
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ERROR, HttpStatus.NOT_FOUND);
         }
     }
 

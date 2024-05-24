@@ -14,7 +14,7 @@ public interface LessonsService {
 
     ResponseEntity<?> sendFile(Long id);
 
-    ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO, MultipartFile file);
+    ResponseEntity<HashMap<String, ?>> postLessons(Long idSubject, LessonsDTO lessonsDTO);
 
     ResponseEntity<?> downloadFile(Long id, MultipartFile file);
 
@@ -24,7 +24,7 @@ public interface LessonsService {
 
     ResponseEntity<HashMap<String, ?>> deleteLesson(Long id);
 
-    ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO, MultipartFile file);
+    ResponseEntity<HashMap<String, ?>> updateLesson(Long id, LessonsDTO lessonsDTO);
 
     ResponseEntity<HashMap<String, ?>> findLessonsById(Long id);
 }

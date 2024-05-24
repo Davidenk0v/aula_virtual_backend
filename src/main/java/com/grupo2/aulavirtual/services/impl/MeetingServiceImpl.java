@@ -23,12 +23,14 @@ public class MeetingServiceImpl implements MeetingService {
     MeetingRepository repositoryMeeting;
 
 
-
+    private static final String NOT_FOUND = "No encontrado";
+    private static final String SAVE = "data";
+    private static final String ERROR = "error";
     @Override
     public ResponseEntity<?> repositoryMeeting() {
         List<MeetingEntity> meetingEntities = repositoryMeeting.findAll();
         if(meetingEntities.isEmpty()){
-            return new ResponseEntity<>("No se encontraron temas", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(NOT_FOUND, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(meetingEntities, HttpStatus.OK);
     }
@@ -37,7 +39,7 @@ public class MeetingServiceImpl implements MeetingService {
     public ResponseEntity<HashMap<String, ?>> postMeeting( MeetingEntity meeting) {
         HashMap<String, MeetingEntity> response = new HashMap<>();
         MeetingEntity responseEntity = repositoryMeeting.save(meeting);
-        response.put("Subido", responseEntity);
+        response.put(SAVE, responseEntity);
         return ResponseEntity.status(201).body(response);
 
     }
@@ -48,9 +50,9 @@ public class MeetingServiceImpl implements MeetingService {
         HashMap<String, Long> response = new HashMap<>();
         if (repositoryMeeting.existsById(id)){
             repositoryMeeting.deleteByNumberMeeting(id);
-            response.put("Borrado", id);
+            response.put(SAVE, id);
         }else {
-            response.put("No encontrado", id);
+            response.put(NOT_FOUND, id);
         }
         return ResponseEntity.status(201).body(response);
 

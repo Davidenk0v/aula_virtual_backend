@@ -3,7 +3,7 @@ package com.grupo2.aulavirtual.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+
 @Builder
 @NoArgsConstructor
 @Getter
@@ -14,9 +14,6 @@ import lombok.*;
 public class UserImg {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String idUser;
 
     private String urlImg;
