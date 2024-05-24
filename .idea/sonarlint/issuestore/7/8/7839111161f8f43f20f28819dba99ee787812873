@@ -1,29 +1,27 @@
 
-h
-java:S2629ï"$Invoke method(s) only conditionally.(äÄà8üÆ¶ßù1J$b363bcd0-a218-4834-8bf1-bff8d17d6b7a
+B
+java:S2629ï"$Invoke method(s) only conditionally.(äÄà8™ïËú1
+s
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8‚ïËú1
 ™
-java:S3655é"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8ˆÈ¶ßù1J$0e61afaa-acdc-4b72-bf4d-d81b50887c6b
-™
-java:S3655ó"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8ˆÈ¶ßù1J$53077f08-6146-4f2d-8acb-4ca8fecfd5f4
-™
-java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8ˆÈ¶ßù1J$2401c2de-90b6-422d-b485-68bc70c9a0ef
-™
-java:S3655 "PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(×ü‘Ûüÿÿÿÿ8ˆÈ¶ßù1J$18765417-8c9d-4949-a36f-dbc450ab6d1f
+java:S3655ç"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÿğŠÿÿÿÿÿ8ˆÈ¶ßù1J$0a29e1d4-8da9-410d-8713-526bb506b3a9
+s
+java:S3655 "PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(×ü‘Ûüÿÿÿÿ8ƒïËú1
+s
+java:S3655ó"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®Œ«±úÿÿÿÿ8„ïËú1
 …
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿç²Şù1J$947cebdb-37f4-44cd-a688-b96396d5b7e8
-…
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿç²Şù1J$028038ec-d6e0-4bee-9950-d53b92b49a98
-…
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿç²Şù1J$0e9b2020-0f2b-425d-bb4b-fe8b4ccc85ca
-…
-java:S68139"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿç²Şù1J$45905a27-feac-40d4-8831-9468710ea717
-n
-java:S1452y"&Remove usage of generic wildcard type.(«Ò¨£ûÿÿÿÿ8®È¶ßù1J$a270ebbc-a615-4d89-b357-9e670aaf5e3f
-o
-java:S1452’"&Remove usage of generic wildcard type.(–¯ÌØüÿÿÿÿ8®È¶ßù1J$b6b7a0be-ca4e-42ca-a50b-56b1e30452c5
-j
-java:S1452«"&Remove usage of generic wildcard type.(ÅÅª…8¾È¶ßù1J$194ba97b-ac23-42a3-9425-c877e22af957
-j
-java:S1452Ú"&Remove usage of generic wildcard type.(ûüı²8¾È¶ßù1J$bbf9b12a-b4bc-4ae2-9429-df95779e9e5d
-o
-java:S1452Ë"&Remove usage of generic wildcard type.(õ—òïıÿÿÿÿ8ÓÈ¶ßù1J$370b8d96-fc20-409f-aa8b-8b6818c60998
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÿç²Şù1J$11c09a94-343e-4da4-bb85-e4704c8147f0
+_
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŠïËú1
+_
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŠïËú1
+H
+java:S1452t"&Remove usage of generic wildcard type.(«Ò¨£ûÿÿÿÿ8ÑŸïËú1
+I
+java:S1452"&Remove usage of generic wildcard type.(–¯ÌØüÿÿÿÿ8çŸïËú1
+D
+java:S1452¥"&Remove usage of generic wildcard type.(ÅÅª…8 ïËú1
+D
+java:S1452Ó"&Remove usage of generic wildcard type.(ûüı²8è ïËú1
+I
+java:S1452Ë"&Remove usage of generic wildcard type.(õ—òïıÿÿÿÿ8Ï¥ïËú1
